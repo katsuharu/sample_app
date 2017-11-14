@@ -6,4 +6,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+
+  test "name should be present" do
+      @user.name = "     "
+      assert_not @user.valid?
+  end
 end
