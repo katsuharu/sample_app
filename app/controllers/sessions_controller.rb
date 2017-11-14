@@ -3,8 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-      render 'new'
-    end
+  	user = User.find_by(email:params[:session][:email].downcase)
+  	if user && user.authenticate(params[:session][:password])
+
+  	else
+  		flash[:danger] = 'メールアドレスまたはパスワードが正しくありません。'
+    	render 'new'
+  	end
+  end
 
   def destroy
   
