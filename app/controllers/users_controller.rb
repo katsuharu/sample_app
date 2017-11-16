@@ -3,12 +3,9 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
-<<<<<<< HEAD
-=======
   @@entry_id = 0
   @@pair_no = 0
 
->>>>>>> a14ddf20322464f83cf514c0f6eb51c657f5bb00
   def index
     @users = User.all
   end
@@ -51,8 +48,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-<<<<<<< HEAD
-=======
   def entry
     @@entry_id += 1
     p @@entry_id
@@ -68,7 +63,6 @@ class UsersController < ApplicationController
       end
   end
 
->>>>>>> a14ddf20322464f83cf514c0f6eb51c657f5bb00
   private
 
   	def user_params
