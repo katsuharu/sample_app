@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
         message += "送られてきたメールのリンクでアカウントを有効化してください。"
         flash[:warning] = message
         redirect_to root_url
+      end
   	else
   		flash.now[:danger] = 'メールアドレスまたはパスワードが正しくありません。'
     	render 'new'
