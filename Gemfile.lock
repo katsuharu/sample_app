@@ -65,6 +65,8 @@ GEM
     erubis (2.7.0)
     excon (0.59.0)
     execjs (2.7.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.18)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
@@ -220,7 +222,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     libv8 (3.16.14.19)
-    libv8 (3.16.14.19-x86_64-linux)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -339,6 +340,7 @@ DEPENDENCIES
   byebug
   carrierwave (= 1.1.0)
   coffee-rails (~> 4.2)
+  faker (= 1.7.3)
   fog (= 1.40.0)
   jbuilder (~> 2.5)
   jquery-rails
