@@ -1,5 +1,9 @@
-<h1>User#account_activation</h1>
+<h1>シャッフルランチ</h1>
 
+<p><%= @user.name %>さま</p>
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/account_activation.html.erb
+	シャッフルランチにユーザ登録をしていただき誠にありがとうございます。
+	下記のリンクにアクセスしてアカウントを有効化してください。
 </p>
+	<%= link_to "有効化", edit_account_activation_url(@user.activation_token,
+		email:@user.email) %>
