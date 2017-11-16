@@ -1,6 +1,6 @@
 michael:
-  name: Michael Example
-  email: michael@example.com
+  name: 佐々木勝春
+  email: sasaki-katsuharu@kcgrp.jp
   password_digest: <%= User.digest('password') %>
 
 archer:
