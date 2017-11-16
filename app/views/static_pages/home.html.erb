@@ -1,9 +1,21 @@
-<% provide(:title, "Home") %>
-<div class="center jumbotron">
-	<h1>シャッフルランチ</h1>
-	<p>シャッフルランチ開発のために、railsチュートリアルで学習</p>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+	<div class="center jumbotron">
+		<h1>シャッフルランチ</h1>
+		<p>シャッフルランチ開発のために、railsチュートリアルで学習</p>
 
-	<%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %> 
-</div>
+		<%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %> 
+	</div>
 
-<%= link_to image_tag("rpi_car-iloveimg-resized.jpg", alt: "logo"), '#' %>
+	<%= link_to image_tag("rpi_car-iloveimg-resized.jpg", alt: "logo"), '#' %>
+<% end %>
