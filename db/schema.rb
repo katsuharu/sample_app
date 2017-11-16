@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115054731) do
+ActiveRecord::Schema.define(version: 20171116034555) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -19,11 +19,14 @@ ActiveRecord::Schema.define(version: 20171115054731) do
     t.string   "slack_id"
     t.integer  "entry_id"
     t.integer  "pair_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
