@@ -13,6 +13,10 @@
   <%= f.label :パスワード確認用, "Confirmation" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+  <span class="picture">
+    <%= f.file_field :profile_img %>
+  </span>
+
   <%= f.label :部署名 %>
   <%= f.text_field :department_name, class: 'form-control'  %>
 
