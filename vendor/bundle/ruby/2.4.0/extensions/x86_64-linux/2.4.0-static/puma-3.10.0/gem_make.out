@@ -1,0 +1,41 @@
+current directory: /media/sf_git/sample_app/vendor/bundle/ruby/2.4.0/gems/puma-3.10.0/ext/puma_http11
+/root/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20171117-19348-yk6wir.rb extconf.rb
+checking for BIO_read() in -lcrypto... yes
+checking for SSL_CTX_new() in -lssl... yes
+checking for openssl/bio.h... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /media/sf_git/sample_app/vendor/bundle/ruby/2.4.0/extensions/x86_64-linux/2.4.0-static/puma-3.10.0/mkmf.log
+
+current directory: /media/sf_git/sample_app/vendor/bundle/ruby/2.4.0/gems/puma-3.10.0/ext/puma_http11
+make "DESTDIR=" clean
+make: Warning: File `Makefile' has modification time 1.2e+03 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /media/sf_git/sample_app/vendor/bundle/ruby/2.4.0/gems/puma-3.10.0/ext/puma_http11
+make "DESTDIR="
+make: Warning: File `Makefile' has modification time 1.2e+03 s in the future
+compiling http11_parser.c
+compiling io_buffer.c
+compiling mini_ssl.c
+mini_ssl.c: In function ‘engine_init_server’:
+mini_ssl.c:153: warning: ISO C90 forbids mixed declarations and code
+mini_ssl.c:158: warning: ISO C90 forbids mixed declarations and code
+mini_ssl.c:180: warning: ISO C90 forbids mixed declarations and code
+mini_ssl.c:184: warning: ISO C90 forbids mixed declarations and code
+At top level:
+cc1: warning: unrecognized command line option "-Wno-self-assign"
+cc1: warning: unrecognized command line option "-Wno-constant-logical-operand"
+cc1: warning: unrecognized command line option "-Wno-parentheses-equality"
+cc1: warning: unrecognized command line option "-Wno-tautological-compare"
+compiling puma_http11.c
+linking shared-object puma/puma_http11.so
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /media/sf_git/sample_app/vendor/bundle/ruby/2.4.0/gems/puma-3.10.0/ext/puma_http11
+make "DESTDIR=" install
+make: Warning: File `Makefile' has modification time 1.2e+03 s in the future
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20171117-19348-1svnwsc/puma
+make: warning:  Clock skew detected.  Your build may be incomplete.
