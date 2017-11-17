@@ -9,4 +9,9 @@ class UserMailer < ApplicationMailer
   	@user = user
     mail to: user.email, subject: "パスワードのリセット"
   end
+
+  def matching_success(user)
+  	@user = user
+    mail to: user.email, subject: "マッチングの完了のお知らせです"
+  end
 end
