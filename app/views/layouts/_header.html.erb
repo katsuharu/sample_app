@@ -3,8 +3,8 @@
     <%= link_to "シャッフルランチ", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
+        <li><%= link_to "トップ", root_path %></li>
+        <li><%= link_to "お問い合わせ", help_path %></li>
         <% if logged_in? %>
           <li><%= link_to "マッチング", users_path %></li>
           <li><%= link_to "マッチング相手確認", '#' %></li>
