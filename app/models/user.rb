@@ -68,7 +68,7 @@ class User < ApplicationRecord
 	end
 
 	def feed
-		User.where("entry_id not ?", nil)
+		User.where.not(entry_id: nil)
 	end
 
 
