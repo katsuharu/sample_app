@@ -15,4 +15,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.password_reset(user)
   end
 
+  def matching_success
+    user = User.first
+    user.activation_token = User.new_token
+    UserMailer.matching_success(user)
+  end
+
 end
