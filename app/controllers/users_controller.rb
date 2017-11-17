@@ -60,9 +60,10 @@ class UsersController < ApplicationController
       p @@pair_no
       User.where(entry_id: @@entry_id-2 .. @@entry_id).update(pair_id: @@pair_no)
 
-      render action: 'show'
+      render action: 'success'
     end
   end
+  
 
   private
 
