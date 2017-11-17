@@ -1,5 +1,5 @@
 namespace :matching do
-  task :execute, ['time_zone_id'] => :environment do  | task, args |
+  task :execute do  | task |
     k = @@entry_id % 3
     case k
       when 0 #余りが0人
