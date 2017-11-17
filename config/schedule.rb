@@ -18,3 +18,15 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+# 出力先のログファイル
+set :output, 'log/crontab.log'
+
+# ジョブの実行環境定義
+set :environment, :production
+
+# Matching
+# time_zonesテーブルのexecute_timeを元に各時間設定
+every '*/1 * * * *' do
+  rake 'matching:execute[1]'
+end
