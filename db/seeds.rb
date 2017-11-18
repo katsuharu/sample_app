@@ -29,3 +29,12 @@ User.create!(name:  "紅葉",
              password_confirmation: "masaki",
              admin: true,
              activated: true)
+
+
+User.create!(name:  "おーいお茶",
+             email: "ocha@gmail.com",
+             password:              "masaki",
+             password_confirmation: "masaki",
+             admin: true,
+             entry_id: 11,
+             activated: true)
