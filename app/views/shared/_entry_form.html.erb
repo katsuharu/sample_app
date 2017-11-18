@@ -1,7 +1,7 @@
 <div class="bs-component">
-  <%= form_tag("/waiting", method: "post", id: "") do %>
+  <%= form_for(@user)  do |f| %>
     <div class="form-group">
-        <%= submit_tag "シャッフルランチにエントリーする", class: "btn btn-primary" %>
+        <%= f.submit "シャッフルランチにエントリーする", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
