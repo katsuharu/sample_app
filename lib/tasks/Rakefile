@@ -1,4 +1,5 @@
 desc 'Hello, Rake Task'
-task :hello do
-	puts 'Hello, Rake!'
+task :hello => :environment do
+	num = User.maximum('entry_id')
+	puts num
 end
