@@ -1,7 +1,8 @@
 namespace :matching do
   task :execute => :environment do  | task |
     num = User.maximum('entry_id')
-    pair = User.maximum('pair_id')
+    #pair = User.maximum('pair_id')
+    pair = 1
     k = num % 3 #3人組を作り終わった後に余る人数
     case k
       when 0 #余りが0人
