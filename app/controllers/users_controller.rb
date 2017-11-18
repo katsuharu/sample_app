@@ -54,14 +54,14 @@ class UsersController < ApplicationController
     p @@entry_id
     User.where(id: current_user.id).update(entry_id: @@entry_id)
     flash[:success] = "シャッフルランチにエントリーしました。"
-    # redirect_to waiting_url
+    redirect_to waiting_url
 
     if @@entry_id % 3 == 0
       @@pair_no += 1
       p @@pair_no
       User.where(entry_id: @@entry_id-2 .. @@entry_id).update(pair_id: @@pair_no)
 
-      render action: 'success'
+      # render action: 'success'
     end
   end
   
