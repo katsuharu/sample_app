@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
-  post   '/', to: 'userss#entry'
+  get    '/',        to: 'users#entry'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
   resources :account_activations, only: [:edit]
