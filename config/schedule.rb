@@ -25,8 +25,9 @@ set :output, 'log/crontab.log'
 # ジョブの実行環境定義
 set :environment, :production
 
-# Matching
-# time_zonesテーブルのexecute_timeを元に各時間設定
-every '*/1 * * * *' do
-  rake 'matching:execute[1]'
+every '1 0 * * *' do
+  command "echo 'you can use raw cron syntax too'"
 end
+
+
+# Matching
