@@ -17,12 +17,12 @@
 
         <div class="form-group">
           <label>Slack ID</label>
-          <div><%= @pair.slack_id %></div>
+          <div><%= @pair.try :slack_id %></div>
         </div>
 
         <div class="form-group">
           <label>プロフィール写真</label>
-          <div><%= @pair.profile_img %></div>
+          <div><%= @pair.try :profile_img %></div>
         </div>
       </fieldset>
     </div>
