@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   def entry
     @@entry_id += 1
     p @@entry_id
-    User.where(id: current_user.id).update(entry_id: @@entry_id)
+    User.where(id: current_user.id).update_attribute(:entry_id, @@entry_id)
     flash[:success] = "シャッフルランチにエントリーしました。"
     debugger
 
