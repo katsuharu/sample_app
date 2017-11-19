@@ -1,28 +1,29 @@
 <% if logged_in? %>
-  <div class="entry-user">
+  <% if @users.any? %>
     <h1>エントリー中のユーザー</h1>
+    <div class="entry-user">
       <div class="container">
-        <% if @users.any? %>
-          <article>
-            <% @users.each do |user| %>
-                <div class="entry-photo">
-                  <%= image_tag user.profile_img.url if user.profile_img? %>
-                </div>
-                <div class="entry-text">
-                  <h3><%= user.try :name %></h3>
-                  <p><%= user.try :department_name %></p>
-                </div>
-            <% end %>
-          </article>
-        <% else %>
-            <p>ただいまエントリー中のユーザーはいません。</p>
-        <% end %>
-
-        <section class="entry_form">
-                <%= render 'shared/entry_form' %>
-        </section>
+        <article>
+          <% @users.each do |user| %>
+            <div class = "entry-content">
+              <div class="entry-photo">
+                <%= image_tag user.profile_img.url if user.profile_img? %>
+              </div>
+              <div class="entry-text">
+                <h3><%= user.try :name %></h3>
+                <p><%= user.try :department_name %></p>
+              </div>
+            </div>
+          <% end %>
+        </article>
       </div>
-  </div>
+      <section class="entry_form">
+              <%= render 'shared/entry_form' %>
+      </section>
+    </div>
+  <% else %>
+      <p>ただいまエントリー中のユーザーはいません。</p>
+  <% end %>
 <% else %>
   <div class="center jumbotron">
   	<h1>シャッフルランチ</h1>
