@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <div class="row">
       <div class="col-md-8">
-        <h3>エントリーユーザー一覧</h3>
+        <h3>エントリー中のユーザー</h3>
         <% if @users.any? %>
           <ul>
             <% @users.each do |user| %>
@@ -12,6 +12,8 @@
               </li>
             <% end %>
           </ul>
+          <% else %>
+            <p>ただいまエントリー中のユーザーはいません。</p>
         <% end %>
 
         <section class="entry_form">
