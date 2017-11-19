@@ -57,7 +57,6 @@ class UsersController < ApplicationController
     p @@entry_id
     User.where(id: current_user.id).update(entry_id: @@entry_id)
     flash[:success] = "シャッフルランチにエントリーしました。"
-    redirect_to waiting_path
     debugger
 
     if @@entry_id % 3 == 0
@@ -66,6 +65,9 @@ class UsersController < ApplicationController
       User.where(entry_id: @@entry_id-2 .. @@entry_id).update(pair_id: @@pair_id)
 
       render action: 'success'
+    
+    else
+      redirect_to waiting_path
     end
   end
   
