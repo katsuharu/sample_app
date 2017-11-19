@@ -21,7 +21,7 @@ User.create!(name:  "東京タワー",
              email: "tokyo@gmail.com",
              password:              "masaki",
              password_confirmation: "masaki",
-             department_name: "営業"
+             department_name: "営業",
              admin: true,
              entry_id: 1,
              activated: true)
@@ -30,7 +30,7 @@ User.create!(name:  "紅葉",
              email: "koyo@gmail.com",
              password:              "masaki",
              password_confirmation: "masaki",
-             department_name: "広報"
+             department_name: "広報",
              admin: true,
              activated: true)
 
