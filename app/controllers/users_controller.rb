@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   @@entry_id = 0
-  @@pair_no = 0
+  @@pair_id = 0
 
   def index
     @users = User.paginate(page:params[:page])
@@ -61,9 +61,9 @@ class UsersController < ApplicationController
     debugger
 
     if @@entry_id % 3 == 0
-      @@pair_no += 1
-      p @@pair_no
-      User.where(entry_id: @@entry_id-2 .. @@entry_id).update(pair_id: @@pair_no)
+      @@pair_id += 1
+      p @@pair_id
+      User.where(entry_id: @@entry_id-2 .. @@entry_id).update(pair_id: @@pair_id)
 
       render action: 'success'
     end
