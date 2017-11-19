@@ -53,11 +53,12 @@ class UsersController < ApplicationController
   end
 
   def entry
-    debugger
     @@entry_id += 1
     p @@entry_id
     User.where(id: current_user.id).update(entry_id: @@entry_id)
     flash[:success] = "シャッフルランチにエントリーしました。"
+    redirect_to waiting_path
+    debugger
 
     if @@entry_id % 3 == 0
       @@pair_no += 1
