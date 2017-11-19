@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
   	if logged_in?
-  		@users = User.paginate(page: params[:page])
+  		@users = User.where.not(entry_id: nil)paginate(page: params[:page])
     end
   end
 
