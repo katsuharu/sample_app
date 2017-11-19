@@ -64,6 +64,9 @@ class UsersController < ApplicationController
     end
   end
   
+  def check
+    @pairs = User.where(pair_id: current_user.pair_id)
+  end
 
   private
 
