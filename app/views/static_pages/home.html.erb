@@ -3,16 +3,18 @@
       <div class="col-md-8">
         <h3>エントリー中のユーザー</h3>
         <% if @users.any? %>
-          <ul>
+          <article>
             <% @users.each do |user| %>
-              <li>
-                <%= image_tag user.profile_img.url if user.profile_img? %>
-                <%= user.try :name %>
-                <%= user.try :department_name %>
-              </li>
+                <div class="photo">
+                  <%= image_tag user.profile_img.url if user.profile_img? %>
+                </div>
+                <div class="text">
+                  <%= user.try :name %>
+                  <%= user.try :department_name %>
+                </div>
             <% end %>
-          </ul>
-          <% else %>
+          </article>
+        <% else %>
             <p>ただいまエントリー中のユーザーはいません。</p>
         <% end %>
 
