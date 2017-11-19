@@ -1,6 +1,33 @@
-<% provide(:title, "Contact") %>
-<h1>Contact</h1>
-<p>
-メールアドレス：kkk@gmail.com
-電話番号: 000-1111-222
-</p>
+<% provide(:title, "お問い合わせ") %>
+<% provide(:page_title, "お問い合わせ") %>
+
+<div class="col-lg-12">
+  <div class="bs-component">
+    <%= form_tag("/contact", method: "post", id: "contact") do %>
+      <fieldset>
+        <div class="form-group">
+          <p>質問や要望等がございましたらお気軽にお問い合わせください。</p>
+        </div>
+
+        <div class="form-group">
+          <label class="mr10">お名前</label><span class="label label-danger">必須</span>
+          <%= text_field_tag 'contact[name]', nil, class: 'form-control', required: true %>
+        </div>
+
+        <div class="form-group">
+          <label class="mr10">メールアドレス</label><span class="label label-danger">必須</span>
+          <%= email_field_tag 'contact[email]', nil, class: 'form-control', required: true %>
+        </div>
+
+        <div class="form-group">
+          <label class="mr10">お問い合わせ内容</label><span class="label label-danger">必須</span>
+          <%= text_area_tag 'contact[content]', nil, class: 'form-control', rows: 6 , required: true%>
+        </div>
+
+        <div class="form-group">
+          <%= submit_tag "送信", class: "btn btn-primary" %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
