@@ -1,5 +1,7 @@
 <div class="bs-component">
- 
-    <%= link_to "エントリー", "/waiting", class: "btn btn-primary" %>
-
+  <%= form_tag("/waiting", method: "post", id: "") do %>
+    <div class="form-group">
+        <%= submit_tag "シャッフルランチにエントリーする", class: "btn btn-primary" %>        
+    </div>
+  <% end %>
 </div>
