@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
   	if logged_in?
-  		@entry_users = current_user.feed.paginate(page: params[:page])
+  		@users = User.paginate(page: params[:page])
     end
   end
 
