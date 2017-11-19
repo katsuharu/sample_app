@@ -170,9 +170,47 @@ input {
 }
 
 /* エントリー中ユーザ一覧 */
+.entry-user .container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+.entry-user aritcle {
+  flex: 1 1 384px;
+  display: flex;
+}
+
+.entry-user .entry-content {
+  flex: 1;
+  margin: 10px;
+  display: flex;
+  border: solid 1px #ddd;
+  color: inherit;
+}
+
+.entry-user .entry-photo {
+  flex: 2;
+  min-height: 0;
+  background-position: center;
+  background-size: cover;
+}
+
+.entry-user .entry-text {
+  flex: 3;
+  margin: 10px;
+}
+
 .entry-user img {
   width: 300px;
   height: 300px;
+}
+
+@media (max-width: 384px) {
+  .entry-user .entry-photo {
+    flex: 1;
+  }
 }
 
 /* プロフィールページ */
