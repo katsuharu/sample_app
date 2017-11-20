@@ -7,10 +7,6 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <%= if entried? %>
-      <p>エントリ済みです</p>
-    <% end %>
-
     <div class="container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
