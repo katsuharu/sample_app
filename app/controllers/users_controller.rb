@@ -70,6 +70,7 @@ class UsersController < ApplicationController
         redirect_to waiting_path
       end
     else
+      redirect_to root_url
       flash[:danger] = "既にエントリー済みです。"
     end
   end
