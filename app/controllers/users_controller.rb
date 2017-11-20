@@ -60,7 +60,9 @@ class UsersController < ApplicationController
     if @@entry_id % 3 == 0
       @@pair_id += 1
       p @@pair_id
-      User.where(entry_id: @@entry_id-2 .. @@entry_id).update_attribute(:pair_id, @@pair_id)
+      User.find_by(entry_id: @@entry_id-2).update_attribute(:pair_id,  @@pair_id)
+      User.find_by(entry_id: @@entry_id-1).update_attribute(:pair_id,  @@pair_id)
+      User.find_by(entry_id: @@entry_id).update_attribute(:pair_id,  @@pair_id)
       render action: 'success'
     
     else
