@@ -3,8 +3,8 @@
     <h1>エントリー中のユーザー</h1>
     <div class="entry-user">
       <div class="container">
-        <article>
-          <% @users.each do |user| %>
+        <% @users.each do |user| %>
+          <article>
             <div class = "entry-content">
               <div class="entry-photo">
                 <%= image_tag user.profile_img.url if user.profile_img? %>
@@ -14,8 +14,8 @@
                 <p><%= user.try :department_name %></p>
               </div>
             </div>
-          <% end %>
-        </article>
+          </article>
+        <% end %>
       </div>
       <section class="entry_form">
               <%= render 'shared/entry_form' %>
