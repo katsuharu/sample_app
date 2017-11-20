@@ -1,7 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+planner:
+  id: 1
+  name: プランナー
 
-two:
-  name: MyString
+designer:
+  id: 2
+  name: デザイナー
+
+engineer:
+  id: 3
+  name: エンジニア
+
+others:
+  id: 4
+  name: その他
