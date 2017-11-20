@@ -1,7 +1,7 @@
 <% if logged_in? %>
-  <h1>エントリー中のユーザー</h1>
-  <% if @users.any? %>
-    <div class="entry-user">
+  <div class="entry-user">
+    <h1>エントリー中のユーザー</h1>
+    <% if @users.any? %>
       <div class="container">
         <% @users.each do |user| %>
           <article>
