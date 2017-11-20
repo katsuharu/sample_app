@@ -13,9 +13,8 @@
   <%= f.label :password_confirmation, 'パスワード確認用' %><span class="label label-danger">必須</span>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-  <span class="picture"><span class="label label-danger">必須</span>
-    <%= f.file_field :profile_img %>
-  </span>
+  <span class="label label-danger">必須</span>
+  <%= f.file_field :profile_img %>
 
   <%= f.label :部署名 %><span class="label label-danger">必須</span>
   <%= f.text_field :department_name, class: 'form-control'  %>
