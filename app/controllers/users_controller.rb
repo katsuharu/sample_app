@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def new
   	@user = User.new
-    @positions = Position.select(:id).distinct #valueオプション
+    @positions = Position.all #valueオプション
   end
 
   def create
