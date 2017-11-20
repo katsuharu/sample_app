@@ -20,6 +20,9 @@
   <%= f.label :部署名 %>
   <%= f.text_field :department_name, class: 'form-control'  %>
 
+  <%= f.label :position_id %>
+  <%= f.collection_select :position_id, Position.all, :id, :name %>
+
   <%= f.label :スラックID %>
   <%= f.text_field :slack_id, class: 'form-control'  %>
 
