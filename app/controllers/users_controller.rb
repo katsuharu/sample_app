@@ -67,7 +67,8 @@ class UsersController < ApplicationController
         render action: 'success'
       
       else
-        redirect_to waiting_path
+        redirect_to root_url
+        flash[:success] = "マッチング相手が決まり次第メールでおしらせいたします。"
       end
     else
       redirect_to root_url
