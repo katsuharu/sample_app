@@ -3,7 +3,6 @@ User.create!(name:  "Example User",
              password:              "foobar",
              password_confirmation: "foobar",
              department_name: "第一営業本部",
-             entry_id: 1,
              admin: true,
              activated: true)
 
@@ -12,7 +11,6 @@ User.create!(name:  "小野まさき",
              password:              "masaki",
              password_confirmation: "masaki",
              department_name: "VR",
-             entry_id: 1,
              admin: true,
              activated: true)
 
@@ -23,7 +21,6 @@ User.create!(name:  "東京タワー",
              password_confirmation: "masaki",
              department_name: "営業",
              admin: true,
-             entry_id: 1,
              activated: true)
 
 User.create!(name:  "紅葉",
@@ -41,5 +38,4 @@ User.create!(name:  "おーいお茶",
              password_confirmation: "masaki",
              department_name: "ゲームエンジニア",
              admin: true,
-             entry_id: 11,
              activated: true)
