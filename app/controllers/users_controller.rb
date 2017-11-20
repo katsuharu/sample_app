@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def new
   	@user = User.new
-    @users = User.new.select(:position_id).distinct
+    @users = User.select(:position_id).distinct
   end
 
   def create
