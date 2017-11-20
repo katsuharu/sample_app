@@ -6,7 +6,7 @@
         <% @users.each do |user| %>
           <article>
             <div class = "entry-content">
-              <div class="entry-photo" style="background-image:url('<%= asset_path user.profile_img.url if user.profile_img? %>');">
+              <div class="entry-photo" style="background-image:url(<%=  user.profile_img.url if user.profile_img? %>);">
               </div>
                 <%= #image_tag user.profile_img.url if user.profile_img? %>
               <div class="entry-text">
