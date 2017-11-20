@@ -53,20 +53,24 @@ class UsersController < ApplicationController
   end
 
   def entry
-    @@entry_id += 1
-    User.find_by(id: current_user.id).update_attribute(:entry_id, @@entry_id)
-    flash[:success] = "シャッフルランチにエントリーしました。"
+    if current_user.entry_id.nil?         #カレントユーザーが未エントリーの場合
+      @@entry_id += 1
+      User.find_by(id: current_user.id).update_attribute(:entry_id, @@entry_id)
+      flash[:success] = "シャッフルランチにエントリーしました。"
 
-    if @@entry_id % 3 == 0
-      @@pair_id += 1
-      p @@pair_id
-      User.find_by(entry_id: @@entry_id-2).update_attribute(:pair_id,  @@pair_id)
-      User.find_by(entry_id: @@entry_id-1).update_attribute(:pair_id,  @@pair_id)
-      User.find_by(entry_id: @@entry_id).update_attribute(:pair_id,  @@pair_id)
-      render action: 'success'
-    
+      if @@entry_id % 3 == 0
+        @@pair_id += 1
+        p @@pair_id
+        User.find_by(entry_id: @@entry_id-2).update_attribute(:pair_id,  @@pair_id)
+        User.find_by(entry_id: @@entry_id-1).update_attribute(:pair_id,  @@pair_id)
+        User.find_by(entry_id: @@entry_id).update_attribute(:pair_id,  @@pair_id)
+        render action: 'success'
+      
+      else
+        redirect_to waiting_path
+      end
     else
-      redirect_to waiting_path
+      flash[:danger] = "既にエントリー済みです。"
     end
   end
   
