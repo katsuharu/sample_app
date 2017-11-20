@@ -2,10 +2,12 @@
   <% if @users.any? %>
     <h1>エントリー中のユーザー</h1>
     <% @users.each do |user| %>
-      <div class="entry-photo" style="background-image:url(<%= asset_path user.profile_img.url if user.profile_img? %>)" />
-      <div class="entry-text">
-        <h3><%= user.try :name %></h3>
-        <p><%= user.try :department_name %></p>
+      <div class="entry-contnt">
+        <div class="entry-photo" style="background-image:url(<%= asset_path user.profile_img.url if user.profile_img? %>)" />
+        <div class="entry-text">
+          <h3><%= user.try :name %></h3>
+          <p><%= user.try :department_name %></p>
+        </div>
       </div>
     <% end %>
     <section class="entry_form">
