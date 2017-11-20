@@ -27,7 +27,7 @@
 
           <div class="form-group">
             <label>プロフィール写真</label>
-            <div><%= pair.try :profile_img %></div>
+            <div><%= image_tag pair.profile_img.url if pair.profile_img? %></div>
           </div>
         </fieldset>
       </div>
