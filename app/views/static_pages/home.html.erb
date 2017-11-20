@@ -5,6 +5,9 @@
       <div class="entry-photo" style="background-image:url(<%=  user.profile_img.url if user.profile_img? %>);">
       </div>
     <% end %>
+    <section class="entry_form">
+            <%= render 'shared/entry_form' %>
+    </section>
   <% else %>
       <p>ただいまエントリー中のユーザーはいません。</p>
   <% end %>
