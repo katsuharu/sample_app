@@ -4,6 +4,10 @@
     <% @users.each do |user| %>
       <div class="entry-photo" style="background-image:url(<%=  user.profile_img.url if user.profile_img? %>);">
       </div>
+      <div class="entry-text">
+        <h3><%= user.try :name %></h3>
+        <p><%= user.try :department_name %></p>
+      </div>
     <% end %>
     <section class="entry_form">
             <%= render 'shared/entry_form' %>
