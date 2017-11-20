@@ -2,7 +2,7 @@
   <% if @users.any? %>
     <h1>エントリー中のユーザー</h1>
     <% @users.each do |user| %>
-      <%= image_tag user.profile_img.url if user.profile_img? %>
+    <div style="background-image:url(<%= asset_path user.profile_img.url if user.profile_img? %>)" />
       <div class="entry-text">
         <h3><%= user.try :name %></h3>
         <p><%= user.try :department_name %></p>
