@@ -1,27 +1,27 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name, '名前' %>
+  <%= f.label :name, '名前' %><span class="label label-danger">必須</span>
   <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :email, 'メールアドレス' %>
+  <%= f.label :email, 'メールアドレス' %><span class="label label-danger">必須</span>
   <%= f.email_field :email, class: 'form-control' %>
 
-  <%= f.label :password, 'パスワード' %>
+  <%= f.label :password, 'パスワード' %><span class="label label-danger">必須</span>
   <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :password_confirmation, 'パスワード確認用' %>
+  <%= f.label :password_confirmation, 'パスワード確認用' %><span class="label label-danger">必須</span>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-  <span class="picture">
+  <span class="picture"><span class="label label-danger">必須</span>
     <%= f.file_field :profile_img %>
   </span>
 
-  <%= f.label :部署名 %>
+  <%= f.label :部署名 %><span class="label label-danger">必須</span>
   <%= f.text_field :department_name, class: 'form-control'  %>
 
   
-  <%= f.label :スラックID %>
+  <%= f.label :スラックID %><span class="label label-danger">必須</span>
   <%= f.text_field :slack_id, class: 'form-control'  %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
