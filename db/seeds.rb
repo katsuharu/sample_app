@@ -1,4 +1,4 @@
-User.create!(name:  "Example User",
+User.create!(name:  "ポールマッカートニー",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar",
@@ -15,7 +15,7 @@ User.create!(name:  "小野まさき",
              activated: true)
 
 
-User.create!(name:  "東京タワー",
+User.create!(name:  "五右衛門",
              email: "tokyo@gmail.com",
              password:              "masaki",
              password_confirmation: "masaki",
@@ -23,7 +23,7 @@ User.create!(name:  "東京タワー",
              admin: true,
              activated: true)
 
-User.create!(name:  "紅葉",
+User.create!(name:  "柏木大地",
              email: "koyo@gmail.com",
              password:              "masaki",
              password_confirmation: "masaki",
@@ -32,7 +32,7 @@ User.create!(name:  "紅葉",
              activated: true)
 
 
-User.create!(name:  "おーいお茶",
+User.create!(name:  "阿部慎之助",
              email: "ocha@gmail.com",
              password:              "masaki",
              password_confirmation: "masaki",
