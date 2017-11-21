@@ -9,8 +9,9 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }
 	mount_uploader :profile_img, PictureUploader
-	#validates :department_name, presence: true
-	#validates :position, presence: true
+	validates :department_name, presence: true
+	validates :slack_id, presence: true
+	# validates :position, presence: true
 
 	# 渡された文字列のハッシュ値を返す
 	def User.digest(string)
