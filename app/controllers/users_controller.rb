@@ -59,7 +59,8 @@ class UsersController < ApplicationController
       User.find_by(id: current_user.id).update_attribute(:entry_id, @@entry_id)
       flash[:success] = "シャッフルランチにエントリーしました。"
 
-      if @@entry_id % 3 == 0
+      if !@@entry_id.nil? && @@entry_id != 0 && @@entry_id % 3 == 0 && 
+          (@@entry_id-2) >= 1 && (@@entry_id-1) >=2  
         @@pair_id += 1
         p @@pair_id
         User.find_by(entry_id: @@entry_id-2).update_attribute(:pair_id,  @@pair_id)
