@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   @@pair_id = 0
 
   def index
-    @users = User.paginate(page:params[:page])
+    if logged_in?
+      @users = User.where.not(entry_id: nil).paginate(page: params[:page])
+    end
   end
 
   def show
