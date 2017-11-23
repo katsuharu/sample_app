@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
   end
 
   def send_mail
-    ContactMailer.contact_contents(contact_params).deliver_now
+    UserMailer.contact_contents(contact_params).deliver_now
     flash[:success] = "送信が完了しました。"
     redirect_to :action => "contact"
   end
