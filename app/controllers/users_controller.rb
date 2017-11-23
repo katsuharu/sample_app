@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   def entry
-    if current_user.entry_id.nil?         #カレントユーザーが未エントリーの場合
+    if current_user.category_id.nil?         #カレントユーザーが未エントリーの場合
       @@entry_id += 1
       User.find_by(id: current_user.id).update_attribute(:entry_id, @@entry_id)
       flash[:success] = "シャッフルランチにエントリーしました。"
