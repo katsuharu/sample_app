@@ -55,7 +55,8 @@ class UsersController < ApplicationController
   end
 
   def entry
-    
+    cate_num = params[:category_id]
+    p cate_num
   end
   
   def check
