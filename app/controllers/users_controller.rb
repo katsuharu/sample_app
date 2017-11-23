@@ -55,17 +55,12 @@ class UsersController < ApplicationController
   end
 
   def entry
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "ユーザー情報を更新しました。"
-      redirect_to user_path
-    else
-      render 'edit'
-    end
-    
-    cate_num = current_user.category_id
-    p cate_num
-    p cate_num
+    if request.post? then
+      cate_num = "typed:" + params['category_id']
+      p cate_num
+      else
+        p "NONONONONONO"
+      end
   end
   
   def check
