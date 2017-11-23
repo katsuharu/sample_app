@@ -5,6 +5,10 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def entry
+
+  end
+
   def contact
   end
 
