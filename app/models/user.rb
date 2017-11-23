@@ -13,6 +13,8 @@ class User < ApplicationRecord
 	validates :slack_id, presence: true
 	validates :position_id, presence: true
 
+	validate :picture_size
+
 	# 渡された文字列のハッシュ値を返す
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -87,4 +89,12 @@ class User < ApplicationRecord
 	     self.activation_token  = User.new_token
 	     self.activation_digest = User.digest(activation_token)
 	   end
+
+
+	    # アップロードされた画像のサイズをバリデーションする
+		def picture_size
+			if picture.size > 5.megabytes
+				errors.add(:picture, "should be less than 5MB")
+			end
+		end
 end
