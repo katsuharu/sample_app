@@ -80,7 +80,7 @@ class UsersController < ApplicationController
   end
   
   def check
-    @pairs = User.where(pair_id: current_user.pair_id).where.not(pair_id: nil)
+    @pairs = User.where(pair_id: current_user.pair_id).where.not(pair_id: nil).where.not(id:current_user.id)
   end
 
   private
