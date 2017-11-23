@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
   def new
   	@user = User.new
-    @positions = Position.all #valueオプション
   end
 
   def create
