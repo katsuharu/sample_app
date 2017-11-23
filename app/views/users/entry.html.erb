@@ -1,0 +1,30 @@
+<% provide(:title, "エントリー") %>
+<% provide(:button_text, "Let's Lunch") %>
+
+<h1>エントリー</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name, '名前' %><span class="label label-danger">必須</span>
+    <%= f.text_field :name, class: 'form-control' %>
+l :部署名 %><span class="label label-danger">必須</span>
+    <%= f.text_field :department_name, class: 'form-control'  %>
+
+    <%= f.label :役職名 %><span class="label label-danger">必須</span><br>
+    <%= f.collection_select :position_id, Position.all, :id,  :name %><br>
+
+    <%= f.label :スラックID %><span class="label label-danger">必須</span>
+    <%= f.text_field :slack_id, class: 'form-control'  %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% end %>
+
+
+
+  </div>
+</div>
