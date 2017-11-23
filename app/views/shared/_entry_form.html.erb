@@ -1,8 +1,10 @@
-<div class="bs-component">
-	<%= form_tag(action: :entry) do %>
-		<%= label :user, :category_id %><span class="label label-danger">必須</span><br>
-		<%= collection_select(:user, :category_id, Category.all, :id,  :name) %><br>
+<% provide(:button_text, 'シャッフルランチにエントリー') %>
 
-		<%= submit_tag "シャッフルランチにエントリーする", class: "btn btn-primary" %>        
+<div class="bs-component">
+	<%= form_for @user do |f| %>
+		<%= f.label :category_id, 'カテゴリー名' %><span class="label label-danger">必須</span><br>
+		<%= f.collection_select(:category_id, Category.all, :id,  :name) %><br>
+
+		<%= f.submit yield(:button_text), class: "btn btn-primary" %>
 	<% end %>
 </div>
