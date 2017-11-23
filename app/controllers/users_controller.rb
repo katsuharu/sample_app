@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def index
     if logged_in?
-      @users = User.where.not(entry_id: nil).paginate(page: params[:page])
+      @users = User.all
     end
   end
 
@@ -55,28 +55,7 @@ class UsersController < ApplicationController
   end
 
   def entry
-    if current_user.category_id.nil?         #カレントユーザーが未エントリーの場合
-      @@entry_id += 1
-      User.find_by(id: current_user.id).update_attribute(:entry_id, @@entry_id)
-      flash[:success] = "シャッフルランチにエントリーしました。"
-
-      if !@@entry_id.nil? && @@entry_id != 0 && @@entry_id % 3 == 0 && 
-          (@@entry_id-2) >= 1 && (@@entry_id-1) >=2  
-        @@pair_id += 1
-        p @@pair_id
-        User.find_by(entry_id: @@entry_id-2).update_attribute(:pair_id,  @@pair_id)
-        User.find_by(entry_id: @@entry_id-1).update_attribute(:pair_id,  @@pair_id)
-        User.find_by(entry_id: @@entry_id).update_attribute(:pair_id,  @@pair_id)
-        render action: 'success'
-      
-      else
-        redirect_to root_url
-        flash[:success] = "マッチング相手が決まり次第メールでおしらせいたします。"
-      end
-    else
-      redirect_to root_url
-      flash[:danger] = "既にエントリー済みです。"
-    end
+    
   end
   
   def check
