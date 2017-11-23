@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get    '/entry', to: 'static_pages#entry'
   
   post   '/login',   to: 'sessions#create'
-  get    '/users/:id/entry',        to: 'users#entry'
+  post    '/entry',        to: 'users#entry'
   post   '/contact', to: 'static_pages#send_mail'
 
   delete '/logout',  to: 'sessions#destroy'
