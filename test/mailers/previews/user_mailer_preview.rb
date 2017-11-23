@@ -21,4 +21,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.matching_success(user)
   end
 
+  def contact_contents
+    user = User.first
+    user.activation_token = User.new_token
+    UserMailer.contact_contents(params)
+  end
+
 end
