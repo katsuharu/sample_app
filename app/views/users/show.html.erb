@@ -22,6 +22,15 @@
       </div>
 
       <div class="form-group">
+        <label>役職名</label>
+        <div>
+          <% position_id = @user.try :position_id %>
+          <% @position = Position.find_by(id: position_id) %>
+          <%= @position.try :name %>     
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>Slack ID</label>
         <div><%= @user.try :slack_id %></div>
       </div>
