@@ -11,7 +11,7 @@ class User < ApplicationRecord
 	mount_uploader :profile_img, PictureUploader
 	validates :department_name, presence: true
 	validates :slack_id, presence: true
-	validates :position, presence: true
+	validates :position_id, presence: true
 
 	# 渡された文字列のハッシュ値を返す
 	def User.digest(string)
