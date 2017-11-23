@@ -14,4 +14,9 @@ class UserMailer < ApplicationMailer
   	@user = user
     mail to: user.email, subject: "マッチングの完了のお知らせです"
   end
+
+  def contact_contents(params)
+    @contents = params
+    mail to: user.email, subject: "【シャッフルランチ】お問い合わせ"
+  end
 end
