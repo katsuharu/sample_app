@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
   def entry
     if request.post? then
-      cate_num = "typed:" + params['category_id']
+      cate_num =  params[:category_id]
       p cate_num
       else
         p "NONONONONONO"
