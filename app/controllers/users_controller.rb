@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if logged_in?
       @users = User.all
     end
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def show
@@ -56,14 +56,9 @@ class UsersController < ApplicationController
   end
 
   def entry
-    @user = User.find(params[:id])
-    debugger
-    if request.post? then
-      cate_num =  params[:category_id]
-      p cate_num
-    else
-      p "NONONONONONO"
-    end
+    User.find_by(id: current_user.id).update_attribute(:categry_id, user[:category_id])
+    cate_num = params[:category_id]
+    p cate_num
   end
   
   def check
