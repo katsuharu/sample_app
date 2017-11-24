@@ -16,6 +16,9 @@
   <%= f.label :プロフィール写真 %><span class="label label-danger">必須</span>
   <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png' %>
 
+  <%= f.label :自己紹介文(30字以内) %><span class="label label-danger">必須</span>
+  <%= f.text_field :self_intro, class: 'form-control'  %>
+
   <%= f.label :部署名 %><span class="label label-danger">必須</span>
   <%= f.text_field :department_name, class: 'form-control'  %>
 
