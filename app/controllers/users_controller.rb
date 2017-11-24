@@ -63,7 +63,8 @@ class UsersController < ApplicationController
       
       if cate_cnt != 0 && cate_cnt % 3 == 0
         pair_id = cate_cnt / 3
-        User.where(category_id: cate_num).update_all(pair_id: pair_id)
+        #まだマッチングしてないcategory_idがcate_numのユーザーのpair_idを更新
+        User.where(category_id: cate_num).where(pair_id: nil).update_all(pair_id: pair_id)
         render action: 'success'
       end
     else
