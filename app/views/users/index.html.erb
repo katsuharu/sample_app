@@ -16,6 +16,7 @@
             <li>
               <%= image_tag user.profile_img.url if user.profile_img? %>
               <%= user.try :name %>
+              <%= user.try :department_name %>
             </li>
           <% end %>
         </ul>
