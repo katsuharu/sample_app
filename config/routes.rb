@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get    '/check', to: 'users#check'
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
-  get    '/entry', to: 'static_pages#entry'
   
   post   '/login',   to: 'sessions#create'
   post    '/entry',        to: 'users#entry'
