@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     cate_num = params[:user][:category_id]
     User.find_by(id: current_user.id).update_attribute(:category_id, cate_num)
     cate_cnt = User.where(category_id: cate_num).count
-    if cate_cnt % 3 == 0
+    if cate_cnt != 0 && cate_cnt % 3 == 0
       pair_id = cate_cnt / 3
       User.where(category_id: cate_num).update_all(pair_id: pair_id)
       render action: 'success'
