@@ -217,3 +217,35 @@ section.entry_form {
   width:200px;
   height:200px;
 }
+
+
+/* スライドショー */
+
+.slideShow {
+  margin: 20px auto 30px auto;
+  width: 800px;
+  text-align: left;
+  position: relative;
+
+  ul {
+    width: 100%;
+
+    li {
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: none;
+      position: absolute;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .slideShow {
+    width: 100%;
+  }
+}
