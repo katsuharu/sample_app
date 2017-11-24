@@ -1,5 +1,11 @@
 <% if logged_in? %>
   <div class="entry-user">
+    
+    <div class="form-group">
+      <label>プロフィール写真</label>
+      <div><%= image_tag @user.profile_img.url if @user.profile_img? %></div>
+    </div>
+
     <h1>エントリー中のユーザー</h1>
     <% if @users.any? %>
       <div class="container">
