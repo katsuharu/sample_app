@@ -56,8 +56,9 @@ class UsersController < ApplicationController
   end
 
   def entry
-    User.find_by(id: current_user.id).update_attribute(:categry_id, user[:category_id])
-    cate_num = params[:category_id]
+
+    #User.find_by(id: current_user.id).update_attribute(:categry_id, user[:category_id])
+    cate_num = user[:category_id]
     p cate_num
   end
   
