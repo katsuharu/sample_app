@@ -63,6 +63,7 @@ class UsersController < ApplicationController
       pair_id = cate_cnt / 3
       User.where(category_id: cate_num).update_attribute(:pair_id, pair_id)
       render action: 'success'
+    end
   end
   
   def check
