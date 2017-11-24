@@ -3,9 +3,6 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update]
   before_action :admin_user,     only: :destroy
 
-  @@entry_id = 0
-  @@pair_id = 0
-
   def index
     if logged_in?
       @user = current_user
