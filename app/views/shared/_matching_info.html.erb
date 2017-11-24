@@ -1,3 +1,9 @@
-<% if entried? %>
-	<p>エントリー中</p>
+<% if entried? %> 
+	<% if matched? %>
+		<p>マッチング完了</p>
+		<p><%= link_to "マッチング相手確認", check_path %></p>
+	<% else %>
+		<p>エントリー中</p>
+	<% end %>
+
 <% end %>
