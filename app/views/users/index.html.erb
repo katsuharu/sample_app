@@ -13,11 +13,14 @@
       <div class="slideShow">
         <ul>
           <% @users.each do |user| %>
-            <li><%= image_tag user.profile_img.url if user.profile_img? %></li>
+            <li>
+              <%= image_tag user.profile_img.url if user.profile_img? %>
+              <%= user.try :name %>
+            </li>
           <% end %>
         </ul>
       </div>
-    <% end %>
+    <% end %>　　　
     <!--  -->
 
     <% if @users.any? %>
