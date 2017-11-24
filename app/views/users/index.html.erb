@@ -22,27 +22,10 @@
         </ul>
       </div>
     <% end %>　　　
-    <!--  -->
-
-    <% if @users.any? %>
-      <div class="container">
-        <% @users.each do |user| %>
-          <article>
-            <section class="entry-contnt">
-              <div class="entry-photo" style="background-image:url(<%= asset_path user.profile_img.url if user.profile_img? %>)" >
-              </div>
-              <div class="entry-text">
-                <h3><%= user.try :name %></h3>
-                <p><%= user.try :department_name %></p>
-              </div>
-            </section>
-          </article>
-        <% end %>
-      </div>
-    </div>
-  <% else %>
-      <p>ただいまエントリー中のユーザーはいません。</p>
-  <% end %>
+    <!--  -->    
+    <% else %>
+        <p>ただいまエントリー中のユーザーはいません。</p>
+    <% end %>
       <%= render 'shared/entry_form' %>
 <% else %>
   <div class="center jumbotron">
