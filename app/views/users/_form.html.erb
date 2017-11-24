@@ -22,9 +22,6 @@
   <%= f.label :department_name, "部署名" %><span class="label label-danger">必須</span>
   <%= f.text_field :department_name, class: 'form-control'  %>
 
-  <%= f.label :position_id, "役職名" %><span class="label label-danger">必須</span><br>
-  <%= f.collection_select :position_id, Position.all, :id,  :name %><br>
-
   <%= f.label :slack_id, 'Slack ID' %><span class="label label-danger">必須</span>
   <%= f.text_field :slack_id, class: 'form-control'  %>
 
