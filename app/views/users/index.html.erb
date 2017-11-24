@@ -12,13 +12,13 @@
     <% if @users.any? %>
       <div class="slideShow">
         <ul>
-          <% @users.each do |user| %>
-            <li>
-              <%= image_tag user.profile_img.url if user.profile_img? %>
-              <%= user.try :name %>
-              <%= user.try :department_name %>
-            </li>
-          <% end %>
+            <% @users.each do |user| %>
+              <li>
+                <%= image_tag user.profile_img.url if user.profile_img? %>
+                <%= user.try :name %>
+                <%= user.try :department_name %>
+              </li>
+            <% end %>
         </ul>
       </div>
     <!--  -->    
@@ -26,6 +26,7 @@
         <p>ただいまエントリー中のユーザーはいません。</p>
     <% end %>
       <%= render 'shared/entry_form' %>
+  </div>
 <% else %>
   <div class="center jumbotron">
   	<h1>シャッフルランチ</h1>
