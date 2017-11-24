@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   # routesに記載のないurlへのアクセスを全てリダイレクト
   get "*path" => redirect("/")
-  root   'users#index'
+  root   'static_pages#home'
 
 end
