@@ -22,7 +22,7 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def contact_contents
-    params = "kkk"
+    params = {:name => "佐々木希", :email => "traveler@gamil.com", :content => "アンジャッシュ"}
     UserMailer.contact_contents(params)
   end
 
