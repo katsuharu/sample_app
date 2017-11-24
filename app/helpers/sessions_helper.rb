@@ -33,10 +33,6 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
-	def entried?
-		!current_user.entry_id.nil?
-	end
-
 	def forget(user)
 		user.forget
 		cookies.delete(:user_id)
