@@ -17,6 +17,6 @@ class UserMailer < ApplicationMailer
 
   def contact_contents(params)
     @contents = params
-    mail to: "traveler.18.challenge@gmail.com", subject: "【シャッフルランチ】お問い合わせ"
+    mail to: "traveler.18.challenge@gmail.com", subject: "【The Lunch】お問い合わせ"
   end
 end
