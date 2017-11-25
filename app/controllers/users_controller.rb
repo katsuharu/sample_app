@@ -64,6 +64,9 @@ class UsersController < ApplicationController
         User.where(category_id: cate_num).where(pair_id: nil).update_all(pair_id: pair_id)
         render action: 'success'
       end
+      redirect_to root_url
+      flash[:success] = "エントリーが完了致しました。"
+
     else
       redirect_to root_url
       flash[:danger] = "既にエントリー済みです。"
