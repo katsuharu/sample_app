@@ -4,6 +4,13 @@
 		<p><%= link_to "マッチング相手確認", check_path %></p>
 	<% else %>
 		<p>エントリー中</p>
+		<p>
+			<%= form_tag("/cancel", method: "post", id: "") do %>
+			  <div class="form-group">
+			      <%= submit_tag "キャンセル", class: "btn btn-primary" %>
+			  </div>
+			<% end %>
+		</p>
 	<% end %>
 
 <% end %>
