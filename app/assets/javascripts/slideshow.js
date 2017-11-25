@@ -6,7 +6,7 @@ $(function(){
 	fadeSpeed = 1000,
 	switchDelay = 2000;
 
-	$(window).load(function(){
+	$(window).on "turbolinks:load",(function(){
 		setElm.each(function(){
 			var self = $(this),
 			findUl = self.find('ul'),
