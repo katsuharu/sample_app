@@ -66,8 +66,7 @@ class UsersController < ApplicationController
         flash[:success] = "マッチングが完了致しました。"
         return
       end
-      redirect_to root_url
-      flash[:success] = "エントリーが完了致しました。"
+      
       return
     else
       redirect_to root_url
@@ -78,8 +77,7 @@ class UsersController < ApplicationController
   def cancel
     if !current_user.category_id.nil? && current_user.pair_id.nil?
       User.find_by(id: current_user.id).update_attribute(:category_id, nil)
-      redirect_to root_url
-      flash[:success] = "エントリーをキャンセル致しました。"
+      
     end
   end
   
