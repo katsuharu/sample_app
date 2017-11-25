@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry]
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry, :cancel]
   before_action :correct_user, only: [:show, :edit, :update]
   before_action :admin_user,     only: :destroy
 
@@ -67,6 +67,12 @@ class UsersController < ApplicationController
     else
       redirect_to root_url
       flash[:danger] = "既にエントリー済みです。"
+    end
+  end
+
+  def cancel
+    if !current_user.category_id.nil? && current_user.pair_id.nil
+      User.find_by(id: current_user.id).update_attribute(:category_id, nil)
     end
   end
   
