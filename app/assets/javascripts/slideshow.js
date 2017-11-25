@@ -22,6 +22,7 @@ $(window).on('turbolinks:load', function() {
 			self.css({height:imgHeight});
 			findUl.css({height:imgHeight});
 			findLi.css({height:imgHeight});
+			console.log('imgHeight');
 		}
 		$(window).on('resize', function(){areaHeight();});
 		areaHeight();
