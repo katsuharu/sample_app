@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   end
 
   def cancel
-    if !current_user.category_id.nil? && current_user.pair_id.nil
+    if !current_user.category_id.nil? && current_user.pair_id.nil?
       User.find_by(id: current_user.id).update_attribute(:category_id, nil)
     end
   end
