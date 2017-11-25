@@ -1,12 +1,12 @@
 ////////////////////////////////////////
 //　SCRIPT
 ////////////////////////////////////////
-$(function(){
-	var setElm = $('.slideShow'),
-	fadeSpeed = 1000,
-	switchDelay = 2000;
 
 	$(window).on('turbolinks:load', function() {
+		var setElm = $('.slideShow'),
+		fadeSpeed = 1000,
+		switchDelay = 2000;
+
 		setElm.each(function(){
 			var self = $(this),
 			findUl = self.find('ul'),
@@ -35,4 +35,3 @@ $(function(){
 
 		});
 	});
-});
