@@ -63,10 +63,11 @@ class UsersController < ApplicationController
         #まだマッチングしてないcategory_idがcate_numのユーザーのpair_idを更新
         User.where(category_id: cate_num).where(pair_id: nil).update_all(pair_id: pair_id)
         render action: 'success'
+        return
       end
       redirect_to root_url
       flash[:success] = "エントリーが完了致しました。"
-
+      return
     else
       redirect_to root_url
       flash[:danger] = "既にエントリー済みです。"
