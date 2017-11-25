@@ -77,6 +77,7 @@ class UsersController < ApplicationController
     if !current_user.category_id.nil? && current_user.pair_id.nil?
       User.find_by(id: current_user.id).update_attribute(:category_id, nil)
       redirect_to root_url
+      flash[:success] = "エントリーをキャンセル致しました。"
     end
   end
   
