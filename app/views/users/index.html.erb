@@ -7,7 +7,7 @@
       <div><%= image_tag @user.profile_img.url if @user.profile_img? %></div>
     </div>
 
-    <h1>エントリー中のユーザー</h1>
+    <h1 id="sample">エントリー中のユーザー</h1>
     <!-- スライドショー -->
     <% if @users.any? %>
       <div class="slideShow">
@@ -29,7 +29,7 @@
   </div>
 <% else %>
   <div class="center jumbotron">
-  	<h1>シャッフルランチ</h1>
+  	<h1 id="sample">シャッフルランチ</h1>
 
   	<%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
     
