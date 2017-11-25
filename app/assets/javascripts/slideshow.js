@@ -22,12 +22,10 @@ $(window).on('turbolinks:load', function() {
 			self.css({height:imgHeight});
 			findUl.css({height:imgHeight});
 			findLi.css({height:imgHeight});
-			console.log(imgHeight);
 		}
 
-		$(window).on('resize', function(){areaHeight(); console.log('Debug')});
+		$(window).on('resize', function(){areaHeight(); });
 		areaHeight();
-		console.log('Does the areaHeight work?');
 
 		findLiFirst.css({zIndex:'100'}).stop().animate({opacity:'1'},fadeSpeed);
 
