@@ -18,6 +18,9 @@ $(window).on('turbolinks:load', function() {
 
 		function areaHeight(){
 			var imgHeight = findImg.height();
+			if(imgHeight == 0) {
+				imgHeight = 200;
+			}
 
 			self.css({height:imgHeight});
 			findUl.css({height:imgHeight});
