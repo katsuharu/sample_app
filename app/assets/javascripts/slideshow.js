@@ -24,7 +24,7 @@ $(window).on('turbolinks:load', function() {
 			findLi.css({height:imgHeight});
 			console.log(imgHeight);
 		}
-		$(window).on('resize', function(){areaHeight();});
+		$(window).on('resize', function(){areaHeight(); console.log('Debug')});
 		areaHeight();
 
 		findLiFirst.css({zIndex:'100'}).stop().animate({opacity:'1'},fadeSpeed);
