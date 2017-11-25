@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   post   '/login',   to: 'sessions#create'
   post    '/entry',        to: 'users#entry'
+  post    '/cancel',        to: 'users#cancel'
   post   '/contact', to: 'static_pages#send_mail'
 
   delete '/logout',  to: 'sessions#destroy'
