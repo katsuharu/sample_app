@@ -3,7 +3,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-4">
-          <%= image_tag @user.profile_img.url if @user.profile_img? %>
+          <%= image_tag(@user.profile_img.url, class: "img-responsive") if @user.profile_img? %>
+
         </div>
         <div class="col-xs-8">
           <p>ユーザー名：　<%= @user.try :name %></p>
