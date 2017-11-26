@@ -2,6 +2,7 @@
   <div class="entry-user">
     <div class="form-group">
       <div><%= image_tag @user.profile_img.url if @user.profile_img? %></div>
+      <p>ユーザー名：　<%= @user.try :name %></p>
     </div>
     <%= render 'shared/matching_info' %>
 
