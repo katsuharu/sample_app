@@ -1,10 +1,16 @@
 <% if logged_in? %>
   <div class="entry-user">
-    <div class="form-group">
-      <div><%= image_tag @user.profile_img.url if @user.profile_img? %></div>
-      <p>ユーザー名：　<%= @user.try :name %></p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4">
+          <%= image_tag @user.profile_img.url if @user.profile_img? %>
+        </div>
+        <div class="col-xs-8">
+          <p>ユーザー名：　<%= @user.try :name %></p>
+          <%= render 'shared/matching_info' %>
+        </div>
+      </div>
     </div>
-    <%= render 'shared/matching_info' %>
 
     <h1 id="sample">エントリー中のユーザー</h1>
     <!-- スライドショー -->
