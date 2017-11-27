@@ -1,8 +1,13 @@
 namespace :matching do
   task :execute => :environment do  | task |
-    num = User.maximum('entry_id')
-    #pair = User.maximum('pair_id')
-    pair = 1
+    
+    cate_cnt = Category.count #カテゴリー数
+    cate_surplus = Array.new(cate_cnt)
+    for i in 1..cate_cnt
+
+      #各カテゴリーでペアを作った後のあまりの数を求める
+    end
+
     k = num % 3 #3人組を作り終わった後に余る人数
     case k
       when 0 #余りが0人
