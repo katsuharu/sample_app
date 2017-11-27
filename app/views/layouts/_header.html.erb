@@ -3,9 +3,10 @@
     <%= link_to "The Lunch", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "トップ", root_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "マッチング相手確認", check_path %></li>
+          <% if matched? %>
+            <li><%= link_to "マッチング相手確認", check_path %></li>
+          <% end %> 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             アカウント<b class="caret"></b>
@@ -19,7 +20,6 @@
               </li>
             </ul>
           </li>
-          <li><%= link_to "お問い合わせ", contact_path %></li>
         <% else %>
           <li><%= link_to "ログイン", login_path %></li>
         <% end %>
