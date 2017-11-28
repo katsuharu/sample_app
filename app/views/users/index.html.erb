@@ -16,21 +16,21 @@
     <h1>エントリー中のユーザー</h1>
     <!-- スライドショー -->
     <% if @users.any? %>
-    <div id="slider_wrap">
-        <p id="slider_prev"><img src="img/prev.jpg" height="30" width="20" alt="previous"></p>
-        <p id="slider_next"><img src="img/next.jpg" height="30" width="20" alt="next"></p>
-        <div id="slider">
-            <div id="slider_inner">
-                <ul id="photo_list">
-                  <% @users.each do |user| %>
-                    <li>
-                      <%= image_tag user.profile_img.url if user.profile_img? %>
-                    </li>
-                </ul>
-            </div><!-- end of #slider_inner --> 
-        </div><!-- end of #slider --> 
-    </div><!-- end of #slider_wrap --> 
-    <!--  -->    
+      <div id="slider_wrap">
+          <p id="slider_prev"><img src="img/prev.jpg" height="30" width="20" alt="previous"></p>
+          <p id="slider_next"><img src="img/next.jpg" height="30" width="20" alt="next"></p>
+          <div id="slider">
+              <div id="slider_inner">
+                  <ul id="photo_list">
+                    <% @users.each do |user| %>
+                      <li>
+                        <%= image_tag user.profile_img.url if user.profile_img? %>
+                      </li>
+                  </ul>
+              </div><!-- end of #slider_inner --> 
+          </div><!-- end of #slider --> 
+      </div><!-- end of #slider_wrap --> 
+      <!--  -->    
     <% else %>
         <p>ただいまエントリー中のユーザーはいません。</p>
     <% end %>
