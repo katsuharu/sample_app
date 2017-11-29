@@ -51,15 +51,8 @@ $(document).on('turbolinks:load', function() {
     is_stopped = true;
   }
   
-  $('#slider_wrap').hover(function() {
-    clearInterval(timer);
-    next_prev$.show();
-  },function() {
-    if(!is_stopped) {
-      start_carousel();
-      next_prev$.hide();  
-    }      
-  });
+  // clearInterval(timer);
+  start_carousel();
   
   stop$.click(function(){
     if(is_stopped) {
