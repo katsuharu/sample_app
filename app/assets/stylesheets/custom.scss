@@ -4,7 +4,7 @@
 /* mixins, variables, etc. */
 
 $navi-color: #FFCB00;
-$
+$content-color: #3B3838;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -116,6 +116,10 @@ footer {
   margin: 0 20px;
   font-size: 13px;
   list-style: none;
+}
+
+.footer li a {
+  color: $content-color;
 }
 
 /* miscellaneous */
