@@ -8,7 +8,8 @@ namespace :matching do
       user_ids << users[i].id #配列usersに一人一人のidを代入
     end
 
-
+    amari = user_num % 3
+    shou = user_num / 3
 
 
   #「エントリーボタン」も押せなくする(翌日の00:00から再びボタンを押せるようにする。)。
