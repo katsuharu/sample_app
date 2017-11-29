@@ -57,7 +57,10 @@ class UsersController < ApplicationController
       cate_num = params[:user][:category_id]
       User.find_by(id: current_user.id).update_attribute(:category_id, cate_num)
       cate_cnt = User.where(category_id: cate_num).count
-      
+      if params[:user][:any_category] == '1'
+        User.find_by(id: current_user.id).update_attribute(:any_category, 1)
+      end
+
       if cate_cnt != 0 && cate_cnt % 3 == 0
         pair_id = cate_cnt / 3
         #まだマッチングしてないcategory_idがcate_numのユーザーのpair_idを更新
