@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124061158) do
+ActiveRecord::Schema.define(version: 20171129014122) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171124061158) do
     t.string   "profile_img"
     t.integer  "position_id"
     t.string   "self_intro"
+    t.integer  "any_category"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
