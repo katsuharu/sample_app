@@ -3,7 +3,8 @@
 
 /* mixins, variables, etc. */
 
-$main-color: #FFCB00;
+$navi-color: #FFCB00;
+$
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -82,7 +83,7 @@ p {
 }
 
 header.navbar.navbar-fixed-top.navbar-inverse {
-    background-color: $main-color;
+    background-color: $navi-color;
     border: none;
 }
 
@@ -99,7 +100,7 @@ header.navbar.navbar-fixed-top.navbar-inverse {
 footer {
   margin-top: 20px;
   padding-top: 5px;
-  border-top: 3px solid $main-color;
+  border-top: 3px solid $navi-color;
 }
 
 .footer-menu {
