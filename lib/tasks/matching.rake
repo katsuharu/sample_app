@@ -6,7 +6,7 @@ namespace :matching do
     user_num = users.count #未マッチングユーザーの合計数を算出
     user_ids = Array.new(user_num)
     pair_id = 0;
-    
+
     for i in 0..user_num - 1
       user_ids << users[i].id #配列usersに一人一人のidを代入
     end
@@ -24,15 +24,18 @@ namespace :matching do
 
       when 1
         for i in 0..shou - 2
-          User.where(id: users[i].id).where(pair_id: nil).update(pair_id: i)
-          User.where(id: users[i+1].id).where(pair_id: nil).update(pair_id: i)
-          User.where(id: users[i+2].id).where(pair_id: nil).update(pair_id: i)
+          User.where(id: users[i].id).where(pair_id: nil).update(pair_id: pair_id)
+          User.where(id: users[i+1].id).where(pair_id: nil).update(pair_id: pair_id)
+          User.where(id: users[i+2].id).where(pair_id: nil).update(pair_id: pair_id)
+          pair_id += 1          
         end
       when 2
         for i in 0..shou - 1
-          User.where(id: users[i].id).where(pair_id: nil).update(pair_id: i)
-          User.where(id: users[i+1].id).where(pair_id: nil).update(pair_id: i)
-          User.where(id: users[i+2].id).where(pair_id: nil).update(pair_id: i)
+          User.where(id: users[i].id).where(pair_id: nil).update(pair_id: pair_id)
+          User.where(id: users[i+1].id).where(pair_id: nil).update(pair_id: pair_id)
+          User.where(id: users[i+2].id).where(pair_id: nil).update(pair_id: pair_id)
+          pair_id += 1  
+        
         end
   end
 
