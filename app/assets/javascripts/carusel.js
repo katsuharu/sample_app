@@ -1,4 +1,4 @@
-jQuery(function($){
+$(document).on('turbolinks:load', function() {
   
   var photo_list$ = $('#photo_list');
   var li$ = $('#photo_list li');
