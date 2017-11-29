@@ -42,9 +42,10 @@ namespace :matching do
 
         #残り二人のユーザーにpair_idを更新
         User.where.not(category_id: nil).where(pair_id: nil).where(any_category: 1).update_all(pair_id: pair_id)
-  end
+    end
 
-  #「エントリーボタン」も押せなくする(翌日の00:00から再びボタンを押せるようにする。)。
+    #「エントリーボタン」も押せなくする(翌日の00:00から再びボタンを押せるようにする。)。
+  end
 
   task reset: :environment do
   end
