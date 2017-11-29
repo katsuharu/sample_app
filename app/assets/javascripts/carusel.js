@@ -13,17 +13,7 @@ $(document).on('turbolinks:load', function() {
   //slider_inner を上記で移動した分だけ左方向へずらす
   slider_inner$.css('margin-left', '-' + li_width + 'px');  
   
-  
-  
-  $('#slider_next').click(function(){
-    slider_inner$.stop().animate({
-      marginLeft: parseInt(slider_inner$.css('margin-left'), 10) - li_width + 'px'
-    }, 500,
-    function(){
-      slider_inner$.css('margin-left', '-' + li_width + 'px');
-      $('#photo_list li:first').appendTo(photo_list$);
-    });
-  });
+ 
   
   var timer;
   var is_stopped = false;
