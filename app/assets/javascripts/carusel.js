@@ -45,12 +45,6 @@ $(document).on('turbolinks:load', function() {
     is_stopped = false;
   }
   
-  function stop_carousel() {
-    clearInterval(timer);
-    stop$.text('Start');
-    is_stopped = true;
-  }
-    
   
   //「戻る」と「進む」ボタンは非表示に
   next_prev$.hide();
