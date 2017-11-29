@@ -50,19 +50,8 @@ $(document).on('turbolinks:load', function() {
     stop$.text('Start');
     is_stopped = true;
   }
+    
   
-  // clearInterval(timer);
-  start_carousel();
-  
-  stop$.click(function(){
-    if(is_stopped) {
-      start_carousel();
-      next_prev$.hide();
-    }else{
-      stop_carousel();
-      next_prev$.show();
-    }    
-  });
   //「戻る」と「進む」ボタンは非表示に
   next_prev$.hide();
   //自動的にスタートするように設定
@@ -70,5 +59,6 @@ $(document).on('turbolinks:load', function() {
   //念のため（不要？）
   $(window).on('turbolinks:load', function() {
     window.clearInterval(timer);
+    start_carousel();
   });
 });
