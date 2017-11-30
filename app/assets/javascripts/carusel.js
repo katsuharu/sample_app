@@ -35,8 +35,6 @@ $(document).on('turbolinks:load', function() {
     },1500);
   } 
   
-  //「戻る」と「進む」ボタンは非表示に
-  next_prev$.hide();
   //自動的にスタートするように設定
   start_carousel();  
   //念のため（不要？）
