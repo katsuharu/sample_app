@@ -1,6 +1,6 @@
 <div class="bs-component">
 	<%= form_tag(action: :entry) do %>
-		<%= label :user, :category_id, 'マッチングカテゴリー' %><span class="label label-danger">必須</span>
+		<h2>マッチングカテゴリー</h2>
 		<%= collection_select(:user, :category_id, Category.all, :id,  :name) %><br>
 
 		<%= check_box  :user, :any_category %>
