@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="user-info row">
         <div class="col-xs-2">
-          <%= image_tag(@user.profile_img.url, class: "img-responsive") if @user.profile_img? %>
+          <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
 
         </div>
         <div class="col-xs-10">
