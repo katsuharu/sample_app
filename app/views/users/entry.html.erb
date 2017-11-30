@@ -3,7 +3,9 @@
 <div class="comp-entry">
 	<%= image_tag(@user.profile_img.url, class: "img-responsive") if @user.profile_img? %>
 	<p>エントリーカテゴリー</p>
-	<p><%= Category.find_by(id: params[:user][:category_id]).name %></p>
+	<p class="cate_selected">
+		<%= Category.find_by(id: params[:user][:category_id]).name %>	
+	</p>
 
 
 	<h1>ランチフレンズにエントリーしました！</h1>

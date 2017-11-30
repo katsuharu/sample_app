@@ -351,3 +351,8 @@ section.entry_form {
 .comp-entry p {
   text-align: center;
 }
+
+.comp-entry p.cate_selected {
+    font-weight: bold;
+    font-size: 1.4em;
+}
