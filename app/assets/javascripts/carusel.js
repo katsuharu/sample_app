@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function() {
   
   //自動的にスタートするように設定
   start_carousel();  
-  //念のため（不要？）
+
   $(window).on('turbolinks:load', function() {
     window.clearInterval(timer);
     start_carousel();
