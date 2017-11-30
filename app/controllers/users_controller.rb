@@ -66,7 +66,8 @@ class UsersController < ApplicationController
         pair_id = cate_cnt / 3
         #まだマッチングしてないcategory_idがcate_numのユーザーのpair_idを更新
         User.where(category_id: cate_num).where(pair_id: nil).update_all(pair_id: pair_id)
-        render action: 'success'
+        redirect_to root_url
+        flash[:success] = "マッチングが完了致しました。"
         return
       end
       
