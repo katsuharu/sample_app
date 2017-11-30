@@ -33,10 +33,7 @@ $(document).on('turbolinks:load', function() {
     timer = setInterval(function(){
       $('#slider_next').click();
     },1500);
-    stop$.text('Stop');
-    is_stopped = false;
-  }
-  
+  } 
   
   //「戻る」と「進む」ボタンは非表示に
   next_prev$.hide();
