@@ -299,8 +299,8 @@ section.entry_form {
 /* スライドショー */
 #slider_wrap {
   margin: 20px auto;
-  width: 900px;  /* 変更 */    /* padding 20*2 +  img*width*パネル数 +  */
-  height: 280px;  /* padding 20*2 + #photo_list.height */
+  width: 780px;  /* 変更 */    /* padding 20*2 +  img*width*パネル数 + (marginleft+right)*4+(marginLeft/Right)  */
+  height: 240px;  /* padding 20*2 + #photo_list.height */
   padding: 20px;
   /*background: #EFEFEF;*/
   position: relative;
@@ -325,7 +325,7 @@ section.entry_form {
 }
 #photo_list {
   /*width: 640px;  幅は指定しない*/
-  height: 240px; /* padding 20*2 + img.height */
+  height: 200px; /* padding 20*2 + img.height */
   padding: 20px 10px;  /* 変更 */
   list-style-type: none;
   float: left;
