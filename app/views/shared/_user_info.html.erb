@@ -1,2 +1,18 @@
-<h1><%= current_user.name %></h1>
-<span><%= link_to "プロフィールを見る", current_user %></span>
+<p>マッチング状態：
+<% if entried? %> 
+	<% if matched? %>
+		マッチング完了</p>
+		<p><%= link_to "マッチング相手確認", check_path %></p>
+	<% else %>
+		エントリー中</p>
+		<p>
+			<%= form_tag("/cancel", method: "post", id: "") do %>
+			  <div class="form-group">
+			      <%= submit_tag "キャンセル", data: { confirm: '本当にキャンセルしてもよろしいでしょうか？'}, class: "btn btn-primary" %>
+			  </div>
+			<% end %>
+		</p>
+	<% end %>
+<% else %>
+	未エントリー</p>
+<% end %>
