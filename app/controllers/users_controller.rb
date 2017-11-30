@@ -53,6 +53,7 @@ class UsersController < ApplicationController
   end
 
   def entry
+    @user = current_user
     if current_user.category_id.nil?         #カレントユーザーが未エントリーの場合
       cate_num = params[:user][:category_id]
       User.find_by(id: current_user.id).update_attribute(:category_id, cate_num)
