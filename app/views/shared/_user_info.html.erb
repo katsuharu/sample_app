@@ -8,7 +8,7 @@
 		<p>
 			<%= form_tag("/cancel", method: "post", id: "") do %>
 			  <div class="form-group">
-			      <%= submit_tag "キャンセル", data: { confirm: '本当にキャンセルしてもよろしいでしょうか？'}, class: "btn btn-primary" %>
+			      <%= submit_tag "キャンセル", data: { confirm: '本当にキャンセルしてもよろしいでしょうか？'} %>
 			  </div>
 			<% end %>
 		</p>
