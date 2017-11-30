@@ -2,11 +2,11 @@
   <div class="entry-user">
     <div class="container-fluid">
       <div class="user-info row">
-        <div class="col-xs-2">
+        <div class="col-xs-3">
           <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
 
         </div>
-        <div class="col-xs-10">
+        <div class="col-xs-9">
           <p>ユーザー名：　<%= @user.try :name %></p>
           <%= render 'shared/matching_info' %>
         </div>
