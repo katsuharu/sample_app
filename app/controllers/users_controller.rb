@@ -70,6 +70,7 @@ class UsersController < ApplicationController
         return
       end
       
+      render action: 'entry'
       return
     else
       redirect_to root_url
