@@ -3,4 +3,13 @@
 <%= image_tag(@user.profile_img.url, class: "img-responsive") if @user.profile_img? %>
 <p>エントリーカテゴリー</p>
 
-<h1>エントリーが完了いたしました。</h1>
+<h1>ランチフレンズにエントリーしました！</h1>
+
+<p>
+マッチングまで少々お待ちください。<br>
+※マッチング次第メールでお知らせします
+</p>
+
+<div class="btn-center">
+	<%= link_to "TOP", root_path, class: "square_btn" %>
+</div>  
