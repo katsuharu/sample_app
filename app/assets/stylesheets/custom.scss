@@ -301,18 +301,7 @@ section.entry_form {
   position: relative;
   /*border: 1px solid #CCC;*/
 }
-#slider_prev {
-  position: absolute;
-  top: 65px;
-  left: -10px;  /* 変更 */
-  cursor: pointer;
-}
-#slider_next {
-  position: absolute;
-  top: 65px;
-  right: -10px;  /* 変更 */
-  cursor: pointer;
-}
+
 #slider {
   width: 100%;
   height: 100%;
