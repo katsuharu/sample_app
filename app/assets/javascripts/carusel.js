@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function() {
   //slider_inner を上記で移動した分だけ左方向へずらす
   slider_inner$.css('margin-left', '-' + li_width + 'px');  
   
-  function slide(){
+  var slide = function(){
     slider_inner$.stop().animate({
       marginLeft: parseInt(slider_inner$.css('margin-left'), 10) - li_width + 'px'
     }, 800,
@@ -25,16 +25,11 @@ $(document).on('turbolinks:load', function() {
   
   var timer;
   function start_carousel() {
-    timer = setInterval(function(){
-      slide();
-    },1500);
+    timer = setInterval(slide ,1500);
   } 
   
   //自動的にスタートするように設定
   start_carousel();  
 
-  $(window).on('turbolinks:load', function() {
-    window.clearInterval(timer);
-    start_carousel();
-  });
+  
 });
