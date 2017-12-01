@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function() {
   //slider_inner を上記で移動した分だけ左方向へずらす
   slider_inner$.css('margin-left', '-' + li_width + 'px');  
   
-  $('#slider_next').click(function(){
+  function slide(){
     slider_inner$.stop().animate({
       marginLeft: parseInt(slider_inner$.css('margin-left'), 10) - li_width + 'px'
     }, 800,
@@ -21,14 +21,12 @@ $(document).on('turbolinks:load', function() {
       slider_inner$.css('margin-left', '-' + li_width + 'px');
       $('#photo_list li:first').appendTo(photo_list$);
     });
-  });
+  };
   
   var timer;
-  var stop$ = $('#stop');
-  var next_prev$ = $('#slider_next, #slider_prev');
   function start_carousel() {
     timer = setInterval(function(){
-      $('#slider_next').click();
+      slide();
     },1500);
   } 
   
