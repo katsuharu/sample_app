@@ -31,4 +31,8 @@ $(document).on('turbolinks:load', function() {
   //自動的にスタートするように設定
   start_carousel();
 
+  $(window).on('turbolinks:render', function() {
+    start_carousel();
+  });
+
 });
