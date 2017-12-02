@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function() {
   start_carousel();
 
   $(window).on('turbolinks:render', function() {
-    start_carousel();
+    window.clearInterval(timer)
   });
 
 });
