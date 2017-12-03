@@ -4,12 +4,8 @@ namespace :matching do
     #未ッマッチングユーザーとそのid情報を取得
     users = User.where.not(category_id: nil).where(pair_id: nil).where(any_category: 1)
     user_num = users.count #未マッチングユーザーの合計数を算出
-    user_ids = Array.new(user_num)
     pair_id = 0;
-
-    for i in 0..user_num - 1
-      user_ids << users[i].id #配列usersに一人一人のidを代入
-    end
+    
 
     amari = user_num % 3
     shou = user_num / 3
