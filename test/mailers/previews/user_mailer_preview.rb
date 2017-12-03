@@ -21,6 +21,12 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.matching_success(user)
   end
 
+  def matching_fail
+    user = User.first
+    user.activation_token = User.new_token
+    UserMailer.matching_fail(user)
+  end
+
   def contact_contents
     params = {:name => "佐々木希", :email => "traveler@gamil.com", :content => "アンジャッシュ"}
     UserMailer.contact_contents(params)
