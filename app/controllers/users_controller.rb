@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def entry
-    @user = current_user
+    @user = current_user #エントリー画面(entry.html.erb)でユーザー情報を表示するために変数に代入
     if current_user.category_id.nil?         #カレントユーザーが未エントリーの場合
       cate_num = params[:user][:category_id]
       User.find_by(id: current_user.id).update_attribute(:category_id, cate_num)
