@@ -68,6 +68,8 @@ class UsersController < ApplicationController
         User.where(category_id: cate_num).where(pair_id: nil).update_all(pair_id: pair_id)
         redirect_to root_url
         flash[:success] = "マッチングが完了致しました。"
+        #エントリーボタンを押してマッチングしたユーザーにマッチング成功のお知らせメールを送信
+        current_user.send_success_email 
         return
       end
       
