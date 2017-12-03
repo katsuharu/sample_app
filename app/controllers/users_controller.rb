@@ -68,10 +68,14 @@ class UsersController < ApplicationController
         members = User.where(category_id: cate_num).where(pair_id: nil)
         members.update_all(pair_id: pair_id) #pair_idを更新
 
+        #マッチングしたそれぞれの人にマッチングしたことを知らせるためのメールを送信
+        members.each do |member|
+          member.send_success_email
+        end
+
         redirect_to root_url
         flash[:success] = "マッチングが完了致しました。"
         #エントリーボタンを押してマッチングしたユーザーにマッチング成功のお知らせメールを送信
-        current_user.send_success_email 
         return
       end
       
