@@ -78,6 +78,11 @@ class User < ApplicationRecord
 		UserMailer.matching_success(self).deliver_now
 	end
 
+	#マッチング失敗したことを知らせるメールを送信
+	def send_fail_email
+		UserMailer.matching_fail(self).deliver_now
+	end
+
 	def feed
 		User.where.not(entry_id: nil)
 	end
