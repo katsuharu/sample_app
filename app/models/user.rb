@@ -73,6 +73,11 @@ class User < ApplicationRecord
 		reset_sent_at < 2.hours.ago
 	end
 
+	#マッチングが成功したことを知らせるメールを送信
+	def send_success_email
+		UserMailer.matching_success(self).deliver_now
+	end
+
 	def feed
 		User.where.not(entry_id: nil)
 	end
