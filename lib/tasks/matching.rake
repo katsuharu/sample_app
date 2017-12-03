@@ -2,7 +2,7 @@ namespace :matching do
   task :execute => :environment do  | task |
 
     #未ッマッチングユーザーとそのid情報を取得
-    users = User.where.not(category_id: nil).where(pair_id: nil).where(any_category: 1).select(:id, :pair_id)
+    users = User.where.not(category_id: nil).where(pair_id: nil).where(any_category: 1)
     user_num = users.count #未マッチングユーザーの合計数を算出
     user_ids = Array.new(user_num)
     pair_id = 0;
