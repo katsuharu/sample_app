@@ -367,3 +367,14 @@ section.entry_form {
     font-weight: bold;
     font-size: 1.4em;
 }
+
+
+/* 画像トリミング */
+.img-container {
+  width: 400px;
+  height: 300px;
+  display: inline-block;
+}
+.img-canvas {
+  display: inline-block;
+}
