@@ -1,12 +1,10 @@
 <% if logged_in? %>
   <div class="entry-user">
-    <div class="container-fluid">
+    <div class="container-fluid entry-cnt">
       <h2>ユーザー情報</h2>
       <div class="user-info row">
-
         <div class="col-xs-3">
           <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
-
         </div>
         <div class="col-xs-9">
           <p>ユーザー名：　<%= @user.try :name %></p>
@@ -15,10 +13,11 @@
       </div>
     </div>
 
-    <h2>エントリー中のユーザー</h2>
-    <!-- スライドショー -->
-    <% if @users.any? %>
-      <div id="slider_wrap">
+    <div class="entry-cnt">
+      <h2>エントリー中のユーザー</h2>
+      <!-- スライドショー -->
+      <% if @users.any? %>
+        <div id="slider_wrap">
           <div id="slider">
               <div id="slider_inner">
                   <ul id="photo_list">
@@ -30,12 +29,13 @@
                   </ul>
               </div><!-- end of #slider_inner --> 
           </div><!-- end of #slider --> 
-      </div><!-- end of #slider_wrap --> 
-      <!--  -->    
-    <% else %>
+        </div><!-- end of #slider_wrap --> 
+        <!--  -->    
+      <% else %>
         <p>ただいまエントリー中のユーザーはいません。</p>
-    <% end %>
-      <%= render 'shared/entry_form' %>
+      <% end %>
+        <%= render 'shared/entry_form' %>
+    </div>
   </div>
 <% else %>
   <div class="center jumbotron">
