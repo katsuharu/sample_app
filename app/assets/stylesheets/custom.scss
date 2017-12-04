@@ -85,7 +85,7 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 2em;
   color: $content-color;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -113,6 +113,10 @@ header.navbar.navbar-fixed-top.navbar-inverse {
 
 .navi-header {
   margin: 0 30px;
+}
+
+ul.nav.navbar-nav.navbar-right {
+  padding-top: 9px;
 }
 
 /* footer */
