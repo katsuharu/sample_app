@@ -16,19 +16,17 @@ namespace :matching do
       case amari
         when 0
           for i in 0..shou - 1
-            User.where(id: users[i].id).where(pair_id: nil).update(pair_id: i)
-            User.where(id: users[i+1].id).where(pair_id: nil).update(pair_id: i)
-            User.where(id: users[i+2].id).where(pair_id: nil).update(pair_id: i)
+            users.limit(3).update_all(pair_id: i) #まだマッチングしてないユーザーを3人取り出し、pair_idを更新する
           end
 
           p "0 amari matched"
 
         when 1
-          for i in 0..shou - 2
+          for i in 0..shou - 1
+            pair_id += 1
             User.where(id: users[i].id).where(pair_id: nil).update(pair_id: pair_id)
             User.where(id: users[i+1].id).where(pair_id: nil).update(pair_id: pair_id)
             User.where(id: users[i+2].id).where(pair_id: nil).update(pair_id: pair_id)
-            pair_id += 1
           end
 
           #残り一人のユーザーのpair_idを最後に生成された組みのpair_idに更新
@@ -37,10 +35,10 @@ namespace :matching do
           p "1 amari matched"
         when 2
           for i in 0..shou - 1
+            pair_id += 1
             User.where(id: users[i].id).where(pair_id: nil).update(pair_id: pair_id)
             User.where(id: users[i+1].id).where(pair_id: nil).update(pair_id: pair_id)
             User.where(id: users[i+2].id).where(pair_id: nil).update(pair_id: pair_id)
-            pair_id += 1
           end
 
           #残り二人のユーザーにpair_idを更新
