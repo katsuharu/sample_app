@@ -4,7 +4,7 @@ var FLUITS = FLUITS || {};
 FLUITS.PICKUP = {
 		VECTOR_X: 1,
 		VECTOR_Y: 1,
-		IMG_PATH: 'img/fluits.jpg',
+		IMG_PATH: 'app/assets/images/rpi_car-iloveimg-resized.jpg',
 		IMG_SETTING: {
 			background: false, //背面の柄消去
 			modal:false, //背面のフィルター消去
