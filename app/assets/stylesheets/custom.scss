@@ -13,6 +13,16 @@ $content-color: #3B3838;
 }
 
 /* universal */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
 
 body {
   padding-top: 60px;
