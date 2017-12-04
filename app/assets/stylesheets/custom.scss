@@ -377,11 +377,28 @@ section.entry_form {
 
 
 /* 画像トリミング */
-.img-container {
-  width: 400px;
-  height: 300px;
-  display: inline-block;
+.trim-cnt .row {
+    margin-bottom: 2em;
 }
-.img-canvas {
-  display: inline-block;
+.trim-cnt .btn {
+    width: 170px;
+}
+.trim-cnt .view {
+    position: relative;
+    height: 300px;
+    border: 2px dotted #E4E4E4;
+}
+.trim-cnt .num-input {
+    width: 24px;
+}
+.trim-cnt #rectangle {
+    z-index: 2;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border: 2px dotted #f2b4b3;
 }
