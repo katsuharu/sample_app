@@ -204,9 +204,6 @@ input {
 
 
 /* トップページ */
-.user-info.row {
-    margin-top: 20px;
-}
 
 .square_btn {
   display: inline-block;
@@ -276,7 +273,7 @@ input {
   margin-bottom: 60px;
   font-size: 1.6em;
   text-align: left;
-  margin: 25px 0;
+  margin: 10px 0;
 }
 
 .entry-user p {
@@ -320,7 +317,7 @@ section.entry_form {
 #photo_list {
   /*width: 640px;  幅は指定しない*/
   height: 200px; /* padding 20*2 + img.height */
-  padding: 20px 10px;  /* 変更 */
+  padding: 0px 10px;  /* 変更 */
   list-style-type: none;
   float: left;
   /*background: #999;*/
