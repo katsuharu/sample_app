@@ -9,9 +9,35 @@
   </div>
 </div>
 
-<div class="img-container">
-	<%= image_tag(@user.profile_img.url, :id => "img−default" ,:class => "img-responsive") if @user.profile_img? %>
-</div>
+<div class="trim-cnt">
+    <div id="header"><h1>画像ファイル(JPEG, PNG)のトリミング</h1></div>
 
-<!-- トリミングされた画像が表示される場所。縦横は好みで設定 -->
-<canvas id="jsi-canvas" class="img-canvas" width="200" height="200"></canvas>
+    <div class="row">
+        <div class="span12"><input id="upload" name="upload" type="file" value="File Upload"></div>
+    </div>
+    <div class="row">
+        <div class="span12">JPEG,PNgファイルをドラッグアンドドロップで表示できます。</div>
+    </div>
+    <div class="row">
+        <div class="span5">
+            <div id="input-view" class="view">
+                <div id="rectangle"></div>
+            </div>
+        </div><!-- /span5 -->
+
+        <div class="span2">
+            <div class="row">
+                 <div class="span2">横: <input id="trim-width" class="num-input" type="text" size="8"></div>
+                 <div class="span2">縦: <input id="trim-height" class="num-input" type="text" size="8"></div>
+                <div class="span2">横: <input id="rect-width" class="num-input" type="text" size="8" disabled="disabled"></div>
+                <div class="span2">縦: <input id="rect-height" class="num-input" type="text" size="8" disabled="disabled"></div>
+            </div>
+            <div class="row"><button id="select" class="btn span2">選択範囲表示</button></div>
+            <div class="row"><button id="trimming" class="btn span2">トリミング</button></div>
+        </div><!-- /span2 -->
+
+        <div class="span5">
+            <div id="output-view" class="view"></div>
+        </div><!-- /span5 -->
+    </div>
+</div><!-- /trim-cnt -->
