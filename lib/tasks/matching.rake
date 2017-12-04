@@ -9,7 +9,6 @@ namespace :matching do
     if user_num >= 2
       pair_id = 0;
 
-
       amari = user_num % 3
       shou = user_num / 3
 
@@ -41,7 +40,7 @@ namespace :matching do
             User.where(id: users[i].id).where(pair_id: nil).update(pair_id: pair_id)
             User.where(id: users[i+1].id).where(pair_id: nil).update(pair_id: pair_id)
             User.where(id: users[i+2].id).where(pair_id: nil).update(pair_id: pair_id)
-            pair_id += 1  
+            pair_id += 1
           end
 
           #残り二人のユーザーにpair_idを更新
@@ -51,12 +50,14 @@ namespace :matching do
 
       end
 
-    else #1組もマッチングしない場合
-
+    else #1組もマッチングしない場合。any_categoryが1の人もそうでない人も全て
+      members = User.where.not(category_id: nil).where(pair_id: nil)
+      members.each do |member|
+        member.send_success_email
+      end
     end
 
     #「エントリーボタン」も押せなくする(翌日の00:00から再びボタンを押せるようにする。)。
-    #ユーザーにマッチングの結果をメールで送信
   end
 
   task reset: :environment do
