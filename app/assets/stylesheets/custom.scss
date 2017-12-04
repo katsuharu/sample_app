@@ -293,10 +293,10 @@ section.entry_form {
 
 /* スライドショー */
 #slider_wrap {
-  margin: 20px auto;
+  margin: 0px auto;
   width: 780px;  /* 変更 */    /* padding 20*2 +  img*width*パネル数 + (marginleft+right)*4+(marginLeft/Right)  */
   height: 240px;  /* padding 20*2 + #photo_list.height */
-  padding: 20px;
+  padding: 0px 20px ;
   /*background: #EFEFEF;*/
   position: relative;
   /*border: 1px solid #CCC;*/
