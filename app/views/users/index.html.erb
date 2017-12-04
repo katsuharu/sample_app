@@ -1,13 +1,14 @@
 <% if logged_in? %>
   <div class="entry-user">
     <div class="container-fluid">
+      <h2>ユーザー情報</h2>
       <div class="user-info row">
+
         <div class="col-xs-3">
           <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
 
         </div>
         <div class="col-xs-9">
-          <h2>ユーザー情報</h2>
           <p>ユーザー名：　<%= @user.try :name %></p>
           <%= render 'shared/user_info' %>
         </div>
