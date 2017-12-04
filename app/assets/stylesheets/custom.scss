@@ -4,7 +4,8 @@
 /* mixins, variables, etc. */
 
 $navi-color: #FFCB00;
-$content-color: #3B3838;
+$content-color: #0D0D0D;
+$header-font: 'Lobster', cursive;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
