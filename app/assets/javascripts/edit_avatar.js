@@ -78,6 +78,7 @@ $(document).on('turbolinks:load', function() {
 
   // Submit時に実行するPOST処理
   $('#submitBtn').on('click', function(event){
+    console.log('Upload success');
     // クロップ後のファイルをblobに変換し、AjaxでForm送信
     croppedCanvas.toBlob(function (blob) {
       const fileOfBlob = new File([blob], fileName);
