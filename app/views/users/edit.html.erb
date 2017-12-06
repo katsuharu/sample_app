@@ -9,14 +9,6 @@
   </div>
 </div>
 
-<!-- トリミング -->
-<div class="img-container">
-	<%= image_tag(@user.profile_img.url, :id => "img−default" ,:class => "img-responsive") if @user.profile_img? %>
-</div>
-
-<!-- トリミングされた画像が表示される場所。縦横は好みで設定 -->
-<canvas id="jsi-canvas" class="img-canvas" width="200" height="200"></canvas>
-<!-- /トリミング -->
 
 
 
