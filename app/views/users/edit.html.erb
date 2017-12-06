@@ -21,15 +21,12 @@
 
 
 <form>
-  <%= hidden_field_tag "employee_id", @employee.id %>
-  
-  <%= file_field_tag 'employee[avatar]' %>
-  <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png' %>
-  
+  <%= hidden_field_tag "user_id", @user.id %>
+  <%= file_field_tag 'user[profile_img]' %>
   <%= button_tag :submit, :id => "submitBtn" %>
   <% if @user.profile_img? %>
     <div id="crop_area_box">
-      <%= image_tag @employee.avatar, :id => "crop_image", :html => [:width => "600px"] %>
+      <%= image_tag @user.profile_img, :id => "crop_image", :html => [:width => "600px"] %>
     </div>
   <% else %>
     <div id="crop_area_box"><img id="crop_image" /></div>
