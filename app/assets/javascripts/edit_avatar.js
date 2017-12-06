@@ -83,15 +83,16 @@ $(document).on('turbolinks:load', function() {
       const fileOfBlob = new File([blob], fileName);
       var formData = new FormData();
       // `employee[avatar]` は `employee` modelに定義した `mount_uploader :avatar, AvatarUploader` のコト
-      formData.append('employee[avatar]', fileOfBlob);
+      formData.append('user[profile_img]', fileOfBlob);
       // EmployeeのID取得
-      const employee_id = $('#employee_id').val();
-      $.ajax('/avatar/' + employee_id + '/update', {
+      const user_id = $('#user_id').val();
+      $.ajax('/profile_img/' + user_id + '/update', {
         method: "PATCH", // POSTの方が良いのかな？
         data: formData,
         processData: false, // 余計な事はせず、そのままSUBMITする設定？
         contentType: false,
         success: function (res) {
+          console.log('Upload success');
           // DOM操作にしたほうがいいのかな？その場合、アップロード後に実行するなどのポーリング処理的なサムシングが必要になりそう・・・
           // なので、とりあえず簡単に`location.reload`しちゃう
           location.reload();
