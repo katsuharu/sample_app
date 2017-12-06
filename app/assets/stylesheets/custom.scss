@@ -414,3 +414,12 @@ section.entry_form {
     background: transparent;
     border: 2px dotted #f2b4b3;
 }
+
+
+---------
+#crop_area_box {
+  display: block;
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+}
