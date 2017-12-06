@@ -13,9 +13,6 @@
   <%= f.label :password_confirmation, 'パスワード確認用' %><span class="label label-danger">必須</span>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-  <%= f.label :profile_img, "プロフィール写真" %><span class="label label-danger">必須</span>
-  <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png' %>
-
   <%= f.label :self_intro, "自己紹介文(25文字以内)" %><span class="label label-danger">必須</span>
   <%= f.text_field :self_intro, class: 'form-control'  %>
 
@@ -25,9 +22,26 @@
   <%= f.label :slack_id, 'Slack ID' %><span class="label label-danger">必須</span>
   <%= f.text_field :slack_id, class: 'form-control'  %>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <%= hidden_field_tag "user_id", @user.id %>
+  <%= f.label :profile_img, "プロフィール写真" %><span class="label label-danger">必須</span>
+  <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png' %>
+  <% if @user.profile_img? %>
+    <div id="crop_area_box">
+      <%= image_tag @user.profile_img, :id => "crop_image", :html => [:width => "600px"] %>
+    </div>
+  <% else %>
+    <div id="crop_area_box"><img id="crop_image" /></div>
+  <% end %>
+  <div id="crop_preview"></div>
+
+  <%= f.submit yield(:button_text), id: "submitBtn", class: "btn btn-primary" %>
 <% end %>
 
+
+<!-- Cropper.jsは、当該ページ個別に読み込む -->
+<%= stylesheet_link_tag    'cropper.min' %>
+<%= javascript_include_tag 'cropper.min' %>
+<%= javascript_include_tag 'edit_avatar' %>
 
 <script type="text/javascript">
   $('#user_profile_img').bind('change', function() {
