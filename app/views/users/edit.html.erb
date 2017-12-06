@@ -17,3 +17,27 @@
 <!-- トリミングされた画像が表示される場所。縦横は好みで設定 -->
 <canvas id="jsi-canvas" class="img-canvas" width="200" height="200"></canvas>
 <!-- /トリミング -->
+
+
+
+<form>
+  <%= hidden_field_tag "employee_id", @employee.id %>
+  
+  <%= file_field_tag 'employee[avatar]' %>
+  <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png' %>
+  
+  <%= button_tag :submit, :id => "submitBtn" %>
+  <% if @user.profile_img? %>
+    <div id="crop_area_box">
+      <%= image_tag @employee.avatar, :id => "crop_image", :html => [:width => "600px"] %>
+    </div>
+  <% else %>
+    <div id="crop_area_box"><img id="crop_image" /></div>
+  <% end %>
+  <div id="crop_preview"></div>
+</form>
+
+<!-- Cropper.jsは、当該ページ個別に読み込む -->
+<%= stylesheet_link_tag    'cropper.min' %>
+<%= javascript_include_tag 'cropper.min' %>
+<%= javascript_include_tag 'edit_avatar' %>
