@@ -31,17 +31,45 @@
     </div>
   </div>
 
-  <%= f.label :password_confirmation, 'パスワード確認用' %><span class="label label-danger">必須</span>
-  <%= f.password_field :password_confirmation, class: 'form-control' %>
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'col-sm-3 control-label' do %>
+      <span class="label label-danger">必須</span>
+      パスワード(確認用) / Password(Check)
+    <% end %>
+    <div class="col-sm-9">
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+  </div>
 
-  <%= f.label :self_intro, "自己紹介文(25文字以内)" %><span class="label label-danger">必須</span>
-  <%= f.text_field :self_intro, class: 'form-control'  %>
+  <div class="form-group">
+    <%= f.label :self_intro, class: 'col-sm-3 control-label' do %>
+      <span class="label label-danger">必須</span>
+      ひとこと(25文字以内)
+    <% end %>
+    <div class="col-sm-9">
+      <%= f.text_field :self_intro, class: 'form-control' %>
+    </div>
+  </div>
 
-  <%= f.label :department_name, "部署名" %><span class="label label-danger">必須</span>
-  <%= f.text_field :department_name, class: 'form-control'  %>
+  <div class="form-group">
+    <%= f.label :department_name, class: 'col-sm-3 control-label' do %>
+      <span class="label label-danger">必須</span>
+      部署 / Department
+    <% end %>
+    <div class="col-sm-9">
+      <%= f.text_field :department_name, class: 'form-control' %>
+    </div>
+  </div>
 
-  <%= f.label :slack_id, 'Slack ID' %><span class="label label-danger">必須</span>
-  <%= f.text_field :slack_id, class: 'form-control'  %>
+  <div class="form-group">
+    <%= f.label :slack_id, class: 'col-sm-3 control-label' do %>
+      <span class="label label-danger">必須</span>
+      Slack ID
+    <% end %>
+    <div class="col-sm-9">
+      <%= f.text_field :slack_id, class: 'form-control' %>
+    </div>
+  </div>
 
   <%= hidden_field_tag "user_id", @user.id %>
   <%= f.label :profile_img, "プロフィール写真" %><span class="label label-danger">必須</span>
