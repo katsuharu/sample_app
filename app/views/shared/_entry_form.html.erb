@@ -6,7 +6,7 @@
 				どんな人と行く？
 			</div>
 			<div class="category-select">
-				<%= collection_select(:user, :category_id, Category.all, :id,  :name, {} ,{:class => "select-menu"}) %>
+				<%= collection_select(:user, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu"}) %>
 			</div>
 		</div>
 				<%= check_box  :user, :any_category %>
