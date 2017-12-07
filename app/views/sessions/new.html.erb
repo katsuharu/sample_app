@@ -21,15 +21,18 @@
         </div>
       </div>
 
-      <%= link_to "(パスワードをお忘れですか？)", new_password_reset_path %>
+      <%= f.submit "Login", class: "square_btn" %>
+
+      <p>※パスワードを忘れた方は<%= link_to "こちら", new_password_reset_path %></p>
+      <p>※まだご登録されていない方は<%= link_to "こちら", signup_path %></p>
+
 
       <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
         <span>ログイン情報を記憶する</span>
       <% end %>
 
-      <%= f.submit "Login", class: "square_btn" %>
+      
     <% end %>
 
-    <p>登録はまだされてないですか？ <%= link_to "新規会員登録はこちら", signup_path %></p>
 </div>
