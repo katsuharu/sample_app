@@ -371,15 +371,13 @@ section.entry_form {
     text-align: center;
 }
 
-.entry-user .category-select p {
+.entry-user .category-select li {
   float: left;
+  list-style:none;
+  margin: 0 20px;
 }
 
-.entry-user .category-select .select-menu {
-  float: left;
-}
-
-.entry-user input#user_any_category {
+.entry-user .clear-float {
     clear: both;
 }
 
