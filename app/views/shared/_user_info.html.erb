@@ -1,10 +1,7 @@
-<p>マッチング状態：
 <% if entried? %> 
 	<% if matched? %>
-		マッチング完了</p>
 		<p><%= link_to "マッチング相手確認", check_path %></p>
 	<% else %>
-		エントリー中</p>
 		<p>
 			<%= form_tag("/cancel", method: "post", id: "") do %>
 			  <div class="form-group">
@@ -14,5 +11,7 @@
 		</p>
 	<% end %>
 <% else %>
-	未エントリー</p>
+	<div class="entry-state">
+		<p>空腹中..</p>
+	</div>
 <% end %>
