@@ -2,12 +2,12 @@
 	<%= form_tag(action: :entry) do %>
 		<h2>ランチへ行く</h2>
 		<div class="category-center">
-				<div class="category-li">
-					どんな人と行く？
-				</div>
-				<div class="category-li">
-					<%= collection_select(:user, :category_id, Category.all, :id,  :name, {} ,{:class => "select-menu"}) %>
-				</div>
+			<div class="category-li">
+				どんな人と行く？
+			</div>
+			<div class="category-li">
+				<%= collection_select(:user, :category_id, Category.all, :id,  :name, {} ,{:class => "select-menu"}) %>
+			</div>
 		</div>
 				<%= check_box  :user, :any_category %>
 				<span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
