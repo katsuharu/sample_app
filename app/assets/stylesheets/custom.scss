@@ -379,6 +379,10 @@ section.entry_form {
   float: left;
 }
 
+.entry-user input#user_any_category {
+    clear: both;
+}
+
 
 @media (max-width: 384px) {
   .entry-user .entry-photo {
