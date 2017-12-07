@@ -46,9 +46,12 @@
     <div class="bf-img">
       <%= image_tag("lunch_logo.png", alt: "Lunch Friends logo") %>
     </div>
-  	<%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
-    
-    <%= link_to "Login", login_path, class: "btn btn-lg btn-primary" %> 
+  	<div class="bf-btn">
+      <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
+    </div>
+    <div class="bf-btn">
+      <%= link_to "Login", login_path, class: "btn btn-lg btn-primary" %> 
+    </div>
   </div>
 
 <% end %>
