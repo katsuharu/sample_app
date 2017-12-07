@@ -262,10 +262,18 @@ h1.bf-title {
 
 
 /* ログインページ */
+.login-row {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
 h2.bf-sub-title {
     font-size: 1.8em;
 }
 
+.login-row .form-control {
+  width: 65%;
+}
 
 .square_btn {
   display: inline-block;
