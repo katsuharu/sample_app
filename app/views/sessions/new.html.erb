@@ -3,8 +3,7 @@
 
 <h2 class="bf-sub-title">ログイン/Login</h2>
 
-<div class="row">
-  <div class="">
+<div class="login-low">
     <%= form_for(:session, url: login_path, html: {class: 'form-horizontal'}) do |f| %>
       
       <div class="form-group">
@@ -32,5 +31,4 @@
     <% end %>
 
     <p>登録はまだされてないですか？ <%= link_to "新規会員登録はこちら", signup_path %></p>
-  </div>
 </div>
