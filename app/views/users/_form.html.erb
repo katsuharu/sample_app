@@ -12,14 +12,24 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :email, 'メールアドレス', class: 'col-sm-3 control-label' %>
+    <%= f.label :email, class: 'col-sm-3 control-label' do %>
+      <span class="label label-danger">必須</span>
+      メール / Mail
+    <% end %>
     <div class="col-sm-9">
       <%= f.email_field :email, class: 'form-control' %>
     </div>
   </div>
 
-  <%= f.label :password, 'パスワード' %><span class="label label-danger">必須</span>
-  <%= f.password_field :password, class: 'form-control' %>
+  <div class="form-group">
+    <%= f.label :password, class: 'col-sm-3 control-label' do %>
+      <span class="label label-danger">必須</span>
+      パスワード / Password
+    <% end %>
+    <div class="col-sm-9">
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
 
   <%= f.label :password_confirmation, 'パスワード確認用' %><span class="label label-danger">必須</span>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
