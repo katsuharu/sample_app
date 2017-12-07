@@ -375,10 +375,13 @@ section.entry_form {
   display: flex;
 }
 
-.category-li {
+.category-label {
   flex: 1;
 }
 
+.category-select {
+  flex: 3;
+}
 
 @media (max-width: 384px) {
   .entry-user .entry-photo {
