@@ -1,6 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navi-header">
-    <%= link_to "Lunch Friends", root_path, id: "logo" %>
+    <%= link_to root_path, id: "logo" do %>
+      Lunch Friends
+      <%= image_tag("lunch_logo.png", alt: "Lunch Friends logo") %>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
