@@ -7,15 +7,15 @@
     <%= form_for(:session, url: login_path, html: {class: 'form-horizontal'}) do |f| %>
       
       <div class="form-group">
-        <%= f.label :メールアドレス, class: 'col-sm-3 control-label' %>
-        <div class="col-sm-9">
+        <%= f.label :メールアドレス, class: 'col-sm-4' %>
+        <div class="col-sm-8">
           <%= f.email_field :email, class: 'form-control' %>
         </div>
       </div>
 
       <div class="form-group">
-        <%= f.label :パスワード, class: 'col-sm-3 control-label' %>
-        <div class="col-sm-9">
+        <%= f.label :パスワード, class: 'col-sm-4' %>
+        <div class="col-sm-8">
           <%= f.password_field :password, class: 'form-control' %>
         </div>
       </div>
