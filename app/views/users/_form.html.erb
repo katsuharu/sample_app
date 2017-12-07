@@ -2,7 +2,10 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class="form-group">
-    <%= f.label :name, '名前', class: 'col-sm-3 control-label' %>
+    <%= f.label :name, class: 'col-sm-3 control-label' do %>
+      <span class="label label-danger">必須</span>
+      名前
+    <% end %>
     <div class="col-sm-9">
       <%= f.text_field :name, class: 'form-control' %>
     </div>
