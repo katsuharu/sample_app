@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <div class="entry-user">
     <div class="container-fluid entry-cnt">
-      <h2>ユーザー情報</h2>
+      <h2>プロフィール</h2>
       <div class="user-info row">
         <div class="col-xs-4">
           <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
