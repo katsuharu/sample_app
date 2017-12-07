@@ -371,6 +371,15 @@ section.entry_form {
     text-align: center;
 }
 
+.entry-user .category-select p {
+  float: left;
+}
+
+.entry-user .category-select .select-menu {
+  float: left;
+}
+
+
 @media (max-width: 384px) {
   .entry-user .entry-photo {
     flex: 1;
