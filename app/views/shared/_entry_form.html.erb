@@ -6,10 +6,12 @@
 			<li>どんな人と行く？</li>
 			<li><%= collection_select(:user, :category_id, Category.all, :id,  :name, {} ,{:class => "select-menu"}) %></li>
 		</ul>
-		<%= check_box  :user, :any_category %>
-		<span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
-		<div class="btn-center">
-			<%= submit_tag "Let's go to Lunch", class: "square_btn" %>
+		<div class="clear-float">
+			<%= check_box  :user, :any_category %>
+			<span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
+			<div class="btn-center">
+				<%= submit_tag "Let's go to Lunch", class: "square_btn" %>
+			</div>
 		</div>     
 	<% end %>
 </div>
