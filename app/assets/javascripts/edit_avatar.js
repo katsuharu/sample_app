@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-
+  console.log("wwwww");
   var fileName;
 
   // 画像ファイル選択後のプレビュー処理
@@ -75,6 +75,8 @@ $(document).on('turbolinks:load', function() {
     crop_preview.innerHTML = '';
     crop_preview.appendChild(croppedImage);
   }
+
+  console.log("bf_click");
 
   // Submit時に実行するPOST処理
   $('#submitBtn').on('click', function(event){
