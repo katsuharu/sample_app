@@ -1,7 +1,7 @@
 <div class="bs-component">
 	<%= form_tag(action: :entry) do %>
 		<h2>マッチングカテゴリー</h2>
-		<%= collection_select(:user, :category_id, Category.all, :id,  :name, {} ,{:class => "form-control select-menu"}) %><br>
+		<%= collection_select(:user, :category_id, Category.all, :id,  :name, {} ,{:class => "select-menu"}) %><br>
 
 		<%= check_box  :user, :any_category %>
 		<span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
