@@ -6,7 +6,9 @@
     <%= form_for(:session, url: login_path, html: {class: 'form-horizontal'}) do |f| %>
       <div class="form-group">
         <%= f.label :メールアドレス, class: 'col-sm-3 control-label' %>
-        <%= f.email_field :email, class: 'form-control' %>
+        <div class="col-sm-9">
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
       </div>
 
       <%= f.label :パスワード %>
