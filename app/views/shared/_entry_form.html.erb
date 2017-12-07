@@ -2,10 +2,10 @@
 	<%= form_tag(action: :entry) do %>
 		<h2>ランチへ行く</h2>
 		<div class="category-center">
-			<div class="category-li">
+			<div class="category-label">
 				どんな人と行く？
 			</div>
-			<div class="category-li">
+			<div class="category-select">
 				<%= collection_select(:user, :category_id, Category.all, :id,  :name, {} ,{:class => "select-menu"}) %>
 			</div>
 		</div>
