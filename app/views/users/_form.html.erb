@@ -8,8 +8,12 @@
     </div>
   </div>
 
-  <%= f.label :email, 'メールアドレス' %><span class="label label-danger">必須</span>
-  <%= f.email_field :email, class: 'form-control' %>
+  <div class="form-group">
+    <%= f.label :email, 'メールアドレス', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+  </div>
 
   <%= f.label :password, 'パスワード' %><span class="label label-danger">必須</span>
   <%= f.password_field :password, class: 'form-control' %>
