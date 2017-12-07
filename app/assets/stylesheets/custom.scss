@@ -243,6 +243,10 @@ h1.bf-title {
     margin: 30px auto;
 }
 
+h2.bf-sub-title {
+    font-size: 1.8em;
+}
+
 .bf-img {
   margin-top: 30px;
   margin-bottom: 60px;
@@ -262,12 +266,18 @@ h1.bf-title {
 
 
 /* ログインページ */
+h1.login-title {
+    font-family: "Lobster", cursive;
+    font-size: 4.4em;
+    margin: 30px auto;
+}
+
 .login-row {
     max-width: 700px;
     margin: 0 auto;
 }
 
-h2.bf-sub-title {
+h2.login-sub-title {
     font-size: 1.8em;
 }
 
