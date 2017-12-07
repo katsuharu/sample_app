@@ -1,12 +1,12 @@
 <% if entried? %> 
 	<% if matched? %>
 		<div class="entry-state">
-			<p>マッチング!!</p>
+			<h3>マッチング!!</h3>
 		</div>
 		<p><%= link_to "マッチング相手確認", check_path %></p>
 	<% else %>
 		<div class="entry-state">
-			<p>エントリー中</p>
+			<h3>エントリー中</h3>
 		</div>
 		<p>
 			<%= form_tag("/cancel", method: "post", id: "") do %>
@@ -18,6 +18,6 @@
 	<% end %>
 <% else %>
 	<div class="entry-state">
-		<p>空腹中..</p>
+		<h3>空腹中..</h3>
 	</div>
 <% end %>
