@@ -85,9 +85,7 @@ class User < ApplicationRecord
 		UserMailer.matching_fail(self).deliver_now
 	end
 
-	def feed
-		User.where.not(entry_id: nil)
-	end
+	
 
 
 	private
