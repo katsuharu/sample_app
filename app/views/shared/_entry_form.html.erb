@@ -9,8 +9,10 @@
 				<%= collection_select(:user, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu"}) %>
 			</div>
 		</div>
+			<div class="checkbox-center">
 				<%= check_box  :user, :any_category %>
 				<span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
+			</div>
 			<div class="btn-center">
 				<%= submit_tag "Let's go to Lunch", class: "square_btn" %>
 			</div>
