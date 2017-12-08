@@ -10,6 +10,7 @@
 		</div>
 		<p>▼エントリーカテゴリー</p>
 		<h4><%= Category.find(@user.try :category_id).name %></h4>
+		<p>マッチングまで少々お待ちください。<br>※マッチング次第メールでお知らせします</p>
 			<%= form_tag("/cancel", method: "post", id: "") do %>
 			  <div class="form-group">
 			  	<%= link_to 'キャンセル', {controller: :users, action: :cancel}, method: :post, data: {confirm: "本当にキャンセルしてもよろしいでしょうか？" } %>
