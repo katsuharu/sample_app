@@ -72,22 +72,16 @@
   </div>
 
   <div class="form-group">
-    <%= hidden_field_tag "user_id", @user.id %>
     <%= f.label :profile_img, class: 'col-sm-4' do %>
       <span class="label label-danger">必須</span>
       プロフィール画像(本人写真) / Profile picture
       <span class="help-block">※待ち合わせの際に顔が分かるように、
       ご本人様のお写真をご使用ください</span>
     <% end %>
-    <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png' %>
-    <% if @user.profile_img? %>
-      <div id="crop_area_box">
-        <%= image_tag @user.profile_img, :id => "crop_image", :html => [:width => "600px"] %>
-      </div>
-    <% else %>
-      <div id="crop_area_box"><img id="crop_image" /></div>
-    <% end %>
-    <div id="crop_preview"></div>
+
+    <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input' %>
+    <%= f.hidden_field :avatar_data_uri %>
+
   </div>
 
   <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn" %>
