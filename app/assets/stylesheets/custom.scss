@@ -370,20 +370,17 @@ section.entry_form {
 }
 
 .category-center {
-  display: flex;
+  text-align: center;
   margin: 30px auto;
 }
 
-.category-label {
-  flex: 1;
+.category-select {
   padding-left: 5em;
   font-weight: 500;
   font-size: 1.2em;
+  display: inline;
 }
 
-.category-select {
-  flex: 3;
-}
 
 .checkbox-center {
     text-align: center;
