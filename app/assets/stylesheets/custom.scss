@@ -385,6 +385,10 @@ section.entry_form {
   flex: 3;
 }
 
+.checkbox-center {
+    text-align: center;
+}
+
 @media (max-width: 384px) {
   .entry-user .entry-photo {
     flex: 1;
