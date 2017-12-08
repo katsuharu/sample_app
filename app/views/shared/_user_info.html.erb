@@ -8,13 +8,12 @@
 		<div class="entry-state">
 			<h3>エントリー中</h3>
 		</div>
-		<p>
+		<p>▼エントリーカテゴリー</p>
 			<%= form_tag("/cancel", method: "post", id: "") do %>
 			  <div class="form-group">
 			  	<%= link_to 'キャンセル', {controller: :users, action: :cancel}, method: :post, data: {confirm: "本当にキャンセルしてもよろしいでしょうか？" } %>
 			  </div>
 			<% end %>
-		</p>
 	<% end %>
 <% else %>
 	<div class="entry-state">
