@@ -84,9 +84,8 @@ class User < ApplicationRecord
 	end
 
 	def set_avatar_from_data_uri
-	    self.avatar = self.class.data_uri_to_file(avatar_data_uri)
-	  end
-	
+	    self.profile_img = self.class.data_uri_to_file(avatar_data_uri)
+	end
 
 
 	private
