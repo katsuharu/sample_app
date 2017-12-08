@@ -9,7 +9,7 @@
 			<h3>エントリー中</h3>
 		</div>
 		<p>▼エントリーカテゴリー</p>
-		<%= Category.find(@user.try :category_id).name %>
+		<h4><%= Category.find(@user.try :category_id).name %></h4>
 			<%= form_tag("/cancel", method: "post", id: "") do %>
 			  <div class="form-group">
 			  	<%= link_to 'キャンセル', {controller: :users, action: :cancel}, method: :post, data: {confirm: "本当にキャンセルしてもよろしいでしょうか？" } %>
