@@ -4,9 +4,9 @@
 	<h1>You entered now!!</h1>
 	<%= image_tag(@user.profile_img.url, class: "img-responsive") if @user.profile_img? %>
 	<p>▼エントリーカテゴリー</p>
-	<p class="cate_selected">
+	<h4 class="cate_selected">
 		<%= Category.find(@user.try :category_id).name %>
-	</p>
+	</h4>
 
 
 	<h2>ランチフレンズにエントリーしました！</h2>
