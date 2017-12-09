@@ -9,20 +9,20 @@
 
     <div class="col-lg-12">
       <div class="bs-component">
-        <fieldset class="pair-info">
+        
+        <div class="pair-info">
           <div class="pair-img">
             <div><%= image_tag pair.profile_img.url if pair.profile_img? %></div>
           </div>
 
           <div class="pair-text">
             <div><%= pair.try :name %></div>
-
             <label>Slack ID</label>
             <div><%= pair.try :slack_id %></div>
           </div>
 
+        </div>
           
-        </fieldset>
       </div>
     </div>
 
