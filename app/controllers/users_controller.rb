@@ -95,6 +95,8 @@ class UsersController < ApplicationController
   end
 
   def check_entry_cnt
+    @user = current_user #エントリー画面(entry.html.erb)でユーザー情報を表示するために変数に代入
+    render action: 'entry'
   end
   
   def check
