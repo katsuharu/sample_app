@@ -392,11 +392,6 @@ section.entry_form {
   }
 }
 
-/* プロフィール(ユーザーstate) */
-.user-info h4 {
-  font-size: 1.8em;
-}
-
 /* プロフィールページ */
 .col-lg-12 img {
   width:200px;
@@ -458,13 +453,8 @@ section.entry_form {
   height: 200px;
 }
 
-.comp-entry p {
-  text-align: center;
-}
-
-.comp-entry p.cate_selected {
-    font-weight: bold;
-    font-size: 1.4em;
+h4.cate_selected {
+    font-size: 1.8em;
 }
 
 
