@@ -472,6 +472,14 @@ h4.cate_selected {
     display: flex;
 }
 
+.pair-img {
+    flex: 1;
+}
+
+.pair-text {
+    flex: 2;
+}
+
 
 /* 画像トリミング */
 .trim-cnt .row {
