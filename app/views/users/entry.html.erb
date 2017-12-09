@@ -3,7 +3,7 @@
 <div class="comp-entry">
 	<h1>You entered now!!</h1>
 	<%= image_tag(@user.profile_img.url, class: "img-responsive") if @user.profile_img? %>
-	<p>エントリーカテゴリー</p>
+	<p>▼エントリーカテゴリー</p>
 	<p class="cate_selected">
 		<%= Category.find(@user.try :category_id).name %>
 	</p>
