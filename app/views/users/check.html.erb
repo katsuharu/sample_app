@@ -11,12 +11,10 @@
       <div class="bs-component">
         <fieldset>
           <div class="form-group">
-            <label>プロフィール写真</label>
             <div><%= image_tag pair.profile_img.url if pair.profile_img? %></div>
           </div>
           
           <div class="form-group">
-            <label>名前</label>
             <div><%= pair.try :name %></div>
           </div>
 
