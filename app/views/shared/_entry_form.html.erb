@@ -1,20 +1,29 @@
 <div class="bs-component">
-	<%= form_tag(action: :entry) do %>
-		<h2>ランチへ行く</h2>
-		<div class="category-center">
-			<div class="category-select">
-				どんな人と行く？
+	<% if entried? %> 
+		<% if matched? %>
+
+		<% else %>
+
+		<% end %>
+
+	<% else %>
+		<%= form_tag(action: :entry) do %>
+			<h2>ランチへ行く</h2>
+			<div class="category-center">
+				<li class="category-select">
+					どんな人と行く？
+				</>
+				<div class="category-select">
+					<%= collection_select(:user, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu"}) %>
+				</div>
 			</div>
-			<div class="category-select">
-				<%= collection_select(:user, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu"}) %>
-			</div>
-		</div>
-			<div class="checkbox-center">
-				<%= check_box  :user, :any_category %>
-				<span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
-			</div>
-			<div class="btn-center">
-				<%= submit_tag "Let's go to Lunch", class: "square_btn" %>
-			</div>
+				<div class="checkbox-center">
+					<%= check_box  :user, :any_category %>
+					<span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
+				</div>
+				<div class="btn-center">
+					<%= submit_tag "Let's go to Lunch", class: "square_btn" %>
+				</div>
+		<% end %>
 	<% end %>
 </div>
