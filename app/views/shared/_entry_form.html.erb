@@ -7,6 +7,13 @@
 			<div class="btn-center">
 				<%= link_to "Check the contents", entry_path, class: "square_btn" %>
 			</div>
+			<%= form_tag("/cancel", method: "post", id: "") do %>
+			  <div class="form-group">
+			  	<%= link_to 'エントリーをキャンセルする', {controller: :users, action: :cancel}, method: :post, 
+			  	data: {confirm: "本当にキャンセルしてもよろしいでしょうか？" } %>
+			  </div>
+			<% end %>
+
 		<% end %>
 
 	<% else %>
