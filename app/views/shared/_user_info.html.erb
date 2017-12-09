@@ -10,7 +10,7 @@
 		</div>
 		<div class="center">
 			<p>▼エントリーカテゴリー</p>
-			<h4><%= Category.find(@user.try :category_id).name %></h4>
+			<h4 class="cate_selected"><%= Category.find(@user.try :category_id).name %></h4>
 			<p class="help-block">マッチングまで少々お待ちください。<br>※マッチング次第メールでお知らせします</p>
 		</div>
 	<% end %>
