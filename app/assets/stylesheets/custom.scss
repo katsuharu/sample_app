@@ -441,6 +441,11 @@ section.entry_form {
 /* エントリー完了画面 */
 .comp-entry h1 {
   font-size: 2.3em;
+  font-family: $header-font;
+}
+
+.comp-entry h2 {
+  font-size: 2.3em;
 }
 
 .comp-entry img {
