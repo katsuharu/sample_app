@@ -1,4 +1,6 @@
 /*! cropit - v0.5.1 <https://github.com/scottcheng/cropit> */
+console.log("立川談志");
+
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("jquery"));
@@ -8,14 +10,14 @@
 		exports["cropit"] = factory(require("jquery"));
 	else
 		root["cropit"] = factory(root["jQuery"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+});console.log("ビートたけし");(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {console.log("コマネチ");
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+			console.log("だいたい光");
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+				console.log("ガンダム");
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
@@ -46,18 +48,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+			console.log("ゲゲゲ");
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
-/******/ })
+/******/ })  /*** webpackBootstrap ***/
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
-
+	console.log("太陽");
 	var _slice = Array.prototype.slice;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _interopRequireDefault(obj) {console.log("kkk"); return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	var _jquery = __webpack_require__(1);
 
@@ -72,7 +74,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utils = __webpack_require__(6);
 
 	var applyOnEach = function applyOnEach($el, callback) {
-	  return $el.each(function () {
+	  return $el.each(function () {console.log("aaaa");
 	    var cropit = _jquery2['default'].data(this, _constants.PLUGIN_KEY);
 
 	    if (!cropit) {
@@ -1200,8 +1202,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return +(Math.round(x * 100) + 'e-2');
 	};
 	exports.round = round;
-
-/***/ }
-/******/ ])
-});
+	console.log("AAA");
+console.log("dislike");/***/ }
+/******/ ]);console.log("damda");
+console.log("ddd");});
 ;
+console.log("exit");
