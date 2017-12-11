@@ -73,22 +73,12 @@
 
   <div class="form-inputs" id="image-cropper">
     <div class="cropit-image-preview">
+      <input type="range" class="cropit-image-zoom-input">
       <%= f.label :profile_img %>
       <%= f.file_field :profile_img, class: 'cropit-image-input' %>
       <%= f.hidden_field :avatar_data_uri %>
     </div>
   </div>
-
-    <% if @user.profile_img? %>
-      <div id="crop_area_box">
-        <%= image_tag @user.profile_img, :id => "crop_image", :html => [:width => "300px"] %>
-      </div>
-    <% else %>
-      <div id="crop_area_box"><img id="crop_image" /></div>
-    <% end %>
-    <div id="crop_preview"></div>
-
-
   <div class="form-actions">
     <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn" %>
   </div>
