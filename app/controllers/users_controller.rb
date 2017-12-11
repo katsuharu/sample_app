@@ -79,7 +79,7 @@ class UsersController < ApplicationController
         return
       end
       
-      render action: 'entry_show'
+      render action: 'entry'
       return
     else
       redirect_to root_url
@@ -96,7 +96,7 @@ class UsersController < ApplicationController
 
   def check_entry_cnt
     @user = current_user #エントリー画面(entry.html.erb)でユーザー情報を表示するために変数に代入
-    render action: 'entry'
+    render action: 'check_entry_cnt'
   end
   
   def check
