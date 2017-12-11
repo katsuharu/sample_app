@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require bootstrap
+//= require jquery.cropit
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require turbolinks
