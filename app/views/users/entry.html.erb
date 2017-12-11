@@ -5,7 +5,7 @@
 	<%= image_tag(@user.profile_img.url, class: "img-responsive") if @user.profile_img? %>
 	<p>▼エントリーカテゴリー</p>
 	<h4 class="cate_selected">
-		<%= Category.find(params[users][category_id]).name %>
+		<%= Category.find(params[:user][:category_id]).name %>
 	</h4>
 
 
