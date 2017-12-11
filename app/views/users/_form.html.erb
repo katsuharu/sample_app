@@ -80,23 +80,6 @@
     </div>
   </div>
 
-
-  <div id="image-cropper">
-    <!-- This is where the preview image is displayed -->
-    <div class="cropit-preview"></div>
-    
-    <!-- This range input controls zoom -->
-    <!-- You can add additional elements here, e.g. the image icons -->
-    <input type="range" class="cropit-image-zoom-input" />
-    
-    <!-- This is where user selects new image -->
-    <input type="file" class="cropit-image-input" />
-    
-    <!-- The cropit- classes above are needed
-         so cropit can identify these elements -->
-  </div>
-
-
   <div class="form-actions">
     <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn" %>
   </div>
