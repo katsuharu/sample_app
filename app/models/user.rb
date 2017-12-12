@@ -87,11 +87,10 @@ class User < ApplicationRecord
 	end
 
 	def set_avatar_from_data_uri
+		
 		p "運慶"
-		if avatar_data_uri
-			logger.debug(avatar_data_uri)
-		    self.profile_img = data_uri_to_file(avatar_data_uri)
-		end
+		logger.debug(avatar_data_uri)
+	    self.profile_img = data_uri_to_file(avatar_data_uri)
 	end
 
 
