@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	include ActiveModel::Model
 	include UsersHelper
 
 	attr_accessor :remember_token, :activation_token, :reset_token, :avatar_data_uri
