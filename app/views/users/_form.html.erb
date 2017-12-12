@@ -72,13 +72,14 @@
   </div>
 
   <div class="form-inputs" id="image-cropper">
-    <div class="cropit-image-preview">
+      <div class="cropit-image-preview"></div>
       <input type="range" class="cropit-image-zoom-input">
       <%= f.label :profile_img %>
       <%= f.file_field :profile_img, class: 'cropit-image-input' %>
       <%= f.hidden_field :avatar_data_uri %>
-    </div>
+      
   </div>
+
 
   <div class="form-actions">
     <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn" %>
