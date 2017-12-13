@@ -1,7 +1,3 @@
-<script type="text/javascript">
-if(f.user[category_id].selectedIndex == 0){
-error_message += "プルダウンを選択してください。¥n"; }
-
 function check(){
 
 	var flag = 0;
@@ -32,4 +28,3 @@ function check(){
 
 }
 check();
-</script>
