@@ -12,7 +12,7 @@ class User < ApplicationRecord
 	validates :password, presence: true, length: { minimum: 6 }
 	mount_uploader :profile_img, PictureUploader
 	# validates :profile_img, presence: true
-	validates :self_intro, presence: true, length: { maximum: 25 }
+	validates :self_intro, length: { maximum: 25 }
 	validates :department_name, presence: true
 	validates :slack_id, presence: true
 
