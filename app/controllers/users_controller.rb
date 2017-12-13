@@ -73,7 +73,7 @@ class UsersController < ApplicationController
           member.send_success_email
         end
 
-        redirect_to root_url
+        redirect_to check_path
         flash[:success] = "マッチングが完了致しました。"
         #エントリーボタンを押してマッチングしたユーザーにマッチング成功のお知らせメールを送信
         return
