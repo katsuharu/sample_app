@@ -72,14 +72,20 @@
 
   <div class="form-inputs" id="image-cropper">
     <div class="form-img">
-      <%= f.label :profile_img, class: 'col-sm-4' do %>
-        <span class="label label-danger">必須</span>
-        プロフィール画像（本人写真）
-        / profile picture
-      <% end %>
-      <%= f.file_field :profile_img, class: 'cropit-image-input' %>
-      <%= f.hidden_field :avatar_data_uri %>
-      <%= image_tag @user.profile_img.url if @user.profile_img? %>
+      <div class="img-label">
+        <%= f.label :profile_img, class: 'col-sm-4' do %>
+          <span class="label label-danger">必須</span>
+          プロフィール画像（本人写真）
+          / profile picture
+        <% end %>
+      </div>
+      <div class="img-file">
+        <%= f.file_field :profile_img, class: 'cropit-image-input' %>
+        <%= f.hidden_field :avatar_data_uri %>
+      </div>
+      <div class="img-picture">
+        <%= image_tag @user.profile_img.url if @user.profile_img? %>
+      </div>
     </div>
       <div class="cropit-image-preview"></div>
       <input type="range" class="cropit-image-zoom-input">
