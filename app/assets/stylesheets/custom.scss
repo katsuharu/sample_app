@@ -163,7 +163,6 @@ footer {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
   margin-bottom: 15px;
   @include box_sizing;
 }
@@ -223,10 +222,6 @@ input {
 
 .form-horizontal .form-img {
   display: flex;
-}
-
-input {
-  border: none;
 }
 
 .form-horizontal img {
