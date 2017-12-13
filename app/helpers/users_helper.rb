@@ -8,7 +8,6 @@ module UsersHelper extend ActiveSupport::Concern
 	end
 
 	def data_uri_to_file data_uri
-		debugger
 		data = data_uri.try do |uri|
 		  uri.match(%r{\Adata:(?<type>.*?);(?<encoder>.*?),(?<data>.*)\z}) do |md|
 		    {
