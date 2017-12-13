@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-	include UsersHelper
 
 	attr_accessor :remember_token, :activation_token, :reset_token, :avatar_data_uri
 	before_save :downcase_email
