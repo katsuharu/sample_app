@@ -1,4 +1,5 @@
-function check(){
+$('#entry_submit').on('submit', function() {
+
 
 	var flag = 0;
 
@@ -23,8 +24,5 @@ function check(){
 	else{
 
 		return true; // 送信を実行
-
 	}
-
-}
-check();
+});
