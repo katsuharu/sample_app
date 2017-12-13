@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
 	validate :picture_size
 
+	include UsersHelper::ClassMethods
+
 	# 渡された文字列のハッシュ値を返す
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -86,10 +88,7 @@ class User < ApplicationRecord
 		UserMailer.matching_fail(self).deliver_now
 	end
 
-	def set_avatar_from_data_uri
-		
-		p "運慶"
-		logger.debug(avatar_data_uri)
+	def set_avatar_from_data_uri		
 	    self.profile_img = data_uri_to_file(avatar_data_uri)
 	end
 
