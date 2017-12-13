@@ -57,6 +57,7 @@ check();
 
 	<% else %>
 		<%= form_tag(action: :entry) do %>
+			<%= render 'shared/error_messages', object: f.object %>
 			<h2>ランチへ行く</h2>
 			<div class="category-center">
 				<li class="category-select">
