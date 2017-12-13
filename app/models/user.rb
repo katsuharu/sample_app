@@ -15,7 +15,6 @@ class User < ApplicationRecord
 	validates :self_intro, length: { maximum: 25 }
 	validates :department_name, presence: true
 	validates :slack_id, presence: true
-	validates :category_id, presence: true
 	validate :picture_size
 
 	include UsersHelper
