@@ -249,6 +249,10 @@ input {
         display: inline-block;
     }
 
+    * {
+        vertical-align: middle;
+    }
+
     .icon {
         -webkit-transition: color 0.25s;
         -moz-transition: color 0.25s;
@@ -262,6 +266,7 @@ input {
         margin-right: 20px;
     }
 }
+
 
 
 .cropit-image-zoom-input.custom {
