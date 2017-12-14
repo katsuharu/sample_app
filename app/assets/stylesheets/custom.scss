@@ -238,6 +238,17 @@ input {
     font-size: 0.95em;
 }
 
+.cropit-image-zoom-input.custom {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: #eee;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
 /* Users index */
 
 .users {
