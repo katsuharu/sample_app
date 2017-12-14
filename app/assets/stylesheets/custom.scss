@@ -249,6 +249,15 @@ input {
         display: inline-block;
     }
 
+    .icon {
+        -webkit-transition: color 0.25s;
+        -moz-transition: color 0.25s;
+        -o-transition: color 0.25s;
+        -ms-transition: color 0.25s;
+        transition: color 0.25s;
+        cursor: pointer;
+    }
+
     .icon:first-child {
         margin-right: 20px;
     }
