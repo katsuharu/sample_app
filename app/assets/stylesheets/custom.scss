@@ -238,51 +238,12 @@ input {
     font-size: 0.95em;
 }
 
-.controls-wrapper {
-    margin-top: 20px;
-    text-align: center;
-    position: relative;
 
-    .rotation-btns {
-        font-size: 16px;
-        margin-right: 40px;
-        display: inline-block;
-    }
-
-    * {
-        vertical-align: middle;
-    }
-
-    .icon {
-        -webkit-transition: color 0.25s;
-        -moz-transition: color 0.25s;
-        -o-transition: color 0.25s;
-        -ms-transition: color 0.25s;
-        transition: color 0.25s;
-        cursor: pointer;
-    }
-
-    .icon:first-child {
-        margin-right: 20px;
-    }
-
-    .slider-wrapper {
-        display: inline-block;
-    }
-}
+/* --- cropit-icon ---- */
 
 
 
-.cropit-image-zoom-input.custom {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 5px;
-    background: #eee;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    outline: none;
-}
+/* -----/cropit-icon */
 
 /* Users index */
 
