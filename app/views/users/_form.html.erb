@@ -72,7 +72,9 @@
 
 
   <div class="form-inputs" id="image-cropper">
-      <div class="cropit-image-preview"></div>
+      <div class="cropit-image-preview">
+        <%= image_tag @user.profile_img.url if @user.profile_img? %>
+      </div>
       <input type="range" class="cropit-image-zoom-input">
       <%= f.label :profile_img %>
       <%= f.file_field :profile_img, class: 'cropit-image-input' %>
