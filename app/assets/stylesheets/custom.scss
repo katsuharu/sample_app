@@ -250,6 +250,10 @@ input {
     display: inline-block;
 }
 
+ .controls-wrapper .rotation-btns .icon:first-child {
+    margin-right: 20px;
+}
+
 .cropit-image-zoom-input.custom {
     -webkit-appearance: none;
     -moz-appearance: none;
