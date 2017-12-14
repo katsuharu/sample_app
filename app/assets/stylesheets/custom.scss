@@ -242,17 +242,18 @@ input {
     margin-top: 20px;
     text-align: center;
     position: relative;
+
+    .rotation-btns {
+        font-size: 16px;
+        margin-right: 40px;
+        display: inline-block;
+    }
+
+    .icon:first-child {
+        margin-right: 20px;
+    }
 }
 
-.controls-wrapper .rotation-btns {
-    font-size: 16px;
-    margin-right: 40px;
-    display: inline-block;
-}
-
- .controls-wrapper .rotation-btns .icon:first-child {
-    margin-right: 20px;
-}
 
 .cropit-image-zoom-input.custom {
     -webkit-appearance: none;
