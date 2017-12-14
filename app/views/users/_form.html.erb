@@ -74,13 +74,13 @@
     <div class="container-fluid entry-cnt">
       <div class="user-info row">
         <div class="col-xs-6">
-          <%= f.label :profile_img, class: '' do %>
+          <%= f.label :profile_img do %>
             <span class="label label-danger">必須</span>
             プロフィール画像（本人写真）
             / profile picture
           <% end %>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-3 cropit-image-preview">
           <%= f.file_field :profile_img, class: 'cropit-image-input' %>
           <%= f.hidden_field :avatar_data_uri %>
         </div>
@@ -93,7 +93,6 @@
       <input type="range" class="cropit-image-zoom-input">
       
   </div>
-
 
   <div class="form-actions">
     <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn" %>
