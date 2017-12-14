@@ -86,16 +86,16 @@
       <div class="cropit-image-preview">
         <%= image_tag @user.profile_img.url if @user.profile_img? %>
       </div>
-      
+
       <div class="controls-wrapper">
         <div class="rotation-btns">
           <span class="icon icon-rotate-left rotate-ccw-btn"></span>
           <span class="icon icon-rotate-right rotate-cw-btn"></span>
         </div>
         <div class="slider-wrapper">
-          <span class="icon icon-image small-image"></span>
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
           <input type="range" class="cropit-image-zoom-input custom" min="0" max="1" step="0.01">
-          <span class="icon icon-image large-image"></span>
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
         </div>
       </div>
 
