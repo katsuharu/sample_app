@@ -1,5 +1,7 @@
-window.onload = function(){
-	document.getElementById('entry_submit').onclick = function(){
-		window.alert('button is clicked');
+$(document).on('turbolinks:load', function() {
+	if($('#user_category_id').val() == ''){
+		console.log("no selected");
+	} else {
+		console.log("selected");
 	}
-}
+});
