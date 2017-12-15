@@ -274,7 +274,12 @@ input {
 }
 
 .slider-wrapper {
-    display: inline-block;
+  -webkit-transition: opacity 0.25s;
+  -moz-transition: opacity 0.25s;
+  -o-transition: opacity 0.25s;
+  -ms-transition: opacity 0.25s;
+  transition: opacity 0.25s; 
+  display: inline-block;
 }
 
 
