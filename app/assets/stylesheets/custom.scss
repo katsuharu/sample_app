@@ -245,68 +245,14 @@ input {
 
 /* --- cropit-icon ---- */
 
-.controls-wrapper {
-    margin-top: 20px;
-    text-align: center;
-    position: relative;
-}
-
-.controls-wrapper .rotation-btns {
-        font-size: 16px;
-        margin-right: 40px;
-        display: inline-block;
-
-}
-
-.controls-wrapper .rotation-btns .icon:first-child {
-            margin-right: 20px;
-}
-
-.controls-wrapper .rotation-btns .icon {
-            -webkit-transition: color 0.25s;
-            -moz-transition: color 0.25s;
-            -o-transition: color 0.25s;
-            -ms-transition: color 0.25s;
-            transition: color 0.25s;
-            cursor: pointer;
-}
-
-.controls-wrapper .rotation-btns  * {
-            vertical-align: middle;
-}
-
-.controls-wrapper .slider-wrapper {
-    -webkit-transition: opacity 0.25s;
-    -moz-transition: opacity 0.25s;
-    -o-transition: opacity 0.25s;
-    -ms-transition: opacity 0.25s;
-    /* transition: opacity 0.25s; */
+.rotation-btns {
     display: inline-block;
 }
 
-.controls-wrapper .slider-wrapper .small-image {
-    font-size: 16px;
+.slider-wrapper {
+    display: inline-block;
 }
 
-.controls-wrapper .slider-wrapper .large-image {
-    font-size: 24px;
-}
-
-.controls-wrapper .slider-wrapper * {
-    vertical-align: middle;
-}
-
-
-.controls-wrapper .slider-wrapper .cropit-image-zoom-input.custom {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 5px;
-    background: #eee;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    outline: none;
-}
 
 input.cropit-image-zoom-input.custom {
   display: inline-block;width: 50%;
