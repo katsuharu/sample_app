@@ -238,6 +238,10 @@ input {
   margin-right: 0;
 }
 
+#image-cropper {
+  overflow: hidden;
+}
+
 #image-cropper p.help-block {
     font-size: 0.95em;
 }
