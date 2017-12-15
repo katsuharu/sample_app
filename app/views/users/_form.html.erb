@@ -83,7 +83,7 @@
       <div class="cropit-image-preview">
         <%= image_tag @user.profile_img.url if @user.profile_img? %>
       </div>
-      <input type="range" class="cropit-image-zoom-input">
+      <input type="range" class="cropit-image-zoom-input custom" min="0" max="1" step="0.01">
       <%= f.file_field :profile_img, class: 'cropit-image-input' %>
     </div>
       <%= f.hidden_field :avatar_data_uri %>    
