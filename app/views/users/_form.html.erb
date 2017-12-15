@@ -79,12 +79,12 @@
         <% end %>
         <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください</p>
     </div>
+    <div class="col-xs-7">
       <div class="cropit-image-preview"></div>
       <input type="range" class="cropit-image-zoom-input">
       <%= f.file_field :profile_img, class: 'cropit-image-input' %>
+    </div>
       <%= f.hidden_field :avatar_data_uri %>    
-
-
      
   </div>
 
