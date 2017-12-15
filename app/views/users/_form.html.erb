@@ -82,7 +82,7 @@
     <div class="col-xs-7">
       <%= f.file_field :profile_img, class: 'cropit-image-input' %>
       <div class="cropit-image-preview">
-        <%= image_tag @user.profile_img.url if @user.profile_img? %>
+        <%= image_tag(@user.profile_img.url, class: "vanish") if @user.profile_img? %>
       </div>
       <input type="range" class="cropit-image-zoom-input">
     </div>
