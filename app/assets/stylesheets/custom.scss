@@ -269,6 +269,10 @@ input {
             cursor: pointer;
 }
 
+.rotation-btns  * {
+            vertical-align: middle;
+}
+
 .slider-wrapper {
     display: inline-block;
 }
