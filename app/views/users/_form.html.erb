@@ -84,10 +84,16 @@
       <div class="cropit-image-preview">
         <%= image_tag(@user.profile_img.url, class: "vanish") if @user.profile_img? %>
       </div>
-      <div class="slider-wrapper">
-        <i class="fa fa-picture-o icon icon-image small-image" aria-hidden="true"></i>
-        <input type="range" class="cropit-image-zoom-input custom">
-        <i class="fa fa-picture-o icon icon-image large-image" aria-hidden="true"></i>
+      <div class="controls-wrapper">
+        <div class="rotation-btns">
+          <i class="fa fa-undo icon" aria-hidden="true"></i>
+          <i class="fa fa-repeat icon" aria-hidden="true"></i>
+        </div>
+        <div class="slider-wrapper">
+          <i class="fa fa-picture-o icon icon-image small-image" aria-hidden="true"></i>
+          <input type="range" class="cropit-image-zoom-input custom">
+          <i class="fa fa-picture-o icon icon-image large-image" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
       <%= f.hidden_field :avatar_data_uri %>    
