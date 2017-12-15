@@ -1,5 +1,6 @@
-window.addEventListner('DOMContentLoaded', function() {
-	document.getElementById("user_profile_img").addEventListner('change', function(e) {
-		window.alert("hello");
-	}, true);	
+$(function() {
+        $('#user_profile_img').on("change", function() {
+        	console.log("kkk"); // ファイル名をログに出力する
+           }
+        )
 });
