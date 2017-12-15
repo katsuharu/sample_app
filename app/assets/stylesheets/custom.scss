@@ -295,12 +295,27 @@ input {
 }
 
 .slider-wrapper .cropit-image-zoom-input {
-    width: 130px;
-    margin: 0 20px;
+  width: 130px;
+  margin: 0 20px;
+}
+
+.slider-wrapper .cropit-image-zoom-input.custom {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: #eee;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
 }
 
 input.cropit-image-zoom-input.custom {
   display: inline-block;width: 50%;
+}
+
+input {
+  /* height: auto !important; */
 }
 
 /* -----/cropit-icon */
