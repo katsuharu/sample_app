@@ -260,6 +260,15 @@ input {
   margin-right: 4.5px;
 }
 
+.rotation-btns .icon {
+            -webkit-transition: color 0.25s;
+            -moz-transition: color 0.25s;
+            -o-transition: color 0.25s;
+            -ms-transition: color 0.25s;
+            transition: color 0.25s;
+            cursor: pointer;
+}
+
 .slider-wrapper {
     display: inline-block;
 }
