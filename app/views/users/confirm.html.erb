@@ -1,9 +1,9 @@
-<% provide(:title, '会員情報') %>
-<% provide(:page_title, "会員情報") %>
-<h2 class="bf-sub-title">新規登録 / Sign up</h2>
+<% provide(:title, '確認') %>
+<h2 class="bf-sub-title">登録確認</h2>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
+    <%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}) do |f| %>
         <div class="prof-attr">
           <label class="prof-label">
             <span class="label label-danger">必須</span>
@@ -87,14 +87,11 @@
         </div>
 
         <div class="actions">
-            <%= f.submit 'Back!', name: 'back'  # <=戻る為のname %>
+            <%= f.submit 'Back!', :name 'back'  # <=戻る為のname %>
         </div>
         <div class="actions">
           <%= f.submit 'create!' %>
         </div>
-
-        <div class="form-actions btn-center">
-          <%= link_to "←戻って編集する", edit_user_path(current_user) %>
-        </div>
+    <% end %> 
   </div>
 </div>
