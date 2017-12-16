@@ -18,9 +18,17 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
+  def confirm
+    @user = User.new(user_params) #POSTされたパラメータを取得
+    render :new if @user.invalid?
+  end
+
   def create
   	@user = User.new(user_params)
-  	if @user.save
+
+    if params[:back]
+      render :new
+  	elsif @user.save
       log_in @user
       flash[:success] = "ユーザー登録に成功いたしました。"
       redirect_to root_url
