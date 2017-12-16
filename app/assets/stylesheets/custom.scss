@@ -562,6 +562,19 @@ h4.cate_selected {
     margin: 13px auto;
 }
 
+/* プロフィール確認ページ */
+.prof-attr {
+  display: flex;
+}
+
+.prof-label {
+  flex:1;
+}
+
+.prof-cnt {
+  flex:1;
+}
+
 
 /* マッチング相手確認ページ */
 .user-cnt {
