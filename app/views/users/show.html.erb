@@ -14,64 +14,64 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="col-sm-4">
+        <div class="prof-attr">
+          <label class="prof-label">
             <span class="label label-danger">必須</span>
             メール / Mail
           </label>
-          <div class="col-sm-8">
+          <div class="prof-cnt">
             <%= @user.try :email %>
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="col-sm-4">
+        <div class="prof-attr">
+          <label class="prof-label">
             <span class="label label-danger">必須</span>
             パスワード / Password
           </label>
-          <div class="col-sm-8">
+          <div class="prof-cnt">
             <%= @user.try :password %>
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="col-sm-4">
+        <div class="prof-attr">
+          <label class="prof-label">
             <span class="label label-danger">必須</span>
             ひとこと(25文字以内)
           </label>
-          <div class="col-sm-8">
+          <div class="prof-cnt">
             <%= @user.try :self_intro %>
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="col-sm-4">
+        <div class="prof-attr">
+          <label class="prof-label">
             <span class="label label-danger">必須</span>
             部署 / Department
           </label>
-          <div class="col-sm-8">
+          <div class="prof-cnt">
             <%= @user.try :department_name %>
           </div>
         </div>        
 
-        <div class="form-group">
-          <label class="col-sm-4">
+        <div class="prof-attr">
+          <label class="prof-label">
             <span class="label label-danger">必須</span>
             Slack ID
           </label>
-          <div class="col-sm-8">
+          <div class="prof-cnt">
             <%= @user.try :slack_id %>
           </div>
         </div>   
         
 
-        <div class="form-group">
-          <label class="col-sm-4">
+        <div class="prof-attr">
+          <label class="prof-label">
             <span class="label label-danger">必須</span>
             プロフィール画像（本人写真）
             / profile picture
           </label>
-          <div class="col-sm-8">
+          <div class="prof-cnt">
             <%= image_tag @user.profile_img.url if @user.profile_img? %>
           </div>
         </div>   
