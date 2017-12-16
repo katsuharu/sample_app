@@ -2,37 +2,78 @@
 <% provide(:page_title, "会員情報") %>
 <h2 class="bf-sub-title">新規登録 / Sign up</h2>
 
-<div class="login-row">
-  <div class="col-lg-12">
-    <div class="bs-component">
-      <fieldset>
-
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
         <div class="form-group">
-          <label>名前</label>
-          <div><%= @user.try :name %></div>
+          <label class="col-sm-4">
+            <span class="label label-danger">必須</span>
+            名前 / Name
+          </label>
+          <div class="col-sm-8">
+            <%= @user.try :name %>
+          </div>
         </div>
 
         <div class="form-group">
-          <label>メールアドレス</label>
-          <div><%= @user.try :email %></div>
+          <label class="col-sm-4">
+            <span class="label label-danger">必須</span>
+            メール / Mail
+          </label>
+          <div class="col-sm-8">
+            <%= @user.try :email %>
+          </div>
         </div>
 
         <div class="form-group">
-          <label>部署名</label>
-          <div><%= @user.try :department_name %></div>
+          <label class="col-sm-4">
+            <span class="label label-danger">必須</span>
+            パスワード / Password
+          </label>
+          <div class="col-sm-8">
+            <%= @user.try :password %>
+          </div>
         </div>
 
         <div class="form-group">
-          <label>Slack ID</label>
-          <div><%= @user.try :slack_id %></div>
+          <label class="col-sm-4">
+            <span class="label label-danger">必須</span>
+            ひとこと(25文字以内)
+          </label>
+          <div class="col-sm-8">
+            <%= @user.try :self_intro %>
+          </div>
         </div>
 
         <div class="form-group">
-          <label>プロフィール写真</label>
-          <div><%= image_tag @user.profile_img.url if @user.profile_img? %></div>
-        </div>
+          <label class="col-sm-4">
+            <span class="label label-danger">必須</span>
+            部署 / Department
+          </label>
+          <div class="col-sm-8">
+            <%= @user.try :department_name %>
+          </div>
+        </div>        
 
-      </fieldset>
-    </div>
+        <div class="form-group">
+          <label class="col-sm-4">
+            <span class="label label-danger">必須</span>
+            Slack ID
+          </label>
+          <div class="col-sm-8">
+            <%= @user.try :slack_id %>
+          </div>
+        </div>   
+        
+
+        <div class="form-group">
+          <label class="col-sm-4">
+            <span class="label label-danger">必須</span>
+            プロフィール画像（本人写真）
+            / profile picture
+          </label>
+          <div class="col-sm-8">
+            <%= image_tag @user.profile_img.url if @user.profile_img? %>
+          </div>
+        </div>   
   </div>
 </div>
