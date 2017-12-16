@@ -27,7 +27,7 @@
 					どんな人と行く？
 				</>
 				<div class="category-select">
-					<%= collection_select(:user, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu"}) %>
+					<%= collection_select(:user, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
 				</div>
 			</div>
 				<div class="checkbox-center">
