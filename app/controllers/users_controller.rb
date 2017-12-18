@@ -44,10 +44,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit_confirm
-    @user = User.find(params[:id])
-    render :edit if @user.invalid?
-  end
+ 
 
   def update
     @user = User.find(params[:id])
