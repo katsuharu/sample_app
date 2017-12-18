@@ -20,11 +20,25 @@ class UsersController < ApplicationController
 
   def confirm
     @user = User.new(user_params) #POSTされたパラメータを取得
+    if @user.profile_img
+      p @user.profile_img
+      p "豊臣秀吉"
+    else
+      p "TTTTTTTTTTTT"
+      p "明智光秀"
+    end
     render :new if @user.invalid?
   end
 
   def create
+    p "森羅万象"
+    logger.info request.env
+    p "サマーズ"
   	@user = User.new(user_params)
+
+    p "立川談春"
+    p @user.profile_img
+    p "米軍基地"
 
     if params[:back]
       render :new
@@ -119,7 +133,7 @@ class UsersController < ApplicationController
 
   	def user_params
   		params.require(:user).permit(:name, :email, :password, :password_confirmation,
-        :profile_img, :department_name, :slack_id, :category_id, :self_intro, :avatar_data_uri)
+        :profile_img, :department_name, :slack_id, :category_id, :self_intro, :profile_img_data_uri)
   	end
 
 
