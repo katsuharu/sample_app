@@ -10,5 +10,5 @@ $(document).on 'turbolinks:load', () ->
 
     $('#user_form').on 'submit', ->
       imageData = $('#image-cropper').cropit('export')
-      $('#user_avatar_data_uri').val(imageData)
-      $('#user_avatar').replaceWith($('#user_avatar').clone())
+      $('#user_profile_img_data_uri').val(imageData)
+      $('#user_profile_img').replaceWith($('#user_profile_img').clone())
