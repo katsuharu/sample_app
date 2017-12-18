@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:back]
       render :edit
-    elsif if @user.update_attributes(user_params)
+    elsif @user.update_attributes(user_params)
       flash[:success] = "ユーザー情報を更新しました。"
       render 'show'
     else
