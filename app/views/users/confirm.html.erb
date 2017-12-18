@@ -80,13 +80,9 @@
           </label>
           <div class="prof-cnt">
             <%= image_tag @user.profile_img.url if @user.profile_img? %>
+            <%= image_tag @user.avatar_data_uri.url if @user.avatar_data_uri? %>
             <%= f.hidden_field :profile_img %>
-
-            <div id="image-cropper">
-                <div class="cropit-image-preview"></div>
-                <%= f.hidden_field :avatar_data_uri %>    
-            </div>
-
+            <%= f.hidden_field :avatar_data_uri %>
           </div>
         </div>
 
