@@ -44,11 +44,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_confirm
+    @user = User.find(params[:id])
+    render :edit if @user.invalid?
+  end
+
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if params[:back]
+      render :new
+    elsif if @user.update_attributes(user_params)
       flash[:success] = "ユーザー情報を更新しました。"
-      render 'edit'
+      render 'show'
     else
       render 'edit'
     end
