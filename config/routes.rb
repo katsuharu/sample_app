@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   get    '/entry',   to: 'users#check_entry_cnt'
 
   post   '/login',   to: 'sessions#create'
-  post '/confirm', to: 'users#confirm'
-  post    '/entry',        to: 'users#entry'
-  post    '/cancel',        to: 'users#cancel'
+  post   '/confirm', to: 'users#confirm'
+  post   '/entry',        to: 'users#entry'
+  post   '/cancel',        to: 'users#cancel'
   post   '/contact', to: 'static_pages#send_mail'
+
+  patch  '/confirm', to: 'users#confirm'
 
   delete '/logout',  to: 'sessions#destroy'
   resources :users  
