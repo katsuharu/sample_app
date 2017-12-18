@@ -15,8 +15,7 @@ Rails.application.routes.draw do
   post   '/entry',        to: 'users#entry'
   post   '/cancel',        to: 'users#cancel'
   post   '/contact', to: 'static_pages#send_mail'
-
-  patch  '/confirm', to: 'users#confirm'
+  post  '/edit_confirm', to: 'users#edit_confirm'
 
   delete '/logout',  to: 'sessions#destroy'
   resources :users  
