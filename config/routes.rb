@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post   '/contact', to: 'static_pages#send_mail'
   post  '/edit_confirm', to: 'users#edit_confirm'
 
+  patch '/edit_confirm', to: 'users#edit_confirm'
+
   delete '/logout',  to: 'sessions#destroy'
   resources :users  
   # resources :account_activations, only: [:edit]
