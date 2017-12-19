@@ -75,7 +75,6 @@
             <%= image_tag @user.profile_img.url if @user.profile_img? %>
           </div>
         </div>
-        <%= image_tag @user.profile_img_data_uri.url if @user.profile_img_data_uri? %>
 
         <div class="form-actions btn-center">
           <%= link_to "←戻って編集する", edit_user_path(current_user) %>
