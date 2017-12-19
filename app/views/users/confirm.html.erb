@@ -81,6 +81,8 @@
           <div class="prof-cnt">
             <%= image_tag @user.profile_img.url if @user.profile_img? %>
             <%= f.hidden_field :profile_img %>
+
+            <%= f.hidden_field :cache[profile_img], @user.profile_img.cache_name %>
           </div>
         </div>
 
