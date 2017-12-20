@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219025142) do
+ActiveRecord::Schema.define(version: 20171220105016) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -31,17 +31,17 @@ ActiveRecord::Schema.define(version: 20171219025142) do
     t.string   "slack_id"
     t.integer  "category_id"
     t.integer  "pair_id"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin"
     t.string   "activation_digest"
-    t.boolean  "activated",                       default: false
+    t.boolean  "activated",         default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-    t.binary   "profile_img",       limit: 65535
+    t.string   "profile_img"
     t.integer  "position_id"
     t.string   "self_intro"
     t.integer  "any_category"
