@@ -80,8 +80,7 @@
           </label>
           <div class="prof-cnt">
             <%= image_tag @user.profile_img.url if @user.profile_img? %>
-            <%= f.hidden_field :profile_img %>
-
+            <%= f.hidden_field :profile_img, :value => @user.profile_img.url %>
           </div>
         </div>
 
