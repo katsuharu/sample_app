@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def confirm
     @user = User.new(user_params) #POSTされたパラメータを取得
+    @user.profile_img.cache!
     if @user.profile_img
       p @user.profile_img
       p "豊臣秀吉"
@@ -35,10 +36,14 @@ class UsersController < ApplicationController
     logger.info request.env
     p "サマーズ"
   	@user = User.new(user_params)
+    p user_params
+
+    @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
 
     p "立川談春"
     p @user.profile_img
     p "米軍基地"
+
 
     if params[:back]
       render :new
@@ -133,7 +138,7 @@ class UsersController < ApplicationController
 
   	def user_params
   		params.require(:user).permit(:name, :email, :password, :password_confirmation,
-        :profile_img, :department_name, :slack_id, :category_id, :self_intro, :profile_img_data_uri)
+        :profile_img, :profile_img_cache, :department_name, :slack_id, :category_id, :self_intro, :profile_img_data_uri)
   	end
 
 
