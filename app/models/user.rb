@@ -1,10 +1,9 @@
 class User < ApplicationRecord
-	include UsersHelper
 
-	attr_accessor :remember_token, :activation_token, :reset_token, :avatar_data_uri
+	attr_accessor :remember_token, :activation_token, :reset_token, :profile_img_data_uri, :profile_img_cache
 	before_save :downcase_email
 	# before_create :create_activation_digest
-	before_validation :set_avatar_from_data_uri
+	before_validation :set_profile_img_from_data_uri
 	validates :name, presence: true, length: { maximum:50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255 },format: { with: VALID_EMAIL_REGEX },
@@ -12,12 +11,14 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }
 	mount_uploader :profile_img, PictureUploader
-	# validates :profile_img, presence: true
-	validates :self_intro, presence: true, length: { maximum: 25 }
+	# validates :profile_img, 	presence: true
+	# validates :profile_img_data_uri, presence: true
+	validates :self_intro, length: { maximum: 25 }
 	validates :department_name, presence: true
 	validates :slack_id, presence: true
-
 	validate :picture_size
+
+	include UsersHelper
 
 	# 渡された文字列のハッシュ値を返す
 	def User.digest(string)
@@ -86,11 +87,18 @@ class User < ApplicationRecord
 		UserMailer.matching_fail(self).deliver_now
 	end
 
-	def set_avatar_from_data_uri
-		
-		p "運慶"
-		logger.debug(avatar_data_uri)
-	    self.profile_img = data_uri_to_file(avatar_data_uri)
+	def set_profile_img_from_data_uri
+		p "ゲゲゲの鬼太郎"
+		p profile_img_data_uri
+		p "ごごご女房"
+		if profile_img_data_uri
+	    	self.profile_img = data_uri_to_file(profile_img_data_uri)
+			p "上田龍太郎"
+			p self.profile_img
+			p "山田太郎"
+		else
+			p "亀山けいし"
+		end
 	end
 
 

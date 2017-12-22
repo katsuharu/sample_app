@@ -1,9 +1,9 @@
-<% provide(:title, '会員情報') %>
-<% provide(:page_title, "会員情報") %>
-<h2 class="bf-sub-title">新規登録 / Sign up</h2>
+<% provide(:title, '確認') %>
+<h2 class="bf-sub-title">登録確認</h2>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
+    <%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}) do |f| %>
         <div class="prof-attr">
           <label class="prof-label">
             <span class="label label-danger">必須</span>
@@ -11,6 +11,7 @@
           </label>
           <div class="prof-cnt">
             <%= @user.try :name %>
+            <%= f.hidden_field :name %>
           </div>
         </div>
 
@@ -21,6 +22,7 @@
           </label>
           <div class="prof-cnt">
             <%= @user.try :email %>
+            <%= f.hidden_field :email %>
           </div>
         </div>
 
@@ -31,16 +33,19 @@
           </label>
           <div class="prof-cnt">
             <%= @user.try :password %>
+            <%= f.hidden_field :password %>
+            <%= f.hidden_field :password_confirmation %>
           </div>
         </div>
 
+
         <div class="prof-attr">
           <label class="prof-label">
-            <span class="label label-danger">必須</span>
             ひとこと(25文字以内)
           </label>
           <div class="prof-cnt">
             <%= @user.try :self_intro %>
+            <%= f.hidden_field :self_intro %>
           </div>
         </div>
 
@@ -51,6 +56,7 @@
           </label>
           <div class="prof-cnt">
             <%= @user.try :department_name %>
+            <%= f.hidden_field :department_name %>
           </div>
         </div>        
 
@@ -61,10 +67,10 @@
           </label>
           <div class="prof-cnt">
             <%= @user.try :slack_id %>
+            <%= f.hidden_field :slack_id %>
           </div>
         </div>   
         
-
         <div class="prof-attr">
           <label class="prof-label">
             <span class="label label-danger">必須</span>
@@ -73,11 +79,16 @@
           </label>
           <div class="prof-cnt">
             <%= image_tag @user.profile_img.url if @user.profile_img? %>
+            <%= hidden_field_tag :"cache[profile_img]", @user.profile_img.cache_name %>
           </div>
         </div>
 
-        <div class="form-actions btn-center">
-          <%= link_to "←戻って編集する", edit_user_path(current_user) %>
+        <div class="actions">
+            <%= f.submit 'Back!', name: 'back'%>
         </div>
+        <div class="actions">
+          <%= f.submit 'create!' %>
+        </div>
+    <% end %> 
   </div>
 </div>

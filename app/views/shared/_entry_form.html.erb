@@ -3,7 +3,7 @@
 		<% if matched? %>
 			<h2>マッチング相手を確認する</h2>
 			<div class="btn-center">
-				<%= link_to "heck matching partner", check_path, class: "square_btn" %>
+				<%= link_to "Check matching partner", check_path, class: "square_btn" %>
 			</div>
 		<% else %>
 			<h2>エントリー内容を確認する</h2>
@@ -20,14 +20,14 @@
 		<% end %>
 
 	<% else %>
-		<%= form_tag(action: :entry) do %>
+		<%= form_tag(action: :entry, id:"entry_submit") do %>
 			<h2>ランチへ行く</h2>
 			<div class="category-center">
 				<li class="category-select">
 					どんな人と行く？
 				</>
 				<div class="category-select">
-					<%= collection_select(:user, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu"}) %>
+					<%= collection_select(:user, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
 				</div>
 			</div>
 				<div class="checkbox-center">
@@ -40,3 +40,5 @@
 		<% end %>
 	<% end %>
 </div>
+
+

@@ -18,9 +18,19 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
+  def confirm
+    @user = User.new(user_params) #POSTされたパラメータを取得
+    @user.profile_img.cache!
+
+    render :new if @user.invalid?
+  end
+
   def create
   	@user = User.new(user_params)
-  	if @user.save
+    @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
+    if params[:back]
+      render :new
+  	elsif @user.save
       log_in @user
       flash[:success] = "ユーザー登録に成功いたしました。"
       redirect_to root_url
@@ -36,11 +46,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+ 
+
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if params[:back]
+      render :edit
+    elsif @user.update_attributes(user_params)
       flash[:success] = "ユーザー情報を更新しました。"
-      redirect_to user_path
+      render 'show'
     else
       render 'edit'
     end
@@ -73,7 +87,7 @@ class UsersController < ApplicationController
           member.send_success_email
         end
 
-        redirect_to root_url
+        redirect_to check_path
         flash[:success] = "マッチングが完了致しました。"
         #エントリーボタンを押してマッチングしたユーザーにマッチング成功のお知らせメールを送信
         return
@@ -107,7 +121,7 @@ class UsersController < ApplicationController
 
   	def user_params
   		params.require(:user).permit(:name, :email, :password, :password_confirmation,
-        :profile_img, :department_name, :slack_id, :category_id, :self_intro)
+        :profile_img, :profile_img_cache, :department_name, :slack_id, :category_id, :self_intro, :profile_img_data_uri)
   	end
 
 
