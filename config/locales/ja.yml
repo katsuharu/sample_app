@@ -10,3 +10,4 @@ ja:
         password_confirmation: パスワード確認
         department_name: 部署名
         slack_id: Slack ID
+        self_intro: ひとこと
