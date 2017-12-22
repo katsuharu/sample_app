@@ -1,4 +1,4 @@
-<%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}) do |f| %>
+<%= form_for(@user, url: {action: 'confirm'}, html: {id: :user_form,class: 'form-horizontal'}) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class="form-group">
@@ -43,7 +43,6 @@
 
   <div class="form-group">
     <%= f.label :self_intro, class: 'col-sm-4' do %>
-      <span class="label label-danger">必須</span>
       ひとこと(25文字以内)
     <% end %>
     <div class="col-sm-8">
@@ -72,21 +71,40 @@
   </div>
 
   <div class="form-inputs" id="image-cropper">
-      <div class="cropit-image-preview"></div>
-      <input type="range" class="cropit-image-zoom-input">
-      <%= f.label :profile_img %>
+    <div class="col-xs-5">
+        <%= f.label :profile_img do %>
+          <span class="label label-danger">必須</span>
+          プロフィール画像（本人写真）
+          / profile picture
+        <% end %>
+        <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください</p>
+    </div>
+    <div class="col-xs-7">
       <%= f.file_field :profile_img, class: 'cropit-image-input' %>
-      <%= f.hidden_field :avatar_data_uri %>
-      
+      <div class="cropit-image-preview">
+        <%= image_tag(@user.profile_img.url, class: "vanish") if @user.profile_img? %>
+      </div>
+      <div class="controls-wrapper">
+        <div class="rotation-btns">
+          <i class="fa fa-undo icon rotate-ccw" aria-hidden="true"></i>
+          <i class="fa fa-repeat icon rotate-cw" aria-hidden="true"></i>
+        </div>
+        <div class="slider-wrapper">
+          <i class="fa fa-picture-o icon icon-image small-image" aria-hidden="true"></i>
+          <input type="range" class="cropit-image-zoom-input custom">
+          <i class="fa fa-picture-o icon icon-image large-image" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+      <%= f.hidden_field :profile_img_data_uri %>    
+     
   </div>
 
-
-  <div class="form-actions">
-    <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn" %>
+  <div class="form-actions btn-center">
+      <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn" %>
   </div>
 <% end %>
 
-<%= javascript_include_tag "jquery.cropit.js" %>
 <script type="text/javascript">
   $('#user_profile_img').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
