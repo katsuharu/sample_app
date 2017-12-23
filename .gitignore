@@ -20,3 +20,6 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore automatically created file
+.DS_Store
