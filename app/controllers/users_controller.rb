@@ -26,20 +26,29 @@ class UsersController < ApplicationController
   end
 
   def create
-  	@user = User.new(user_params)
-    @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
-    if params[:back]
-      render :new
-  	elsif @user.save
-      log_in @user
-      flash[:success] = "ユーザー登録に成功いたしました。"
-      redirect_to root_url
-      # @user.send_activation_email
-  		# flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
-  		# redirect_to root_url
-  	else
-  		render 'new'
-  	end
+    if env['omniauth.auth'].present?
+        # Facebookログイン
+        @user  = User.from_omniauth(env['omniauth.auth'])
+        if @user.save(context: :facebook_login)
+          log_in @user
+          flash[:success] = "ユーザー登録に成功いたしました。"
+          redirect_to root_url
+    else
+    	@user = User.new(user_params)
+      @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
+      if params[:back]
+        render :new
+    	elsif @user.save
+        log_in @user
+        flash[:success] = "ユーザー登録に成功いたしました。"
+        redirect_to root_url
+        # @user.send_activation_email
+    		# flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
+    		# redirect_to root_url
+    	else
+    		render 'new'
+    	end
+    end
   end
 
   def edit
