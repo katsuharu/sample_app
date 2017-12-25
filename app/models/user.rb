@@ -1,10 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-	has_many :authorizations
-
 	attr_accessor :remember_token, :activation_token, :reset_token, :profile_img_data_uri, :profile_img_cache
 	before_save :downcase_email
 	# before_create :create_activation_digest
@@ -110,6 +104,20 @@ class User < ApplicationRecord
 	    #authの情報を元にユーザー生成の処理を記述
 	    #auth["credentials"]にアクセストークン、シークレットなどの情報が入ってます。
 	    #auth["info"]["email"]にユーザーのメールアドレスが入ってます。(Twitterはnil)
+	    Userwhere(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+	    	user.provider = auth.provider
+	    	user.uid = auth.uid
+	     
+	    unless auth.info.blank?
+	       user.name = auth.info.name
+	       user.screen_name = auth.info.screen_name
+	       user.image = auth.info.image
+	    end
+
+	    user.oauth_token = auth.credentials.token
+	    user.oauth_expires_at = Time.at(auth.credentials.expires_at) unless auth.credentials.expires_at.nil? 
+	    user.save!
+	    end
 	end
 
 
