@@ -45,6 +45,7 @@ gem 'rails_cropit'
 
 gem 'rails-i18n'
 
+gem 'devise'
 gem "omniauth", '~>1.6'
 gem "omniauth-facebook", '~> 4.0'
 
