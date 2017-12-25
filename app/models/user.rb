@@ -102,6 +102,12 @@ class User < ApplicationRecord
 		end
 	end
 
+	def User.create_from_auth!(auth)
+	    #authの情報を元にユーザー生成の処理を記述
+	    #auth["credentials"]にアクセストークン、シークレットなどの情報が入ってます。
+	    #auth["info"]["email"]にユーザーのメールアドレスが入ってます。(Twitterはnil)
+	end
+
 
 	private
 
