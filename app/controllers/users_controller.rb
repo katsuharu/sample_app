@@ -33,6 +33,7 @@ class UsersController < ApplicationController
           log_in @user
           flash[:success] = "ユーザー登録に成功いたしました。"
           redirect_to root_url
+        end
     else
     	@user = User.new(user_params)
       @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
