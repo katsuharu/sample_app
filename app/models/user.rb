@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+	has_many :authorizations
+	
 	attr_accessor :remember_token, :activation_token, :reset_token, :profile_img_data_uri, :profile_img_cache
 	before_save :downcase_email
 	# before_create :create_activation_digest
