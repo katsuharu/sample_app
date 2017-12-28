@@ -44,6 +44,8 @@ gem 'rails_cropit'
 
 gem 'rails-i18n'
 
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+
 gem "omniauth", '~>1.6'
 gem "omniauth-facebook", '~> 4.0'
 
