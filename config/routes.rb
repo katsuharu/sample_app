@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   
   resources :users  
-  # resources :account_activations, only: [:edit]
+  resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
   # routesに記載のないurlへのアクセスを全てリダイレクト
