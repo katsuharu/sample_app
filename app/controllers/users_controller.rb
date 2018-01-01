@@ -40,6 +40,7 @@ class UsersController < ApplicationController
       @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
       if params[:back]
         render :new
+        return
     	elsif @user.save
         log_in @user
         flash[:success] = "ユーザー登録に成功いたしました。"
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
         return
     	else
     		render 'new'
+        return
     	end
     end
   end
