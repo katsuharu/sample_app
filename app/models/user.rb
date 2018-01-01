@@ -3,7 +3,7 @@ class User < ApplicationRecord
 	
 	attr_accessor :remember_token, :activation_token, :reset_token, :profile_img_data_uri, :profile_img_cache
 	before_save :downcase_email
-	# before_create :create_activation_digest
+	before_create :create_activation_digest
 	before_validation :set_profile_img_from_data_uri
 	validates :name, presence: true, length: { maximum:50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
