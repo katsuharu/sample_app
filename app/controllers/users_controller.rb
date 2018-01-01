@@ -43,9 +43,9 @@ class UsersController < ApplicationController
         log_in @user
         flash[:success] = "ユーザー登録に成功いたしました。"
         redirect_to root_url
-        # @user.send_activation_email
-    		# flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
-    		# redirect_to root_url
+        @user.send_activation_email
+    		flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
+    		redirect_to root_url
     	else
     		render 'new'
     	end
@@ -55,8 +55,6 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-
- 
 
   def update
     @user = User.find(params[:id])
