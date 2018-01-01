@@ -14,9 +14,9 @@ class SessionsController < ApplicationController
     	user = User.find_by(email:params[:session][:email].downcase)
     	if user && user.authenticate(params[:session][:password])
     		if user.activated?
-        log_in user
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-    		redirect_back_or user
+          log_in user
+          params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+    		  redirect_back_or user
         else
           message = "アカウントが有効化されておりません。"
           message += "送られてきたメールのリンクでアカウントを有効化してください。"
