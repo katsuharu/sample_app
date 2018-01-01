@@ -33,6 +33,7 @@ class UsersController < ApplicationController
           log_in @user
           flash[:success] = "ユーザー登録に成功いたしました。"
           redirect_to root_url
+          return
         end
     else
     	@user = User.new(user_params)
@@ -46,6 +47,7 @@ class UsersController < ApplicationController
         @user.send_activation_email
     		flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
     		redirect_to root_url
+        return
     	else
     		render 'new'
     	end
