@@ -42,9 +42,6 @@ class UsersController < ApplicationController
         render :new
         return
     	elsif @user.save
-        log_in @user
-        flash[:success] = "ユーザー登録に成功いたしました。"
-        redirect_to root_url
         @user.send_activation_email
     		flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
     		redirect_to root_url
