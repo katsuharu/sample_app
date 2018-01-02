@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     if logged_in?
       @user = current_user
-      @users = User.where.not(category_id: nil).paginate(page: params[:page])
+      @users = User.where.not(category_id: nil)
     end
   end
 
