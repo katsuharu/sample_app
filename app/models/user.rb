@@ -104,23 +104,13 @@ class User < ApplicationRecord
 	end
 
 	def User.create_from_auth!(auth)
-	    #authの情報を元にユーザー生成の処理を記述
-	    #auth["credentials"]にアクセストークン、シークレットなどの情報が入ってます。
-	    #auth["info"]["email"]にユーザーのメールアドレスが入ってます。(Twitterはnil)
-	    Userwhere(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-	    	user.provider = auth.provider
-	    	user.uid = auth.uid
-	     
-	    unless auth.info.blank?
-	       user.name = auth.info.name
-	       user.screen_name = auth.info.screen_name
-	       user.image = auth.info.image
-	    end
+    	user = User.new
+	    user.id   = auth.uid
+	    user.name  = auth.info.name
+	    user.email = auth.info.email
+	    user.profile_img  = auth.info.image
 
-	    user.oauth_token = auth.credentials.token
-	    user.oauth_expires_at = Time.at(auth.credentials.expires_at) unless auth.credentials.expires_at.nil? 
-	    user.save!
-	    end
+	    user
 	end
 
 
