@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
     if auth.present?
-      unless @auth = Authorization.find_from_auth(auth)
-        @auth = Authorization.create_from_auth(auth)
-      end
-      user = @auth.user
-      redirect_back_or user
+      @user  = User.from_omniauth(env['omniauth.auth'])
+      if @user.save(context: :facebook_login)
+        log_in user
+        flash[:success] = "ログインしました。" 
+        redirect_back_or user
     else
     	user = User.find_by(email:params[:session][:email].downcase)
     	if user && user.authenticate(params[:session][:password])
