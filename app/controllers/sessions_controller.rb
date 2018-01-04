@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
         log_in user
         flash[:success] = "ログインしました。" 
         redirect_back_or user
+      end
     else
     	user = User.find_by(email:params[:session][:email].downcase)
     	if user && user.authenticate(params[:session][:password])
