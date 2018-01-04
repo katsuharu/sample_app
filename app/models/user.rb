@@ -90,25 +90,20 @@ class User < ApplicationRecord
 	end
 
 	def set_profile_img_from_data_uri
-		p "ゲゲゲの鬼太郎"
-		p profile_img_data_uri
-		p "ごごご女房"
 		if profile_img_data_uri
 	    	self.profile_img = data_uri_to_file(profile_img_data_uri)
-			p "上田龍太郎"
-			p self.profile_img
-			p "山田太郎"
-		else
-			p "亀山けいし"
 		end
 	end
 
 	def User.create_from_auth!(auth)
-    	user = User.new
-	    user.id   = auth.uid
-	    user.name  = auth.info.name
-	    user.email = auth.info.email
-	    user.profile_img  = auth.info.image
+		user = User.new(
+	    	id: auth.user_id,
+	    	name: auth.info.name,
+	    	email: auth.info.email,
+	    	profile_img: auth.info.image,
+			activated: true,
+			activated_at: Time.zone.now
+		)
 
 	    user
 	end
