@@ -1,7 +1,7 @@
 class Authorization < ApplicationRecord
 	belongs_to :user
 	#:providerと:uidはもちろんのことユーザーとの紐付け(:user_id)も保証
-	validates :user_id, presence: true
+	# validates :user_id, presence: true
 	validates :uid, presence: true
 	validates :provider, presence: true
 
