@@ -11,7 +11,6 @@ class User < ApplicationRecord
 	uniqueness:{case_sensitive: false}
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }
-	validates :password, presence: false, on: :facebook_login
 	mount_uploader :profile_img, PictureUploader
 	# validates :profile_img, 	presence: true
 	# validates :profile_img_data_uri, presence: true
@@ -19,6 +18,12 @@ class User < ApplicationRecord
 	validates :department_name, presence: true
 	validates :slack_id, presence: true
 	validate :picture_size
+
+	validates :password, presence: false, on: :facebook_login
+	validates :password_confirmation, presence: false, on: :facebook_login
+	validates :department_name, presence: false, on: :facebook_login
+	validates :slack_id, presence: false, on: :facebook_login
+
 
 	include UsersHelper
 
