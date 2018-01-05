@@ -26,15 +26,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    if env['omniauth.auth'].present?
-        # Facebookログイン
-        @user  = User.from_omniauth(env['omniauth.auth'])
-        if @user.save(context: :facebook_login)
-          log_in @user
-          flash[:success] = "ユーザー登録に成功いたしました。"
-          redirect_to root_url
-          return
-        end
+    auth = request.env["omniauth.auth"]
+    if auth.present?
+      if @auth = Authorization.find_from_auth(auth)
+        user = @auth.user
+        log_in user
+        redirect_back_or user
+      else  
+        @auth = Authorization.create_from_auth(auth)
+        user = @auth.user
+        log_in user
+        remember(user)
+        flash[:success] = "ユーザー登録に成功いたしました。"
+        redirect_back_or user
+      end
     else
     	@user = User.new(user_params)
       @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
@@ -55,6 +60,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def edit_confirm
+    @user = User.new(user_params) #POSTされたパラメータを取得
+    @user.profile_img.cache!
+
+    render :new if @user.invalid?
   end
 
   def update
