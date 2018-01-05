@@ -101,16 +101,15 @@ class User < ApplicationRecord
 	end
 
 	def User.create_from_auth!(auth)
-		user = User.new(
-	    	id: auth.user_id,
+		@user = User.new(
 	    	name: auth.info.name,
 	    	email: auth.info.email,
 	    	profile_img: auth.info.image,
 			activated: true,
 			activated_at: Time.zone.now
 		)
-
-	    user
+		@user.save(context: :facebook_login)
+	    @user
 	end
 
 
