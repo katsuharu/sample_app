@@ -15,8 +15,8 @@ class User < ApplicationRecord
 	# validates :profile_img, 	presence: true
 	# validates :profile_img_data_uri, presence: true
 	validates :self_intro, length: { maximum: 25 }
-	validates :department_name, presence: true
-	validates :slack_id, presence: true
+	validates :department_name, presence: true ,on: :create
+	validates :slack_id, presence: true ,on: :create
 	validate :picture_size
 
 	validates :password, presence: false, on: :facebook_login
@@ -104,6 +104,7 @@ class User < ApplicationRecord
 		@user = User.new(
 	    	name: auth.info.name,
 	    	email: auth.info.email,
+	    	password: "sasaki",
 	    	profile_img: auth.info.image,
 			activated: true,
 			activated_at: Time.zone.now
