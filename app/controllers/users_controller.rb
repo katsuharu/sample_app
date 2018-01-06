@@ -27,12 +27,26 @@ class UsersController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
+    p "色川武大"
+    p auth.info.image
+    p auth.info.user_friends
+    p auth.user_friends
+    p auth.extra.raw_info.user_friends
+
+    p auth.user_likes
+    p auth.info.user_likes
+    p auth.extra.raw_info.user_likes
+    
+    p auth.extra.raw_info.gender
+    p auth.extra.raw_info.timezone
+    p auth.credentials
+    p "太宰治"
     if auth.present?
       if @auth = Authorization.find_from_auth(auth)
         user = @auth.user
         log_in user
         redirect_back_or user
-      else  
+      else
         @auth = Authorization.create_from_auth(auth)
         user = @auth.user
         log_in user
