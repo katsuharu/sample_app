@@ -216,16 +216,6 @@ input {
 }
 
 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
-}
-
-
 .form-horizontal .form-img {
   display: flex;
 }
@@ -250,6 +240,12 @@ input {
 
 .cropit-preview-background {
   opacity: .2;
+}
+
+
+/* --- confirmページ ---- */
+input.square_btn.confirm_btn {
+    margin: 20px 30px;
 }
 
 
