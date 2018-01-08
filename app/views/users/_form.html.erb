@@ -72,22 +72,21 @@
 
   <div class="form-inputs" id="image-cropper">
     <div class="col-xs-5">
-        <%= f.label :profile_img do %>
-          <span class="label label-danger">必須</span>
-          プロフィール画像（本人写真）
-          / profile picture
-        <% end %>
-        <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください</p>
+      <%= f.label :profile_img do %>
+        プロフィール画像（本人写真）
+        / profile picture
+      <% end %>
+      <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください</p>
     </div>
     <div class="col-xs-7">
       <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input', required: true %>
-      <div class="cropit-image-preview">
+      <div class="cropit-preview">
         <%= image_tag(@user.profile_img.url, class: "vanish") if @user.profile_img? %>
       </div>
       <div class="controls-wrapper">
         <div class="rotation-btns">
-          <i class="fa fa-undo icon rotate-ccw" aria-hidden="true"></i>
-          <i class="fa fa-repeat icon rotate-cw" aria-hidden="true"></i>
+          <i class="fa fa-undo icon rotate-ccw-btn" aria-hidden="true"></i>
+          <i class="fa fa-repeat icon rotate-cw-btn" aria-hidden="true"></i>
         </div>
         <div class="slider-wrapper">
           <i class="fa fa-picture-o icon icon-image small-image" aria-hidden="true"></i>
@@ -97,7 +96,6 @@
       </div>
     </div>
       <%= f.hidden_field :profile_img_data_uri %>    
-     
   </div>
 
   <div class="form-actions btn-center">
