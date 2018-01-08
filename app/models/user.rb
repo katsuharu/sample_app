@@ -5,25 +5,31 @@ class User < ApplicationRecord
 	before_save :downcase_email
 	before_create :create_activation_digest
 	before_validation :set_profile_img_from_data_uri
-	validates :name, presence: true, length: { maximum:50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-	validates :email, presence: true, length: { maximum: 255 },format: { with: VALID_EMAIL_REGEX },
-	uniqueness:{case_sensitive: false}
 	has_secure_password
-	validates :password, presence: true, length: { minimum: 6 }
 	mount_uploader :profile_img, PictureUploader
-	validates :profile_img, 	presence: true
-	# validates :profile_img_data_uri, presence: true
+	
+	validates :name, presence: true, length: { maximum:50 }
+	validates :email, presence: true, length: { maximum: 255 },format: { with: VALID_EMAIL_REGEX },uniqueness:{case_sensitive: false}
+	validates :password, presence: true, length: { minimum: 6 }
 	validates :self_intro, length: { maximum: 25 }
-	validates :department_name, presence: true ,on: :create
-	validates :slack_id, presence: true ,on: :create
+
+
+	with_options on: :create do |create|
+	  	create.validates :department_name, presence: true
+	  	create.validates :slack_id, presence: true
+		create.validates :profile_img, 	presence: true
+	end
+
+	with_options on: :fb_login do |fb_login|
+	  fb_login.validates :password, presence: false
+	  fb_login.validates :password_confirmation, presence: false
+	  fb_login.validates :department_name, presence: false
+	  fb_login.validates :slack_id, presence: false
+	  fb_login.validates :profile_img, 	presence: false
+	end
+
 	validate :picture_size
-
-	validates :password, presence: false, on: :facebook_login
-	validates :password_confirmation, presence: false, on: :facebook_login
-	validates :department_name, presence: false, on: :facebook_login
-	validates :slack_id, presence: false, on: :facebook_login
-
 
 	include UsersHelper
 
@@ -109,7 +115,7 @@ class User < ApplicationRecord
 			activated: true,
 			activated_at: Time.zone.now
 		)
-		@user.save(context: :facebook_login)
+		@user.save(context: :fb_login)
 	    @user
 	end
 
