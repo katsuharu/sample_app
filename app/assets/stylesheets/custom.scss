@@ -172,7 +172,7 @@ footer {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  margin-bottom: 15px;
+  margin: 0 auto 25px;
   @include box_sizing;
 }
 
