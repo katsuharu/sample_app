@@ -14,4 +14,11 @@ $(document).on('turbolinks:load', function() {
 	$('.rotate-ccw-btn').click(function() {
 	  $('#image-cropper').cropit('rotateCCW');
 	});
+
+	$('#user_form').on('submit', function() {
+	  var imageData;
+	  imageData = $('#image-cropper').cropit('export');
+	  $('#user_profile_img_data_uri').val(imageData);
+	  return $('#user_profile_img').replaceWith($('#user_profile_img').clone());
+	});
 });
