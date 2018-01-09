@@ -448,6 +448,11 @@ a.square_btn.bf-top {
   margin-bottom: 20px;
 }
 
+@media (max-width: 767px) {
+  .login-row .form-control {
+    width: 100%;
+  }
+}
 
 /* エントリー中ユーザ一覧 */
 
