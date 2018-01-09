@@ -166,6 +166,27 @@ footer {
   color: $content-color;
 }
 
+@media (max-width: 767px) {
+  .footer li {
+    margin: 20px;
+    font-size: 13px;
+    list-style: none;
+    float: none;
+  }
+
+
+  .footer-menu {
+    float :none;
+    margin-top: 10px;
+  }
+
+  .copy-right {
+    float: none;
+    margin: 10px 20px 0;
+    font-size: 12px;
+  }
+}
+
 /* miscellaneous */
 
 .debug_dump {
