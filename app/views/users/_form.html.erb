@@ -71,14 +71,14 @@
   </div>
 
   <div class="form-inputs" id="image-cropper">
-    <div class="col-xs-5">
+    <div class="col-sm-5">
       <%= f.label :profile_img do %>
         プロフィール画像（本人写真）
         / profile picture
       <% end %>
       <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください</p>
     </div>
-    <div class="col-xs-7">
+    <div class="col-sm-7">
       <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input', required: true %>
       <div class="cropit-preview">
         <%= image_tag(@user.profile_img.url, class: "vanish") if @user.profile_img? %>
