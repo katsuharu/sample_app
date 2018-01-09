@@ -98,6 +98,12 @@ p {
   font-weight: 500;
 }
 
+@media (max-width: 767px) {
+  h1.basic-heading {
+    font-size: 1.8em;
+  }
+}
+
 /* header */
 
 #logo {
