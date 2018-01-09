@@ -142,6 +142,17 @@ ul.nav.navbar-nav.navbar-right {
   margin: 0 30px;
 }
 
+@media (max-width: 767px) {
+  #logo {
+    float: none;
+  }
+  .navbar-default .navbar-header {
+    margin: 0;
+    text-align:  center;
+  }
+
+}
+
 /* footer */
 
 footer {
