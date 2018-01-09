@@ -168,10 +168,12 @@ footer {
 
 @media (max-width: 767px) {
   .footer li {
-    margin: 20px;
+    margin: 20px 10px;
     font-size: 13px;
     list-style: none;
     float: none;
+
+    border-bottom: 1px solid #666;
   }
 
 
@@ -182,7 +184,6 @@ footer {
 
   .copy-right {
     float: none;
-    margin: 10px 20px 0;
     font-size: 12px;
   }
 }
