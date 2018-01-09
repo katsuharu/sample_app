@@ -1,13 +1,9 @@
-michael:
-  name: 佐々木勝春
-  email: sasaki-katsuharu@kcgrp.jp
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
-
-archer:
-  name: Sterling Archer
-  email: duchess@example.gov
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
+goemon:
+  name: "五右衛門"
+   email: "tokyo@gmail.com",
+   password:              "sasaki",
+   password_confirmation: "sasaki",
+   department_name: "営業",
+   slack_id: "3",
+   activated: true
+   activated_at: Time.zone.now
