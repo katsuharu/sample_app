@@ -34,7 +34,6 @@ a:hover {
 
 
 body {
-  padding-top: 60px;
   font-family: "Rounded Mplus 1c";
   color: $content-color;
 }
@@ -120,7 +119,7 @@ p {
   }
 }
 
-header.navbar.navbar-fixed-top.navbar-default {
+header.navbar.navbar-default {
     background-color: $navi-color;
     border: none;
     height: 65px;
