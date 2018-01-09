@@ -134,12 +134,13 @@ header.navbar.navbar-fixed-top.navbar-default {
   font-weight: bold;
 }
 
-.navi-header {
+.navbar-default .navbar-header {
   margin: 0 30px;
 }
 
 ul.nav.navbar-nav.navbar-right {
   padding-top: 9px;
+  margin: 0 30px;
 }
 
 /* footer */
