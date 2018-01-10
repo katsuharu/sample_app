@@ -669,6 +669,12 @@ h4.cate_selected {
     margin: 13px auto;
 }
 
+@media (max-width: 767px) {
+  #slider_wrap {
+    width: 100%;
+  }
+}
+
 /* プロフィール確認ページ */
 @media (min-width: 768px) {
   .prof-attr {
