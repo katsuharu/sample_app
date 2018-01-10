@@ -84,7 +84,7 @@
         <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください</p>
       </div>
       <div class="col-sm-7">
-        <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input', required: true %>
+        <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input'%>
         <div class="cropit-preview">
           <%= image_tag(@user.profile_img.url, class: "vanish") if @user.profile_img? %>
         </div>
