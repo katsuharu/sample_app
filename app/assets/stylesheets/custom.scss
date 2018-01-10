@@ -563,6 +563,13 @@ section.entry_form {
     text-align: center;
 }
 
+
+@media (max-width: 767px) {
+  .user-info .col-sm-4 {
+      text-align:  center;
+  }
+}
+
 @media (max-width: 384px) {
   .entry-user .entry-photo {
     flex: 1;
