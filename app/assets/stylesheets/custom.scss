@@ -148,7 +148,7 @@ header.navbar.navbar-default {
   nav {
       background-color: #ffe000;
   }
-  
+
   .navbar-default .navbar-header {
     margin: 0;
     text-align:  center;
@@ -636,20 +636,32 @@ h4.cate_selected {
 }
 
 /* プロフィール確認ページ */
-.prof-attr {
-  display: flex;
-  font-size: 1.4em;
-  font-weight: 700;
-  margin-bottom: 40px;
+@media (min-width: 768px) {
+  .prof-attr {
+    display: flex;
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+
+  .prof-label {
+    flex:1;
+  }
+
+  .prof-cnt {
+    flex:1;
+    padding-left: 35px;
+  }
 }
 
-.prof-label {
-  flex:1;
-}
+@media (max-width: 767px) {
+  .prof-attr {
+    margin-bottom: 40px;
+  }
 
-.prof-cnt {
-  flex:1;
-  padding-left: 35px;
+  .prof-label {
+    margin-bottom: 20px;
+  }
 }
 
 
