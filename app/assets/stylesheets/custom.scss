@@ -171,6 +171,10 @@ header.navbar.navbar-default {
   .nav > li > a {
     padding: 20px 25px;
   }
+
+  .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: yellow;
+  }
 }
 
 /* footer */
