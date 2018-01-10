@@ -77,7 +77,7 @@
             プロフィール画像（本人写真）
             / profile picture
           </label>
-          <div class="prof-cnt">
+          <div class="prof-cnt prof-img">
             <%= image_tag @user.profile_img.url if @user.profile_img? %>
             <%= hidden_field_tag :"cache[profile_img]", @user.profile_img.cache_name %>
           </div>
