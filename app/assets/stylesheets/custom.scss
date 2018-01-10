@@ -204,6 +204,10 @@ footer {
 }
 
 @media (max-width: 767px) {
+  footer {
+    padding: 0;
+  }
+
   .footer li {
     margin: 0;
     padding: 5px;
