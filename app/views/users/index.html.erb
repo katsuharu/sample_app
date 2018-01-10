@@ -3,10 +3,10 @@
     <div class="container-fluid entry-cnt">
       <h2>プロフィール</h2>
       <div class="user-info row">
-        <div class="col-xs-4">
+        <div class="col-sm-4">
           <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
         </div>
-        <div class="col-xs-8">
+        <div class="col-sm-8">
           <%= render 'shared/user_info' %>
         </div>
       </div>
