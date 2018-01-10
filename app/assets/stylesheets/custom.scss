@@ -690,25 +690,44 @@ h4.cate_selected {
 
 
 /* マッチング相手確認ページ */
-.user-cnt {
-    margin: 4em auto;
+@media (min-width: 768px) {
+  .user-cnt {
+      margin: 4em auto;
+  }
+
+  .pair-info {
+      display: flex;
+  }
+
+  .pair-img {
+      flex: 1;
+  }
+
+  .pair-text {
+      flex: 2;
+
+      p.slack_id {
+          color: orange;
+          font-size: 1.4em;
+      }
+  }
 }
 
-.pair-info {
-    display: flex;
-}
 
-.pair-img {
-    flex: 1;
-}
+@media (max-width: 767px) {
+  .pair-info {
+  }
 
-.pair-text {
-    flex: 2;
+  .pair-img {
+  }
 
-    p.slack_id {
-        color: orange;
-        font-size: 1.4em;
-    }
+  .pair-text {
+
+      p.slack_id {
+          color: orange;
+          font-size: 1.4em;
+      }
+  }
 }
 
 
