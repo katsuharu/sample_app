@@ -617,6 +617,16 @@ section.entry_form {
   border: none;
 }
 
+@media (max-width: 767px) {
+  #slider_wrap {
+    padding: 0;
+  }
+
+  #photo_list {
+    padding: 0;
+  }
+}
+
 /* エントリー完了画面 */
 .comp-entry {
   text-align: center;
