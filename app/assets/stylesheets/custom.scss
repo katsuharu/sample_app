@@ -175,6 +175,10 @@ header.navbar.navbar-default {
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: yellow;
   }
+
+  .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: $navi-color;
+  }
 }
 
 /* footer */
