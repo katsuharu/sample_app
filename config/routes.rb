@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
   
   get    '/contact', to: 'static_pages#contact'
-  get    '/waiting', to: 'static_pages#waiting'
   get    '/check', to: 'users#check'
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
