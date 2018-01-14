@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def index
     if logged_in?
       @user = current_user
+      @user.update_attribute(:logined_at, DateTime.now)
       @users = User.where.not(category_id: nil)
     end
   end
