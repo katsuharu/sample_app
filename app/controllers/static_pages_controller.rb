@@ -1,18 +1,5 @@
 class StaticPagesController < ApplicationController
-  def home
-  	if logged_in?
-      @users = User.where.not(category_id: nil)
-    end
-  end
-
-  def entry
-
-  end
-
   def contact
-  end
-
-  def waiting
   end
 
   def send_mail
