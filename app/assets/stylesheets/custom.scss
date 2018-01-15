@@ -808,6 +808,76 @@ h4.cate_selected {
 }
 
 
+
+/* hobbyページ */
+ul {
+  list-style-type: none;
+}
+
+.hobby {
+  display: flex;
+}
+
+#hobby_layer {
+  flex: 1;
+}
+
+#kind_layer {
+  flex: 1;
+}
+
+#concreate_layer {
+  flex: 1;
+}
+
+#hobby_layer {
+  width: 150px;
+  height: 150px;
+  background-color: #adff2f;
+  margin-right: 30px;
+}
+
+#kind_layer {
+  width: 150px;
+  height: 150px;
+  background-color: #adff2f;
+  margin-right: 30px;
+}
+
+#con_list {
+  width: 150px;
+  height: 150px;
+  background-color: #adff2f;
+  margin-right: 30px;
+}
+
+
+
+/**/
+.hobby_list {
+  display: flex;
+}
+
+#my_hobby {
+  flex: 1;
+  width: 150px;
+  height: 150px;
+}
+
+#hobby_delete {
+  flex: 7;
+  width: 50px;
+  height: 50px;
+}
+
+
+
+.hobby_list {
+  width: 700px;
+  height: 300px;
+}
+
+
 /* others */
 .label-danger {
   background-color: #FFA900;
