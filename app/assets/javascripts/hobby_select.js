@@ -33,12 +33,8 @@ $(document).on('turbolinks:load', function() {
   $('#hobby_layer li').click(function() {
     var id = $(this).attr('id')
 
-    // console.log(hobby_list[id])
     var keyset = Object.keys(hobby_list[id])
-    // console.log(keyset)
-
     var len = keyset.length
-    // console.log(len)
 
     if (kind_layer.getElementsByTagName('li').length > 0) {
       // 全てのliを削除
@@ -69,16 +65,10 @@ $(document).on('turbolinks:load', function() {
   // 二階層目のitemをクリックした時に、下層のitemリストを表示
   $(document).on('click', '#kind_layer li', function() {
     var cls = $(this).parent().attr('class')
-    // console.log($(this).parent())
-
 
     var target = $(this)
     var len = hobby_list[cls][target.text()].length
 
-    // console.log(target.text())
-
-    // console.log(hobby_list[cls])
-    console.log(hobby_list[cls][target.text()])
 
 
     if (con_list.getElementsByTagName('li').length > 0) {
@@ -128,7 +118,6 @@ $(document).on('turbolinks:load', function() {
     })
 
     if (isSame) {
-      console.log('already exists')
     } else {
       var li = document.createElement('li')
       var li_del = document.createElement('li')
@@ -141,8 +130,6 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('click', '#hobby_delete li', function() {
     var index = $('#hobby_delete li').index(this)
-    console.log("立川談志")
-    console.log(index)
 
     $('#my_hobby li:eq(' + index+ ')').remove();
     $('#hobby_delete li:eq(' + index+ ')').remove();    
