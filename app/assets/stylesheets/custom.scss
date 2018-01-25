@@ -853,7 +853,7 @@ ul {
 
 
 
-/**/
+/* 趣味登録ページ */
 .hobby_list {
   display: flex;
 }
@@ -870,13 +870,14 @@ ul {
   height: 50px;
 }
 
-
-
 .hobby_list {
   width: 700px;
   height: 300px;
 }
 
+input.hb-add {
+    margin: 0;
+}
 
 /* others */
 .label-danger {
