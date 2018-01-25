@@ -69,8 +69,6 @@ $(document).on('turbolinks:load', function() {
     var target = $(this)
     var len = hobby_list[cls][target.text()].length
 
-
-
     if (con_list.getElementsByTagName('li').length > 0) {
       // 全てのliを削除
       while (con_list.firstChild) {
@@ -102,36 +100,32 @@ $(document).on('turbolinks:load', function() {
       }
     }
 
-
-
   })
-
-
 
   $(document).on('click', '#con_list li', function() {
     var target = $(this).text()
     var isSame = false
-    $('#my_hobby li').each(function() {
-      if ($(this).text() === target) {
+    $('.hb-add').each(function() {
+      if ($(this).val() === target) {
         isSame = true
       }
     })
 
     if (isSame) {
+      console.log('already exists')
     } else {
-      var li = document.createElement('li')
       var li_del = document.createElement('li')
+      var text = '<input type="text" name="sampleName" class="hb-add" value="' + target + '" readonly>'
       li_del.append('削除')
-      li.append(target)
-      $('#my_hobby').append(li)
       $('#hobby_delete').append(li_del)
+      $('#my_hobby').append(text)
     }
   })
 
   $(document).on('click', '#hobby_delete li', function() {
     var index = $('#hobby_delete li').index(this)
 
-    $('#my_hobby li:eq(' + index+ ')').remove();
+    $('#my_hobby input:eq(' + index+ ')').remove();
     $('#hobby_delete li:eq(' + index+ ')').remove();    
   })
 
