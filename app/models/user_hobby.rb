@@ -1,2 +1,0 @@
-class UserHobby < ApplicationRecord
-end
