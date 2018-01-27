@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
   get    '/entry',   to: 'users#check_entry_cnt'
-  get     '/hobby', to: 'users#hobby'
+  get     '/hobby', to: 'user_hobbies#hobby'
 
   post   '/login',   to: 'sessions#create'
   post   '/confirm', to: 'users#confirm'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post   '/cancel',        to: 'users#cancel'
   post   '/contact', to: 'static_pages#send_mail'
   post  '/edit_confirm', to: 'users#edit_confirm'
-  post   '/hobby_save',        to: 'users#hobby_save'
+  post   '/hobby_save',        to: 'user_hobbies#hobby_save'
 
   patch '/edit_confirm', to: 'users#edit_confirm'
 
