@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post   '/cancel',        to: 'users#cancel'
   post   '/contact', to: 'static_pages#send_mail'
   post  '/edit_confirm', to: 'users#edit_confirm'
+  post   '/hobby_save',        to: 'users#hobby_save'
 
   patch '/edit_confirm', to: 'users#edit_confirm'
 
