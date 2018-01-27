@@ -27,19 +27,21 @@
 <hr>
 
 
-<div>
+
+
   <h3>追加した趣味</h3>
-  <div class="hobby_list">
-    <ul id="my_hobby">
+  <%= form_tag({ controller: :users, action: :hobby_save}, id: 'my_hobby', class: 'form-horizontal') do %>
+  
+    <div class="hobby_list">
+      <div id="my_hobby">
+      </div>
 
-    </ul>
+      <ul id="hobby_delete">
+      </ul>
+    </div>
 
-    <ul id="hobby_delete">
-    </ul>
-  </div>
-</div>
+    <div class="form-actions btn-center">
+      <%= submit_tag "趣味を登録", class: "square_btn" %>
+    </div>
 
-
-<div class="form-actions btn-center">
-  <%= submit_tag "趣味を登録", class: "square_btn" %>
-</div>
+  <% end %>
