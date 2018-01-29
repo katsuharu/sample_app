@@ -115,7 +115,7 @@ $(document).on('turbolinks:load', function() {
       console.log('already exists')
     } else {
       var li_del = document.createElement('li')
-      var text = '<input type="text" name="user_hobby[hobby_name]" class="hb-add" value="' + target + '" readonly>'
+      var text = '<input type="text" name="user_hobby[hobby_name][]" class="hb-add" value="' + target + '" readonly>'
       li_del.append('削除')
       $('#hobby_delete').append(li_del)
       $('#my_hobby').append(text)
