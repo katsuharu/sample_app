@@ -6,8 +6,13 @@ class UserHobbiesController < ApplicationController
 	end
 
 	def hobby_save
-	  # UserHobby.create(:hobby_name => "カラス")
-	  redirect_to root_url
-	  flash[:success] = "趣味を登録いたしました。"
+		hobby_num = params[:user_hobby][:hobby_name].count()
+
+		for i in 0..hobby_num - 1
+			@hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
+		end
+	  	
+	  	flash[:success] = "趣味を登録いたしました。"
 	end
+
 end
