@@ -20,6 +20,7 @@ class UserHobbiesController < ApplicationController
 		#新規にこの時登録するとき、 user_hobbiesテーブルのレコードに、今登録していようとしている趣味のuser_idとhobby_idが同一のレコードは既に
 		#登録されているとみなして登録しない。
 
+		# add hobby リストにユーザーが追加した趣味を正式にユーザーの趣味として登録する
 		add_hobbies = params[:user_hobby][:hobby_name]
 		if add_hobbies
 			i = 0
@@ -37,6 +38,7 @@ class UserHobbiesController < ApplicationController
 		end
 
 
+		# ユーザーが削除するためにチェックした趣味をテーブルから削除
 		del_hobbies = params[:del_hobbies]
 		if del_hobbies
 		
@@ -45,6 +47,9 @@ class UserHobbiesController < ApplicationController
 				UserHobby.where(user_id: current_user.id).where(hobby_name: str).destroy_all
 			end
 		end
+
+		# 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
+		
 	end
 
 	def hobby_show
