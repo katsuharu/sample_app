@@ -15,4 +15,17 @@ class UserHobbiesController < ApplicationController
 	  	flash[:success] = "趣味を登録いたしました。"
 	end
 
+	def edit
+		#すでに登録されている趣味項目が削除ボタンを押された場合、アラートで確認後、実際に削除する
+		#新規にこの時登録するとき、 user_hobbiesテーブルのレコードに、今登録していようとしている趣味のuser_idとhobby_idが同一のレコードは既に
+		#登録されているとみなして登録しない。
+		num = params[:del_hobbies].count()
+		for i in 0..num - 1
+			UserHobby.where(user_id: current_user.id).where(hobby_name: params[:del_hobbies][i]).destroy_all
+		end
+	end
+
+	def hobby_show
+		@hobbies = UserHobby.where(user_id: current_user.id)
+	end
 end
