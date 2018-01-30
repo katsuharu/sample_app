@@ -21,8 +21,7 @@ class UserHobbiesController < ApplicationController
 		#登録されているとみなして登録しない。
 
 		# add hobby リストにユーザーが追加した趣味を正式にユーザーの趣味として登録する
-		add_hobbies = params[:user_hobby][:hobby_name]
-		if add_hobbies
+		if add_hobbies = params[:user_hobby][:hobby_name]
 			i = 0
 			for str in add_hobbies
 				puts i
