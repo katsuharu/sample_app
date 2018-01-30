@@ -56,3 +56,10 @@
 
 <hr>
 <h3>Hobby Cards</h3>
+<ul>
+  <% @cards.each do |card| %>
+    <li>
+      <%= card %>
+    </li>
+  <% end %>
+</ul>
