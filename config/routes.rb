@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post   '/contact', to: 'static_pages#send_mail'
   post  '/edit_confirm', to: 'users#edit_confirm'
   post   '/hobby_save',        to: 'user_hobbies#hobby_save'
+  post  '/edit',      to:   'user_hobbies#edit'
 
   patch '/edit_confirm', to: 'users#edit_confirm'
 
