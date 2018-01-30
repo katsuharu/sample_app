@@ -19,9 +19,23 @@ class UserHobbiesController < ApplicationController
 		#すでに登録されている趣味項目が削除ボタンを押された場合、アラートで確認後、実際に削除する
 		#新規にこの時登録するとき、 user_hobbiesテーブルのレコードに、今登録していようとしている趣味のuser_idとhobby_idが同一のレコードは既に
 		#登録されているとみなして登録しない。
-		# add_num = params[:user_hobby][:hobby_name].count()
-		p params[:user_hobby]
-		# p add_num
+
+		add_hobbies = params[:user_hobby][:hobby_name]
+		if add_hobbies
+			i = 0
+			for str in add_hobbies
+				puts i
+				puts str
+
+				unless UserHobby.where(user_id: current_user.id).where(hobby_name: str).exists? then
+				  p "not exit this record"
+				  UserHobby.create(hobby_name: str, user_id: current_user.id)
+				end
+
+				i += 1
+			end
+		end
+
 
 		del_hobbies = params[:del_hobbies]
 		if del_hobbies
