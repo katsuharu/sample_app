@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   get    '/entry',   to: 'users#check_entry_cnt'
   get     '/hobby', to: 'user_hobbies#hobby'
+  get     '/hobby_show', to: 'user_hobbies#hobby_show'
 
   post   '/login',   to: 'sessions#create'
   post   '/confirm', to: 'users#confirm'
