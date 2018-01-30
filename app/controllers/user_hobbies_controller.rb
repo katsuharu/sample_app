@@ -47,11 +47,23 @@ class UserHobbiesController < ApplicationController
 			end
 		end
 
-		# 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
 		
 	end
 
 	def hobby_show
 		@hobbies = UserHobby.where(user_id: current_user.id)
+	
+
+		# 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
+		@cards = Array.new
+
+		# 全てのhobby_idをチェックして、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
+		for i in 1..3 do 
+			if UserHobby.where(hobby_id: i).count > 3		#一旦、hobby_id順にsortしてからやった方がcountしやすい？
+				p UserHobby.find_by(hobby_id: i).hobby_name
+				@cards.push(UserHobby.find_by(hobby_id: i).hobby_name)
+			end
+		end
+
 	end
 end
