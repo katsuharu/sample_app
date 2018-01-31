@@ -28,14 +28,14 @@
 <h3>Add Hobby</h3>
 <%= form_tag({ controller: :user_hobbies, action: :edit}, class: 'form-horizontal') do %>
 
-  <!-- <div class="hobby_list"> -->
+  <div class="hobby_list">
     <div id="my_hobby">
       <input type="hidden" name="user_hobby[hobby_name][]">
     </div>
 
     <ul id="hobby_delete">
     </ul>
-  <!-- </div> -->
+  </div>
 
 
 <hr>
