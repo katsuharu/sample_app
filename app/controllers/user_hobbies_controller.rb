@@ -27,9 +27,14 @@ class UserHobbiesController < ApplicationController
 				puts i
 				puts str
 
+
 				unless UserHobby.where(user_id: current_user.id).where(hobby_name: str).exists? then
-				  p "not exit this record"
-				  UserHobby.create(hobby_name: str, user_id: current_user.id)
+					if str.empty?
+						puts "this value is empty"
+					else
+						p "not exit this record"
+						UserHobby.create(hobby_name: str, user_id: current_user.id)
+					end
 				end
 
 				i += 1
