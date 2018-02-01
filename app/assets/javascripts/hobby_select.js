@@ -90,13 +90,6 @@ $(document).on('turbolinks:load', function() {
         var text = document.createTextNode(hobby_list[cls][target.text()][i])
         li.append(text)
         con_list.appendChild(li)
-
-        $('#my_hobby li').each(function() {
-          if ($(this).text() === text) {
-            li.addClass('already')
-          }
-        })
-
       }
     }
 
