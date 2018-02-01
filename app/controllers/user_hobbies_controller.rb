@@ -39,6 +39,9 @@ class UserHobbiesController < ApplicationController
 
 				i += 1
 			end
+
+			redirect_to hobby_show_path
+			flash[:success] = "趣味を更新しました"
 		end
 
 
