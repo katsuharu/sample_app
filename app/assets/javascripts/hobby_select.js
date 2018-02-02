@@ -68,6 +68,7 @@ $(document).on('turbolinks:load', function() {
 
     var target = $(this)
     var len = hobby_list[cls][target.text()].length
+    var alEx = false
 
     if (con_list.getElementsByTagName('li').length > 0) {
       // 全てのliを削除
@@ -77,19 +78,44 @@ $(document).on('turbolinks:load', function() {
       $(con_list).removeClass()
       $(con_list).addClass(cls)
       for (var i = 0; i < len; i++) {
+
+        $('.my_hobbies li').each(function() {
+          if ($(this).text() == hobby_list[cls][target.text()][i]) {
+            alEx = true
+          }
+        })
+
         var li = document.createElement('li')
         var text = document.createTextNode(hobby_list[cls][target.text()][i])
         li.append(text)
-        con_list.appendChild(li)
+
+        if (!alEx) {
+          con_list.appendChild(li)
+        } else {
+          $("#con_list").append('<li class="tate">' + hobby_list[cls][target.text()][i] + '</li>')
+          alEx = false //flagを元に戻す
+        }
       }
     } else {
       $(con_list).removeClass()
       $(con_list).addClass(cls)
       for (var i = 0; i < len; i++) {
+
+        $('.my_hobbies li').each(function() {
+          if ($(this).text() == hobby_list[cls][target.text()][i]) {
+            alEx = true
+          }
+        })
+
         var li = document.createElement('li')
         var text = document.createTextNode(hobby_list[cls][target.text()][i])
         li.append(text)
-        con_list.appendChild(li)
+        if (!alEx) {
+          con_list.appendChild(li)
+        } else {
+          $("#con_list").append('<li class="tate">' + hobby_list[cls][target.text()][i] + '</li>')
+          alEx = false //flagを元に戻す
+        }
       }
     }
 
