@@ -40,11 +40,9 @@
 
 <hr>
 <h3>My Hobby</h3>
-  <ul>
+  <ul class="my_hobbies">
     <% @hobbies.each do |hobby| %>
-      <li>
-        <%= hobby.hobby_name %> <input type="checkbox" name="del_hobbies[]" value="<%= hobby.hobby_name %>">
-      </li>
+      <li><%= hobby.hobby_name %></li>
     <% end %>
   </ul>
 
