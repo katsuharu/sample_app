@@ -98,6 +98,15 @@ $(document).on('turbolinks:load', function() {
   $(document).on('click', '#con_list li', function() {
     var target = $(this).text()
     var isSame = false
+    
+    
+    $('.my_hobbies li').each(function() {
+      if ($(this).text() == target) {
+        isSame = true
+      }
+    })
+
+
     $('.hb-add').each(function() {
       if ($(this).val() === target) {
         isSame = true
