@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
   		if user.activated?
         log_in user
         remember(user)
-  		  redirect_back_or user
+        if user.hobby_added == nil
+          redirect_to hobby_path
+        else
+  		    redirect_back_or user
+        end
       else
         message = "アカウントが有効化されておりません。"
         message += "送られてきたメールのリンクでアカウントを有効化してください。"
