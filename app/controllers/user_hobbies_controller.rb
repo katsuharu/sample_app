@@ -1,8 +1,6 @@
 class UserHobbiesController < ApplicationController
 	def hobby
-	  p "吉田松陰"
 	  @hobby = UserHobby.new
-	  p @hobby
 	end
 
 	def hobby_save
