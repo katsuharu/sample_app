@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
+    # Top5のhobbyを取得
+    @hobby_pop = UserHobby.group(:hobby_name).order('count_all desc').limit(5).count
 
-    
     # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
     @cards = Array.new
 
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
         @cards.push(UserHobby.find_by(hobby_id: i).hobby_name)
       end
     end
-    
+
     if logged_in?
       @user = current_user
       @user.update_attribute(:logined_at, DateTime.now)

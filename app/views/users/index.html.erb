@@ -1,6 +1,16 @@
 <% if logged_in? %>
   <div class="entry-user">
     <div class="container-fluid entry-cnt">
+
+      <h2>おすすめのカテゴリー</h2>
+      <ul>
+        <% @hobby_pop.each do |pop| %>
+          <li>
+            <%= pop[0] %>
+          </li>
+        <% end %>
+      </ul>
+
       <h2>Hobby Cards</h2>
       <ul>
         <% @cards.each do |card| %>
