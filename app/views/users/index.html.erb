@@ -1,6 +1,16 @@
 <% if logged_in? %>
   <div class="entry-user">
     <div class="container-fluid entry-cnt">
+      <h2>Hobby Cards</h2>
+      <ul>
+        <% @cards.each do |card| %>
+          <li>
+            <%= card %>
+          </li>
+        <% end %>
+      </ul>
+
+
       <h2>プロフィール</h2>
       <div class="user-info row">
         <div class="col-sm-4">

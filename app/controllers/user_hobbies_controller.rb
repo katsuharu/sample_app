@@ -17,8 +17,8 @@ class UserHobbiesController < ApplicationController
 
 	def edit
 		#すでに登録されている趣味項目が削除ボタンを押された場合、アラートで確認後、実際に削除する
-		#新規にこの時登録するとき、 user_hobbiesテーブルのレコードに、今登録していようとしている趣味のuser_idとhobby_idが同一のレコードは既に
-		#登録されているとみなして登録しない。
+		#新規にこの時登録するとき、 user_hobbiesテーブルのレコードに、今登録していようとしている趣味のuser_idとhobby_idが
+		#同一のレコードは既に登録されているとみなして登録しない。
 
 		# add hobby リストにユーザーが追加した趣味を正式にユーザーの趣味として登録する
 		if add_hobbies = params[:user_hobby][:hobby_name]
@@ -26,7 +26,6 @@ class UserHobbiesController < ApplicationController
 			for str in add_hobbies
 				puts i
 				puts str
-
 
 				unless UserHobby.where(user_id: current_user.id).where(hobby_name: str).exists? then
 					if str.empty?
@@ -60,18 +59,5 @@ class UserHobbiesController < ApplicationController
 
 	def hobby_show
 		@hobbies = UserHobby.where(user_id: current_user.id)
-	
-
-		# 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
-		@cards = Array.new
-
-		# 全てのhobby_idをチェックして、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
-		for i in 1..3 do 
-			if UserHobby.where(hobby_id: i).count > 3		#一旦、hobby_id順にsortしてからやった方がcountしやすい？
-				p UserHobby.find_by(hobby_id: i).hobby_name
-				@cards.push(UserHobby.find_by(hobby_id: i).hobby_name)
-			end
-		end
-
 	end
 end

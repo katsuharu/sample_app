@@ -4,6 +4,19 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
+
+    
+    # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
+    @cards = Array.new
+
+    # 全てのhobby_idをチェックして、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
+    for i in 1..3 do 
+      if UserHobby.where(hobby_id: i).count > 3   #一旦、hobby_id順にsortしてからやった方がcountしやすい？
+        p UserHobby.find_by(hobby_id: i).hobby_name
+        @cards.push(UserHobby.find_by(hobby_id: i).hobby_name)
+      end
+    end
+    
     if logged_in?
       @user = current_user
       @user.update_attribute(:logined_at, DateTime.now)
