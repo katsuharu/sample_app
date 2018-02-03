@@ -14,7 +14,9 @@ class UserHobbiesController < ApplicationController
 			end
 		end
 	  	
+	  	User.find_by(id: current_user.id).update_attribute(:hobby_added, 1)
 	  	flash[:success] = "趣味を登録いたしました。"
+	  	redirect_to root_url
 	end
 
 	def edit
