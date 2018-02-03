@@ -7,7 +7,11 @@ class UserHobbiesController < ApplicationController
 		hobby_num = params[:user_hobby][:hobby_name].count()
 
 		for i in 0..hobby_num - 1
-			@hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
+			if params[:user_hobby][:hobby_name][i].empty?
+				p "empty hobby"
+			else
+				@hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
+			end
 		end
 	  	
 	  	flash[:success] = "趣味を登録いたしました。"
