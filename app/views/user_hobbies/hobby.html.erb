@@ -26,8 +26,8 @@
 
 <hr>
 
-<h3>追加した趣味</h3>
-  <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, id: 'my_hobby', class: 'form-horizontal') do %>
+<h3>登録する趣味一覧</h3>
+  <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal') do %>
   
     <div class="hobby_list">
       <div id="my_hobby">
