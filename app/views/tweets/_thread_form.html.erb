@@ -1,5 +1,5 @@
 <%= form_for(@tthread, remote: true, url: {action: 'thread_create'}) do |f| %>
-	<%= f.text_area :content %>
+	<%= f.text_area :content, size: "30x2" %>
 	<%= f.hidden_field :tweet_id, :value => params[:id] %>
   	<%= f.submit "send" %>
 <% end %>
