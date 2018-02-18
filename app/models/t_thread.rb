@@ -1,0 +1,2 @@
+class TThread < ApplicationRecord
+end
