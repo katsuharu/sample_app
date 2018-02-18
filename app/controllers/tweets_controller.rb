@@ -40,6 +40,6 @@ class TweetsController < ApplicationController
     	end
 
 		def tthread_params
-      		params.require(:t_thread).permit(:content)
+      		params.require(:t_thread).permit(:content, :tweet_id)
     	end
 end
