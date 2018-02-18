@@ -1,2 +1,0 @@
-class HobbyMaster < ApplicationRecord
-end
