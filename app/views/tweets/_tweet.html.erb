@@ -3,6 +3,7 @@
 		<%= tweet.content %>
 	</td>
 	<td>
+		<%= User.find_by(id: tweet.user_id).name %>
 	</td>
 	<td>
 		<%= link_to "thread", tweet_path(tweet.id), remote: true %>
