@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
 	def create
 		@tweets = Tweet.all
 		respond_to do |format|
-			if Tweet.create(content: tweet_params[:content], user_id: current_user.id)
+			if Tweet.create(content: tweet_params[:content], user_id: current_user.id, category_id: tweet_params[:category_id])
 				p "Git tatekawa"
 				format.html
 				format.js
@@ -36,7 +36,7 @@ class TweetsController < ApplicationController
 	private
  
 		def tweet_params
-      		params.require(:tweet).permit(:content)
+      		params.require(:tweet).permit(:content, :category_id)
     	end
 
 		def tthread_params
