@@ -23,23 +23,27 @@
 
       <!--  -->
       <h2>Timeline</h2>
-      <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'create'}) do |f| %>
-        <%= f.text_area :content %>
-        <%= f.submit "投稿" %>
-      <% end %>
+      <div class="row">
+        <div class="col-sm-7">
+          <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'create'}) do |f| %>
+            <%= f.text_area :content %>
+            <%= f.submit "投稿" %>
+          <% end %>
 
-      <div class="timeline-shows">
-        <table class="timelines" id="tweets">
-          <%= render partial: 'tweets/tweet', collection: @tweets %>
-        </table>
-      </div>
-
-      <div class="t_threads">
-        <h2 class="t_thread_name"></h2>
-        <div class="t_thread_form">
+          <div class="timeline-shows">
+            <table class="timelines" id="tweets">
+              <%= render partial: 'tweets/tweet', collection: @tweets %>
+            </table>
+          </div>
         </div>
-        <ul id="t_threads">
-        </ul>
+
+        <div class="t_threads col-sm-5">
+          <h2 class="t_thread_name"></h2>
+          <div class="t_thread_form">
+          </div>
+          <ul id="t_threads">
+          </ul>
+        </div>
       </div>
       <!--  -->
 
