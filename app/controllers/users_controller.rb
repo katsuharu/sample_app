@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
     # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
     @cards = Array.new
+    @tweet = Tweet.new
+
 
     # 全てのhobby_idをチェックして、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
     for i in 1..3 do 
