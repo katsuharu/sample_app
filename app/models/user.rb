@@ -1,6 +1,5 @@
 class User < ApplicationRecord
 	has_many :authorizations
-	has_many :posts
 	
 	attr_accessor :remember_token, :activation_token, :reset_token, :profile_img_data_uri, :profile_img_cache
 	before_save :downcase_email
