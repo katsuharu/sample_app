@@ -21,6 +21,7 @@
       </ul>
 
 
+      <h2>Timeline</h2>
       <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'create'}) do |f| %>
         <%= f.text_area :content %>
         <%= f.submit "投稿" %>
