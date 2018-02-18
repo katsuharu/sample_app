@@ -14,6 +14,12 @@ class TweetsController < ApplicationController
 	end
 
 
+	def show
+		@tthread = TThread.new
+		# @tthreads = TThread.where(tweet_id: params[:id])
+	end
+
+
 	private
 
 		def tweet_params
