@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   post   '/hobby_save',        to: 'user_hobbies#hobby_save'
   post  '/edit',      to:   'user_hobbies#edit'
 
-  post 'tweets/create'
 
   patch '/edit_confirm', to: 'users#edit_confirm'
 
@@ -31,6 +30,7 @@ Rails.application.routes.draw do
   resources :users  
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :tweets
 
   # routesに記載のないurlへのアクセスを全てリダイレクト
   get "*path" => redirect("/")
