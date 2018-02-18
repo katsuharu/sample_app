@@ -16,17 +16,23 @@ class TweetsController < ApplicationController
 
 	def show
 		@tthread = TThread.new
-		# @tthreads = TThread.where(tweet_id: params[:id])
+		@tthreads = TThread.where(tweet_id: params[:id])
 	end
 
 	def thread_create
 		@tthread = TThread.new
+		p tthread_params[:content]
+		p params[:t_thread][:tweet_id]
 	end
 
 
 	private
-
+ 
 		def tweet_params
       		params.require(:tweet).permit(:content)
+    	end
+
+		def tthread_params
+      		params.require(:t_thread).permit(:content)
     	end
 end
