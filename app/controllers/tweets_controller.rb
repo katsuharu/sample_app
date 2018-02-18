@@ -19,6 +19,10 @@ class TweetsController < ApplicationController
 		# @tthreads = TThread.where(tweet_id: params[:id])
 	end
 
+	def thread_create
+		@tthread = TThread.new
+	end
+
 
 	private
 
