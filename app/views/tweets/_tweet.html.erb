@@ -9,6 +9,6 @@
 		<%= User.find_by(id: tweet.user_id).name %>
 	</td>
 	<td>
-		<%= link_to "thread", tweet_path(tweet.id), remote: true %>
+		<%= link_to "+", tweet_path(tweet.id), remote: true %>
 	</td>
 </tr>
