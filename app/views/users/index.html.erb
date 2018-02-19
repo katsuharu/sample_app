@@ -30,7 +30,7 @@
             <div class="category-select">
               <%= collection_select(:tweet, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
             </div>
-            <%= f.submit "投稿", class: "square_btn" %>
+            <%= f.submit "投稿", class: "" %>
           <% end %>
 
           <div class="timeline-shows">
