@@ -1,13 +1,15 @@
 <tr>
 	<td>
+		<%= User.find_by(id: tweet.user_id).name %>
+	</td>
+	
+	<td class="tweet_cnt">
 		<%= tweet.content %>
 	</td>
 	<td>
 		<%= Category.find_by(id: tweet.category_id).name %>
 	</td>
-	<td>
-		<%= User.find_by(id: tweet.user_id).name %>
-	</td>
+	
 	<td>
 		<%= link_to "+", tweet_path(tweet.id), remote: true %>
 	</td>
