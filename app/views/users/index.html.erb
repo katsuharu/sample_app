@@ -26,11 +26,14 @@
       <div class="row">
         <div class="col-sm-9">
           <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'create'}) do |f| %>
-            <%= f.text_area :content, size: "30x2", placeholder: "投稿内容" %>
-            <div class="">
-              <%= collection_select(:tweet, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
+            <div class="col-sm-9">
+              <%= f.text_area :content, size: "55x2", placeholder: "投稿内容" %>
             </div>
-            <%= f.submit "投稿", class: "" %>
+            <div class="col-sm-3">
+              <%= collection_select(:tweet, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
+              <%= f.submit "投稿", class: "" %>
+            </div>
+
           <% end %>
 
           <div class="timeline-shows">
