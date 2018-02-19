@@ -24,7 +24,7 @@
       <!--  -->
       <h2>Timeline</h2>
       <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-9">
           <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'create'}) do |f| %>
             <%= f.text_area :content, size: "30x2", placeholder: "投稿内容" %>
             <div class="category-select">
@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <div class="t_threads col-sm-5">
+        <div class="t_threads col-sm-3">
           <h4 class="t_thread_name"></h4>
           <div class="t_thread_form">
           </div>
