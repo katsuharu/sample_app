@@ -27,7 +27,7 @@
         <div class="col-sm-9">
           <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'create'}) do |f| %>
             <%= f.text_area :content, size: "30x2", placeholder: "投稿内容" %>
-            <div class="category-select">
+            <div class="">
               <%= collection_select(:tweet, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
             </div>
             <%= f.submit "投稿", class: "" %>
