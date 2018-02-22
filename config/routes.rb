@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   post   '/hobby_save',        to: 'user_hobbies#hobby_save'
   post  '/edit',      to:   'user_hobbies#edit'
 
+  post  'tweets/tweet_create'
   post  'tweets/thread_create'
+
 
 
   patch '/edit_confirm', to: 'users#edit_confirm'

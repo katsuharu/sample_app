@@ -25,7 +25,7 @@
       <h2>Timeline</h2>
       <div class="row">
         <div class="col-sm-9">
-          <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'create'}) do |f| %>
+          <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'tweet_create'}) do |f| %>
             <div class="col-sm-9">
               <%= f.text_area :content, size: "55x2", placeholder: "投稿内容" %>
             </div>
