@@ -1,8 +1,8 @@
 class TweetsController < ApplicationController
 	def create
-		@tweets = Tweet.all
 		respond_to do |format|
 			if Tweet.create(content: tweet_params[:content], user_id: current_user.id, category_id: tweet_params[:category_id])
+				@tweets = Tweet.all
 				p "Git tatekawa"
 				format.html
 				format.js
