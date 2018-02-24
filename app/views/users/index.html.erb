@@ -31,17 +31,17 @@
 
       <div class="timeline-shows">
         <table class="timelines" id="apples">
-          <%= render partial: 'apples/apple', collection: @apples %>
+          <%= render partial: 'tweets/tweet', collection: @tweets %>
         </table>
-
-        <div class="threads">
-          <h2 class="post-thread-id"></h2>
-          <div class="thread_form">
-          </div>
-          <ul id="post-threads">
-          </ul>
-        </div>
       </div>
+
+            <h2>Thread</h2>
+            <h4 class="t_thread_name"></h4>
+            <div class="t_thread_form">
+            </div>
+            <ul id="t_threads">
+            </ul>
+
       <!--  -->
 
 
