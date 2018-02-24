@@ -1,110 +1,20 @@
-<% if logged_in? %>
-  <div class="entry-user">
-    <div class="container-fluid entry-cnt">
+<h1>TimeLine</h1>
 
-      <h2>おすすめのカテゴリー</h2>
-      <ul>
-        <% @hobby_pop.each do |pop| %>
-          <li>
-            <%= pop[0] %>
-          </li>
-        <% end %>
-      </ul>
-
-      <h2>Hobby Cards</h2>
-      <ul>
-        <% @cards.each do |card| %>
-          <li>
-            <%= card %>
-          </li>
-        <% end %>
-      </ul>
-
-
-      <!--  -->
-      <h2>Timeline</h2>
-      <div class="row">
-        <div class="col-sm-9">
-          <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'tweet_create'}) do |f| %>
-            <div class="col-sm-9">
-              <%= f.text_area :content, size: "55x2", placeholder: "投稿内容" %>
-            </div>
-            <div class="col-sm-3">
-              <%= collection_select(:tweet, :category_id, Category.all, :id,  :name, {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
-              <%= f.submit "投稿", class: "" %>
-            </div>
-
-          <% end %>
-
-          <div class="timeline-shows">
-            <table class="timelines" id="tweets">
-              <%= render partial: 'tweets/tweet', collection: @tweets %>
-            </table>
-          </div>
-        </div>
-
-        <div class="t_threads col-sm-3">
-          <h2>Thread</h2>
-          <h4 class="t_thread_name"></h4>
-          <div class="t_thread_form">
-          </div>
-          <ul id="t_threads">
-          </ul>
-        </div>
-      </div>
-      <!--  -->
-
-
-      <h2>プロフィール</h2>
-      <div class="user-info row">
-        <div class="col-sm-4">
-          <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
-        </div>
-        <div class="col-sm-8">
-          <%= render 'shared/user_info' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="entry-cnt">
-      <h2>エントリー中のユーザー</h2>
-      <!-- スライドショー -->
-      <% if @users.any? %>
-        <div id="slider_wrap">
-          <div id="slider">
-              <div id="slider_inner">
-                  <ul id="photo_list">
-                    <% @users.each do |user| %>
-                      <li>
-                        <%= image_tag user.profile_img.url, :size => '160x160' if user.profile_img? %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </div><!-- end of #slider_inner --> 
-          </div><!-- end of #slider --> 
-        </div><!-- end of #slider_wrap --> 
-        <!--  -->    
-      <% else %>
-        <p>ただいまエントリー中のユーザーはいません。</p>
-      <% end %>
-    </div>
-
-    <div class="entry-cnt">
-        <%= render 'shared/entry_form' %>
-    </div>
-  </div>
-<% else %>
-  <div class="center">
-  	<h1 class="bf-title">Lunch Friends</h1>
-    <div class="bf-img">
-      <%= image_tag("lunch_logo.png", alt: "Lunch Friends logo") %>
-    </div>
-  	<div class="bf-btn">
-      <%= link_to "Sign up", signup_path, class: "square_btn bf-top" %>
-    </div>
-    <div class="bf-btn">
-      <%= link_to "Login", login_path, class: "square_btn bf-top" %> 
-    </div>
-  </div>
-
+<%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
+  <%= f.text_area :content %>
+    <%= f.submit "追加" %>
 <% end %>
+
+<div class="timeline-shows">
+  <table class="timelines" id="apples">
+    <%= render partial: 'apples/apple', collection: @apples %>
+  </table>
+
+  <div class="threads">
+    <h2 class="post-thread-id"></h2>
+    <div class="thread_form">
+    </div>
+    <ul id="post-threads">
+    </ul>
+  </div>
+</div>
