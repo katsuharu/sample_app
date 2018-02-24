@@ -4,27 +4,23 @@ class ApplesController < ApplicationController
 		@apples = Tweet.all
 	end
 
-	
-
 	def create
 		@apples = Tweet.all
 		@apple = Tweet.new(apple_params)
 		respond_to do |format|
-			if @apple.save
+			if Tweet.create(content: apple_params[:content], user_id: current_user.id, category_id: apple_params[:category_id])
 				format.html
 				format.js
 			else
-				format.js {render :new}
+				format.js {render :index}
 			end
 		end
-	end
 
-	
+	end
 
 	private
 		def apple_params
 			params.require(:tweet).permit(:content, :category_id)
 		end
 
-		
 end
