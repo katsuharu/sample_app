@@ -25,9 +25,18 @@
       <h1>TimeLine</h1>
 
       <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
-        <%= f.text_area :content %>
-          <%= f.submit "追加" %>
+        <div class="row">
+          <div class="col-sm-9">
+            <%= f.text_area :content, size: "55x2", placeholder: "投稿内容" %>
+          </div>
+          <div class="col-sm-3">
+            <%= collection_select(:tweet, :category_id, Category.all, :id,  :name, 
+            {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
+            <%= f.submit "投稿", class: "" %>
+          </div>
+        </div>
       <% end %>
+
 
       <div class="timeline-shows">
         <table class="timelines" id="apples">
