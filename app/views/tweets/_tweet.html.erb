@@ -1,6 +1,10 @@
 <tr>
 	<td class="tweet_info">
-		<%= User.find_by(id: tweet.user_id).name %>
+		<%= 
+			if u = User.find_by(id: tweet.user_id)
+				u.name 
+			end
+		%>
 	</td>
 
 	<td class="tweet_cnt">
