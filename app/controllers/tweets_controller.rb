@@ -22,7 +22,7 @@ class TweetsController < ApplicationController
 	def thread_create
 		@tthread = TThread.new
 		respond_to do |format|
-			if TThread.create(tweet_id: params[:t_thread][:tweet_id], content: tthread_params[:content])
+			if TThread.create(tweet_id: params[:t_thread][:tweet_id], content: tthread_params[:content], user_id: current_user.id)
 				@tthreads = TThread.where(tweet_id: params[:t_thread][:tweet_id])
 				format.html
 				format.js
