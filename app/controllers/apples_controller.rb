@@ -23,7 +23,7 @@ class ApplesController < ApplicationController
 
 	private
 		def apple_params
-			params.require(:tweet).permit(:content)
+			params.require(:tweet).permit(:content, :category_id)
 		end
 
 		
