@@ -279,6 +279,17 @@ GEM
     passenger (5.1.12)
       rack
       rake (>= 0.8.1)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.5.1)
+      byebug (~> 9.1)
+      pry (~> 0.10)
+    pry-doc (0.13.1)
+      pry (~> 0.11)
+      yard (~> 0.9.11)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
     puma (3.10.0)
     rack (2.0.3)
     rack-test (0.6.3)
@@ -373,6 +384,7 @@ GEM
       chronic (>= 0.6.3)
     will_paginate (3.1.5)
     xml-simple (1.1.5)
+    yard (0.9.12)
 
 PLATFORMS
   ruby
@@ -396,6 +408,9 @@ DEPENDENCIES
   omniauth (~> 1.6)
   omniauth-facebook (~> 4.0)
   passenger (>= 5.0.25)
+  pry-byebug
+  pry-doc
+  pry-rails
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-controller-testing
