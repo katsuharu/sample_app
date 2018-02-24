@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   post  'tweets/tweet_create'
   post  'tweets/thread_create'
 
+  post 'apples/thread_create'
+
+  resources :apples
+
 
 
   patch '/edit_confirm', to: 'users#edit_confirm'
