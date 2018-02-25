@@ -20,17 +20,22 @@
 		<%= tweet.content %>
 		</div>
 		<div>
-				
-			<%= link_to tweet_path(tweet.id), 
-				remote: true, class: "", :data => {:toggle=>"modal", :target => ".t_detail"} do %>
-				<i class="far fa-comment"></i>
-			<% end %>
+			<div class="row">
+				<div class="col-sm-4">
+					<%= link_to tweet_path(tweet.id), 
+						remote: true, class: "", :data => {:toggle=>"modal", :target => ".t_detail"} do %>
+						<i class="far fa-comment"></i>
+					<% end %>
 
-			<%= TThread.where(tweet_id: tweet.id).count %>
-			<%= if  tweet.category_id
-					Category.find_by(id: tweet.category_id).name
-				end
-			%>
+					<%= TThread.where(tweet_id: tweet.id).count %>
+				</div>
+				<div class="col-sm-8">
+					<%= if  tweet.category_id
+							Category.find_by(id: tweet.category_id).name
+						end
+					%>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
