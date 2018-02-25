@@ -509,7 +509,6 @@ a.square_btn.bf-top {
   }
 }
 
-/* Ttimeline */
 
 /* エントリー中ユーザ一覧 */
 
@@ -902,13 +901,12 @@ li.tate {
 }
 
 
+/* Ttimeline */
 
 /* Tweet */
-td.tweet_cnt {
-    width: 380px;
-    font-weight: 600;
-    padding-left: 30px;
-    font-size: 20px;
+.tweet_content {
+    font-weight: 450;
+    font-size: 17px;
 }
 
 td.tweet_info {
