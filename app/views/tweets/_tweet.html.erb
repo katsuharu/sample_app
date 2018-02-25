@@ -8,14 +8,21 @@
 	</div>
 
 	<div class="col-sm-11">	
-		<strong>
-		<%= 
-			if u = User.find_by(id: tweet.user_id)
-				u.name 
-			end
-		%>
-		</strong>
-		<%= tweet.created_at %>
+		<div class="row">
+			<div class="col-sm-4">
+				<strong>
+				<%= 
+					if u = User.find_by(id: tweet.user_id)
+						u.name 
+					end
+				%>
+				</strong>
+			</div>
+			<div class="col-sm-8">
+				<%= tweet.created_at %>
+			</div>
+		</div>
+
 		<div class="tweet_content">
 		<%= tweet.content %>
 		</div>
