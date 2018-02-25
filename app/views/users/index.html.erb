@@ -25,7 +25,16 @@
       </ul>
 
 
-      <!--  -->
+      <!-- Timeline -->
+      <div><strong>佐藤航陽</strong>  2月25日
+        <div>統計的な偏りを知ってると活動効率が全然違ってくるが、知識としてではなく直感的にそういうことを感じ取ってる人がたまにいるな。キャラが濃いわけではなく飄々としてるけど凄まじい結果出すタイプに多い。
+        </div>
+        <div>
+        <i class="far fa-comment"></i> 3   イカ２
+        </div>
+      </div>
+
+
       <h1>TimeLine</h1>
 
       <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
@@ -42,30 +51,32 @@
       <% end %>
 
 
+      <!-- Timeline -->
       <div class="timeline-shows">
         <div class="tweets">
           <%= render partial: 'tweets/tweet', collection: @tweets %>
         </div>
       </div>
+      <!-- Timeline -->
 
-            <h2>Thread</h2>
-            <div class="modal fade t_detail">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="t_thread_name"></h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="t_thread_form">
-                    </div>
-                    <table id="t_threads">
-                    </table>
-                  </div>
-                </div>
-              </div>
+      <!-- Thread -->
+      <div class="modal fade t_detail">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="t_thread_name"></h4>
             </div>
-
-      <!--  -->
+            <div class="modal-body">
+              <div class="t_thread_form">
+              </div>
+              <table id="t_threads">
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Thread  -->
+      <!-- /Timeline -->
 
 
       <h2>プロフィール</h2>
