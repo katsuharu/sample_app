@@ -1,9 +1,4 @@
 class ApplesController < ApplicationController
-	def index
-		@apple = Tweet.new
-		@apples = Tweet.all
-	end
-
 	def create
 		@apples = Tweet.all
 		@apple = Tweet.new(apple_params)
