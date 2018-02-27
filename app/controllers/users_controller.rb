@@ -12,13 +12,15 @@ class UsersController < ApplicationController
 
     # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
     @cards = Array.new        #index viewで Category card名を表示するインスタンス変数
-    user_cards = UserHobby.where(user_id: current_user.id)      #ログインユーザーが登録した趣味の配列
+    if current_user # current_userがnilのときにエラーになるのを防ぐため
+      user_cards = UserHobby.where(user_id: current_user.id)      #ログインユーザーが登録した趣味の配列
 
-    # 自分が登録した趣味のなかで、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
-    user_cards.each do |u_card|
-      if UserHobby.where(hobby_id: u_card.hobby_id).count > 3
-        p u_card.hobby_name
-        @cards.push(u_card.hobby_name)
+      # 自分が登録した趣味のなかで、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
+      user_cards.each do |u_card|
+        if UserHobby.where(hobby_id: u_card.hobby_id).count > 3
+          p u_card.hobby_name
+          @cards.push(u_card.hobby_name)
+        end
       end
     end
 
