@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       user_cards.each do |u_card|
         if UserHobby.where(hobby_id: u_card.hobby_id).count > 3
           p u_card.hobby_name
-          @cards.push(u_card.hobby_name)
+          @cards.push(u_card)
         end
       end
     end
