@@ -29,6 +29,9 @@
             <% else %>
               <p>このカテゴリーで今日のランチを開催しますか？</p>
             <% end %>
+            <div class="entry-cnt">
+                <%= render 'shared/entry_form' %>
+            </div>
           </article>
         <% end %>
 
@@ -112,9 +115,6 @@
       <% end %>
     </div>
 
-    <div class="entry-cnt">
-        <%= render 'shared/entry_form' %>
-    </div>
   </div>
 <% else %>
   <div class="center">
