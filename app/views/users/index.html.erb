@@ -22,8 +22,8 @@
       <h2>Hobby Cards</h2>
         <% @cards.each do |card| %>
           <div class="">
-            <%= card %>
-            <%= UserHobby.where(hobby_name: card).count %>
+            <%= card.hobby_name %>
+            <%= User.where(category_id: card.hobby_id).count %>
           </div>
         <% end %>
 
