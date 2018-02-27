@@ -20,13 +20,12 @@
       </ul>
 
       <h2>Hobby Cards</h2>
-      <ul>
         <% @cards.each do |card| %>
-          <li>
+          <div class="">
             <%= card %>
-          </li>
+            <%= UserHobby.where(hobby_name: card).count %>
+          </div>
         <% end %>
-      </ul>
 
 
       <!-- Timeline -->
