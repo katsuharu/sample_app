@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
     @tweets = Tweet.all
     @apple = Tweet.new
+    @today = Date.today
 
     # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
     @cards = Array.new        #index viewで Category card名を表示するインスタンス変数

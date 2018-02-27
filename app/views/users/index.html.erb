@@ -1,6 +1,10 @@
 <% if logged_in? %>
   <div class="entry-user">
     <div class="container-fluid entry-cnt">
+    <div class="today_date">
+    <%= @today.year %>年<%= @today.month %>月<%= @today.day %>日
+    </div>
+
       <input type=form id="search_form" placeholder="カテゴリー検索" style="width: 250px;"/>
       <ul id="search_result">
       </ul>
