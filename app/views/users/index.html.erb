@@ -21,11 +21,11 @@
 
       <h2>Hobby Cards</h2>
         <% @cards.each do |card| %>
-          <article class="">
+          <article class="lunch_card">
             <h5><%= card.hobby_name %></h5>
             <% entry_num = User.where(category_id: card.hobby_id).count %>
             <% if entry_num >0 %>
-              <p><%= entry_num %>人参加してます！</p>
+              <p class="lunch_state"><%= entry_num %>人参加してます！</p>
               <% @users = User.where(category_id: card.hobby_id) %>
               <!-- スライドショー -->
               <div class="entry-cnt">
@@ -46,7 +46,7 @@
               </div>
               <!-- スライドショー -->
             <% else %>
-              <p>このカテゴリーで今日のランチを開催しますか？</p>
+              <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
             <% end %>
 
             <!-- ランチボタン -->
