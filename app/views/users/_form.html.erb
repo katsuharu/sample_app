@@ -42,15 +42,6 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :self_intro, class: 'col-sm-4' do %>
-      ひとこと(25文字以内)
-    <% end %>
-    <div class="col-sm-8">
-      <%= f.text_field :self_intro, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
     <%= f.label :department_name, class: 'col-sm-4' do %>
       <span class="label label-danger">必須</span>
       部署 / Department
@@ -67,6 +58,15 @@
     <% end %>
     <div class="col-sm-8">
       <%= f.text_field :slack_id, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :self_intro, class: 'col-sm-4' do %>
+      ひとこと(25文字以内)
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :self_intro, class: 'form-control' %>
     </div>
   </div>
 
@@ -98,6 +98,7 @@
     </div>
       <%= f.hidden_field :profile_img_data_uri %>    
   </div>
+
 
   <div class="form-actions btn-center">
       <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn" %>
