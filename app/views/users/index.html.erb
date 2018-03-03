@@ -26,9 +26,29 @@
             <% entry_num = User.where(category_id: card.hobby_id).count %>
             <% if entry_num >0 %>
               <p><%= entry_num %>人参加してます！</p>
+              <% @users = User.where(category_id: card.hobby_id) %>
+              <!-- スライドショー -->
+              <div class="entry-cnt">
+                <div id="slider_wrap">
+                  <div id="slider">
+                      <div id="slider_inner">
+                          <ul id="photo_list">
+                            <% @users.each do |user| %>
+                              <li>
+                                <%= image_tag user.profile_img.url, :size => '160x160' if user.profile_img? %>
+                              </li>
+                            <% end %>
+                          </ul>
+                      </div><!-- end of #slider_inner --> 
+                  </div><!-- end of #slider --> 
+                </div><!-- end of #slider_wrap --> 
+                <!--  -->    
+              </div>
+              <!-- スライドショー -->
             <% else %>
               <p>このカテゴリーで今日のランチを開催しますか？</p>
             <% end %>
+
             <div class="entry-cnt">
                 <%= render 'shared/entry_form' %>
             </div>
@@ -90,29 +110,6 @@
           <%= render 'shared/user_info' %>
         </div>
       </div>
-    </div>
-
-    <div class="entry-cnt">
-      <h2>エントリー中のユーザー</h2>
-      <!-- スライドショー -->
-      <% if @users.any? %>
-        <div id="slider_wrap">
-          <div id="slider">
-              <div id="slider_inner">
-                  <ul id="photo_list">
-                    <% @users.each do |user| %>
-                      <li>
-                        <%= image_tag user.profile_img.url, :size => '160x160' if user.profile_img? %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </div><!-- end of #slider_inner --> 
-          </div><!-- end of #slider --> 
-        </div><!-- end of #slider_wrap --> 
-        <!--  -->    
-      <% else %>
-        <p>ただいまエントリー中のユーザーはいません。</p>
-      <% end %>
     </div>
 
   </div>
