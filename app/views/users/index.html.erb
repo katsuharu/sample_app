@@ -49,9 +49,45 @@
               <p>このカテゴリーで今日のランチを開催しますか？</p>
             <% end %>
 
+            <!-- ランチボタン -->
             <div class="entry-cnt">
-                <%= render 'shared/entry_form' %>
+              <div class="bs-component">
+                <% if entried? %> 
+                  <% if matched? %>
+                    <h2>マッチング相手を確認する</h2>
+                    <div class="btn-center">
+                      <%= link_to "Check matching partner", check_path, class: "square_btn" %>
+                    </div>
+                  <% else %>
+                    <h2>エントリー内容を確認する</h2>
+                    <div class="btn-center">
+                      <%= link_to "Check the contents", entry_path, class: "square_btn" %>
+                    </div>
+                    <%= form_tag("/cancel", method: "post", id: "") do %>
+                      <div class="center">
+                          <%= link_to 'エントリーをキャンセルする', {controller: :users, action: :cancel}, method: :post, 
+                          data: {confirm: "本当にキャンセルしてもよろしいでしょうか？" }%>
+                        </div>
+                    <% end %>
+
+                  <% end %>
+
+                <% else %>
+                  <%=form_tag({ :action => 'entry' },{ :method => :post}) do %>
+                    <h2>ランチへ行く</h2>
+                    <div class="checkbox-center">
+                      <%= check_box  :user, :any_category %>
+                      <span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
+                    </div>
+                    <div class="btn-center">
+                      <%= hidden_field_tag 'user[category_id]', card.hobby_id %>
+                      <%= submit_tag "Let's go to Lunch", class: "square_btn" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
+            <!-- ランチボタン -->
           </article>
         <% end %>
 
