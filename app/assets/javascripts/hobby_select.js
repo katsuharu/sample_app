@@ -32,7 +32,6 @@ $(document).on('turbolinks:load', function() {
   // １階層目のitemをクリックした時に、下層のitemリストを表示
   $('#hobby_layer li').click(function() {
     var id = $(this).attr('id')
-
     var keyset = Object.keys(hobby_list[id])
     var len = keyset.length
 
@@ -61,11 +60,9 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
-
   // 二階層目のitemをクリックした時に、下層のitemリストを表示
   $(document).on('click', '#kind_layer li', function() {
     var cls = $(this).parent().attr('class')
-
     var target = $(this)
     var len = hobby_list[cls][target.text()].length
     var alEx = false
@@ -100,7 +97,6 @@ $(document).on('turbolinks:load', function() {
       $(con_list).removeClass()
       $(con_list).addClass(cls)
       for (var i = 0; i < len; i++) {
-
         $('.my_hobbies li').each(function() {
           if ($(this).text() == hobby_list[cls][target.text()][i]) {
             alEx = true
@@ -118,7 +114,6 @@ $(document).on('turbolinks:load', function() {
         }
       }
     }
-
   })
 
   $(document).on('click', '#con_list li', function() {
@@ -157,5 +152,14 @@ $(document).on('turbolinks:load', function() {
     $('#my_hobby input:eq(' + index+ ')').remove();
     $('#hobby_delete li:eq(' + index+ ')').remove();    
   })
+
+  $(document).on('click', '#hobby_register', function() {
+    if ($("input[name='user_hobby[hobby_name][]']").val() == undefined) {
+        alert('趣味を一つ以上選択してください');
+        return false;
+      }
+  })
+
+  
 
 })
