@@ -1,39 +1,36 @@
 Rails.application.routes.draw do
   get 'categories/search'
 
+  post   '/contact', to: 'static_pages#send_mail'
+
   get 'password_resets/new'
   get 'password_resets/edit'
-  get 'sessions/new'
   
   get    '/contact', to: 'static_pages#contact'
+  
   get    '/check', to: 'users#check'
   get    '/signup',  to: 'users#new'
-  get    '/login',   to: 'sessions#new'
   get    '/entry',   to: 'users#check_entry_cnt'
-  get     '/hobby', to: 'user_hobbies#hobby'
-  get     '/hobby_show', to: 'user_hobbies#hobby_show'
-
-  post   '/login',   to: 'sessions#create'
+  patch '/edit_confirm', to: 'users#edit_confirm'
   post   '/confirm', to: 'users#confirm'
   post   '/entry',        to: 'users#entry'
   post   '/cancel',        to: 'users#cancel'
-  post   '/contact', to: 'static_pages#send_mail'
   post  '/edit_confirm', to: 'users#edit_confirm'
-  post   '/hobby_save',        to: 'user_hobbies#hobby_save'
+
+  get 'sessions/new'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
+  get   '/hobby', to: 'user_hobbies#hobby'
+  get   '/hobby_show', to: 'user_hobbies#hobby_show'
+  post  '/hobby_save',        to: 'user_hobbies#hobby_save'
   post  '/edit',      to:   'user_hobbies#edit'
 
   post  'tweets/tweet_create'
   post  'tweets/thread_create'
-
   post 'apples/thread_create'
-
   resources :apples
-
-
-
-  patch '/edit_confirm', to: 'users#edit_confirm'
-
-  delete '/logout',  to: 'sessions#destroy'
 
   # match '/auth/:provider/callback', to: 'users#create', via: [:get, :post]
   
