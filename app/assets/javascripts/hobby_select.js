@@ -82,13 +82,20 @@ $(document).on('turbolinks:load', function() {
           }
         })
 
+        //クリックした趣味がhobby(趣味登録）ページの「登録する趣味一覧」に既に存在する場合
+        $('.my_hobbies input').each(function() {
+          if ($(this).val() == hobby_list[cls][target.text()][i]) {
+            alEx = true
+          }
+        })
+
         var li = document.createElement('li')
         var text = document.createTextNode(hobby_list[cls][target.text()][i])
         li.append(text)
 
         if (!alEx) {
           con_list.appendChild(li)
-        } else {
+        } else {    //既にクリックした趣味が選ばれている場合
           $("#con_list").append('<li class="hobby_selected">' + hobby_list[cls][target.text()][i] + '</li>')
           alEx = false //flagを元に戻す
         }
