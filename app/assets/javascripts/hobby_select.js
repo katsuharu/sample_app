@@ -89,7 +89,7 @@ $(document).on('turbolinks:load', function() {
         if (!alEx) {
           con_list.appendChild(li)
         } else {
-          $("#con_list").append('<li class="tate">' + hobby_list[cls][target.text()][i] + '</li>')
+          $("#con_list").append('<li class="hobby_selected">' + hobby_list[cls][target.text()][i] + '</li>')
           alEx = false //flagを元に戻す
         }
       }
@@ -109,7 +109,7 @@ $(document).on('turbolinks:load', function() {
         if (!alEx) {
           con_list.appendChild(li)
         } else {
-          $("#con_list").append('<li class="tate">' + hobby_list[cls][target.text()][i] + '</li>')
+          $("#con_list").append('<li class="hobby_selected">' + hobby_list[cls][target.text()][i] + '</li>')
           alEx = false //flagを元に戻す
         }
       }
@@ -120,7 +120,7 @@ $(document).on('turbolinks:load', function() {
     var target = $(this).text()
     var isSame = false
 
-    if ($(this).hasClass("tate")) {
+    if ($(this).hasClass("hobby_selected")) {
       isSame = true
     }
 
