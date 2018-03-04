@@ -27,11 +27,10 @@
 <hr>
 
 <h3>登録する趣味一覧</h3>
-  <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal') do %>
+  <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal' , id: 'hobby_register') do %>
   
     <div class="hobby_list">
       <div id="my_hobby">
-        <input type="hidden" name="user_hobby[hobby_name][]">
       </div>
 
       <ul id="hobby_delete">
