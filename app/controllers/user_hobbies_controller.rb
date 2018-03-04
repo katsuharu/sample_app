@@ -13,7 +13,6 @@ class UserHobbiesController < ApplicationController
 				@hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
 			end
 		end
-	  	
 	  	User.find_by(id: current_user.id).update_attribute(:hobby_added, 1)
 	  	flash[:success] = "趣味を登録いたしました。"
 	  	redirect_to root_url
