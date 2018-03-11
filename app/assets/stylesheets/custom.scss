@@ -634,7 +634,8 @@ article.lunch_card.lunch_activated {
   height: 100%;
   overflow: hidden;
 }
-#photo_list {
+
+#slider > div { /* photo_list_と同値 */
   /*width: 640px;  幅は指定しない*/
   height: 160px; /* padding 20*2 + img.height */
   padding: 0px 10px;  /* 変更 */
@@ -642,13 +643,14 @@ article.lunch_card.lunch_activated {
   float: left;
   /*background: #999;*/
 }
-#photo_list li {
+
+#slider > div li {
   float: left;
   margin: 0 10px;  /* 変更 */
   display: inline;
 }
- 
-#photo_list img {
+
+#slider > div img {
   border: none;
 }
 
@@ -657,7 +659,7 @@ article.lunch_card.lunch_activated {
     padding: 0;
   }
 
-  #photo_list {
+  #slider > div {
     padding: 0;
   }
 }
