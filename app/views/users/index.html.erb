@@ -20,7 +20,7 @@
       </ul>
 
       <h2>Hobby Cards</h2>
-        <% @cards.each do |card| %>
+        <% @cards.each_with_index do |card, i| %>
           <article class="lunch_card">
             <h5><%= card.hobby_name %></h5>
             <% entry_num = User.where(category_id: card.hobby_id).count %>
@@ -31,8 +31,8 @@
               <div class="entry-cnt">
                 <div id="slider_wrap">
                   <div id="slider">
-                      <div id="slider_inner">
-                          <ul id="photo_list">
+                      <div id="slider_inner_<%= p i %>">
+                          <ul id="photo_list_<%= p i %>">
                             <% @users.each do |user| %>
                               <li>
                                 <%= image_tag user.profile_img.url, :size => '160x160' if user.profile_img? %>
