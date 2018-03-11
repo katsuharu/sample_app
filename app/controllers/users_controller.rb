@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     # Top5のhobbyを取得
     @hobby_pop = UserHobby.group(:hobby_name).order('count_all desc').limit(5).count
 
-    @tweets = Tweet.all
+    # @tweets = Tweet.all
+    @tweets = Tweet.paginate(page: params[:page], per_page: 20)
     @apple = Tweet.new
     @today = Date.today
 
