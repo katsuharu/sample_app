@@ -113,38 +113,14 @@ class UsersController < ApplicationController
   end
 
   def entry
-    @user = current_user #エントリー画面(entry.html.erb)でユーザー情報を表示するために変数に代入
-    
     if current_user.category_id.nil?         #カレントユーザーが未エントリーの場合
-      cate_num = params[:user][:category_id]
-      User.find_by(id: current_user.id).update_attribute(:category_id, cate_num)
-      cate_cnt = User.where(category_id: cate_num).count
+      category_id = params[:user][:category_id]
+      User.find_by(id: current_user.id).update_attribute(:category_id, category_id)
       if params[:user][:any_category] == '1'
         User.find_by(id: current_user.id).update_attribute(:any_category, 1)
       end
-
-      if cate_cnt != 0 && cate_cnt % 3 == 0
-        pair_id = cate_cnt / 3
-        #まだマッチングしてないcategory_idがcate_numのユーザーのpair_idを更新
-        members = User.where(category_id: cate_num).where(pair_id: nil)
-        members.update_all(pair_id: pair_id) #pair_idを更新
-
-        #マッチングしたそれぞれの人にマッチングしたことを知らせるためのメールを送信
-        members.each do |member|
-          member.send_success_email
-        end
-
-        redirect_to check_path
-        flash[:success] = "マッチングが完了致しました。"
-        #エントリーボタンを押してマッチングしたユーザーにマッチング成功のお知らせメールを送信
-        return
-      end
-      
-      render action: 'entry'
-      return
-    else
+      flash[:success] = "エントリーしました。"
       redirect_to root_url
-      flash[:danger] = "既にエントリー済みです。"
     end
   end
 
