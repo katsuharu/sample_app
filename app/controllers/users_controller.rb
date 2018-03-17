@@ -54,29 +54,6 @@ class UsersController < ApplicationController
     auth = request.env["omniauth.auth"]
     if auth.present?
 
-      p "色川武大"
-      p auth.info.image
-      p auth.info.user_friends
-      p auth.user_friends
-      p auth.extra.raw_info.user_friends
-
-      p auth.user_likes
-      p auth.info.user_likes
-      p auth.extra.raw_info.user_likes
-      
-      p auth.extra
-      p auth.extra.raw_info.user_friends
-
-      p auth.info.first_name
-      p auth.info.last_name
-
-
-      p auth.extra.raw_info.gender
-      p auth.extra.raw_info.timezone
-      p auth.credentials
-      p "太宰治"
-
-
       if @auth = Authorization.find_from_auth(auth)
         user = @auth.user
         log_in user
