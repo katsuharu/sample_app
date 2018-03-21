@@ -60,6 +60,23 @@
 
 require "csv"
  
-CSV.foreach('db/category_db.csv') do |info|
-  Category.create(:name => info[0], :hira => info[1], :kana=> info[2])
+# CSV.foreach('db/category_db.csv') do |info|
+#   Category.create(:name => info[0], :hira => info[1], :kana=> info[2])
+# end
+
+ 
+# CSV.foreach('db/category_layer/first_category.csv') do |info|
+#   FirstCategory.create(:name => info[0])
+# end
+
+# CSV.foreach('db/category_layer/second_category.csv') do |info|
+#   SecondCategory.create(:name => info[0], :first_category_id => info[1])
+# end
+
+CSV.foreach('db/category_layer/third_category.csv') do |info|
+  ThirdCategory.create(:name => info[0], :second_category_id => info[1])
+end
+
+CSV.foreach('db/category_layer/forth_category.csv') do |info|
+  ForthCategory.create(:name => info[0], :third_category_id => info[1])
 end
