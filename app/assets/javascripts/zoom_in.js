@@ -15,20 +15,39 @@ $(document).ready(function (){
     var $firstChild = $this.attr('data-first');
 
     if ($firstChild == 'all') {
-      $seconds.removeClass('is-animated')
+      $first_parents.removeClass('is-animated')
         .fadeOut().promise().done(function() {
-          $seconds.addClass('is-animated').fadeIn();
+          $first_parents.addClass('is-animated').fadeIn();
         });
     } else {
-      $seconds.removeClass('is-animated')
+      $first_parents.removeClass('is-animated')
         .fadeOut().promise().done(function() {
-          $seconds.filter('[data-first-id = "' + $firstChild + '"]')
+          $first_parents.filter('[data-first-id = "' + $firstChild + '"]')
             .addClass('is-animated').fadeIn();
         });
     }
   })
   //
 
+  // 第二層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
+  var $seconds = $('.second_categories [data-second]'),
+    $second_parents = $('.third_categories [data-second-id]')
+  $seconds.on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    
+    $seconds.removeClass('active');
+    $this.addClass('active');
+
+    var $secondChild = $this.attr('data-second');
+
+    $second_parents.removeClass('is-animated')
+      .fadeOut().promise().done(function() {
+        $second_parents.filter('[data-second-id = "' + $secondChild + '"]')
+          .addClass('is-animated').fadeIn();
+      })
+  })
+  // 
   
 
 })
