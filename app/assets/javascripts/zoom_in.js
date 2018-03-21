@@ -47,7 +47,27 @@ $(document).ready(function (){
           .addClass('is-animated').fadeIn();
       })
   })
-  // 
+  //
+
+  // 第三層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
+  var $thirds = $('.third_categories [data-third]'),
+    $third_parents = $('.forth_categories [data-third-id]')
+  $thirds.on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    
+    $thirds.removeClass('active');
+    $this.addClass('active');
+
+    var $thirdChild = $this.attr('data-third')
+
+    $third_parents.removeClass('is-animated')
+      .fadeOut().promise().done(function() {
+        $third_parents.filter('[data-third-id = "' + $thirdChild + '"]')
+          .addClass('is-animated').fadeIn();
+      })
+  })
+  //
   
 
 })
