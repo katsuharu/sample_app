@@ -9,16 +9,27 @@
         <div class="form-group">
           <p>質問や要望等がございましたらお気軽にお問い合わせください。</p>
         </div>
+        <% if logged_in? %>
+          <div class="form-group">
+            <label class="mr10">お名前</label><span class="label label-danger">必須</span>
+            <%= text_field_tag 'contact[name]', @user.name, class: 'form-control', required: true %>
+          </div>
 
-        <div class="form-group">
-          <label class="mr10">お名前</label><span class="label label-danger">必須</span>
-          <%= text_field_tag 'contact[name]', nil, class: 'form-control', required: true %>
-        </div>
+          <div class="form-group">
+            <label class="mr10">メールアドレス</label><span class="label label-danger">必須</span>
+            <%= email_field_tag 'contact[email]', @user.email , class: 'form-control', required: true %>
+          </div>
+        <% else %>
+          <div class="form-group">
+            <label class="mr10">お名前</label><span class="label label-danger">必須</span>
+            <%= text_field_tag 'contact[name]', nil, class: 'form-control', required: true %>
+          </div>
 
-        <div class="form-group">
-          <label class="mr10">メールアドレス</label><span class="label label-danger">必須</span>
-          <%= email_field_tag 'contact[email]', nil, class: 'form-control', required: true %>
-        </div>
+          <div class="form-group">
+            <label class="mr10">メールアドレス</label><span class="label label-danger">必須</span>
+            <%= email_field_tag 'contact[email]', nil, class: 'form-control', required: true %>
+          </div>
+        <% end %>
 
         <div class="form-group">
           <label class="mr10">お問い合わせ内容</label><span class="label label-danger">必須</span>
