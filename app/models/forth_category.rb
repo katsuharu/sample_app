@@ -1,0 +1,2 @@
+class ForthCategory < ApplicationRecord
+end
