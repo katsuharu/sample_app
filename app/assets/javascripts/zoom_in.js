@@ -3,7 +3,7 @@ $(document).ready(function (){
   'use strict';
 
   // 第一層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
-  var $firsts = $('.filter [data-first]'),
+  var $firsts = $('.first_categories [data-first]'),
     $seconds = $('.second_categories [data-first-id]');
   $firsts.on('click', function(e) {
     e.preventDefault();
