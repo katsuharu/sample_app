@@ -16,7 +16,7 @@
 
   <div class="third_categories">
     <% @third_categories.each do |third| %>
-      <a class="all active" data-third="<%= p third[2] %>" href="#" role="button"><%= third[1] %></a>
+      <a class="all active" data-second-id="<%= p third[2] %>" data-third="<%= p third[0] %>" href="#" role="button"><%= third[1] %></a>
     <% end %>
   </div>
   
