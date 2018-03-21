@@ -866,6 +866,19 @@ ul {
   margin-right: 30px;
 }
 
+.is-animated {
+  animation: .6s zoom-in;
+}
+
+@keyframes zoom-in {
+  0% {
+   transform: scale(.1);
+  } 
+  100% {
+    transform: none;
+  }
+}
+
 
 
 /* 趣味登録ページ */
