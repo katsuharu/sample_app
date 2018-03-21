@@ -2,28 +2,24 @@
 
 <h1 class="basic-heading">趣味を登録</h1>
 
-<div class="hobby">
+  <div class="cta first_categories">
+    <% @first_categories.each do |first| %>
+      <a class="all active" data-first="<%= p first[0] %>" href="#" role="button"><%= first[1] %></a>
+    <% end %>
+  </div>
+
+  <div class="second_categories">
+    <% @second_categories.each do |second| %>
+      <a class="" data-first-id="<%= p second[2] %>" data-second="<%= p second[0] %>" href="#" role="button"><%= second[1] %></a>
+    <% end %>
+  </div>
+
+  <div class="third_categories">
+    <% @third_categories.each do |third| %>
+      <a class="all active" data-third="<%= p third[2] %>" href="#" role="button"><%= third[1] %></a>
+    <% end %>
+  </div>
   
-  <div >
-    <ul id="hobby_layer">
-      <li id="foods" data-food="meats">食べ物</li>
-      <li id="movies" data-food="fishs">映画</li>
-      <li id="musics" data-food="veges">音楽</li>
-    </ul>
-  </div>
-
-  <div >
-    <ul id="kind_layer">
-    </ul>
-  </div>
-
-  
-  <div id="concreate_layer">
-    <ul id="con_list">
-    </ul>
-  </div>
-</div>
-
 <hr>
 
 <h3>登録する趣味一覧</h3>
