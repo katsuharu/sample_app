@@ -1,6 +1,6 @@
 <%= @user.name %>さま
 
-The Lunchにユーザ登録をしていただき誠にありがとうございます。
+Lunch Friendsにユーザ登録をしていただき誠にありがとうございます。
 下記のリンクにアクセスしてアカウントを有効化してください。
 
 <%= edit_account_activation_url(@user.activation_token, email:@user.email) %>
