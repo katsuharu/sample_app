@@ -1,6 +1,10 @@
 class UserHobbiesController < ApplicationController
 	def hobby
 	  @hobby = UserHobby.new
+	  @first_categories = FirstCategory.pluck(:id, :name)
+	  @second_categories = SecondCategory.pluck(:id, :name, :first_category_id)
+	  @third_categories = ThirdCategory.pluck(:id, :name, :second_category_id)
+	  @forth_categories = ForthCategory.pluck(:id, :name, :third_category_id)
 	end
 
 	def hobby_save
