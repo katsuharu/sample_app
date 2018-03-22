@@ -73,10 +73,21 @@ require "csv"
 #   SecondCategory.create(:name => info[0], :first_category_id => info[1])
 # end
 
-CSV.foreach('db/category_layer/third_category.csv') do |info|
-  ThirdCategory.create(:name => info[0], :second_category_id => info[1])
-end
+# CSV.foreach('db/category_layer/third_category.csv') do |info|
+#   ThirdCategory.create(:name => info[0], :second_category_id => info[1])
+# end
 
-CSV.foreach('db/category_layer/forth_category.csv') do |info|
-  ForthCategory.create(:name => info[0], :third_category_id => info[1])
+# CSV.foreach('db/category_layer/forth_category.csv') do |info|
+#   ForthCategory.create(:name => info[0], :third_category_id => info[1])
+# end
+
+
+# CSV.foreach('db/category_layer/new_third.csv') do |info|
+# 	ThirdCategory.create(:name => info[0], :second_category_id => info[1])
+#   	# ThirdCategory.update_attributes(:name => info[0], :second_category_id => info[1])
+# end
+
+seconds = SecondCategory.all
+CSV.foreach('db/category_layer/new_second_01.csv') do |info|
+	seconds[info[2].to_i].update(:name => info[0], :first_category_id => info[1])
 end
