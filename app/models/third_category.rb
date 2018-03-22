@@ -1,2 +1,0 @@
-class ThirdCategory < ApplicationRecord
-end
