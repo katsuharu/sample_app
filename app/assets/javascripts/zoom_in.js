@@ -32,12 +32,19 @@ $(document).ready(function (){
     $seconds.removeClass('active');
     $this.addClass('active');
 
-    var $secondChild = $this.attr('data-second');
+    var $secondChild = $this.attr('data-second')
 
     $second_parents.removeClass('is-animated')
       .fadeOut().promise().done(function() {
-        $second_parents.filter('[data-second-id = "' + $secondChild + '"]')
-          .addClass('is-animated').fadeIn();
+        if($second_parents.filter('[data-second-id = "' + $secondChild + '"]').length) {
+          $second_parents.filter('[data-second-id = "' + $secondChild + '"]')
+            .addClass('is-animated').fadeIn()
+          console.log(true)
+        }else {   //「Add Hobby」に表示して、趣味登録の候補に追加する
+          $('#my_hobby').append('<input type="text" value="' + $(this).attr('data-second')+ '" readonly>')
+
+          console.log(false)
+        }
       })
   })
   //
@@ -56,11 +63,15 @@ $(document).ready(function (){
 
     $third_parents.removeClass('is-animated')
       .fadeOut().promise().done(function() {
-        $third_parents.filter('[data-third-id = "' + $thirdChild + '"]')
-          .addClass('is-animated').fadeIn();
+        if($third_parents.filter('[data-third-id = "' + $thirdChild + '"]').length) {
+          $third_parents.filter('[data-third-id = "' + $thirdChild + '"]')
+            .addClass('is-animated').fadeIn()
+          console.log(true)
+        }else {
+          $('#my_hobby').append('<input type="text" value="' + $(this).attr('data-third')+ '" readonly>')
+          console.log(false)
+        }
       })
   })
   //
-  
-
 })
