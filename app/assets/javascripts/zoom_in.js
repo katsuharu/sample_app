@@ -1,6 +1,7 @@
 $(document).ready(function (){
 
   'use strict'
+  var ALREADY = false
 
   // 第一層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
   var $firsts = $('.first_categories [data-first]'),
@@ -26,9 +27,8 @@ $(document).ready(function (){
   var $seconds = $('.second_categories [data-second]'),
     $second_parents = $('.third_categories [data-second-id]')
   $seconds.on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    
+    e.preventDefault()
+    var $this = $(this)
     $seconds.removeClass('active');
     $this.addClass('active');
 
@@ -41,8 +41,16 @@ $(document).ready(function (){
             .addClass('is-animated').fadeIn()
           console.log(true)
         }else {   //「Add Hobby」に表示して、趣味登録の候補に追加する
-          $('#my_hobby').append('<input type="text" value="' + $this.text()+ '" readonly>')
-
+          $('.my_hobbies input').each(function() {
+            if($(this).val() == $this.text()) {
+              ALREADY = true
+              return false
+            }
+          })
+          if(!ALREADY) {
+            $('#my_hobby').append('<input type="text" value="' + $this.text()+ '" readonly>')
+          }
+          ALREADY = false
           console.log(false)
         }
       })
@@ -53,11 +61,10 @@ $(document).ready(function (){
   var $thirds = $('.third_categories [data-third]'),
     $third_parents = $('.forth_categories [data-third-id]')
   $thirds.on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    
-    $thirds.removeClass('active');
-    $this.addClass('active');
+    e.preventDefault()
+    var $this = $(this)
+    $thirds.removeClass('active')
+    $this.addClass('active')
 
     var $thirdChild = $this.attr('data-third')
 
@@ -68,7 +75,16 @@ $(document).ready(function (){
             .addClass('is-animated').fadeIn()
           console.log(true)
         }else {
-          $('#my_hobby').append('<input type="text" value="' + $this.text() + '" readonly>')
+          $('.my_hobbies input').each(function() {
+            if($(this).val() == $this.text()) {
+              ALREADY = true
+              return false
+            }
+          })
+          if(!ALREADY) {
+            $('#my_hobby').append('<input type="text" value="' + $this.text()+ '" readonly>')
+          }
+          ALREADY = false
           console.log(false)
         }
       })
@@ -80,6 +96,15 @@ $(document).ready(function (){
   $forths.on('click', function(e) {
     e.preventDefault()
     var $this = $(this)
-    $('#my_hobby').append('<input type="text" value="' + $(this).text() + '" readonly>')
+    $('.my_hobbies input').each(function() {
+      if($(this).val() == $this.text()) {
+        ALREADY = true
+        return false
+      }
+    })
+    if(!ALREADY) {
+      $('#my_hobby').append('<input type="text" value="' + $this.text()+ '" readonly>')
+    }
+    ALREADY = false
   })
 })
