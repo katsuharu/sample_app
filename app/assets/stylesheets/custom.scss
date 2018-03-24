@@ -950,6 +950,10 @@ input.hb-add {
     margin: 0;
 }
 
+#my_hobby input[type="text"] {
+    margin:  0;
+}
+
 li.hobby_selected {
   color: red;
 }
