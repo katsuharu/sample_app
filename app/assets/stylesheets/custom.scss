@@ -924,7 +924,6 @@ ul {
 
 
 
-/* 趣味登録ページ */
 .hobby_list {
   display: flex;
 }
@@ -952,6 +951,7 @@ input.hb-add {
 
 #my_hobby input[type="text"] {
     margin:  0;
+    border: none;
 }
 
 #hobby_delete label {
