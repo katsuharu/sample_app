@@ -87,7 +87,11 @@ require "csv"
 #   	# ThirdCategory.update_attributes(:name => info[0], :second_category_id => info[1])
 # end
 
-seconds = SecondCategory.all
-CSV.foreach('db/category_layer/new_second_01.csv') do |info|
-	seconds[info[2].to_i].update(:name => info[0], :first_category_id => info[1])
+# seconds = SecondCategory.all
+# CSV.foreach('db/category_layer/new_second_01.csv') do |info|
+# 	seconds[info[2].to_i].update(:name => info[0], :first_category_id => info[1])
+# end
+
+CSV.foreach('db/category_new.csv') do |info|
+  Category.create(:name => info[0], :hira => info[1], :kana=> info[2])
 end
