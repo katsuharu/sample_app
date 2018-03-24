@@ -41,7 +41,7 @@ $(document).ready(function (){
             .addClass('is-animated').fadeIn()
           console.log(true)
         }else {   //「Add Hobby」に表示して、趣味登録の候補に追加する
-          $('#my_hobby').append('<input type="text" value="' + $(this).attr('data-second')+ '" readonly>')
+          $('#my_hobby').append('<input type="text" value="' + $this.text()+ '" readonly>')
 
           console.log(false)
         }
@@ -68,7 +68,7 @@ $(document).ready(function (){
             .addClass('is-animated').fadeIn()
           console.log(true)
         }else {
-          $('#my_hobby').append('<input type="text" value="' + $(this).attr('data-third')+ '" readonly>')
+          $('#my_hobby').append('<input type="text" value="' + $this.text() + '" readonly>')
           console.log(false)
         }
       })
