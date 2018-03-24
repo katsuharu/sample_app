@@ -74,4 +74,12 @@ $(document).ready(function (){
       })
   })
   //
+
+  // 第四層のカテゴリーを選択した時、候補に追加
+  var $forths = $('.forth_categories [data-forth]')
+  $forths.on('click', function(e) {
+    e.preventDefault()
+    var $this = $(this)
+    $('#my_hobby').append('<input type="text" value="' + $(this).text() + '" readonly>')
+  })
 })
