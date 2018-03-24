@@ -111,11 +111,11 @@ $(document).ready(function (){
     ALREADY = false
   })
 
-  $(document).on('click', '#hobby_delete li', function() {
-    var index = $('#hobby_delete li').index(this)
+  $(document).on('click', '#hobby_delete label', function() {
+    var index = $('#hobby_delete label').index(this)
 
     $('#my_hobby input:eq(' + index+ ')').remove();
-    $('#hobby_delete li:eq(' + index+ ')').remove();    
+    $('#hobby_delete label:eq(' + index+ ')').remove();    
   })
 
   $(document).on('click', '#hobby_register', function() {
