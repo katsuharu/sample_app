@@ -956,7 +956,12 @@ td.tweet_time {
     padding-right: 10px;
 }
 
-
+/* Thread */
 .t_threads.col-sm-3 {
     background-color:  gainsboro;
+}
+
+textarea#t_thread_content {
+    width: 80%;
+    margin: 0 35px;
 }
