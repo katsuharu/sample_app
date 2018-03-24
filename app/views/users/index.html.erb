@@ -22,11 +22,12 @@
       <h2>Hobby Cards</h2>
         <% @cards.each_with_index do |card, i| %>
           <article class="lunch_card">
-            <h5><%= card.hobby_name %></h5>
-            <% entry_num = User.where(category_id: card.hobby_id).count %>
+            <h5><%= card %></h5>
+            <% category_id = Category.find_by(name: card).id %>
+            <% entry_num = User.where(category_id: category_id).count %>
             <% if entry_num >0 %>
               <p class="lunch_state"><%= entry_num %>人参加してます！</p>
-              <% @users = User.where(category_id: card.hobby_id) %>
+              <% @users = User.where(category_id: category_id) %>
               <!-- スライドショー -->
               <div class="entry-cnt">
                 <div id="slider_wrap">
@@ -80,7 +81,7 @@
                       <span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
                     </div>
                     <div class="btn-center">
-                      <%= hidden_field_tag 'user[category_id]', card.hobby_id %>
+                      <%= hidden_field_tag 'user[category_id]', category_id %>
                       <%= submit_tag "Let's go to Lunch", class: "square_btn" %>
                     </div>
                   <% end %>
