@@ -102,9 +102,7 @@
             <%= f.text_area :content, size: "55x2", placeholder: "投稿内容" %>
           </div>
           <div class="col-sm-3">
-            <%= collection_select(:tweet, :category_id, Category.all, :id,  :name, 
-            {include_blank: '選択してください'} ,{:class => "select-menu", required: true}) %>
-            <%= f.submit "投稿", class: "" %>
+            <%= select(:tweet, :category_id, @cards.map{|t| [t,Category.find_by(name: t).id]}, {include_blank: '選択してください'},{:class => "select-menu", required: true}) %>
           </div>
         </div>
       <% end %>
