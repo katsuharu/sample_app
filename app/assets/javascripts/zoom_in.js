@@ -48,6 +48,9 @@ $(document).ready(function (){
             }
           })
           if(!ALREADY) {
+            var li_del = document.createElement('li')
+            li_del.append('削除')
+            $('#hobby_delete').append(li_del)
             $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
           }
           ALREADY = false
@@ -82,6 +85,9 @@ $(document).ready(function (){
             }
           })
           if(!ALREADY) {
+            var li_del = document.createElement('li')
+            li_del.append('削除')
+            $('#hobby_delete').append(li_del)
             $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
           }
           ALREADY = false
@@ -103,6 +109,9 @@ $(document).ready(function (){
       }
     })
     if(!ALREADY) {
+      var li_del = document.createElement('li')
+      li_del.append('削除')
+      $('#hobby_delete').append(li_del)
       $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
     }
     ALREADY = false
