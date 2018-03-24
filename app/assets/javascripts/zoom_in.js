@@ -117,6 +117,13 @@ $(document).ready(function (){
     ALREADY = false
   })
 
+  $(document).on('click', '#hobby_delete li', function() {
+    var index = $('#hobby_delete li').index(this)
+
+    $('#my_hobby input:eq(' + index+ ')').remove();
+    $('#hobby_delete li:eq(' + index+ ')').remove();    
+  })
+
   $(document).on('click', '#hobby_register', function() {
     if ($("input[name='user_hobby[hobby_name][]']").val() == undefined) {
         alert('趣味を一つ以上選択してください')
