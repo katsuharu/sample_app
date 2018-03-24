@@ -69,11 +69,11 @@ require "csv"
 #   FirstCategory.create(:name => info[0])
 # end
 
-# CSV.foreach('db/category_layer/second_category.csv') do |info|
+# CSV.foreach('db/category_layer/new_second_01.csv') do |info|
 #   SecondCategory.create(:name => info[0], :first_category_id => info[1])
 # end
 
-# CSV.foreach('db/category_layer/third_category.csv') do |info|
+# CSV.foreach('db/category_layer/new_third.csv') do |info|
 #   ThirdCategory.create(:name => info[0], :second_category_id => info[1])
 # end
 
