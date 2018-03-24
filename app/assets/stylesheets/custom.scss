@@ -38,9 +38,7 @@ body {
   color: $content-color;
 }
 
-section {
-  overflow: auto;
-}
+
 
 textarea {
   resize: vertical;
@@ -512,14 +510,6 @@ a.square_btn.bf-top {
 
 /* エントリー中ユーザ一覧 */
 
-.entry-user section {
-  flex: 1;
-  margin: 10px;
-  display: flex;
-  border: solid 1px #ddd;
-  color: inherit;
-}
-
 .entry-user .user-info img {
   width: 180px;
   height: 180px;
@@ -563,10 +553,6 @@ a.square_btn.bf-top {
 
 .entry-user .entry-cnt {
     margin-bottom: 25px;
-}
-
-section.entry_form {
-    text-align: center;
 }
 
 .category-center {
