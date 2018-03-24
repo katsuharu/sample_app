@@ -4,28 +4,25 @@
 
   <div class="cta first_categories">
     <% @first_categories.each do |first| %>
-      <input type="text" class="active" data-first="<%= p first[0] %>" value="<%= first[1] %>" readonly>
+      <a class="active" data-first="<%= p first[0] %>" href="#" role="button"><%= first[1] %></a>
     <% end %>
   </div>
 
   <div class="second_categories">
     <% @second_categories.each do |second| %>
-      <input type="text" class="standby" data-first-id="<%= p second[2] %>" 
-      data-second="<%= p second[0] %>" value="<%= second[1] %>" readonly>
+      <a class="standby" data-first-id="<%= p second[2] %>" data-second="<%= p second[0] %>" href="#" role="button"><%= second[1] %></a>
     <% end %>
   </div>
 
   <div class="third_categories">
     <% @third_categories.each do |third| %>
-      <input type="text" class="standby" data-second-id="<%= p third[2] %>" data-third="<%= p third[0] %>"
-       value="<%= third[1] %>" readonly>
+      <a class="standby" data-second-id="<%= p third[2] %>" data-third="<%= p third[0] %>" href="#" role="button"><%= third[1] %></a>
     <% end %>
   </div>
 
   <div class="forth_categories">
     <% @forth_categories.each do |forth| %>
-      <input type="text" class="standby" data-third-id="<%= p forth[2] %>" data-forth="<%= p forth[0] %>"
-       value="<%= forth[1] %>" readonly>
+      <a class="standby" data-third-id="<%= p forth[2] %>" data-forth="<%= p forth[0] %>" href="#" role="button"><%= forth[1] %></a>
     <% end %>
   </div>
   
