@@ -48,7 +48,7 @@ $(document).ready(function (){
             }
           })
           if(!ALREADY) {
-            $('#my_hobby').append('<input type="text" value="' + $this.text()+ '" readonly>')
+            $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
           }
           ALREADY = false
           console.log(false)
@@ -82,7 +82,7 @@ $(document).ready(function (){
             }
           })
           if(!ALREADY) {
-            $('#my_hobby').append('<input type="text" value="' + $this.text()+ '" readonly>')
+            $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
           }
           ALREADY = false
           console.log(false)
@@ -103,8 +103,15 @@ $(document).ready(function (){
       }
     })
     if(!ALREADY) {
-      $('#my_hobby').append('<input type="text" value="' + $this.text()+ '" readonly>')
+      $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
     }
     ALREADY = false
+  })
+
+  $(document).on('click', '#hobby_register', function() {
+    if ($("input[name='user_hobby[hobby_name][]']").val() == undefined) {
+        alert('趣味を一つ以上選択してください')
+        return false
+      }
   })
 })
