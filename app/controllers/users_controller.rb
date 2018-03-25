@@ -73,6 +73,7 @@ class UsersController < ApplicationController
     	elsif @user.save
         @user.send_activation_email
     		flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
+        UserHobby.create(:hobby_name => 'オールジャンル', :user_id => @user.id)
     		redirect_to root_url
         return
     	else
