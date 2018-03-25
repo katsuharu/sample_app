@@ -1,52 +1,56 @@
-<% provide(:title, "趣味の設定") %>
+<% provide(:title, "趣味を登録") %>
 
-<h1 class="basic-heading">趣味選択</h1>
+<h1 class="basic-heading">趣味を登録</h1>
 
-<div class="hobby">
+  <div class="cta first_categories">
+    <% @first_categories.each do |first| %>
+      <div class="active" data-first="<%= p first[0] %>"><%= first[1] %></div>
+    <% end %>
+  </div>
+
+  <div class="second_categories">
+    <% @second_categories.each do |second| %>
+      <div class="standby" data-first-id="<%= p second[2] %>" data-second="<%= p second[0] %>"><%= second[1] %></div>
+    <% end %>
+  </div>
+
+  <div class="third_categories">
+    <% @third_categories.each do |third| %>
+      <div class="standby" data-second-id="<%= p third[2] %>" data-third="<%= p third[0] %>"><%= third[1] %></div>
+    <% end %>
+  </div>
+
+  <div class="forth_categories">
+    <% @forth_categories.each do |forth| %>
+      <div class="standby" data-third-id="<%= p forth[2] %>" data-forth="<%= p forth[0] %>"><%= forth[1] %></div>
+    <% end %>
+  </div>
   
-  <div >
-    <ul id="hobby_layer">
-      <li id="foods" data-food="meats">食べ物</li>
-      <li id="movies" data-food="fishs">映画</li>
-      <li id="musics" data-food="veges">音楽</li>
-    </ul>
-  </div>
-
-  <div >
-    <ul id="kind_layer">
-    </ul>
-  </div>
-
-  
-  <div id="concreate_layer">
-    <ul id="con_list">
-    </ul>
-  </div>
-</div>
-
 <hr>
-<h3>Add Hobby</h3>
-<%= form_tag({ controller: :user_hobbies, action: :edit}, class: 'form-horizontal') do %>
 
-  <div class="hobby_list">
-    <div id="my_hobby">
+<h3>登録する趣味一覧</h3>
+  <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal') do %>
+  
+    <div class="hobby_list">
+      <div id="my_hobby" class="my_hobbies">
+      </div>
+
+      <div id="hobby_delete">
+      </div>
     </div>
 
-    <ul id="hobby_delete">
-    </ul>
-  </div>
+    <div class="form-actions btn-center">
+      <%= submit_tag "趣味を登録", class: "square_btn", id: 'hobby_register' %>
+    </div>
+
+  <% end %>
 
 
-<hr>
+  <hr>
 <h3>My Hobby</h3>
-  <ul class="my_hobbies">
+  <div class="row">
     <% @hobbies.each do |hobby| %>
-      <li><%= hobby.hobby_name %></li>
+      <div class="col-sm-3"><%= hobby.hobby_name %></div>
+      <div class="col-sm-9">削除</div>
     <% end %>
   </ul>
-
-  <div class="form-actions btn-center">
-    <%= submit_tag "趣味を更新", class: "square_btn" %>
-  </div>
-
-<% end %>
