@@ -12,7 +12,6 @@ class UserHobbiesController < ApplicationController
 
 		for i in 0..hobby_num - 1
 			if params[:user_hobby][:hobby_name][i].empty?
-				p "empty hobby"
 			else
 				@hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
 			end
@@ -56,7 +55,6 @@ class UserHobbiesController < ApplicationController
 		if del_hobbies
 		
 			for str in del_hobbies
-				puts str
 				UserHobby.where(user_id: current_user.id).where(hobby_name: str).destroy_all
 			end
 		end
