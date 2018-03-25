@@ -71,4 +71,10 @@ class UserHobbiesController < ApplicationController
 		@forth_categories = ForthCategory.pluck(:id, :name, :third_category_id)
 		@hobbies = UserHobby.where(user_id: current_user.id)
 	end
+
+	def del_hobby
+		params[:user_hobbies][:id].each do |id| 
+			UserHobby.find(id).destroy()
+		end
+	end
 end
