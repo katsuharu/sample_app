@@ -124,4 +124,13 @@ $(document).ready(function (){
         return false
       }
   })
+
+  //趣味編集ページで、my hobbyから趣味を削除するかどうかをcheckboxの値で判断
+  $(document).on('click', '#my_hobby_del', function() {
+    if($('input:checkbox[name="user_hobbies[id][]"]:checked').length) {
+    }else {
+      alert('一つ以上チェックしてください')
+      return false
+    }
+  })
 })
