@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get   '/hobby_show', to: 'user_hobbies#hobby_show'
   post  '/hobby_save',        to: 'user_hobbies#hobby_save'
   post  '/edit',      to:   'user_hobbies#edit'
+  post 'user_hobbies/del_hobby'
 
   post  'tweets/tweet_create'
   post  'tweets/thread_create'
