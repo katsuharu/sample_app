@@ -52,7 +52,10 @@
     <% @hobbies.each do |hobby| %>
       <div class="display_flex">
         <%= label_tag 'user_hobbies[id]', hobby.hobby_name %>
-        <%= check_box_tag 'user_hobbies[id]', hobby.id %>
+        <%= check_box_tag 'user_hobbies[id][]', hobby.id %>
       </div>
       <% end %>
+      <div class="form-actions btn-center">
+        <%= submit_tag "チェックした趣味をMy Categoryから削除", class: "square_btn" %>
+      </div>
     <% end %>
