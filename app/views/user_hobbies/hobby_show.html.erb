@@ -52,7 +52,7 @@
     <% @hobbies.each do |hobby| %>
       <div class="display_flex">
         <%= label_tag 'user_hobbies[id]', hobby.hobby_name %>
-        <%= check_box_tag 'user_hobbies[id][]', hobby.id %>
+        <%= check_box_tag 'user_hobbies[id][]', hobby.id,false, {required: true} %>
       </div>
       <% end %>
       <div class="form-actions btn-center">
