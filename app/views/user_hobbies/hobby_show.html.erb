@@ -1,6 +1,6 @@
-<% provide(:title, "趣味を登録") %>
+<% provide(:title, "趣味を編集") %>
 
-<h1 class="basic-heading">趣味を登録</h1>
+<h1 class="basic-heading">趣味を編集</h1>
 
   <div class="cta first_categories">
     <% @first_categories.each do |first| %>
@@ -28,7 +28,7 @@
   
 <hr>
 
-<h3>登録する趣味一覧</h3>
+<h3>新たに登録する趣味一覧</h3>
   <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal') do %>
   
     <div class="hobby_list">
