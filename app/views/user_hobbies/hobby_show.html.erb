@@ -48,9 +48,11 @@
 
   <hr>
 <h3>My Hobby</h3>
-  <div class="row">
+    <%= form_tag("/user_hobbies/del_hobby", method: "post", data: { confirm: '削除してよろしいでしょうか？' }, class: "col-sm-9") do %>
     <% @hobbies.each do |hobby| %>
-      <div class="col-sm-3"><%= hobby.hobby_name %></div>
-      <div class="col-sm-9">削除</div>
+      <div class="display_flex">
+        <%= label_tag 'user_hobbies[id]', hobby.hobby_name %>
+        <%= check_box_tag 'user_hobbies[id]', hobby.id %>
+      </div>
+      <% end %>
     <% end %>
-  </ul>
