@@ -74,5 +74,7 @@ class UserHobbiesController < ApplicationController
 		params[:user_hobbies][:id].each do |id| 
 			UserHobby.find(id).destroy()
 		end
+		flash[:success] = "趣味を削除いたしました。"
+		redirect_to hobby_show_path
 	end
 end
