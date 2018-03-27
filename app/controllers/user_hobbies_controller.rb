@@ -67,7 +67,7 @@ class UserHobbiesController < ApplicationController
 		@second_categories = SecondCategory.pluck(:id, :name, :first_category_id)
 		@third_categories = ThirdCategory.pluck(:id, :name, :second_category_id)
 		@forth_categories = ForthCategory.pluck(:id, :name, :third_category_id)
-		@hobbies = UserHobby.where(user_id: current_user.id)
+		@hobbies = UserHobby.where(user_id: current_user.id).where.not(hobby_name: 'オールジャンル')
 	end
 
 	def del_hobby
