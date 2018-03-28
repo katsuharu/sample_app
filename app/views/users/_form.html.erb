@@ -27,7 +27,7 @@
       パスワード / Password
     <% end %>
     <div class="col-sm-8">
-      <%= f.password_field :password, class: 'form-control', required: true %>
+      <%= f.password_field :password, class: 'form-control', required: true, minlength: 6 %>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
       パスワード(確認用) / Password(Check)
     <% end %>
     <div class="col-sm-8">
-      <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
+      <%= f.password_field :password_confirmation, class: 'form-control', required: true, minlength: 6 %>
     </div>
   </div>
 
