@@ -19,9 +19,6 @@ class UsersController < ApplicationController
       # 自分が登録した趣味のなかで、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
       user_cards.each do |u_card|
         if UserHobby.where(hobby_name: u_card).count > 3
-          p 'ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー'
-          p u_card
-          p 'ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー'
           @cards.push(u_card) #カテゴリー名を配列に代入してindexページで利用
         end
       end
@@ -85,7 +82,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @user.profile_img.cache! unless @user.profile_img.blank?
   end
 
   def edit_confirm
