@@ -85,6 +85,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @user.profile_img.cache! unless @user.profile_img.blank?
   end
 
   def edit_confirm
@@ -96,13 +97,26 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    # 戻るボタンが押された場合
     if params[:back]
       render :edit
-    elsif @user.update_attributes(user_params)
-      flash[:success] = "ユーザー情報を更新しました。"
-      render 'show'
+    # 写真を選択した状態で「変更を保存」を押した場合
+    elsif user_params[:profile_img]
+      if @user.update_attributes(user_params)
+        flash[:success] = "ユーザー情報を更新しました。"
+        render 'show'
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+    # 写真を選択せず「変更を保存」を押した場合
+      #写真以外のカラムを更新
+      if User.find(@user.id).update_attributes(name: user_params[:name], email: user_params[:email], password: user_params[:password],password_confirmation: user_params[:password_confirmation] , department_name: user_params[:department_name], slack_id: user_params[:slack_id], self_intro: user_params[:self_intro])
+        flash[:success] = "ユーザー情報を更新しました。"
+        render 'show'
+      else
+        render 'edit'
+      end
     end
   end
 
