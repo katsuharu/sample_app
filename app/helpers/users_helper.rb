@@ -8,6 +8,7 @@ module UsersHelper extend ActiveSupport::Concern
 	end
 
 	def data_uri_to_file data_uri
+		# データURIスキームを正規表現で分割
 		data = data_uri.try do |uri|
 		  uri.match(%r{\Adata:(?<type>.*?);(?<encoder>.*?),(?<data>.*)\z}) do |md|
 		    {
@@ -20,12 +21,15 @@ module UsersHelper extend ActiveSupport::Concern
 		end
 		return nil unless data
 
+		# 画像のTempfileを作成
 		temp_file = Tempfile.new('uploaded-data_uri').tap do |file|
 		  file.binmode
 		  file << data[:data]
 		  file.rewind
 		end
 
+
+		# 画像fileを作成
 		ActionDispatch::Http::UploadedFile.new(
 		  filename: "data_uri.#{data[:extension]}",
 		  type:     data[:type],
