@@ -7,7 +7,7 @@
       名前 / Name
     <% end %>
     <div class="col-sm-8">
-      <%= f.text_field :name, class: 'form-control', required: true %>
+      <%= f.text_field :name, class: 'form-control', required: true, maxlength: 50 %>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
       メール / Mail
     <% end %>
     <div class="col-sm-8">
-      <%= f.email_field :email, class: 'form-control', required: true %>
+      <%= f.email_field :email, class: 'form-control', required: true, pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
     </div>
   </div>
 
