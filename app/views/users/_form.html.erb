@@ -17,7 +17,7 @@
       メール / Mail
     <% end %>
     <div class="col-sm-8">
-      <%= f.email_field :email, class: 'form-control', required: true, pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
+      <%= f.email_field :email, class: 'form-control', required: true, maxlength: 255, pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
     </div>
   </div>
 
