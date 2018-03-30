@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def confirm
     @user = User.new(user_params) #POSTされたパラメータを取得
-    @user.profile_img.cache!
+    # @user.profile_img.cache!
 
     render :new if @user.invalid?
   end
