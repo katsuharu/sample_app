@@ -30,9 +30,6 @@ class UserHobbiesController < ApplicationController
 		if add_hobbies = params[:user_hobby][:hobby_name]
 			i = 0
 			for str in add_hobbies
-				puts i
-				puts str
-
 				unless UserHobby.where(user_id: current_user.id).where(hobby_name: str).exists? then
 					if str.empty?
 						puts "this value is empty"
