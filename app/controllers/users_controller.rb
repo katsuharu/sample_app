@@ -147,7 +147,6 @@ class UsersController < ApplicationController
     entry_users.each_with_index do |e_users, i| #各カテゴリー毎
       e_users.each do |user| #各カテゴリーのエントリーユーザー全てループ
         user_ids.push(user.id) #各カテゴリーにエントリーしている全てのユーザーのidを取得
-        p user.id
       end
       ids.push(user_ids)
       entry_num = e_users.count
@@ -175,7 +174,6 @@ class UsersController < ApplicationController
 
         for i in 1..quotient do
           User.where("(id = ?) OR (id = ?) OR (id = ?)",user_ids.shift ,user_ids.shift ,user_ids.shift).update_all(pair_id: i)
-            puts i
         end
 
         case remainder
