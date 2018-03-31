@@ -95,6 +95,7 @@ class UsersController < ApplicationController
         flash[:success] = "ユーザー情報を更新しました。"
         render 'show'
       else
+        flash[:info] = "プロフィールを更新しませんでした。"
         render 'edit'
       end
     else
@@ -104,6 +105,7 @@ class UsersController < ApplicationController
         flash[:success] = "ユーザー情報を更新しました。"
         render 'show'
       else
+        flash[:info] = "プロフィールを更新しませんでした。"
         render 'edit'
       end
     end
