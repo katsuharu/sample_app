@@ -84,13 +84,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit_confirm
-    @user = User.new(user_params) #POSTされたパラメータを取得
-    @user.profile_img.cache!
-
-    render :new if @user.invalid?
-  end
-
   def update
     @user = User.find(params[:id])
     # 戻るボタンが押された場合
