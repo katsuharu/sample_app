@@ -14,5 +14,13 @@ class ApplicationController < ActionController::Base
   	    redirect_to login_url
   	  end
   	end
+
+    def hobby_registered
+      if current_user
+        if current_user.hobby_added == nil
+          redirect_to hobby_path
+        end
+      end
+    end
   	
 end
