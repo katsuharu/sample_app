@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry, :cancel, :check]
   before_action :correct_user, only: [:show, :edit, :update]
   before_action :admin_user,     only: :destroy
+  before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check, :matching]
 
   def index
     # Top5のhobbyを取得
