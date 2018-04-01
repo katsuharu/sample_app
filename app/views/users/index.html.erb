@@ -99,11 +99,11 @@
       <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
         <div class="row">
           <div class="col-sm-9">
-            <%= f.text_area :content, size: "55x2", placeholder: "投稿内容" %>
+            <%= f.text_area :content, size: "55x2", placeholder: "投稿内容", required: true %>
           </div>
           <div class="col-sm-3">
             <%= select(:tweet, :category_id, @cards.map{|t| [t,Category.find_by(name: t).id]}, {include_blank: '選択してください'},{:class => "select-menu", required: true}) %>
-            <%= f.submit "投稿", class: "" %>
+            <%= f.submit "投稿", class: "post_tweet" %>
           </div>
         </div>
       <% end %>
