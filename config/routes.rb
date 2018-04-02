@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   patch '/edit_confirm', to: 'users#edit_confirm'
   post   '/confirm', to: 'users#confirm'
   post   '/entry',        to: 'users#entry'
-  post   '/cancel',        to: 'users#cancel'
+  post    'users/cancel'
   post  '/edit_confirm', to: 'users#edit_confirm'
 
   get 'sessions/new'
