@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @hobby_pop = UserHobby.group(:hobby_name).order('count_all desc').limit(5).count
 
     # @tweets = Tweet.all
-    @tweets = Tweet.paginate(page: params[:page], per_page: 20)
+    @tweets = Tweet.paginate(page: params[:page], per_page: 20).order('created_at DESC')
     @apple = Tweet.new
     @today = Date.today
 
