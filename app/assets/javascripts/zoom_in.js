@@ -3,6 +3,12 @@ $(document).ready(function (){
   'use strict'
   var ALREADY = false
 
+  // 検索窓で表示したカテゴリーをクリックして趣味候補欄に追加
+  $(document).on("click", 'ul#search_result.category_search li', function(){
+    $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
+    $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $(this).text() + '" readonly>')
+  })
+
   // 第一層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
   var $firsts = $('.first_categories [data-first]'),
     $first_parents = $('.second_categories [data-first-id]')
