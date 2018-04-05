@@ -12,4 +12,11 @@ $(document).ready(function (){
 			return false		
 		}
 	})
+
+	// 確認画面で登録ボタン押下時に処理中であることを表示
+	$(document).on('click', '#register_user', function() {
+	    $('body').attr('id', 'progressing');
+	    $('body').prepend('<img alt="Lunch Friends logo" src="/assets/loading.gif" id="loading_img">')
+	})
+
 })
