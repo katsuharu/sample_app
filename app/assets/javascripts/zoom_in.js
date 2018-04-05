@@ -5,8 +5,19 @@ $(document).ready(function (){
 
   // 検索窓で表示したカテゴリーをクリックして趣味候補欄に追加
   $(document).on("click", 'ul#search_result.category_search li', function(){
-    $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
-    $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $(this).text() + '" readonly>')
+    var clicked_category = $(this).text()
+    $('.my_hobbies input').each(function() {
+      if($(this).val() == clicked_category) {
+        ALREADY = true
+        return false
+      }
+    })
+
+    if(!ALREADY) {
+      $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
+      $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + clicked_category + '" readonly>')
+    }
+    ALREADY = false
   })
 
   // 第一層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
