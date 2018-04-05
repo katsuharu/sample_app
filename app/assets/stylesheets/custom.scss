@@ -67,6 +67,29 @@ input {
   padding-right: 0px;
 }
 
+#progressing {
+  z-index: 999;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #FFF;
+  opacity: 0.1;
+}
+
+#loading_img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
