@@ -2,165 +2,167 @@
   <div class="entry-user">
     <div class="container-fluid entry-cnt">
 
-    <div class="lunch_cover">
-      <img src="/assets/lunch_cover/path-2.png" srcset="/assets/lunch_cover/path-2@2x.png 2x,/assets/lunch_cover/path-2@3x.png 3x" class="Path-2">
-      <div class="layer wideEnough selected Lunch-Friends">
-      Lunch Friends
-      </div>
-    </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="lunch_cover">
+            <img src="/assets/lunch_cover/path-2.png" srcset="/assets/lunch_cover/path-2@2x.png 2x,/assets/lunch_cover/path-2@3x.png 3x" class="Path-2">
+            <div class="layer wideEnough selected Lunch-Friends">
+            Lunch Friends
+            </div>
+          </div>
 
-    <img src="/assets/lunch_smile/asset-7-3-x.png" srcset="/assets/lunch_smile/asset-7-3-x@2x.png 2x,
-    /assets/lunch_smile/asset-7-3-x@3x.png 3x" class="Asset-73x">
+          <img src="/assets/lunch_smile/asset-7-3-x.png" srcset="/assets/lunch_smile/asset-7-3-x@2x.png 2x,
+          /assets/lunch_smile/asset-7-3-x@3x.png 3x" class="Asset-73x">
 
-    <div class="today_date">
-    <%= @today.year %>年<%= @today.month %>月<%= @today.day %>日
-    </div>
+          <div class="today_date">
+          <%= @today.year %>年<%= @today.month %>月<%= @today.day %>日
+          </div>
 
-      <input type=form id="search_form" placeholder="カテゴリー検索" style="width: 250px;"/>
-      <ul id="search_result">
-      </ul>
+          <input type=form id="search_form" placeholder="カテゴリー検索" style="width: 250px;"/>
+          <ul id="search_result">
+          </ul>
 
+          <h2>おすすめのカテゴリー</h2>
+          <ul>
+            <% @hobby_pop.each do |pop| %>
+              <li>
+                <%= pop[0] %>
+              </li>
+            <% end %>
+          </ul>
 
-      <h2>おすすめのカテゴリー</h2>
-      <ul>
-        <% @hobby_pop.each do |pop| %>
-          <li>
-            <%= pop[0] %>
-          </li>
-        <% end %>
-      </ul>
+          <h2>Hobby Cards</h2>
+            <% @cards.each_with_index do |card, i| %>
+              <article class="lunch_card">
+                <h5><%= card %></h5>
+                <% category_id = Category.find_by(name: card).id %>
+                <% entry_num = User.where(category_id: category_id).count %>
+                <% if entry_num >0 %>
+                  <p class="lunch_state"><%= entry_num %>人参加してます！</p>
+                  <% @users = User.where(category_id: category_id) %>
+                  <!-- スライドショー -->
+                  <div class="entry-cnt">
+                    <div id="slider_wrap">
+                      <div id="slider">
+                          <div id="slider_inner_<%= p i %>">
+                              <ul id="photo_list_<%= p i %>">
+                                <% @users.each do |user| %>
+                                  <li>
+                                    <%= image_tag user.profile_img.url, :size => '160x160' if user.profile_img? %>
+                                  </li>
+                                <% end %>
+                              </ul>
+                          </div><!-- end of #slider_inner --> 
+                      </div><!-- end of #slider --> 
+                    </div><!-- end of #slider_wrap --> 
+                    <!--  -->    
+                  </div>
+                  <!-- スライドショー -->
+                <% else %>
+                  <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
+                <% end %>
 
-      <h2>Hobby Cards</h2>
-        <% @cards.each_with_index do |card, i| %>
-          <article class="lunch_card">
-            <h5><%= card %></h5>
-            <% category_id = Category.find_by(name: card).id %>
-            <% entry_num = User.where(category_id: category_id).count %>
-            <% if entry_num >0 %>
-              <p class="lunch_state"><%= entry_num %>人参加してます！</p>
-              <% @users = User.where(category_id: category_id) %>
-              <!-- スライドショー -->
-              <div class="entry-cnt">
-                <div id="slider_wrap">
-                  <div id="slider">
-                      <div id="slider_inner_<%= p i %>">
-                          <ul id="photo_list_<%= p i %>">
-                            <% @users.each do |user| %>
-                              <li>
-                                <%= image_tag user.profile_img.url, :size => '160x160' if user.profile_img? %>
-                              </li>
-                            <% end %>
-                          </ul>
-                      </div><!-- end of #slider_inner --> 
-                  </div><!-- end of #slider --> 
-                </div><!-- end of #slider_wrap --> 
-                <!--  -->    
-              </div>
-              <!-- スライドショー -->
-            <% else %>
-              <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
+                <!-- ランチボタン -->
+                <div class="entry-cnt">
+                  <div class="bs-component">
+                    <% if entried? %> 
+                      <% if matched? %>
+                        <h2>マッチング相手を確認する</h2>
+                        <div class="btn-center">
+                          <%= link_to "Check matching partner", check_path, class: "square_btn" %>
+                        </div>
+                      <% else %>
+                        <h2>エントリー内容を確認する</h2>
+                        <div class="btn-center">
+                          <%= link_to "Check the contents", entry_path, class: "square_btn" %>
+                        </div>
+                        <%= form_tag("/cancel", method: "post", id: "") do %>
+                          <div class="center">
+                              <%= link_to 'エントリーをキャンセルする', {controller: :users, action: :cancel}, method: :post, 
+                              data: {confirm: "本当にキャンセルしてもよろしいでしょうか？" }%>
+                            </div>
+                        <% end %>
+
+                      <% end %>
+
+                    <% else %>
+                      <%=form_tag({ :action => 'entry' },{ :method => :post}) do %>
+                        <h2>ランチへ行く</h2>
+                        <div class="checkbox-center">
+                          <%= check_box  :user, :any_category %>
+                          <span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
+                        </div>
+                        <div class="btn-center">
+                          <%= hidden_field_tag 'user[category_id]', category_id %>
+                          <%= submit_tag "Let's go to Lunch", class: "square_btn" %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+                <!-- ランチボタン -->
+              </article>
             <% end %>
 
-            <!-- ランチボタン -->
-            <div class="entry-cnt">
-              <div class="bs-component">
-                <% if entried? %> 
-                  <% if matched? %>
-                    <h2>マッチング相手を確認する</h2>
-                    <div class="btn-center">
-                      <%= link_to "Check matching partner", check_path, class: "square_btn" %>
-                    </div>
-                  <% else %>
-                    <h2>エントリー内容を確認する</h2>
-                    <div class="btn-center">
-                      <%= link_to "Check the contents", entry_path, class: "square_btn" %>
-                    </div>
-                    <%= form_tag("/cancel", method: "post", id: "") do %>
-                      <div class="center">
-                          <%= link_to 'エントリーをキャンセルする', {controller: :users, action: :cancel}, method: :post, 
-                          data: {confirm: "本当にキャンセルしてもよろしいでしょうか？" }%>
-                        </div>
-                    <% end %>
-
-                  <% end %>
-
-                <% else %>
-                  <%=form_tag({ :action => 'entry' },{ :method => :post}) do %>
-                    <h2>ランチへ行く</h2>
-                    <div class="checkbox-center">
-                      <%= check_box  :user, :any_category %>
-                      <span>ご希望のカテゴリーでマッチング相手がみつからない場合は別のカテゴリーの方とマッチングする</span>
-                    </div>
-                    <div class="btn-center">
-                      <%= hidden_field_tag 'user[category_id]', category_id %>
-                      <%= submit_tag "Let's go to Lunch", class: "square_btn" %>
-                    </div>
-                  <% end %>
-                <% end %>
+            <h2>プロフィール</h2>
+            <div class="user-info row">
+              <div class="col-sm-4">
+                <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
+              </div>
+              <div class="col-sm-8">
+                <%= render 'shared/user_info' %>
               </div>
             </div>
-            <!-- ランチボタン -->
-          </article>
-        <% end %>
 
-
-      <!-- Timeline -->
-      <h2>TimeLine</h2>
-
-      <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
-        <div class="row">
-          <div class="col-sm-9">
-            <%= f.text_area :content, size: "55x2", placeholder: "投稿内容", required: true %>
-          </div>
-          <div class="col-sm-3">
-            <%= select(:tweet, :category_id, @cards.map{|t| [t,Category.find_by(name: t).id]}, {include_blank: '選択してください'},{:class => "select-menu", required: true}) %>
-            <%= f.submit "投稿", class: "post_tweet" %>
-          </div>
         </div>
-      <% end %>
 
-
-      <!-- Timeline -->
-      <%= will_paginate @tweets %>
-      <div class="timeline-shows">
-        <div class="tweets">
-          <%= render partial: 'tweets/tweet', collection: @tweets %>
-        </div>
-      </div>
-      <!-- Timeline -->
-
-      <!-- Thread -->
-      <div class="modal fade t_detail">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="t_thread_name"></h4>
-            </div>
-            <div class="modal-body">
-              <div class="t_thread_form">
-              </div>
-              <table id="t_threads">
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Thread  -->
-      <!-- /Timeline -->
-
-
-      <h2>プロフィール</h2>
-      <div class="user-info row">
         <div class="col-sm-4">
-          <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
-        </div>
-        <div class="col-sm-8">
-          <%= render 'shared/user_info' %>
+          <!-- Timeline -->
+          <h2>TimeLine</h2>
+
+          <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
+            <div class="row">
+              <div class="col-sm-9">
+                <%= f.text_area :content, size: "55x2", placeholder: "投稿内容", required: true %>
+              </div>
+              <div class="col-sm-3">
+                <%= select(:tweet, :category_id, @cards.map{|t| [t,Category.find_by(name: t).id]}, {include_blank: '選択してください'},{:class => "select-menu", required: true}) %>
+                <%= f.submit "投稿", class: "post_tweet" %>
+              </div>
+            </div>
+          <% end %>
+
+
+          <!-- Timeline -->
+          <%= will_paginate @tweets %>
+          <div class="timeline-shows">
+            <div class="tweets">
+              <%= render partial: 'tweets/tweet', collection: @tweets %>
+            </div>
+          </div>
+          <!-- Timeline -->
+
+          <!-- Thread -->
+          <div class="modal fade t_detail">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="t_thread_name"></h4>
+                </div>
+                <div class="modal-body">
+                  <div class="t_thread_form">
+                  </div>
+                  <table id="t_threads">
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Thread  -->
+          <!-- /Timeline -->
         </div>
       </div>
     </div>
-
-  </div>
 <% else %>
   <div class="center">
     <h1 class="bf-title">Lunch Friends</h1>
