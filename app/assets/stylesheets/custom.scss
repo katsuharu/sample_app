@@ -89,10 +89,35 @@ input {
   max-height: 100%;
 }
 
+/* Lunch Top */
+
 .Rectangle-7 {
   width: 1920px;
   height: 1080px;
   background-color: #fffefc;
+}
+
+.lunch_cover {
+  position: relative;
+  div {
+    position: absolute;/*絶対配置*/
+    top: 60.4px;
+    left: 52.4px;
+    }
+}
+
+.Lunch-Friends {
+  width: 311px;
+  height: 58px;
+  font-family: $header-font;
+  font-size: 48px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 3px;
+  text-align: left;
+  color: #ff652c;
 }
 
 
