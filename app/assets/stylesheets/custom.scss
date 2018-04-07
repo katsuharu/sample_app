@@ -104,6 +104,20 @@ select {
 }
 
 /* Lunch Top */
+.flex_wrap {
+  display: flex;
+  padding-top: 39px;
+  padding-left: 45px;
+}
+
+.index_left {
+  flex:5;
+}
+
+.index_right {
+  flex:4;
+}
+
 
 .Rectangle-7 {
   /* width: 1920px; */
