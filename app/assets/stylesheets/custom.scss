@@ -49,10 +49,20 @@ input {
   border: 2px solid #696969;
 }
 
+select {
+  -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
+  -moz-appearance: none;  /* ベンダープレフィックス(Firefox用) */
+  appearance: none;   /* 標準のスタイルを無効にする */ 
+}
+::-ms-expand {    /* select要素のデザインを無効にする（IE用） */
+  display: none;
+}
+
 
 .container {
-    max-width: 940px;
+    /* max-width: 940px; */
     margin-top: 30px;
+    margin: 0;
 }
 
 .center {
@@ -65,6 +75,10 @@ input {
 .container-fluid {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.navbar {
+  margin-bottom: 0;
 }
 
 #progressing {
@@ -92,8 +106,8 @@ input {
 /* Lunch Top */
 
 .Rectangle-7 {
-  width: 1920px;
-  height: 1080px;
+  /* width: 1920px; */
+  /* height: 1080px; */
   background-color: #fffefc;
 }
 
@@ -125,6 +139,50 @@ input {
   width: 178px;
   height: 75px;
   object-fit: contain;
+}
+
+/* Timeline */
+.Rectangle-2 {
+  height: 178px;
+  width: 603px;
+  border-radius: 8px;
+  background-color: #a0e8d0;
+  padding-top: 10px;
+}
+
+textarea#tweet_content {
+  width: 468px;
+  height: 80px;
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+
+img.tweet_form_img {
+    margin-left: 20px;
+}
+
+select#tweet_category_id {
+    width: 216px;
+    height: 26px;
+    margin-right: 137px;
+    background: #f6f6f6;
+    color: #ff652c;
+    padding-left: 18px;
+}
+
+input.post_tweet {
+    width: 115px;
+    height: 35px;
+    height:  26px;
+    object-fit: contain;
+    border-radius: 17.5px;
+    background-color: #3b6793;
+    color:  #fff;
+    margin-right:  26px;
+}
+
+.col-sm-10 {
+    padding:  0;
 }
 
 /* typography */

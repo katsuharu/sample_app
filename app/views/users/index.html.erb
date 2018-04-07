@@ -112,21 +112,26 @@
 
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           <!-- Timeline -->
-          <h2>TimeLine</h2>
+          <div class="Rectangle-2">
+            <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
+              <!-- <div class="row"> -->
+              <div>
+                <div class="col-sm-2">
+                  <%= image_tag(@user.profile_img.url, :size => "45x45", class: "tweet_form_img") if @user.profile_img? %>
+                </div>
 
-          <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
-            <div class="row">
-              <div class="col-sm-9">
-                <%= f.text_area :content, size: "55x2", placeholder: "投稿内容", required: true %>
+                <div class="col-sm-10">
+                  <%= f.text_area :content, size: "55x2", placeholder: "投稿内容", required: true %>
+                  <%= select(:tweet, :category_id, @cards.map{|t| [t,Category.find_by(name: t).id]}, {include_blank: '　▽　カテゴリー'},{required: true}) %>
+                  <%= f.submit "投稿", class: "post_tweet" %>
+
+                </div>
+                
               </div>
-              <div class="col-sm-3">
-                <%= select(:tweet, :category_id, @cards.map{|t| [t,Category.find_by(name: t).id]}, {include_blank: '選択してください'},{:class => "select-menu", required: true}) %>
-                <%= f.submit "投稿", class: "post_tweet" %>
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
 
 
           <!-- Timeline -->
