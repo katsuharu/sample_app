@@ -127,10 +127,11 @@ select {
 
 .lunch_cover {
   position: relative;
+  padding-left: 201px;
   div {
     position: absolute;/*絶対配置*/
-    top: 60.4px;
-    left: 52.4px;
+    top: 57px;
+    left: 253px;
     }
 }
 
@@ -155,6 +156,7 @@ select {
   object-fit: contain;
   margin-left: 308px;
   padding-top: 19px;
+  margin-bottom: 66px;
 }
 
 .today_date {
