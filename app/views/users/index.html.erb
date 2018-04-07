@@ -20,11 +20,11 @@
 
             <% @cards.each_with_index do |card, i| %>
               <article class="lunch_card">
-                <h5><%= card %></h5>
+                <div class="lunch_card_category"><%= card %></div>
                 <% category_id = Category.find_by(name: card).id %>
                 <% entry_num = User.where(category_id: category_id).count %>
                 <% if entry_num >0 %>
-                  <p class="lunch_state"><%= entry_num %>人参加してます！</p>
+                  <p class="lunch_state"><%= entry_num %>名参加中</p>
                   <% @users = User.where(category_id: category_id) %>
                   <!-- スライドショー -->
                   <div class="entry-cnt">
