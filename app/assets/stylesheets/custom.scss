@@ -171,13 +171,22 @@ select {
   letter-spacing: 3.4px;
   text-align: left;
   color: #ffcf4b;
+  margin-bottom: 15px;
 }
 
-article.lunch_card.lunch_activated {
-    width:  217px;
-    height:  146px;
-    border-radius: 9px;
-    background-color: #ff652c;
+.lunch_card_container {
+    display:  flex;
+    flex-wrap:  wrap;
+}
+
+article.lunch_card {
+  max-width: 217px;
+  height: 146px;
+  border-radius: 9px;
+  background-color: #ff652c;
+  flex: 1 1 217px;
+  margin-right:  11px;
+  margin-bottom:  11px;
 }
 
 .lunch_card_category {

@@ -18,6 +18,7 @@
           開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %>
           </div>
 
+          <div class="lunch_card_container">
             <% @cards.each_with_index do |card, i| %>
               <article class="lunch_card">
                 <div class="lunch_card_category"><%= card %></div>
