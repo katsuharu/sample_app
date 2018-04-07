@@ -2,7 +2,7 @@
 	<div class="col-sm-1">
 		<%= 
 			if u = User.find_by(id: tweet.user_id)
-				image_tag(u.profile_img.url, :size => "45x45") if u.profile_img? 
+				image_tag(u.profile_img.url, :size => "45x45", class: "tweet_img") if u.profile_img? 
 			end
 		%>
 	</div>
