@@ -53,26 +53,6 @@
               </article>
             <% end %>
             </div><!-- lunch_card_container -->
-
-            <h2>プロフィール</h2>
-            <div class="user-info row">
-              <div class="col-sm-4">
-                <%= image_tag(@user.profile_img.url) if @user.profile_img? %>
-              </div>
-              <div class="col-sm-8">
-                <%= render 'shared/user_info' %>
-              </div>
-            </div>
-
-            <h2>おすすめのカテゴリー</h2>
-            <ul>
-              <% @hobby_pop.each do |pop| %>
-                <li>
-                  <%= pop[0] %>
-                </li>
-              <% end %>
-            </ul>
-
         </div>
 
         <div class="index_right">
