@@ -44,7 +44,7 @@
                               <ul id="photo_list_<%= p i %>">
                                 <% @users.each do |user| %>
                                   <li>
-                                    <%= image_tag user.profile_img.url, :size => '160x160' if user.profile_img? %>
+                                    <%= image_tag user.profile_img.url, :size => '37x37' if user.profile_img? %>
                                   </li>
                                 <% end %>
                               </ul>
