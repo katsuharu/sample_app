@@ -153,6 +153,29 @@ select {
   width: 178px;
   height: 75px;
   object-fit: contain;
+  margin-left: 308px;
+  padding-top: 19px;
+}
+
+.today_date {
+  width: 284px;
+  height: 26px;
+  font-family: rounded-x-mplus-1m;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 3.4px;
+  text-align: left;
+  color: #ffcf4b;
+}
+
+article.lunch_card.lunch_activated {
+    width:  217px;
+    height:  146px;
+    border-radius: 9px;
+    background-color: #ff652c;
 }
 
 /* Timeline */
