@@ -188,6 +188,18 @@ article.lunch_card {
   margin-bottom:  11px;
 }
 
+.lunch_card_container article:nth-child(3n+1){
+  background-color: #ff652c;
+}
+
+.lunch_card_container article:nth-child(3n+2){
+  background-color: #ffcf4b;
+}
+
+.lunch_card_container article:nth-child(3n){
+  background-color: #a0e8d0;
+}
+
 .lunch_card_category {
     padding-left:  15px;
     padding-top:  15px;
