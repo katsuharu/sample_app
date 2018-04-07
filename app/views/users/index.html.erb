@@ -18,16 +18,6 @@
           開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %>
           </div>
 
-          <h2>おすすめのカテゴリー</h2>
-          <ul>
-            <% @hobby_pop.each do |pop| %>
-              <li>
-                <%= pop[0] %>
-              </li>
-            <% end %>
-          </ul>
-
-          <h2>Hobby Cards</h2>
             <% @cards.each_with_index do |card, i| %>
               <article class="lunch_card">
                 <h5><%= card %></h5>
@@ -109,6 +99,15 @@
                 <%= render 'shared/user_info' %>
               </div>
             </div>
+
+            <h2>おすすめのカテゴリー</h2>
+            <ul>
+              <% @hobby_pop.each do |pop| %>
+                <li>
+                  <%= pop[0] %>
+                </li>
+              <% end %>
+            </ul>
 
         </div>
 
