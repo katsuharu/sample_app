@@ -18,7 +18,7 @@
           開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %>
           </div>
 
-          <div class="lunch_card_container">
+          <div class="lunch_card_container flex_container">
             <% @cards.each_with_index do |card, i| %>
               <article class="lunch_card">
                 <div class="lunch_card_category"><%= card %></div>
@@ -60,16 +60,17 @@
           <div class="Rectangle-2">
             <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
               <!-- <div class="row"> -->
-              <div>
-                <div class="col-sm-2">
+              <div class="flex_container">
+                <!-- <div class="col-sm-2"> -->
+                <div class="flex_1">
                   <%= image_tag(@user.profile_img.url, :size => "45x45", class: "tweet_form_img") if @user.profile_img? %>
                 </div>
 
-                <div class="col-sm-10">
+                <!-- <div class="col-sm-10"> -->
+                <div class="flex_5">
                   <%= f.text_area :content, size: "55x2", placeholder: "投稿内容", required: true %>
-                  <%= select(:tweet, :category_id, @cards.map{|t| [t,Category.find_by(name: t).id]}, {include_blank: '　▽　カテゴリー'},{required: true}) %>
+                  <%= select(:tweet, :category_id, options_for_select( @cards.map{|t| [t,Category.find_by(name: t).id]}, {:selected => 128} ),{required: true}) %>
                   <%= f.submit "投稿", class: "post_tweet" %>
-
                 </div>
                 
               </div>
