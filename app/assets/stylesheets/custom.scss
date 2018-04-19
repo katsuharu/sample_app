@@ -38,7 +38,10 @@ body {
   color: $content-color;
 }
 
-
+.container {
+    max-width: 940px;
+    /* margin-top: 30px; */
+}
 
 textarea {
   resize: vertical;
@@ -59,10 +62,8 @@ select {
 }
 
 
-.container {
-    /* max-width: 940px; */
-    margin-top: 30px;
-    margin: 0;
+.navbar {
+  margin-bottom: 0;
 }
 
 .center {
@@ -70,15 +71,6 @@ select {
   h1 {
     margin-bottom: 10px;
   }
-}
-
-.container-fluid {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-.navbar {
-  margin-bottom: 0;
 }
 
 #progressing {
@@ -174,7 +166,7 @@ select {
   margin-bottom: 15px;
 }
 
-.lunch_card_container {
+.flex_container {
     display:  flex;
     flex-wrap:  wrap;
 }
@@ -226,6 +218,22 @@ p.lunch_state {
   border-radius: 8px;
   background-color: #a0e8d0;
   padding-top: 10px;
+}
+
+.flex_1 {
+  flex: 1;
+}
+
+.flex_2 {
+  flex: 2;
+}
+
+.flex_5 {
+  flex: 5;
+}
+
+.flex_11 {
+  flex: 11;
 }
 
 textarea#tweet_content {
