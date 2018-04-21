@@ -19,7 +19,7 @@
 !/tmp/.keep
 
 # Ignore Byebug command history file.
-.byebug_history
+/.byebug_history
 
 # Ignore automatically created file
-.DS_Store
+/.DS_Store
