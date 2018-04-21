@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @today = Date.today
 
     # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
-    @cards = {}        #ログインユーザーが登録している趣味かつ4人以上のユーサーが登録している趣味
+    @cards = {"オールジャンル" => 128}        #ログインユーザーが登録している趣味かつ4人以上のユーサーが登録している趣味
     if current_user # current_userがnilのときにエラーになるのを防ぐため
       user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name) #ログインユーザーが登録した趣味名の配列
       # 自分が登録した趣味のなかで、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
