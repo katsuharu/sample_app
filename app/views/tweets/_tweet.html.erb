@@ -25,7 +25,12 @@
 			</div>
 			<!-- <div class="col-sm-8"> -->
 			<div class="flex_2">
-				<%= time_ago_in_words(tweet.created_at) %>前
+				<% posted_at = tweet.created_at %>
+				<% if Time.now - posted_at >= 86400 %>
+					<%= posted_at.strftime("%Y年 %m月 %d日") %>
+				<% else %>
+					<%= time_ago_in_words(posted_at) %>前
+				<% end %>
 			</div>
 		</div>
 
