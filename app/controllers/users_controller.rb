@@ -194,7 +194,10 @@ class UsersController < ApplicationController
 
   def cancel
     if !current_user.category_id.nil? && current_user.pair_id.nil?
-      User.find_by(id: current_user.id).update_attribute(:category_id, nil)
+      user_id = current_user.id
+      User.find_by(id: user_id).update_attribute(:category_id, nil)
+      lunch = Lunch.where(user_id: user_id).where(lunch_date: Date.today).where(is_deleted: nil)
+      lunch.update_all(deleted_at: DateTime.now, is_deleted: true)
       flash[:success] = "キャンセルいたしました。"
       redirect_to(root_url)
     end
