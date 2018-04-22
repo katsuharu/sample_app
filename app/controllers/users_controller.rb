@@ -121,9 +121,10 @@ class UsersController < ApplicationController
   def entry
     if current_user.category_id.nil?         #カレントユーザーが未エントリーの場合
       category_id = params[:user][:category_id]
-      User.find_by(id: current_user.id).update_attribute(:category_id, category_id)
+      current_user.update_attribute(:category_id, category_id)
+      Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.today)
       if params[:user][:any_category] == '1'
-        User.find_by(id: current_user.id).update_attribute(:any_category, 1)
+        current_user.update_attribute(:any_category, 1)
       end
       flash[:success] = "エントリーしました。"
       redirect_to root_url
