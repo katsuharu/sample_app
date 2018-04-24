@@ -119,25 +119,26 @@ select {
 
 .lunch_cover {
   position: relative;
-  padding-left: 201px;
+  padding-left: 120px; /* .flex_wrap のpaddingの値を考慮した値 */
+  padding-top: 78px;
   div {
     position: absolute;/*絶対配置*/
-    top: 57px;
-    left: 253px;
+    top: 92px;
+    left: 149px;
     }
 }
 
 .Lunch-Friends {
-  width: 311px;
-  height: 58px;
+  width: 171px;
+  height: 68px;
   font-family: $header-font;
-  font-size: 48px;
+  font-size: 28px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
-  letter-spacing: 3px;
-  text-align: left;
+  letter-spacing: 4px;
+  text-align: center;
   color: #ff652c;
 }
 
