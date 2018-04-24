@@ -7,6 +7,9 @@ $navi-color: #FFCB00;
 $content-color: #0D0D0D;
 $header-font: 'Lobster', cursive;
 
+$top_padding_side: 28px;
+$top_padding_top: 34px;
+
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
@@ -119,12 +122,13 @@ select {
 
 .lunch_cover {
   position: relative;
-  padding-left: 120px; /* .flex_wrap のpaddingの値を考慮した値 */
-  padding-top: 78px;
+  /* .flex_wrap のpaddingの値を考慮した値 */
+  padding-top: calc( 117px - #{$top_padding_top} + 10px );
+  padding-left: calc( 165px - #{$top_padding_side} );
   div {
-    position: absolute;/*絶対配置*/
-    top: 92px;
-    left: 149px;
+    position: absolute; /*絶対配置*/
+    top: calc( 131px - #{$top_padding_side} );
+    left: calc( 194px - #{$top_padding_top} );
     }
 }
 
@@ -142,11 +146,10 @@ select {
   color: #ff652c;
 }
 
-
 .Asset-73x {
   width: 112px;
   object-fit: contain;
-  margin-left: 173px;
+  margin-left: calc( 218px - #{$top_padding_top} );
   padding-top: 19px;
   margin-bottom: 85px;
 }
