@@ -831,8 +831,8 @@ article.lunch_card.lunch_activated {
 /* スライドショー */
 #slider_wrap {
   margin: 0px auto;
-  width: 180px;  /* 変更 */    /* padding 20*2 +  img*width*パネル数 + (marginleft+right)*4+(marginLeft/Right)  */
-  height: 37px;  /* padding 20*2 + #photo_list.height */
+  width: 132px;  /* 変更 */    /* padding 20*2 +  img*width*パネル数 + (marginleft+right)*4+(marginLeft/Right)  */
+  height: 30px;  /* padding 20*2 + #photo_list.height */
   /* padding: 0px 20px ; */
   /*background: #EFEFEF;*/
   position: relative;
@@ -847,7 +847,7 @@ article.lunch_card.lunch_activated {
 
 #slider > div { /* photo_list_と同値 */
   /*width: 640px;  幅は指定しない*/
-  height: 37px; /* padding 20*2 + img.height */
+  height: 30px; /* padding 20*2 + img.height */
   /* padding: 0px 10px; */  /* 変更 */
   list-style-type: none;
   float: left;
@@ -856,7 +856,7 @@ article.lunch_card.lunch_activated {
 
 #slider > div li {
   float: left;
-  margin: 0 4px;  /* 変更 */
+  margin: 0 1.4px;  /* 変更 */
   display: inline;
 }
 
