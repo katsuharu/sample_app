@@ -152,18 +152,31 @@ select {
 }
 
 .today_date {
-  width: 284px;
   height: 26px;
   font-family: rounded-x-mplus-1m;
-  font-size: 18px;
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
-  letter-spacing: 3.4px;
-  text-align: left;
-  color: #ffcf4b;
-  margin-bottom: 15px;
+  letter-spacing: 4.4px;
+  margin-bottom: 27px;
+  color: #3b6793;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+.today_date:before, .today_date:after {
+  content: "";
+  width: 90px;
+  height: 2px;
+  background: #3b6793;
+  display: block;
+}
+.today_date:before {
+  margin-right: 13px;
+}
+.today_date:after {
+  margin-left: 13px;
 }
 
 .flex_container {

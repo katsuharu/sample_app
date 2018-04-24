@@ -12,9 +12,7 @@
           <img src="/assets/lunch_smile/asset-7-3-x.png" srcset="/assets/lunch_smile/asset-7-3-x@2x.png 2x,
           /assets/lunch_smile/asset-7-3-x@3x.png 3x" class="Asset-73x">
 
-          <div class="today_date">
-          開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %>
-          </div>
+          <div class="today_date">開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %></div>
 
           <div class="lunch_card_container flex_container">
             <% @cards.each_with_index do |card, i| %>
