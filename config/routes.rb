@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   
   get    '/check', to: 'users#check'
   get    '/signup',  to: 'users#new'
-  get    '/entry',   to: 'users#check_entry_cnt'
+  get    'check_entry_cnt',   to: 'users#check_entry_cnt'
   patch '/edit_confirm', to: 'users#edit_confirm'
   post   '/confirm', to: 'users#confirm'
-  post   '/entry',        to: 'users#entry'
-  post    'users/cancel'
+  get   'entry',        to: 'users#entry'
+  # post 'entry/:id', to: 'users#entry'
+
+  get    'users/cancel'
   post  '/edit_confirm', to: 'users#edit_confirm'
 
   get 'sessions/new'
