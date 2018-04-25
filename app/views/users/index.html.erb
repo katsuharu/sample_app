@@ -16,6 +16,14 @@
 
           <div class="lunch_card_container flex_container">
             <% @cards.each_with_index do |card, i| %>
+              <!-- 未エントリーの場合  -->
+              <% if @user.category_id.nil? %>
+                <a href="/entry?category_id=<%= p card[1] %>">
+              <% else %>
+              <!-- エントリー済みの場合 -->
+                <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？">
+              <% end %>
+
               <article class="lunch_card">
                 <div class="lunch_card_category"><%= card[0] %></div>
                 <% entry_num = User.where(category_id: card[1]).count %>
@@ -43,9 +51,8 @@
                 <% else %>
                   <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
                 <% end %>
-
-                
               </article>
+              </a>
             <% end %>
             </div><!-- lunch_card_container -->
         </div>

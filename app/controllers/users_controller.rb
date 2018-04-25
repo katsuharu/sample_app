@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry, :cancel, :check]
-  before_action :correct_user, only: [:show, :edit, :update]
+  # before_action :correct_user, only: [:show, :edit, :update]
   before_action :admin_user,     only: :destroy
   before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check, :matching]
 
@@ -119,14 +119,16 @@ class UsersController < ApplicationController
   end
 
   def entry
-    if current_user.category_id.nil?         #カレントユーザーが未エントリーの場合
-      category_id = params[:user][:category_id]
-      current_user.update_attribute(:category_id, category_id)
-      Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.today)
-      if params[:user][:any_category] == '1'
-        current_user.update_attribute(:any_category, 1)
+    #エントリー確認画面でユーザープロフィールを表示する
+    @user = current_user
+    if @user.category_id.nil?         #カレントユーザーが未エントリーの場合
+      if category_id = params[:category_id]
+        current_user.update_attribute(:category_id, category_id)
+        Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.today)
+        flash[:success] = "エントリーしました。"
+      else
+        flash[:danger] = "エントリーできませんでした。"
       end
-      flash[:success] = "エントリーしました。"
       redirect_to root_url
     end
   end
@@ -193,13 +195,19 @@ class UsersController < ApplicationController
   end
 
   def cancel
+    p "cancelceanl!!"
     if !current_user.category_id.nil? && current_user.pair_id.nil?
+      p "!!!!!!!!!!!!!!!1cancelceanl!!"
+      
       user_id = current_user.id
-      User.find_by(id: user_id).update_attribute(:category_id, nil)
+      current_user.update_attribute(:category_id, nil)
+      # User.find_by(id: user_id).update_attribute(:category_id, nil)
       lunch = Lunch.where(user_id: user_id).where(lunch_date: Date.today).where(is_deleted: nil)
       lunch.update_all(deleted_at: DateTime.now, is_deleted: true)
       flash[:success] = "キャンセルいたしました。"
       redirect_to(root_url)
+    else
+      p "not entried or already matched, so cannot cancel"
     end
   end
 
