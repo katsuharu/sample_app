@@ -83,9 +83,7 @@
           <!-- Timeline -->
           <%= will_paginate @tweets %>
           <div class="timeline-shows">
-            <div class="tweets">
-              <%= render partial: 'tweets/tweet', collection: @tweets %>
-            </div>
+            <%= render partial: 'tweets/tweet', collection: @tweets %>
           </div>
           <!-- Timeline -->
 
