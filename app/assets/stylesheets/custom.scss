@@ -294,7 +294,8 @@ input.post_tweet {
 }
 
 .timeline-shows {
-  width: 603px;
+  width: 441px;
+  background-color: #ffffff;
   border: solid 1px #e1e1e1; 
 }
 
@@ -1220,11 +1221,6 @@ li.hobby_selected {
 /* Ttimeline */
 
 /* Tweet */
-.tweets {
-    width:  590px;
-    margin:  0 auto;
-}
-
 .tweet {
     min-height: 51px;
     padding: 9px 12px;
