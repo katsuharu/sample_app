@@ -18,13 +18,13 @@
             <% @cards.each_with_index do |card, i| %>
               <!-- 未エントリーの場合  -->
               <% if @user.category_id.nil? %>
-                <a href="/entry?category_id=<%= p card[1] %>">
+                <a href="/entry?category_id=<%= p card[1] %>" class="lunch_card">
               <% else %>
               <!-- エントリー済みの場合 -->
-                <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？">
+                <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card">
               <% end %>
 
-              <article class="lunch_card">
+              <article>
                 <div class="lunch_card_category"><%= card[0] %></div>
                 <% entry_num = User.where(category_id: card[1]).count %>
                 <% if entry_num >0 %>
