@@ -1,10 +1,10 @@
 <!-- <div class="row tweet"> -->
-<div class="flex_container tweet">
+<div class="flex_container">
 	<!-- <div class="col-sm-1"> -->
 	<div class="flex_1">
 		<%= 
 			if u = User.find_by(id: tweet.user_id)
-				image_tag(u.profile_img.url, :size => "45x45", class: "tweet_img") if u.profile_img? 
+				image_tag(u.profile_img.url, :size => "30x30", class: "tweet_img") if u.profile_img? 
 			end
 		%>
 	</div>
