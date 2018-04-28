@@ -57,29 +57,21 @@
 
         <div class="index_right">
           <!-- Timeline -->
-          <div class="Rectangle-2">
+          <div class="tweet_form">
             <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'btn_create'}) do |f| %>
               <!-- <div class="row"> -->
-              <div class="flex_container">
                 <!-- <div class="col-sm-2"> -->
-                <div class="flex_1">
-                  <%= image_tag(@user.profile_img.url, :size => "45x45", class: "tweet_form_img") if @user.profile_img? %>
-                </div>
 
                 <!-- <div class="col-sm-10"> -->
-                <div class="flex_5">
                   <%= f.text_area :content, size: "55x2", placeholder: "投稿内容", required: true %>
                   <%= select(:tweet, :category_id, options_for_select( @cards, {:selected => 128 } ),{required: true}) %>
                   <%= f.submit "投稿", class: "post_tweet" %>
-                </div>
                 
-              </div>
             <% end %>
           </div>
 
 
           <!-- Timeline -->
-          <%= will_paginate @tweets %>
           <div class="timeline-shows">
             <%= render partial: 'tweets/tweet', collection: @tweets %>
           </div>
