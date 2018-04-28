@@ -30,10 +30,9 @@ Rails.application.routes.draw do
   post  '/edit',      to:   'user_hobbies#edit'
   post 'user_hobbies/del_hobby'
 
+  post  'tweets/create'
   post  'tweets/tweet_create'
   post  'tweets/thread_create'
-  post 'apples/thread_create'
-  resources :apples
 
   # match '/auth/:provider/callback', to: 'users#create', via: [:get, :post]
   

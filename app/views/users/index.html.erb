@@ -3,15 +3,13 @@
       <div class="flex_wrap">
         <div class="index_left">
           <div class="lunch_cover">
-            <img src="/assets/lunch_cover/path-2.png" srcset="/assets/lunch_cover/path-2@2x.png 2x,/assets/lunch_cover/path-2@3x.png 3x" class="Path-2">
+            <%= image_tag("lunch_cover/path-2.png", alt: "Lunch Cover", class: "Path-2") %>
             <div class="layer wideEnough selected Lunch-Friends">
             Lunch Friends
             </div>
           </div>
 
-          <img src="/assets/lunch_smile/asset-7-3-x.png" srcset="/assets/lunch_smile/asset-7-3-x@2x.png 2x,
-          /assets/lunch_smile/asset-7-3-x@3x.png 3x" class="Asset-73x">
-
+          <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
           <div class="today_date">開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %></div>
 
           <div class="lunch_card_container flex_container">
@@ -60,7 +58,7 @@
         <div class="index_right">
           <!-- Timeline -->
           <div class="Rectangle-2">
-            <%= form_for(@apple, remote: true, url: { controller: 'apples', action: 'create'}) do |f| %>
+            <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'create'}) do |f| %>
               <!-- <div class="row"> -->
               <div class="flex_container">
                 <!-- <div class="col-sm-2"> -->
