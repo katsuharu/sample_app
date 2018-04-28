@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   post 'user_hobbies/del_hobby'
 
   post  'tweets/create'
+  post  'tweets/btn_create'
   post  'tweets/tweet_create'
   post  'tweets/thread_create'
 
