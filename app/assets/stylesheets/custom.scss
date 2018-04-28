@@ -98,103 +98,184 @@ select {
   max-height: 100%;
 }
 
-/* Lunch Top */
-.flex_wrap {
-  display: flex;
-  padding-top: 39px;
-  padding-left: 45px;
+@media (min-width: 1000px) {
+  /* Lunch Top */
+  .flex_wrap {
+    display: flex;
+    padding-top: 39px;
+    padding-left: 45px;
+  }
+
+  .index_left {
+    width: 55%;
+  }
+
+  .index_right {
+    width: 42%;
+  }
+
+  .entry_top {
+    background-color: #fffefc;
+  }
+
+  .lunch_cover {
+    position: relative;
+    /* .flex_wrap のpaddingの値を考慮した値 */
+    padding-top: calc( 117px - #{$top_padding_top} + 10px );
+    padding-left: calc( 165px - #{$top_padding_side} );
+    div {
+      position: absolute; /*絶対配置*/
+      top: calc( 131px - #{$top_padding_side} );
+      left: calc( 194px - #{$top_padding_top} );
+      }
+  }
+
+  .Lunch-Friends {
+    width: 171px;
+    height: 68px;
+    font-family: $header-font;
+    font-size: 28px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 4px;
+    text-align: center;
+    color: #ff652c;
+  }
+
+  .Asset-73x {
+    width: 112px;
+    object-fit: contain;
+    margin-left: calc( 218px - #{$top_padding_top} );
+    padding-top: 19px;
+    margin-bottom: 85px;
+  }
+
+  .today_date {
+    height: 26px;
+    font-family: rounded-x-mplus-1m;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 4.4px;
+    margin-bottom: 27px;
+    color: #3b6793;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+  .today_date:before, .today_date:after {
+    content: "";
+    width: 90px;
+    height: 2px;
+    background: #3b6793;
+    display: block;
+  }
+  .today_date:before {
+    margin-right: 13px;
+  }
+  .today_date:after {
+    margin-left: 13px;
+  }
+
+  .lunch_card {
+    max-width: 160px;
+    height: 120px;
+    border-radius: 9px;
+    flex: 1 1 160px;
+    margin-right:  12px;
+    margin-bottom:  8px;
+  }
+
+  .lunch_card_category {
+    width: 140px;
+    height: 42px;
+    font-family: rounded-x-mplus-1m;
+    font-size: 17px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.24;
+    letter-spacing: 2px;
+    text-align: left;
+    color: #ffffff;
+    margin: 10px 10px 6px;
+  }
+
+  p.lunch_state {
+    height: 19px;
+    font-family: rounded-x-mplus-1m;
+    font-size: 14px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 2.6px;
+    text-align: left;
+    color: #ffffff;
+    margin: 0 10px  7px 10px;
+  }
+
+  /* Timeline */
+  .tweet_form {
+    height: 113px;
+    /* width: 441px; */
+    border-radius: 8px;
+    background-color: #a0e8d0;
+    padding: 14px 5% 10px;
+  }
+
+  textarea#tweet_content {
+    /* width: 389px; */
+    /* width: 89%; */
+    width: 100%;
+    height: 55px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-bottom: 0;
+  }
+
+  img.tweet_form_img {
+      margin-left: 20px;
+  }
+
+  select#tweet_category_id {
+    color: #ff652c;
+    width: 136px;
+    height: 23.3px;
+    object-fit: contain;
+    border-radius: 17.5px;
+    background-color: #f4f4f4;
+    /* margin: 0 166px 0 0; */
+    margin: 0 36% 0 0;
+  }
+
+  input.post_tweet {
+    width: 82.1px;
+    height: 23.6px;
+    object-fit: contain;
+    border-radius: 17.5px;
+    background-color: #3b6793;
+    color:  #fff;
+    margin-bottom: 0;
+  }
+
+  .timeline-shows {
+    /* width: 441px; */
+    background-color: #ffffff;
+    border: solid 1px #e1e1e1; 
+  }
 }
 
-.index_left {
-  flex:5;
-}
 
-.index_right {
-  flex:4;
-}
-
-
-.Rectangle-7 {
-  /* width: 1920px; */
-  /* height: 1080px; */
-  background-color: #fffefc;
-}
-
-.lunch_cover {
-  position: relative;
-  /* .flex_wrap のpaddingの値を考慮した値 */
-  padding-top: calc( 117px - #{$top_padding_top} + 10px );
-  padding-left: calc( 165px - #{$top_padding_side} );
-  div {
-    position: absolute; /*絶対配置*/
-    top: calc( 131px - #{$top_padding_side} );
-    left: calc( 194px - #{$top_padding_top} );
-    }
-}
-
-.Lunch-Friends {
-  width: 171px;
-  height: 68px;
-  font-family: $header-font;
-  font-size: 28px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: 4px;
-  text-align: center;
-  color: #ff652c;
-}
-
-.Asset-73x {
-  width: 112px;
-  object-fit: contain;
-  margin-left: calc( 218px - #{$top_padding_top} );
-  padding-top: 19px;
-  margin-bottom: 85px;
-}
-
-.today_date {
-  height: 26px;
-  font-family: rounded-x-mplus-1m;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: 4.4px;
-  margin-bottom: 27px;
-  color: #3b6793;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-}
-.today_date:before, .today_date:after {
-  content: "";
-  width: 90px;
-  height: 2px;
-  background: #3b6793;
-  display: block;
-}
-.today_date:before {
-  margin-right: 13px;
-}
-.today_date:after {
-  margin-left: 13px;
-}
 
 .flex_container {
     display:  flex;
     flex-wrap:  wrap;
 }
 
-.lunch_card {
-  max-width: 160px;
-  height: 120px;
-  border-radius: 9px;
-  flex: 1 1 160px;
-  margin-right:  12px;
-  margin-bottom:  8px;
-}
 
 .lunch_card_container a:nth-child(3n+1){
   background-color: #ff652c;
@@ -206,44 +287,6 @@ select {
 
 .lunch_card_container a:nth-child(3n){
   background-color: #a0e8d0;
-}
-
-.lunch_card_category {
-  width: 140px;
-  height: 42px;
-  font-family: rounded-x-mplus-1m;
-  font-size: 17px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.24;
-  letter-spacing: 2px;
-  text-align: left;
-  color: #ffffff;
-  margin: 10px 10px 6px;
-}
-
-p.lunch_state {
-  height: 19px;
-  font-family: rounded-x-mplus-1m;
-  font-size: 14px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: 2.6px;
-  text-align: left;
-  color: #ffffff;
-  margin: 0 10px  7px 10px;
-}
-
-/* Timeline */
-.tweet_form {
-  height: 113px;
-  width: 441px;
-  border-radius: 8px;
-  background-color: #a0e8d0;
-  padding: 14px 26px 10px;
 }
 
 
@@ -263,43 +306,7 @@ p.lunch_state {
   flex: 11;
 }
 
-textarea#tweet_content {
-  width: 389px;
-  height: 55px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  margin-bottom: 0;
-}
 
-img.tweet_form_img {
-    margin-left: 20px;
-}
-
-select#tweet_category_id {
-  color: #ff652c;
-  width: 136px;
-  height: 23.3px;
-  object-fit: contain;
-  border-radius: 17.5px;
-  background-color: #f4f4f4;
-  margin: 0 166px 0 0;
-}
-
-input.post_tweet {
-  width: 82.1px;
-  height: 23.6px;
-  object-fit: contain;
-  border-radius: 17.5px;
-  background-color: #3b6793;
-  color:  #fff;
-  margin-bottom: 0;
-}
-
-.timeline-shows {
-  width: 441px;
-  background-color: #ffffff;
-  border: solid 1px #e1e1e1; 
-}
 
 .tweet_img {
   
