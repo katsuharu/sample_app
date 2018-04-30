@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   	#ログイン済みユーザーかどうか確認
   	def logged_in_user
       if logged_in?
-        current_user.update_attribute(:logined_at, DateTime.now)
+        # current_user.update_attribute(:logined_at, DateTime.now)
       else
   	    store_location
   	    flash[:danger] = "ログインしてください"
