@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'mysql2'
@@ -32,9 +31,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'whenever', :require => false
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 gem 'rails-controller-testing'
 gem 'carrierwave',             '1.1.0'
 gem 'mini_magick',             '4.7.0'
@@ -65,6 +61,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "better_errors"
   gem "binding_of_caller"
+  # capistrano
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv', '~> 2.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
