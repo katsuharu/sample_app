@@ -1,26 +1,51 @@
-require "bundler/capistrano"
+# config valid only for current version of Capistrano
+# lock '3.3.5'
 
-set :application, "lunchfriends"
-set :rails_env, "production"
+set :application, 'lunchfriends'
+# set :repo_url, 'https://katsu18@bitbucket.org/lunchfriendsteam/lunchfriends.git'
+set :repo_url, 'git@github.com:katsuharu/sample_app.git'
+# set :repo_url, 'git@bitbucket.org:lunchfriendsteam/lunchfriends.git'
+# Default branch is :master
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
-
-server "https://lunchfriends.jp/", :web, :app, :db, primary: true
-
-set :repository, "https://katsu18@bitbucket.org/lunchfriendsteam/lunchfriends.git"
-set :scm, :git
-set :branch, "master"
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, '/var/www/html/lunchfriends'
 set :user, "vpslunch"
-set :use_sudo, false
-set :deploy_to, "/var/www/html/lunchfriends"
-set :deploy_via, :remote_cache
-ssh_options[:forward_agent] = true
+# Default value for :scm is :git
 
+# set :scm, :git
+# set rbenv
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.4.3'
 
-# レポジトリ設定
-set :repo_url, 'https://user_name:pass_word@github.com/user_name/web_app.git'
-# シンボリックリンクにするディレクトリ
-set :linked_dirs, fetch(:linked_dirs, []).push('log')
-# デプロイ先でのソースのバージョンの保持数
-set :keep_releases, 5
-# コマンド実行時にsudoをつけるか
-set :use_sudo, false
+# Default value for :format is :pretty
+# set :format, :pretty
+
+# Default value for :log_level is :debug
+# set :log_level, :debug
+
+# Default value for :pty is false
+# set :pty, true
+
+# Default value for :linked_files is []
+set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+# set :keep_releases, 5
+
+namespace :deploy do
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+
+end
