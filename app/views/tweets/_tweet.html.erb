@@ -1,61 +1,44 @@
-<!-- <div class="row tweet"> -->
-<div class="flex_container">
-	<!-- <div class="col-sm-1"> -->
-	<div class="flex_1">
-		<%= 
-			if u = User.find_by(id: tweet.user_id)
-				image_tag(u.profile_img.url, :size => "30x30", class: "tweet_img") if u.profile_img? 
-			end
-		%>
+<div class="flex_container tweet">
+	<div class="tweet_img">
+	<%= 
+		if u = User.find_by(id: tweet.user_id)
+			image_tag(u.profile_img.url, :size => "30x30", class: "") if u.profile_img? 
+		end
+	%>
 	</div>
-
-	<!-- <div class="col-sm-11"> -->
-	<div class="flex_11">	
-		<!-- <div class="row"> -->
-		<div class="flex_container">
-			<!-- <div class="col-sm-4"> -->
-			<div class="flex_1">
-				<strong>
-				<%= 
-					if u = User.find_by(id: tweet.user_id)
-						u.name 
-					end
-				%>
-				</strong>
+	<div class="tweet_text">
+		<div class="tweet_name">
+			<%= 
+				if u = User.find_by(id: tweet.user_id)
+					u.name 
+				end
+			%>
+		</div>
+		<div class="">
+			<%= tweet.content %>
+		</div>
+		<div class="flex_container tweet_data">
+			<%= link_to tweet_path(tweet.id), 
+				remote: true, class: "", :data => {:toggle=>"modal", :target => ".t_detail"} do %>
+				<i class="far fa-comment"></i>
+			<% end %>
+			<div class="thread_count">
+				<%= TThread.where(tweet_id: tweet.id).count %>
 			</div>
-			<!-- <div class="col-sm-8"> -->
-			<div class="flex_2">
+			<div class="tweet_category">
+			<%= if  tweet.category_id
+					Category.find_by(id: tweet.category_id).name
+				end
+			%>
+			</div>
+
+			<div class="tweet_at">
 				<% posted_at = tweet.created_at %>
 				<% if Time.now - posted_at >= 86400 %>
 					<%= posted_at.strftime("%Y年 %m月 %d日") %>
 				<% else %>
 					<%= time_ago_in_words(posted_at) %>前
 				<% end %>
-			</div>
-		</div>
-
-		<div class="tweet_content">
-		<%= tweet.content %>
-		</div>
-		<div>
-			<!-- <div class="row"> -->
-			<div class="flex_container">
-				<!-- <div class="col-sm-4"> -->
-				<div class="flex_1">
-					<%= link_to tweet_path(tweet.id), 
-						remote: true, class: "", :data => {:toggle=>"modal", :target => ".t_detail"} do %>
-						<i class="far fa-comment"></i>
-					<% end %>
-
-					<%= TThread.where(tweet_id: tweet.id).count %>
-				</div>
-				<!-- <div class="col-sm-8"> -->
-				<div class="flex_2">
-					<%= if  tweet.category_id
-							Category.find_by(id: tweet.category_id).name
-						end
-					%>
-				</div>
 			</div>
 		</div>
 	</div>
