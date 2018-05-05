@@ -18,13 +18,13 @@ $top_padding_top: 34px;
 
 /* universal */
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
 a {
@@ -98,7 +98,7 @@ select {
   max-height: 100%;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
   /* Lunch Top */
   .flex_wrap {
     display: flex;
@@ -111,7 +111,8 @@ select {
   }
 
   .index_right {
-    width: 42%;
+    width: 441px;
+    margin-right: 22px;
   }
 
   .entry_top {
@@ -266,6 +267,24 @@ select {
     border: solid 1px #e1e1e1; 
   }
 
+  /* Tweet new design */
+  .tweet {
+    min-height: 51px;
+    border-bottom: 1px solid #e6ecf0;
+    cursor: pointer;
+  }
+  
+  .tweet_img {
+    margin-left:  26px;
+    margin-top:  11px;
+    margin-right: 21px;
+  }
+
+  .tweet_text {
+      margin-top:  6px;
+      width: 341px;
+  }
+
   @media (min-width: 1300px) {
     .select-group {
       margin: 0 250px 0 0;
@@ -274,6 +293,11 @@ select {
     @media (min-width: 1440px) {
       .select-group {
         margin: 0 300px 0 0;
+      }
+
+      .tweet_text {
+        margin-top:  6px;
+        width: 396px;
       }
     }
   }
@@ -367,10 +391,27 @@ select {
   flex: 11;
 }
 
+/* tweet new design */
+.tweet_name {
+    color:  #f5a623;
+    letter-spacing: 2px;
+    font-size:  14px;
+}
 
+.tweet_data {
+    margin-top:  4px;
+}
 
-.tweet_img {
-  
+.thread_count {
+    margin-left:  5px;
+}
+
+.tweet_category {
+    margin-left:  17px;
+}
+
+.tweet_at {
+  margin-left:  auto;
 }
 
 /* typography */
@@ -613,12 +654,9 @@ input {
   }
 }
 
-
 .form-horizontal .form-img {
   display: flex;
 }
-
-
 
 .form-horizontal .form-group {
   margin-left: 0;
@@ -662,12 +700,12 @@ input.square_btn.confirm_btn {
 }
 
 .rotation-btns .icon {
-            -webkit-transition: color 0.25s;
-            -moz-transition: color 0.25s;
-            -o-transition: color 0.25s;
-            -ms-transition: color 0.25s;
-            transition: color 0.25s;
-            cursor: pointer;
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+  -o-transition: color 0.25s;
+  -ms-transition: color 0.25s;
+  transition: color 0.25s;
+  cursor: pointer;
 }
 
 .slider-wrapper .large-image {
@@ -1285,32 +1323,6 @@ li.hobby_selected {
 
 .prof-label .label-danger {
   font-size: 12px;
-}
-
-
-/* Ttimeline */
-
-/* Tweet */
-.tweet {
-    min-height: 51px;
-    padding: 9px 12px;
-    border-bottom: 1px solid #e6ecf0;
-    cursor: pointer;
-}
-
-.tweet_content {
-    font-size: 16px;
-    margin-bottom: 12px;
-}
-
-td.tweet_info {
-    font-size: 12px;
-    padding-right: 20px;
-}
-
-td.tweet_time {
-    font-size: 10px;
-    padding-right: 10px;
 }
 
 /* Thread */
