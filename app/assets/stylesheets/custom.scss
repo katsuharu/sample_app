@@ -273,7 +273,7 @@ select {
     border-bottom: 1px solid #e6ecf0;
     cursor: pointer;
   }
-  
+
   .tweet_img {
     margin-left:  26px;
     margin-top:  11px;
@@ -285,21 +285,117 @@ select {
       width: 341px;
   }
 
+  /* スライドショー */
+  #slider_wrap {
+    margin: 0px auto;
+    width: 132px;  /* 変更 */    /* padding 20*2 +  img*width*パネル数 + (marginleft+right)*4+(marginLeft/Right)  */
+    height: 30px;  /* padding 20*2 + #photo_list.height */
+    /* padding: 0px 20px ; */
+    /*background: #EFEFEF;*/
+    position: relative;
+    /*border: 1px solid #CCC;*/
+  }
+
+  #slider {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #slider > div { /* photo_list_と同値 */
+    /*width: 640px;  幅は指定しない*/
+    height: 30px; /* padding 20*2 + img.height */
+    /* padding: 0px 10px; */  /* 変更 */
+    list-style-type: none;
+    float: left;
+    /*background: #999;*/
+  }
+
+  #slider > div li {
+    float: left;
+    margin: 0 1.4px;  /* 変更 */
+    display: inline;
+  }
+
+  #slider > div img {
+    border: none;
+  }
+
   @media (min-width: 1300px) {
-    .select-group {
-      margin: 0 250px 0 0;
+    .index_right {
+      width: 515px;
+    }
+
+    .tweet_text {
+      width: 375px;
+    }
+
+    /* lunch card */
+    .today_date {
+      letter-spacing: 5.5px;
+      font-size: 22px;
+    }
+
+    .today_date:before, .today_date:after {
+      content: "";
+      width: 114px;
+    }
+
+    .lunch_card {
+      max-width: 203px;
+      height: 152px;
+      border-radius: 11px;
+      flex: 1 1 203px;
+      margin-right: 15px;
+      margin-bottom: 10px;
+    }
+
+    p.lunch_state {
+      height: 19px;
+      font-size: 17px;
+      letter-spacing: 3.3px;
+      margin: 0 12px  8.8px 12px;
+    }
+
+    img.lunch_card_img {
+      width:  38px;
+      height:  38px;
+    }
+
+    /* slideshow */
+    #slider_wrap {
+      width: 159px;
+      height: 38px;
+    }
+
+    #slider > div {
+      height: 38px;
+    }
+
+    #slider > div li {
+      margin: 0 1.7px;
+    }
+
+    #slider > div li {
+      margin: 0 1.7px;
     }
 
     @media (min-width: 1440px) {
-      .select-group {
-        margin: 0 300px 0 0;
-      }
-
       .tweet_text {
         margin-top:  6px;
         width: 396px;
       }
     }
+  }
+}
+
+@media (max-width: 767px) {
+  #slider_wrap {
+    padding: 0;
+  }
+
+  #slider > div {
+    padding: 0;
   }
 }
 
@@ -313,6 +409,10 @@ select {
     object-fit: contain;
     background-color: #f4f4f4;
     background-repeat: no-repeat;
+}
+
+.tweet_post {
+  margin-left:  auto;
 }
 
 .select {
@@ -945,53 +1045,6 @@ a.square_btn.bf-top {
 .lunch_card.lunch_activated {
 }
 /* ランチカード */
-
-
-/* スライドショー */
-#slider_wrap {
-  margin: 0px auto;
-  width: 132px;  /* 変更 */    /* padding 20*2 +  img*width*パネル数 + (marginleft+right)*4+(marginLeft/Right)  */
-  height: 30px;  /* padding 20*2 + #photo_list.height */
-  /* padding: 0px 20px ; */
-  /*background: #EFEFEF;*/
-  position: relative;
-  /*border: 1px solid #CCC;*/
-}
-
-#slider {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-#slider > div { /* photo_list_と同値 */
-  /*width: 640px;  幅は指定しない*/
-  height: 30px; /* padding 20*2 + img.height */
-  /* padding: 0px 10px; */  /* 変更 */
-  list-style-type: none;
-  float: left;
-  /*background: #999;*/
-}
-
-#slider > div li {
-  float: left;
-  margin: 0 1.4px;  /* 変更 */
-  display: inline;
-}
-
-#slider > div img {
-  border: none;
-}
-
-@media (max-width: 767px) {
-  #slider_wrap {
-    padding: 0;
-  }
-
-  #slider > div {
-    padding: 0;
-  }
-}
 
 /* エントリー完了画面 */
 .comp-entry {

@@ -29,14 +29,13 @@
                   <p class="lunch_state"><%= entry_num %>名参加中</p>
                   <% @users = User.where(category_id: card[1]) %>
                   <!-- スライドショー -->
-                  <div class="entry-cnt">
                     <div id="slider_wrap">
                       <div id="slider">
                           <div id="slider_inner_<%= p i %>">
                               <ul id="photo_list_<%= p i %>">
                                 <% @users.each do |user| %>
                                   <li>
-                                    <%= image_tag user.profile_img.url, :size => '30x30' if user.profile_img? %>
+                                    <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
                                   </li>
                                 <% end %>
                               </ul>
@@ -44,7 +43,6 @@
                       </div><!-- end of #slider --> 
                     </div><!-- end of #slider_wrap --> 
                     <!--  -->    
-                  </div>
                   <!-- スライドショー -->
                 <% else %>
                   <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
@@ -59,15 +57,17 @@
           <!-- Timeline -->
           <div class="tweet_form">
             <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'btn_create'}) do |f| %>
-              <!-- <div class="row"> -->
-                <!-- <div class="col-sm-2"> -->
-
-                <!-- <div class="col-sm-10"> -->
                   <%= f.text_area :content, size: "55x2", placeholder: "投稿内容", required: true %>
-                  <label for="animals" class="select-group">
-                  <%= select(:tweet, :category_id, options_for_select( @cards, {:selected => 128 } ),{required: true}) %>
-                  </label>
-                  <%= f.submit "投稿", class: "post_tweet" %>
+                <div class="flex_container">
+                  <div>
+                    <label for="animals" class="select-group">
+                    <%= select(:tweet, :category_id, options_for_select( @cards, {:selected => 128 } ),{required: true}) %>
+                    </label>
+                  </div>
+                  <div class="tweet_post">
+                    <%= f.submit "投稿", class: "post_tweet" %>
+                  </div>
+                </div>
             <% end %>
           </div>
 
