@@ -99,6 +99,9 @@ select {
 }
 
 @media (min-width: 1024px) {
+  $top_padding_side: 39px;
+  $top_padding_top: 45px;
+
   /* Lunch Top */
   .flex_wrap {
     display: flex;
@@ -321,6 +324,24 @@ select {
   }
 
   @media (min-width: 1300px) {
+    .lunch_cover {
+      padding-top: calc( 148px - #{$top_padding_top} + 12px );
+      padding-left: calc( 235px - #{$top_padding_side} );
+      div {
+        position: absolute; /*絶対配置*/
+        top: calc( 166px - #{$top_padding_side} );
+        left: calc( 260px - #{$top_padding_top} );
+      }
+    }
+
+    .Asset-73x {
+      width: 142px;
+      object-fit: contain;
+      margin-left: calc( 276px - 43px );
+      padding-top: 24px;
+      margin-bottom: 107px;
+    }
+
     .index_right {
       width: 515px;
     }
