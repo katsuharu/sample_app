@@ -206,7 +206,6 @@ select {
   }
 
   p.lunch_state {
-    height: 19px;
     font-family: rounded-x-mplus-1m;
     font-size: 14px;
     font-weight: 300;
@@ -351,7 +350,6 @@ select {
     }
 
     p.lunch_state {
-      height: 19px;
       font-size: 17px;
       letter-spacing: 3.3px;
       margin: 0 12px  8.8px 12px;
@@ -376,15 +374,61 @@ select {
       margin: 0 1.7px;
     }
 
-    #slider > div li {
-      margin: 0 1.7px;
-    }
-
     @media (min-width: 1440px) {
       .tweet_text {
         margin-top:  6px;
         width: 396px;
       }
+
+      .index_right {
+        width: 617px;
+      }
+
+      /* lunch card */
+      .today_date {
+        letter-spacing: 6px;
+        font-size: 24px;
+      }
+
+      .today_date:before, .today_date:after {
+        content: "";
+        width: 126px;
+      }
+
+      .lunch_card {
+        max-width: 224px;
+        height: 168px;
+        border-radius: 12px;
+        flex: 1 1 224px;
+        margin-right: 16px;
+        margin-bottom: 10px;
+      }
+
+      p.lunch_state {
+        font-size: 19px;
+        letter-spacing: 3.6px;
+        margin: 0 14px  9.8px 14px;
+      }
+
+      img.lunch_card_img {
+        width:  42px;
+        height:  42px;
+      }
+
+      /* slideshow */
+      #slider_wrap {
+        width: 175px;
+        height: 42px;
+      }
+
+      #slider > div {
+        height: 42px;
+      }
+
+      #slider > div li {
+        margin: 0 1.9px;
+      }
+    
     }
   }
 }
