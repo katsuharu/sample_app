@@ -19,4 +19,11 @@ $(document).ready(function (){
 	    $('body').prepend('<img alt="Lunch Friends logo" src="/assets/loading.gif" id="loading_img">')
 	})
 
+	$(document).on('click', 'img.header_show', function() {
+		if($('header.navbar.navbar-default').is(':visible')) {
+			$('header.navbar.navbar-default').hide()
+		} else {
+			$('header.navbar.navbar-default').show()
+		}
+	})
 })

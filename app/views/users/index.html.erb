@@ -1,5 +1,6 @@
 <% if logged_in? %>
-
+  <div class="content_padding">
+    <%= image_tag("triangle.svg", alt: "triangle", class: "header_show") %>
       <div class="flex_wrap">
         <div class="index_left">
           <div class="lunch_cover">
@@ -48,7 +49,7 @@
                   <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
                 <% end %>
               </article>
-              </a>
+            </a>
             <% end %>
             </div><!-- lunch_card_container -->
         </div>
@@ -98,6 +99,7 @@
           <!-- /Timeline -->
         </div>
       </div>
+  </div>
 <% else %>
   <div class="center">
     <h1 class="bf-title">Lunch Friends</h1>
