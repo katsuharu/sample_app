@@ -707,6 +707,7 @@ footer {
   margin-top: 20px;
   padding-top: 5px;
   border-top: 3px solid $navi-color;
+  display: none;
 }
 
 .footer-menu {
@@ -725,6 +726,10 @@ footer {
   margin: 0 20px;
   font-size: 13px;
   list-style: none;
+}
+
+img.footer_triangle {
+  margin-left: calc( 263px - #{$top_padding_side});
 }
 
 .footer li a {

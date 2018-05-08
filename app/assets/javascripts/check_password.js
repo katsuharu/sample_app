@@ -26,4 +26,12 @@ $(document).ready(function (){
 			$('header.navbar.navbar-default').show()
 		}
 	})
+
+	$(document).on('click', 'img.footer_triangle', function() {
+		if($('footer').is(':visible')) {
+			$('footer').hide()
+		} else {
+			$('footer').show()
+		}
+	})
 })
