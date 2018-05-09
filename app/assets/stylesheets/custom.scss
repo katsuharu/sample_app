@@ -99,8 +99,9 @@ select {
 }
 
 .content_padding {
-    padding-top: 39px;
-    padding-left: 45px;
+  padding-top: 39px;
+  padding-left: 45px;
+  padding-bottom: 20px;
 }
 
 @media (min-width: 1024px) {
@@ -704,7 +705,6 @@ header.navbar.navbar-default {
 /* footer */
 
 footer {
-  margin-top: 20px;
   padding-top: 5px;
   border-top: 3px solid $navi-color;
   display: none;
