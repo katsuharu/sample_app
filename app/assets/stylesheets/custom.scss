@@ -335,48 +335,57 @@ select {
   #slider > div img {
     border: none;
   }
+}
 
-  @media (min-width: 1300px) {
-    .lunch_cover {
-      padding-top: calc( 148px - #{$top_padding_top} + 12px );
-      padding-left: calc( 235px - #{$top_padding_side} );
-      div {
-        position: absolute; /*絶対配置*/
-        top: calc( 166px - #{$top_padding_side} );
-        left: calc( 260px - #{$top_padding_top} );
-      }
+@media (min-width: 1300px) {
+  .lunch_cover {
+    padding-top: calc( 148px - #{$top_padding_top} + 12px );
+    padding-left: calc( 235px - #{$top_padding_side} );
+    div {
+      position: absolute; /*絶対配置*/
+      top: calc( 166px - #{$top_padding_side} );
+      left: calc( 260px - #{$top_padding_top} );
     }
-
-    .Asset-73x {
-      width: 142px;
-      object-fit: contain;
-      margin-left: calc( 276px - 43px );
-      padding-top: 24px;
-      margin-bottom: 107px;
-    }
-
-    .today_date {
-      letter-spacing: 5.5px;
-      font-size: 22px;
-    }
-
   }
-  @media (min-width: 1440px) {
-    /* 投稿フォーム padding */
-    .tweet_form {
-      height: calc(1440 / 1024 * 113px);
-      padding-top: calc(1440 / 1024 * 14px);
-      padding-bottom: calc(1440 / 1024 * 10px);
-    }
-    /* 投稿フォーム */
-    textarea#tweet_content {
-      height: calc(1440 / 1024 * 55px);
-      margin-bottom: calc(1440 / 1024 * 10px);
-    }
 
-    .post_tweet {
-      height: calc(1440 / 1024 * 23.6px);
-    }
+  .Asset-73x {
+    width: 142px;
+    object-fit: contain;
+    margin-left: calc( 276px - 43px );
+    padding-top: 24px;
+    margin-bottom: 107px;
+  }
+
+  .today_date {
+    letter-spacing: 5.5px;
+    font-size: 22px;
+  }
+
+}
+
+@media (min-width: 1440px) {
+  /* 投稿フォーム padding */
+  .tweet_form {
+    height: calc(1440 / 1024 * 113px);
+    padding-top: calc(1440 / 1024 * 14px);
+    padding-bottom: calc(1440 / 1024 * 10px);
+  }
+  /* 投稿フォーム */
+  textarea#tweet_content {
+    height: calc(1440 / 1024 * 55px);
+    margin-bottom: calc(1440 / 1024 * 10px);
+  }
+
+  .tweet_img {
+    margin-top: calc(1440 / 1024 * 11px);
+  }
+
+  .tweet_text {
+    margin-top: calc(1440 / 1024 * 6px);
+  }
+
+  .tweet_data {
+    margin-top: calc(1440 / 1024 * 4px);
   }
 }
 
@@ -402,28 +411,6 @@ select {
   background-repeat: no-repeat;
 }
 
-.select {
-  position: relative;
-  z-index: 1;  
-
-  line-height: 1.8;
-
-  display: block;
-  width: 136px;
-/*    width: 120%; */
-    padding: 0;
-
-    text-indent: 8px;
-    border: none;
-    border-radius: 0;
-    background-color: transparent;
-    background-image: none;
-    box-shadow: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
 /*  カテゴリーセレクトの矢印マーク */
 .select-group:after
 {
@@ -443,6 +430,12 @@ select {
     border-left: 4px solid transparent;
 }
 
+/* カテゴリーセレクトのクリック可能範囲を拡大 */
+select#tweet_category_id {
+  margin:  0;
+  width:  100%;
+}
+
 
 .flex_container {
     display:  flex;
@@ -460,23 +453,6 @@ select {
 
 .lunch_card_container a:nth-child(3n){
   background-color: #a0e8d0;
-}
-
-
-.flex_1 {
-  flex: 1;
-}
-
-.flex_2 {
-  flex: 2;
-}
-
-.flex_5 {
-  flex: 5;
-}
-
-.flex_11 {
-  flex: 11;
 }
 
 /* tweet new design */
