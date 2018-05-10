@@ -14,10 +14,10 @@
   </head>
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
     <%= render 'layouts/header' %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <div class="container" id="entire_contents">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
