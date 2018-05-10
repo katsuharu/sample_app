@@ -14,9 +14,7 @@
 				end
 			%>
 		</div>
-		<div class="">
-			<%= tweet.content %>
-		</div>
+		<%= tweet.content %>
 		<div class="flex_container tweet_data">
 			<%= link_to tweet_path(tweet.id), 
 				remote: true, class: "", :data => {:toggle=>"modal", :target => ".t_detail"} do %>
