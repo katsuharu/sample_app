@@ -296,14 +296,14 @@ select {
   }
 
   .tweet_img {
-    margin-left:  26px;
+    margin-left:  5%;
     margin-top:  11px;
-    margin-right: 21px;
+    margin-right: 4.7%;
   }
 
   .tweet_text {
       margin-top:  6px;
-      width: 341px;
+      width: 77%;
   }
 
   /* slideshow */
@@ -360,16 +360,6 @@ select {
       font-size: 22px;
     }
 
-    .tweet_text {
-      width: 375px;
-    }
-
-    @media (min-width: 1440px) {
-      .tweet_text {
-        margin-top:  6px;
-        width: 396px;
-      }
-    }
   }
 }
 
@@ -483,11 +473,11 @@ select {
 }
 
 .thread_count {
-    margin-left:  5px;
+    margin-left:  3.7%;
 }
 
 .tweet_category {
-    margin-left:  17px;
+    margin-left:  12.6%;
 }
 
 .tweet_at {
