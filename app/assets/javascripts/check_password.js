@@ -3,7 +3,6 @@ $(document).ready(function (){
 	if($('.vanish').attr('src')) {
 		$('#user_profile_img').removeAttr("required")
 	} else {
-		console.log('NONOJO')
 	}
 
 	$(document).on('click', '#submitBtn', function() {
@@ -33,5 +32,16 @@ $(document).ready(function (){
 		} else {
 			$('footer').show()
 		}
+	})
+
+	// Infinite Scroll
+	$(".timeline-shows").infinitescroll({
+	    loading: {
+	      img:     "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif",
+	      msgText: "loading..."
+	    },
+	    navSelector: "nav.pagination",
+	    nextSelector: "nav.pagination a[rel=next]",
+	    itemSelector: ".timeline-shows div.tweet"
 	})
 })

@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'kaminari'
 gem 'whenever', :require => false
 
 gem 'rails-controller-testing'

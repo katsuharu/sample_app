@@ -7,14 +7,9 @@ class UsersController < ApplicationController
   def index
     # Top5のhobbyを取得
     @hobby_pop = UserHobby.group(:hobby_name).order('count_all desc').limit(5).count
-
-    # @tweets = Tweet.all
-    @tweets = Tweet.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+    @tweets = Tweet.page(params[:page]).order('created_at DESC').per(20)
     @tweet = Tweet.new
-    @apple = Tweet.new
     @today = Date.today
-
-    
 
     if current_user # current_userがnilのときにエラーになるのを防ぐため
       # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
