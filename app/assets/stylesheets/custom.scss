@@ -255,7 +255,7 @@ select {
     height: 55px;
     border-radius: 8px;
     background-color: #ffffff;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     border: none;
   }
 
@@ -271,7 +271,7 @@ select {
     padding-top: 2px;
   }
 
-  input.post_tweet {
+  .post_tweet {
     width: 21%;
     height: 23.6px;
     object-fit: contain;
@@ -361,6 +361,23 @@ select {
     }
 
   }
+  @media (min-width: 1440px) {
+    /* 投稿フォーム padding */
+    .tweet_form {
+      height: calc(1440 / 1024 * 113px);
+      padding-top: calc(1440 / 1024 * 14px);
+      padding-bottom: calc(1440 / 1024 * 10px);
+    }
+    /* 投稿フォーム */
+    textarea#tweet_content {
+      height: calc(1440 / 1024 * 55px);
+      margin-bottom: calc(1440 / 1024 * 10px);
+    }
+
+    .post_tweet {
+      height: calc(1440 / 1024 * 23.6px);
+    }
+  }
 }
 
 @media (max-width: 767px) {
@@ -407,6 +424,7 @@ select {
     appearance: none;
 }
 
+/*  カテゴリーセレクトの矢印マーク */
 .select-group:after
 {
     position: absolute;
