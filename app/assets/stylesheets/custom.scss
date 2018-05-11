@@ -1325,8 +1325,9 @@ input.hb-add {
 }
 
 #hobby_delete label {
-    display: block;
-    margin-bottom:0;
+  display: block;
+  margin-bottom:0;
+  cursor: pointer;
 }
 
 li.hobby_selected {
