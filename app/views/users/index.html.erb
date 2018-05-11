@@ -1,13 +1,42 @@
 <% if logged_in? %>
-        <div class="index_left">
-          <%= image_tag("triangle.svg", alt: "triangle", class: "header_show") %>
+  <div class="index_left">
+      
+      <div class="collapse navbar-collapse" id="mainNav">
+        <nav>
+          <ul class="nav navbar-nav">
+            <% if logged_in? %>
+              <% if matched? %>
+                <li><%= link_to "マッチング相手確認", check_path %></li>
+              <% end %> 
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= image_tag("triangle.svg", alt: "triangle", class: "header_show") %>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "トップ", root_url %></li>
+                  <li><%= link_to "プロフィール", current_user %></li>
+                  <li><%= link_to "趣味を編集", hobby_show_path %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "ログアウト", logout_path, method: :delete %>
+                  </li>
+                </ul>
+              </li>
+            <% else %>
+              <li><%= link_to "新規登録", signup_path %></li>
+              <li><%= link_to "ログイン", login_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+
+
           <div class="lunch_cover">
             <%= image_tag("lunch_cover/path-2.png", alt: "Lunch Cover", class: "Path-2") %>
             <div class="layer wideEnough selected Lunch-Friends">
             Lunch Friends
             </div>
           </div>
-
           <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
           <div class="today_date">開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %></div>
 

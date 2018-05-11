@@ -1,5 +1,5 @@
 $(document).ready(function (){
-	// 以前にアップロードした画像が存在する場合
+	// 以前にアップロードした画像が存在する場合、画像のアップロードの必須化を解除
 	if($('.vanish').attr('src')) {
 		$('#user_profile_img').removeAttr("required")
 	} else {
@@ -16,14 +16,6 @@ $(document).ready(function (){
 	$(document).on('click', '#register_user', function() {
 	    $('body').attr('id', 'progressing');
 	    $('body').prepend('<img alt="Lunch Friends logo" src="/assets/loading.gif" id="loading_img">')
-	})
-
-	$(document).on('click', 'img.header_show', function() {
-		if($('header.navbar.navbar-default').is(':visible')) {
-			$('header.navbar.navbar-default').hide()
-		} else {
-			$('header.navbar.navbar-default').show()
-		}
 	})
 
 	$(document).on('click', 'img.footer_triangle', function() {
