@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   		if user.activated?
         log_in user
         remember(user)
- 		    redirect_back_or user
+        redirect_to root_url
       else
         message = "アカウントが有効化されておりません。"
         message += "送られてきたメールのリンクでアカウントを有効化してください。"
