@@ -48,7 +48,8 @@ body {
 
 textarea {
   resize: vertical;
-  border: 2px solid #696969
+  border: 2px solid #696969;
+  resize: none;
 }
 
 input {
