@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
 
   def account_activation(user)
     @user = user
-    mail to: user.email, subject: "アカウントの有効化"
+    mail to: user.email, subject: "【LunchFriends】リンクをクリックしアカウントを有効化して下さい"
   end
 
   def password_reset(user)

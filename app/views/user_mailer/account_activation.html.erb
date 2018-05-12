@@ -1,7 +1,16 @@
-<p><%= @user.name %>さま</p>
+<p><%= @user.name %>様</p>
+<p>Lunch Friendsのユーザ登録を完了するには下記リンクをクリックして下さい。</p>
+
 <p>
-	Lunch Friendsにユーザ登録をしていただき誠にありがとうございます。
-	下記のリンクにアクセスしてアカウントを有効化してください。
+<%= link_to "LunchFriendsアカウント有効化", edit_account_activation_url(@user.activation_token,email:@user.email) %>
+<br>※仮登録から24時間以上時間が経過すると、リセットされますのでご注意下さい。
+<br>
+<br>
+<p>
+	------<br>
+	LunchFriens<br>
+	https://lunchfriends.jp/<br>
+	<br>
+	▽問い合わせメール<br>
+	mail: lunchcommunication@gmail.com
 </p>
-	<%= link_to "有効化", edit_account_activation_url(@user.activation_token,
-		email:@user.email) %>
