@@ -15,7 +15,7 @@ $(document).ready(function (){
 	// 確認画面で登録ボタン押下時に処理中であることを表示
 	$(document).on('click', '#register_user', function() {
 	    $('body').attr('id', 'progressing');
-	    $('body').prepend('<img alt="Lunch Friends logo" src="/assets/loading.gif" id="loading_img">')
+	    $('body').prepend('<img alt="LF" src="http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_256.gif" id="loading_img">')
 	})
 
 	$(document).on('click', 'img.footer_triangle', function() {
