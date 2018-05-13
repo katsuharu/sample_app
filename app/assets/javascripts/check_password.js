@@ -1,4 +1,4 @@
-$(document).ready(function (){
+$(document).on('turbolinks:load', function() {
 	// 以前にアップロードした画像が存在する場合、画像のアップロードの必須化を解除
 	if($('.vanish').attr('src')) {
 		$('#user_profile_img').removeAttr("required")
@@ -36,4 +36,5 @@ $(document).ready(function (){
 	    nextSelector: "nav.pagination a[rel=next]",
 	    itemSelector: ".timeline-shows div.tweet"
 	})
+
 })

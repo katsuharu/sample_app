@@ -1,5 +1,4 @@
-$(document).ready(function (){
-
+$(document).on('turbolinks:load', function() {
   'use strict'
   var ALREADY = false
 
