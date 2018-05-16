@@ -2,6 +2,21 @@
 
 <h1 class="basic-heading">趣味を編集</h1>
 
+<h3>My Hobby</h3>
+<%= form_tag("/user_hobbies/del_hobby", method: "post", data: { confirm: '削除してよろしいでしょうか？' }, class: "col-sm-9") do %>
+<% @hobbies.each do |hobby| %>
+  <div class="display_flex">
+    <%= label_tag 'user_hobbies[id]', hobby.hobby_name %>
+    <%= check_box_tag 'user_hobbies[id][]', hobby.id %>
+  </div>
+  <% end %>
+  <div class="form-actions btn-center">
+    <%= submit_tag "チェックした趣味をMy Hobbyから削除", class: "square_btn", id: 'my_hobby_del' %>
+  </div>
+<% end %>
+
+<hr>
+
 <input type=form id="search_form" placeholder="カテゴリー検索" style="width: 250px;"/>
 <ul id="search_result" class="category_search">
 </ul>
@@ -33,33 +48,18 @@
 <hr>
 
 <h3>新たに登録する趣味一覧</h3>
-  <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal') do %>
-  
-    <div class="hobby_list">
-      <div id="my_hobby" class="my_hobbies">
-      </div>
+<%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal') do %>
 
-      <div id="hobby_delete">
-      </div>
+  <div class="hobby_list">
+    <div id="my_hobby" class="my_hobbies">
     </div>
 
-    <div class="form-actions btn-center">
-      <%= submit_tag "趣味を登録", class: "square_btn", id: 'hobby_register' %>
+    <div id="hobby_delete">
     </div>
+  </div>
 
-  <% end %>
+  <div class="form-actions btn-center">
+    <%= submit_tag "趣味を登録", class: "square_btn", id: 'hobby_register' %>
+  </div>
 
-
-  <hr>
-<h3>My Hobby</h3>
-    <%= form_tag("/user_hobbies/del_hobby", method: "post", data: { confirm: '削除してよろしいでしょうか？' }, class: "col-sm-9") do %>
-    <% @hobbies.each do |hobby| %>
-      <div class="display_flex">
-        <%= label_tag 'user_hobbies[id]', hobby.hobby_name %>
-        <%= check_box_tag 'user_hobbies[id][]', hobby.id %>
-      </div>
-      <% end %>
-      <div class="form-actions btn-center">
-        <%= submit_tag "チェックした趣味をMy Hobbyから削除", class: "square_btn", id: 'my_hobby_del' %>
-      </div>
-    <% end %>
+<% end %>
