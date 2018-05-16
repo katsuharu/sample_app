@@ -86,10 +86,11 @@
             <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'btn_create'}) do |f| %>
               <%= f.text_area :content, size: "55x2", required: true %>
               <div class="flex_container">
-                  <label for="tweet_category_id" class="select-group">
+                <div class="select_width">
+                  <p class="select_label select-group">オールジャンル</p>
                   <%= select(:tweet, :category_id, options_for_select( @cards, {:selected => 128 } ),{required: true}) %>
-                  </label>
-                  <%= f.submit "投稿", class: "post_tweet" %>
+                </div>
+                <%= f.submit "投稿", class: "post_tweet" %>
               </div>
             <% end %>
           </div>

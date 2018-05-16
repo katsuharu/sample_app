@@ -37,4 +37,12 @@ $(document).on('turbolinks:load', function() {
 	    itemSelector: ".timeline-shows div.tweet"
 	})
 
+	// selectのラベルを更新
+	$('select#tweet_category_id').on('change', function(){
+	  var $this = $(this)
+	  var $option = $this.find('option:selected')
+	  $('.select_label').text($option.text())
+	  $this.blur();
+	})
+
 })
