@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def index
     # Top5のhobbyを取得
     @hobby_pop = UserHobby.group(:hobby_name).order('count_all desc').limit(5).count
-    @tweets = Tweet.page(params[:page]).order('created_at DESC').per(20)
+    @tweets = Tweet.page(params[:page]).order('created_at DESC').per(14)
     @tweet = Tweet.new
     @today = Date.today
 
@@ -67,7 +67,11 @@ class UsersController < ApplicationController
       end
     else
     	@user = User.new(user_params)
-      @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
+      begin
+        @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
+      rescue => e
+        p e
+      end
       if params[:back]
         render :new
         return
