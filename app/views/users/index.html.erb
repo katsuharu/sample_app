@@ -1,125 +1,124 @@
 <% if logged_in? %>
   <div class="index_left">
-      
-      <div class="collapse navbar-collapse" id="mainNav">
-        <nav>
-          <ul class="nav navbar-nav">
-            <% if logged_in? %>
-              <% if matched? %>
-                <li><%= link_to "マッチング相手確認", check_path %></li>
-              <% end %> 
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <%= image_tag("triangle.svg", alt: "triangle", class: "header_show") %>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "トップ", root_url %></li>
-                  <li><%= link_to "プロフィール", current_user %></li>
-                  <li><%= link_to "趣味を編集", hobby_show_path %></li>
-                  <li class="divider"></li>
-                  <li>
-                    <%= link_to "ログアウト", logout_path, method: :delete %>
-                  </li>
-                </ul>
-              </li>
-            <% else %>
-              <li><%= link_to "新規登録", signup_path %></li>
-              <li><%= link_to "ログイン", login_path %></li>
-            <% end %>
-          </ul>
-        </nav>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <nav>
+        <ul class="nav navbar-nav">
+          <% if logged_in? %>
+            <% if matched? %>
+              <li><%= link_to "マッチング相手確認", check_path %></li>
+            <% end %> 
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= image_tag("triangle.svg", alt: "triangle", class: "header_show") %>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "トップ", root_url %></li>
+                <li><%= link_to "プロフィール", current_user %></li>
+                <li><%= link_to "趣味を編集", hobby_show_path %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "ログアウト", logout_path, method: :delete %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "新規登録", signup_path %></li>
+            <li><%= link_to "ログイン", login_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="lunch_cover">
+      <%= image_tag("lunch_cover/path-2.png", alt: "Lunch Cover", class: "Path-2") %>
+      <div class="layer wideEnough selected Lunch-Friends">
+      Lunch Friends
       </div>
+    </div>
+    <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
+    <div class="today_date">開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %></div>
 
+     <div class="lunch_card_container flex_container">
+      <% @cards.each_with_index do |card, i| %>
+        <!-- 未エントリーの場合  -->
+        <% if @user.category_id.nil? %>
+          <a href="/entry?category_id=<%= p card[1] %>" class="lunch_card">
+        <% else %>
+        <!-- エントリー済みの場合 -->
+          <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card">
+        <% end %>
 
-          <div class="lunch_cover">
-            <%= image_tag("lunch_cover/path-2.png", alt: "Lunch Cover", class: "Path-2") %>
-            <div class="layer wideEnough selected Lunch-Friends">
-            Lunch Friends
-            </div>
-          </div>
-          <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
-          <div class="today_date">開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %></div>
-
-          <div class="lunch_card_container flex_container">
-            <% @cards.each_with_index do |card, i| %>
-              <!-- 未エントリーの場合  -->
-              <% if @user.category_id.nil? %>
-                <a href="/entry?category_id=<%= p card[1] %>" class="lunch_card">
-              <% else %>
-              <!-- エントリー済みの場合 -->
-                <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card">
-              <% end %>
-
-              <article>
-                <div class="lunch_card_category"><%= card[0] %></div>
-                <% entry_num = User.where(category_id: card[1]).count %>
-                <% if entry_num >0 %>
-                  <p class="lunch_state"><%= entry_num %>名参加中</p>
-                  <% @users = User.where(category_id: card[1]) %>
-                  <!-- スライドショー -->
-                    <div id="slider_wrap">
-                      <div id="slider">
-                          <div id="slider_inner_<%= p i %>">
-                              <ul id="photo_list_<%= p i %>">
-                                <% @users.each do |user| %>
-                                  <li>
-                                    <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                                  </li>
-                                <% end %>
-                              </ul>
-                          </div><!-- end of #slider_inner --> 
-                      </div><!-- end of #slider --> 
-                    </div><!-- end of #slider_wrap --> 
-                    <!--  -->    
-                  <!-- スライドショー -->
-                <% else %>
-                  <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
-                <% end %>
-              </article>
-            </a>
+          <article>
+            <div class="lunch_card_category"><%= card[0] %></div>
+            <% entry_num = User.where(category_id: card[1]).count %>
+            <% if entry_num >0 %>
+              <p class="lunch_state"><%= entry_num %>名参加中</p>
+              <% @users = User.where(category_id: card[1]) %>
+              <!-- スライドショー -->
+                <div id="slider_wrap">
+                  <div id="slider">
+                      <div id="slider_inner_<%= p i %>">
+                          <ul id="photo_list_<%= p i %>">
+                            <% @users.each do |user| %>
+                              <li>
+                                <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
+                              </li>
+                            <% end %>
+                          </ul>
+                      </div><!-- end of #slider_inner --> 
+                  </div><!-- end of #slider --> 
+                </div><!-- end of #slider_wrap --> 
+                <!--  -->    
+              <!-- スライドショー -->
+            <% else %>
+              <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
             <% end %>
-            </div><!-- lunch_card_container -->
+          </article>
+        </a>
+      <% end %>
+    </div><!-- lunch_card_container -->
+  </div>
+
+  <div class="index_right">
+    <!-- inde_right -->
+    <div class="tweet_form">
+      <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'btn_create'}) do |f| %>
+        <%= f.text_area :content, size: "55x2", required: true %>
+        <div class="flex_container">
+          <div class="select_width">
+            <p class="select_label select-group">オールジャンル</p>
+            <%= select(:tweet, :category_id, options_for_select( @cards, {:selected => 128 } ),{required: true}) %>
+          </div>
+          <%= f.submit "投稿", class: "post_tweet" %>
         </div>
+      <% end %>
+    </div>
 
-        <div class="index_right">
-          <div class="tweet_form">
-            <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'btn_create'}) do |f| %>
-              <%= f.text_area :content, size: "55x2", required: true %>
-              <div class="flex_container">
-                <div class="select_width">
-                  <p class="select_label select-group">オールジャンル</p>
-                  <%= select(:tweet, :category_id, options_for_select( @cards, {:selected => 128 } ),{required: true}) %>
-                </div>
-                <%= f.submit "投稿", class: "post_tweet" %>
-              </div>
-            <% end %>
+    <!-- Timeline -->
+    <div class="timeline-shows">
+      <%= render partial: 'tweets/tweet', collection: @tweets %>
+    </div>
+    <%= paginate @tweets, remote: true %>
+    <!-- Timeline -->
+
+    <!-- Thread -->
+    <div class="modal fade t_detail">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="t_thread_name"></h4>
           </div>
-
-          <!-- Timeline -->
-          <div class="timeline-shows">
-            <%= render partial: 'tweets/tweet', collection: @tweets %>
-          </div>
-          <%= paginate @tweets, remote: true %>
-          <!-- Timeline -->
-
-          <!-- Thread -->
-          <div class="modal fade t_detail">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="t_thread_name"></h4>
-                </div>
-                <div class="modal-body">
-                  <div class="t_thread_form">
-                  </div>
-                  <table id="t_threads">
-                  </table>
-                </div>
-              </div>
+          <div class="modal-body">
+            <div class="t_thread_form">
             </div>
+            <table id="t_threads">
+            </table>
           </div>
-          <!-- /Thread  -->
         </div>
+      </div>
+    </div>
+    <!-- /Thread  -->
+  </div>
 <% else %>
   <div class="center">
     <h1 class="bf-title">Lunch Friends</h1>
