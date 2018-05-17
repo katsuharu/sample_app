@@ -109,15 +109,222 @@ select {
   background-color: #fffefc;
 }
 
+.index_left, .index_right {
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* Top */
+.entry_top {
+  margin-top: 34px;
+}
+
+.lunch_cover {
+  position: relative;
+  /* トップページ全体のpaddingの値を考慮した値 */
+  padding-top: calc( 117px - #{$top_padding_top} + 10px );
+  padding-left: calc( 165px - #{$top_padding_side} );
+  div {
+    position: absolute; /*絶対配置*/
+    top: calc( 131px - #{$top_padding_side} );
+    left: calc( 194px - #{$top_padding_top} );
+    }
+}
+
+.Lunch-Friends {
+  width: 171px;
+  height: 68px;
+  font-family: $header-font;
+  font-size: 28px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 4px;
+  text-align: center;
+  color: #ff652c;
+}
+
+.Asset-73x {
+  width: 112px;
+  object-fit: contain;
+  margin-left: calc( 218px - #{$top_padding_top} );
+  padding-top: 19px;
+  margin-bottom: 85px;
+}
+
+.today_date {
+  letter-spacing: 4.4px;
+  font-size: 18px;
+}
+
+.today_date {
+  height: 26px;
+  font-family: rounded-x-mplus-1m;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  margin-bottom: 27px;
+  color: #3b6793;
+  letter-spacing: 4.4px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.today_date:before, .today_date:after {
+  content: "";
+  width: 18%;
+  height: 2px;
+  background: #3b6793;
+  display: block;
+}
+.today_date:before {
+  margin-right: 13px;
+}
+.today_date:after {
+  margin-left: 13px;
+}
+
+.lunch_card {
+  max-width: 224px;
+  height: 168px;
+  border-radius: 12px;
+  flex: 1 1 224px;
+  margin-right: 11px;
+  margin-bottom: 10px;
+}
+
+.lunch_card_category {
+  width: 140px;
+  height: 42px;
+  font-family: rounded-x-mplus-1m;
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.24;
+  letter-spacing: 2px;
+  text-align: left;
+  color: #ffffff;
+  margin-top:14px;
+  margin-left:14px;
+}
+
+p.lunch_state {
+  font-family: rounded-x-mplus-1m;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 2.6px;
+  text-align: left;
+  color: #ffffff;
+  margin: 0 14px  9.8px 14px;
+}
+
+img.lunch_card_img {
+  width:  42px;
+  height:  42px;
+}
+
+/* Timeline */
+.tweet_form {
+  height: 113px;
+  border-radius: 8px;
+  background-color: #a0e8d0;
+  padding: 14px 5% 10px;
+}
+
+textarea#tweet_content {
+  width: 100%;
+  height: 55px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  border: none;
+}
+
+img.tweet_form_img {
+    margin-left: 20px;
+}
+
+.select-group {
+  height: 23.3px;
+  border-radius: 17.5px;
+}
+
+.post_tweet {
+  width: 21%;
+  height: 23.6px;
+  object-fit: contain;
+  border-radius: 17.5px;
+  background-color: #3b6793;
+  color:  #fff;
+  margin: 0;
+  margin-left:  auto;
+}
+
+.timeline-shows {
+  /* width: 441px; */
+  background-color: #ffffff;
+  border: solid 1px #e1e1e1; 
+}
+
+/* Tweet new design */
+.tweet {
+  min-height: 51px;
+  border-bottom: 1px solid #e6ecf0;
+  cursor: pointer;
+}
+
+.tweet_img {
+  margin-left:  5%;
+  margin-top:  11px;
+  margin-right: 4.7%;
+}
+
+.tweet_text {
+    margin-top:  6px;
+    width: 77%;
+}
+
+/* slideshow */
+#slider_wrap {
+  width: 175px; /* 変更 */    /* padding 20*2 +  img*width*パネル数 + (marginleft+right)*4+(marginLeft/Right)  */
+  height: 42px; /* padding 20*2 + #photo_list.height */
+  margin: 0px auto;
+  position: relative;
+}
+
+#slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#slider > div { /* photo_list_と同値 */
+  height: 42px; /* padding 20*2 + img.height */
+  list-style-type: none;
+  float: left;
+}
+
+#slider > div li {
+  float: left;
+  margin: 0 1.9px; /* 変更 */
+  display: inline;
+}
+
+#slider > div img {
+  border: none;
+}
+
 @media (min-width: 1024px) {
   $top_padding_side: 39px;
   $top_padding_top: 45px;
 
   /* Lunch Top */
-  .flex_wrap {
-    display: flex;
-  }
-
   .index_left {
     width: 49%;
     margin: 0 2% 0;
@@ -135,7 +342,7 @@ select {
 
   .lunch_cover {
     position: relative;
-    /* .flex_wrap のpaddingの値を考慮した値 */
+    /* トップページ全体のpaddingの値を考慮した値 */
     padding-top: calc( 117px - #{$top_padding_top} + 10px );
     padding-left: calc( 165px - #{$top_padding_side} );
     div {
@@ -325,14 +532,9 @@ select {
   }
 
   #slider > div li {
-    float: left;
     margin: 0 1.9px; /* 変更 */
-    display: inline;
   }
 
-  #slider > div img {
-    border: none;
-  }
 }
 
 @media (min-width: 1300px) {
