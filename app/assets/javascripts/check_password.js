@@ -18,14 +18,6 @@ $(document).on('turbolinks:load', function() {
 	    $('body').prepend('<img alt="LF" src="http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_256.gif" id="loading_img">')
 	})
 
-	$(document).on('click', 'img.footer_triangle', function() {
-		if($('footer').is(':visible')) {
-			$('footer').hide()
-		} else {
-			$('footer').show()
-		}
-	})
-
 	// Infinite Scroll
 	$(".timeline-shows").infinitescroll({
 	    loading: {
