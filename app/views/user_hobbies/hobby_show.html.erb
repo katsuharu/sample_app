@@ -49,17 +49,14 @@
 
 <h3>新たに登録する趣味一覧</h3>
 <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal') do %>
-
   <div class="hobby_list">
     <div id="my_hobby" class="my_hobbies">
     </div>
-
     <div id="hobby_delete">
     </div>
   </div>
-
-  <div class="form-actions btn-center">
-    <%= submit_tag "趣味を登録", class: "square_btn", id: 'hobby_register' %>
+  <div class="center">
+    <%= submit_tag "趣味を登録", class: "square_btn confirm_btn", id: 'hobby_register' %>
+    <%= link_to 'TOPへ戻る', root_url, class: "square_btn confirm_btn"%>
   </div>
-
 <% end %>
