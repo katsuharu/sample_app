@@ -229,6 +229,11 @@ img.lunch_card_img {
   height:  42px;
 }
 
+.scroll_traiangle {
+  text-align:  center;
+  margin-top: 33px;
+}
+
 /* Timeline */
 .tweet_form {
   height: 113px;
@@ -840,10 +845,6 @@ footer {
   margin: 0 20px;
   font-size: 13px;
   list-style: none;
-}
-
-img.footer_triangle {
-  margin-left: calc( 263px - #{$top_padding_side});
 }
 
 .footer li a {
