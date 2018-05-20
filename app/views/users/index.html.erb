@@ -1,34 +1,28 @@
-<% if logged_in? %>
+<div class="entry_top">
   <div class="index_left">
     <div class="collapse navbar-collapse" id="mainNav">
       <nav>
         <ul class="nav navbar-nav">
-          <% if logged_in? %>
-            <% if matched? %>
-              <li><%= link_to "マッチング相手確認", check_path %></li>
-            <% end %> 
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= image_tag("triangle.svg", alt: "triangle", class: "header_show") %>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "トップ", root_url %></li>
-                <li><%= link_to "プロフィール", current_user %></li>
-                <li><%= link_to "趣味を編集", hobby_show_path %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "ログアウト", logout_path, method: :delete %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to "新規登録", signup_path %></li>
-            <li><%= link_to "ログイン", login_path %></li>
-          <% end %>
+          <% if matched? %>
+            <li><%= link_to "マッチング相手確認", check_path %></li>
+          <% end %> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= image_tag("triangle.svg", alt: "triangle", class: "header_show") %>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "トップ", root_url %></li>
+              <li><%= link_to "プロフィール", current_user %></li>
+              <li><%= link_to "趣味を編集", hobby_show_path %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "ログアウト", logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
-
     <div class="lunch_cover">
       <%= image_tag("lunch_cover/path-2.png", alt: "Lunch Cover", class: "Path-2") %>
       <div class="layer wideEnough selected Lunch-Friends">
@@ -37,7 +31,6 @@
     </div>
     <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
     <div class="today_date">開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %></div>
-
      <div class="lunch_card_container flex_container">
       <% @cards.each_with_index do |card, i| %>
         <!-- 未エントリーの場合  -->
@@ -83,7 +76,6 @@
   </div>
 
   <div class="index_right">
-    <!-- inde_right -->
     <div class="tweet_form">
       <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'btn_create'}) do |f| %>
         <%= f.text_area :content, size: "55x2", required: true %>
@@ -96,14 +88,12 @@
         </div>
       <% end %>
     </div>
-
     <!-- Timeline -->
     <div class="timeline-shows">
       <%= render partial: 'tweets/tweet', collection: @tweets %>
     </div>
     <%= paginate @tweets, remote: true %>
     <!-- Timeline -->
-
     <!-- Thread -->
     <div class="modal fade t_detail">
       <div class="modal-dialog">
@@ -119,21 +109,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- /Thread  -->
+    </div><!-- /Thread  -->
   </div>
-<% else %>
-  <div class="center">
-    <h1 class="bf-title">Lunch Friends</h1>
-    <div class="bf-img">
-      <%= image_tag("lunch_logo.png", alt: "Lunch Friends logo") %>
-    </div>
-    <div class="bf-btn">
-      <%= link_to "Sign up", signup_path, class: "square_btn bf-top" %>
-    </div>
-    <div class="bf-btn">
-      <%= link_to "Login", login_path, class: "square_btn bf-top" %> 
-    </div>
-  </div>
-
-<% end %>
+</div>

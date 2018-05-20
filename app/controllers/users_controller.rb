@@ -5,33 +5,36 @@ class UsersController < ApplicationController
   before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check, :matching]
 
   def index
-    # Top5のhobbyを取得
-    @hobby_pop = UserHobby.group(:hobby_name).order('count_all desc').limit(5).count
-    @tweets = Tweet.page(params[:page]).order('created_at DESC').per(14)
-    @tweet = Tweet.new
-    @today = Date.today
+    if logged_in?
+      # Top5のhobbyを取得
+      @hobby_pop = UserHobby.group(:hobby_name).order('count_all desc').limit(5).count
+      # Timelineに表示するtweetを取得(14/page)
+      @tweets = Tweet.page(params[:page]).order('created_at DESC').per(14)
+      @tweet = Tweet.new
+      @today = Date.today
 
-    if current_user # current_userがnilのときにエラーになるのを防ぐため
-      # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
-      if category_id = current_user.category_id
-        @cards = { Category.find_by(id: category_id).name => category_id, "オールジャンル" => 128}
-      else
-        @cards = {"オールジャンル" => 128}        #ログインユーザーが登録している趣味かつ4人以上のユーサーが登録している趣味
-      end
-      
-      user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name) #ログインユーザーが登録した趣味名の配列
-      # 自分が登録した趣味のなかで、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
-      user_cards.each do |u_card|
-        if UserHobby.where(hobby_name: u_card).count > 3
-          @cards[u_card] = Category.find_by(name: u_card).id
+      if current_user # current_userがnilのときにエラーになるのを防ぐため
+        # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
+        if category_id = current_user.category_id
+          @cards = { Category.find_by(id: category_id).name => category_id, "オールジャンル" => 128}
+        else
+          @cards = {"オールジャンル" => 128}        #ログインユーザーが登録している趣味かつ4人以上のユーサーが登録している趣味
+        end
+        
+        user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name) #ログインユーザーが登録した趣味名の配列
+        # 自分が登録した趣味のなかで、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
+        user_cards.each do |u_card|
+          if UserHobby.where(hobby_name: u_card).count > 3
+            @cards[u_card] = Category.find_by(name: u_card).id
+          end
         end
       end
-    end
 
-    if logged_in?
       @user = current_user
       # @user.update_attribute(:logined_at, DateTime.now)
       @users = User.where.not(category_id: nil)
+    else
+      render 'sessions/index'
     end
   end
 
@@ -202,10 +205,7 @@ class UsersController < ApplicationController
   end
 
   def cancel
-    p "cancelceanl!!"
     if !current_user.category_id.nil? && current_user.pair_id.nil?
-      p "!!!!!!!!!!!!!!!1cancelceanl!!"
-      
       user_id = current_user.id
       current_user.update_attribute(:category_id, nil)
       # User.find_by(id: user_id).update_attribute(:category_id, nil)
