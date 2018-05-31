@@ -82,7 +82,6 @@
     <div class="col-sm-7">
       <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input', required: true %>
       <div class="cropit-preview">
-        <%= image_tag(@user.profile_img.url, class: "vanish") if @user.profile_img? %>
       </div>
       <div class="controls-wrapper">
         <div class="rotation-btns">
