@@ -24,3 +24,5 @@
 # Ignore automatically created file
 /.DS_Store
 /Gemfile.lock
+# アップロードされたテスト画像を無視する
+/public/uploads
