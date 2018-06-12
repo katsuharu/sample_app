@@ -9,14 +9,15 @@ set :repo_url, 'git@github.com:katsuharu/sample_app.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/var/www/html/lunchfriends'
+set :deploy_to, '/var/www/lunchfriends'
 set :user, "vpslunch"
 # Default value for :scm is :git
 
 # set :scm, :git
+set :rvm_ruby_version, '2.4.4'
 # set rbenv
-set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.4.3'
+# set :rbenv_type, :user # or :system, depends on your rbenv setup
+# set :rbenv_ruby, '2.4.3'
 
 # Default value for :format is :pretty
 # set :format, :pretty
@@ -28,9 +29,8 @@ set :rbenv_ruby, '2.4.3'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
