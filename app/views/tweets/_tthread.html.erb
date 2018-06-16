@@ -1,17 +1,12 @@
 <tr>
-	<td class="tweet_info"><%= 
-			if u = User.find_by(id: tthread.user_id)
-				image_tag(u.profile_img.url, :size => "35x35") if u.profile_img? 
-			end
-		%>
+	<td class="tweet_info">
+		<% if u = User.find_by(id: tthread.user_id) %>
+			<%=	image_tag(u.profile_img.url, :size => "35x35") if u.profile_img? %>
+		<% end %>
 	</td>
 
 	<td class="tweet_info">
-		<%= 
-			if u = User.find_by(id: tthread.user_id)
-				u.name 
-			end
-		%>
+		<%= u.name if u %>
 	</td>
 
 	<td class="tweet_cnt">
@@ -21,5 +16,4 @@
 	<td class="tweet_time">
 		<%= tthread.created_at %>
 	</td>
-
 </tr>
