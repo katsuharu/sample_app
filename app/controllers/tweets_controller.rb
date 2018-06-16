@@ -22,6 +22,7 @@ class TweetsController < ApplicationController
 
   def show
     @tthread = TThread.new
+    @tweet_id = params[:id]
     @tthreads = TThread.where(tweet_id: params[:id])
   end
 
@@ -34,6 +35,7 @@ class TweetsController < ApplicationController
         @tweet_id = params[:t_thread][:tweet_id]
         format.html
         format.js
+        @tthread = TThread.new
       else
         format.js {render :index}
       end
