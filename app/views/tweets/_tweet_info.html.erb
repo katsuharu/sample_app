@@ -5,10 +5,4 @@
 		image_tag(u.profile_img.url, :size => "35x35") if u.profile_img? 
 	end
 %>
-<%= 
-	if u = User.find_by(id: Tweet.find_by(id:params[:id]).user_id)
-		u.name 
-	end
-%>
-
-<%= @tthreads.count %>
+<%= u.name if u %>
