@@ -2,9 +2,9 @@ class TweetsController < ApplicationController
 
 	def btn_create
 		@tweets = Tweet.all.order('created_at DESC')
-		@tweet = Tweet.new(tweet_params)
+		@tweet = Tweet.new(content: tweet_params[:content], user_id: current_user.id, category_id: tweet_params[:category_id])
 		respond_to do |format|
-			if Tweet.create(content: tweet_params[:content], user_id: current_user.id, category_id: tweet_params[:category_id])
+			if @tweet.save
 				format.html
 				format.js
 			else
@@ -16,8 +16,8 @@ class TweetsController < ApplicationController
 
 	def create
 		@tweets = Tweet.all.order('created_at DESC')
-		@tweet = Tweet.new(tweet_params)
-		if Tweet.create(content: tweet_params[:content], user_id: current_user.id, category_id: tweet_params[:category_id])
+		@tweet = Tweet.new(content: tweet_params[:content], user_id: current_user.id, category_id: tweet_params[:category_id])
+		if @tweet.save
 		else
 		end
 	end
@@ -30,10 +30,12 @@ class TweetsController < ApplicationController
 	end
 
 	def thread_create
-		@tthread = TThread.new
+		@tthread = TThread.new(tweet_id: params[:t_thread][:tweet_id], content: tthread_params[:content], user_id: current_user.id)
 		respond_to do |format|
-			if TThread.create(tweet_id: params[:t_thread][:tweet_id], content: tthread_params[:content], user_id: current_user.id)
+			if @tthread.save
 				@tthreads = TThread.where(tweet_id: params[:t_thread][:tweet_id])
+				@thread_counts = @tthreads.count
+				@tweet_id = params[:t_thread][:tweet_id]
 				format.html
 				format.js
 			else
@@ -45,7 +47,7 @@ class TweetsController < ApplicationController
 	private
 
 		def tweet_params
-      		params.require(:tweet).permit(:content, :category_id)
+      		params.require(:tweet).permit(:content, :user_id, :category_id)
     	end
 
 		def tthread_params
