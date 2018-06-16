@@ -8,26 +8,21 @@
 	</div>
 	<div class="tweet_text">
 		<div class="tweet_name">
-			<%= 
-				if u = User.find_by(id: tweet.user_id)
-					u.name 
-				end
-			%>
+			<%= u.name if u %>
 		</div>
 		<%= tweet.content %>
 		<div class="flex_container tweet_data">
-			<%= link_to tweet_path(tweet.id), 
-				remote: true, class: "", :data => {:toggle=>"modal", :target => ".t_detail"} do %>
-				<i class="far fa-comment"></i>
-			<% end %>
-			<div class="thread_count">
+			<div class="tweet_thread_mark">
+				<%= link_to tweet_path(tweet.id), 
+					remote: true, :data => {:toggle=>"modal", :target => ".t_detail"} do %>
+					<i class="far fa-comment"></i>
+				<% end %>
+			</div>
+			<div class="thread_count_<%= tweet.id %>">
 				<%= TThread.where(tweet_id: tweet.id).count %>
 			</div>
 			<div class="tweet_category">
-			<%= if  tweet.category_id
-					Category.find_by(id: tweet.category_id).name
-				end
-			%>
+			<%= Category.find_by(id: tweet.category_id).name if tweet.category_id %>
 			</div>
 
 			<div class="tweet_at">
