@@ -2,16 +2,16 @@
   <div class="index_left">
     <div class="collapse navbar-collapse" id="mainNav">
       <nav>
-        <ul class="nav navbar-nav">
-          <% if matched? %>
-            <li><%= link_to "マッチング相手確認", check_path %></li>
-          <% end %> 
+        <ul class="nav navbar-nav"> 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= image_tag("triangle.svg", alt: "triangle", class: "header_show") %>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "トップ", root_url %></li>
+              <% if matched? %>
+                <li><%= link_to "マッチング相手確認", check_path %></li>
+              <% end %>
               <li><%= link_to "プロフィール", current_user %></li>
               <li><%= link_to "趣味を編集", hobby_show_path %></li>
               <li><%= link_to "お問い合わせ", contact_path %></li>
