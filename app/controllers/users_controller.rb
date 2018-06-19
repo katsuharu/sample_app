@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry, :cancel, :check]
   # before_action :correct_user, only: [:show, :edit, :update]
   before_action :admin_user,     only: :destroy
-  before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check, :matching]
+  before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check]
 
   def index
     if logged_in?
@@ -12,13 +12,13 @@ class UsersController < ApplicationController
       @tweets = Tweet.page(params[:page]).order('created_at DESC').per(14)
       @tweet = Tweet.new
       @today = Date.today
-
+      @lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil)
       if current_user # current_userがnilのときにエラーになるのを防ぐため
         # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
         if category_id = current_user.category_id
           @cards = { Category.find_by(id: category_id).name => category_id, "オールジャンル" => 128}
         else
-          @cards = {"オールジャンル" => 128}        #ログインユーザーが登録している趣味かつ4人以上のユーサーが登録している趣味
+          @cards = {"オールジャンル" => 128} #ログインユーザーが登録している趣味かつ4人以上のユーサーが登録している趣味
         end
         
         user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name) #ログインユーザーが登録した趣味名の配列
@@ -129,11 +129,12 @@ class UsersController < ApplicationController
   end
 
   def entry
-    #エントリー確認画面でユーザープロフィールを表示する
+    #エントリー確認画面でユーザープロフィールを表示するためにインスタンス変数に代入
     @user = current_user
-    if @user.category_id.nil?         #カレントユーザーが未エントリーの場合
+    # 今日の日付でユーザーがエントリー状態でない場合
+    if Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil).nil?
+      # viewからカテゴリーIDが取得できている場合
       if category_id = params[:category_id]
-        current_user.update_attribute(:category_id, category_id)
         Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.today)
         flash[:success] = "エントリーしました。"
       else
@@ -143,83 +144,23 @@ class UsersController < ApplicationController
     end
   end
 
-  def matching
-    category_ids = Category.pluck(:id)
-    entry_users = Array.new
-    ids = Array.new #カテゴリーごとのエントリーユーザーのidを配列として保持
-    user_ids = Array.new
-    # 全カテゴリーについて、各カテゴリーにエントリーしているエントリーユーザーを取得。
-    category_ids.each_with_index do |c_id, i|
-      entry_users[i] = User.where(category_id: c_id) #各エントリーカテゴリーごとのユーザーを配列で取得
-    end
-
-    entry_users.each_with_index do |e_users, i| #各カテゴリー毎
-      e_users.each do |user| #各カテゴリーのエントリーユーザー全てループ
-        user_ids.push(user.id) #各カテゴリーにエントリーしている全てのユーザーのidを取得
-      end
-      ids.push(user_ids)
-      entry_num = e_users.count
-      remainder = entry_num % 3 #エントリー数を3で割った余り
-      quotient = entry_num / 3    #エントリー数を3で割った商
-
-      if entry_num == 0 || entry_num == 1
-        #このカテゴリーではペアなし
-        e_users.each do |user| 
-          user.send_fail_email #マッチング不成立のメールを送信
-        end
-      elsif entry_num == 2
-        User.where("(id = ?) OR (id = ?)",user_ids.shift ,user_ids.shift).update_all(pair_id: 1)
-        e_users.each do |user| 
-          user.send_success_email #マッチング成立のメールを送信
-        end
-      elsif entry_num == 5
-        User.where("(id = ?) OR (id = ?) OR (id = ?) OR (id = ?) OR (id = ?)",user_ids.shift ,user_ids.shift ,user_ids.shift, user_ids.shift ,user_ids.shift).update_all(pair_id: 1)
-        e_users.each do |user| 
-          user.send_success_email #マッチング成立のメールを送信
-        end
-      else
-        #3人のペアを quotient数ぶん作る。
-        user_ids = user_ids.shuffle #エントリーユーザーのidをシャッフル
-
-        for i in 1..quotient do
-          User.where("(id = ?) OR (id = ?) OR (id = ?)",user_ids.shift ,user_ids.shift ,user_ids.shift).update_all(pair_id: i)
-        end
-
-        case remainder
-        when 0
-
-        when 1
-          #そのペアのうちの一つだけ1人足して4人のペアを1つ作る
-          User.where("(id = ?)", user_ids.shift).update_attribute(:pair_id, quotient)
-        when 2
-          #そのペアのうちの2つ1人足して4人のペアを2つ作る
-          User.where("(id = ?)", user_ids.shift).update_attribute(:pair_id, quotient-1)
-          User.where("(id = ?)", user_ids.shift).update_attribute(:pair_id, quotient)
-        end
-
-        e_users.each do |user| 
-          user.send_success_email #マッチング成立のメールを送信
-        end
-      end
-    end
-  end
-
   def cancel
-    if !current_user.category_id.nil? && current_user.pair_id.nil?
-      user_id = current_user.id
-      current_user.update_attribute(:category_id, nil)
-      # User.find_by(id: user_id).update_attribute(:category_id, nil)
-      lunch = Lunch.where(user_id: user_id).where(lunch_date: Date.today).where(is_deleted: nil)
-      lunch.update_all(deleted_at: DateTime.now, is_deleted: true)
-      flash[:success] = "キャンセルいたしました。"
-      redirect_to(root_url)
+    # エントリー中で未マッチングのユーザーが存在する場合
+    lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).
+      where.not(category_id: nil).where(canceled_at: nil).find_by(pair_id: nil)
+    if !lunch.nil?
+      if lunch.update_attribute(:canceled_at, DateTime.now)
+        flash[:success] = "キャンセルいたしました。"
+        redirect_to(root_url)
+      else
+      end
     else
-      p "not entried or already matched, so cannot cancel"
     end
   end
 
   def check_entry_cnt
-    @user = current_user #エントリー画面(entry.html.erb)でユーザー情報を表示するために変数に代入
+    #エントリー画面(entry.html.erb)でユーザー情報を表示するために変数に代入
+    @user = current_user
     render action: 'check_entry_cnt'
   end
   
@@ -233,7 +174,6 @@ class UsersController < ApplicationController
   		params.require(:user).permit(:name, :email, :password, :password_confirmation,
         :profile_img, :profile_img_cache, :department_name, :slack_id, :category_id, :self_intro, :profile_img_data_uri)
   	end
-
 
     def correct_user
       @user = User.find(params[:id])
