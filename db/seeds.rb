@@ -19,3 +19,12 @@ end
 CSV.foreach('db/category_new.csv') do |info|
   Category.create(:name => info[0], :hira => info[1], :kana=> info[2])
 end
+
+CSV.foreach('db/users_seeds.csv') do |info|
+  User.create(id: info[0], name: info[1], email: info[2], password: User.digest(info[3]), 
+    	department_name: info[4], slack_id: info[5], activated: info[6], activated_at: info[7])
+end
+
+CSV.foreach('db/lunch_seeds.csv') do |info|
+  Lunch.create(user_id: info[0], lunch_date: info[1], category_id: info[2])
+end
