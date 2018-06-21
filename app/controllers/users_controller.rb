@@ -165,7 +165,16 @@ class UsersController < ApplicationController
   end
   
   def check
-    @pairs = User.where(pair_id: current_user.pair_id).where.not(pair_id: nil).where(category_id: current_user.category_id).where.not(id:current_user.id)
+    # マッチング済みのLunchモデルを取得
+    @lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).where.not(pair_id: nil).first
+    # @lunchが存在している場合
+    if @lunch.present?
+      pair_id = @lunch.pair_id
+      # マッチング相手のuser_idの配列を取得
+      user_ids = Lunch.where(pair_id: pair_id).where.not(user_id: current_user.id).pluck(:user_id)
+      # マッチング相手のUserモデルの配列を取得
+      @pairs = User.where(id: user_ids)
+    end
   end
 
   private
