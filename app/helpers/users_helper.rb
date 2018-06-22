@@ -1,6 +1,7 @@
 module UsersHelper extend ActiveSupport::Concern
 	def entried?
-		!current_user.category_id.nil?
+		# ログインユーザーがエントリ中の場合にtrueを返す
+		Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).where(canceled_at: nil).present?
 	end
 
 	def matched?
