@@ -17,7 +17,7 @@ class UserMailer < ApplicationMailer
 
   def matching_fail(user)
     @user = user
-    mail to: user.email, subject: "【LunchFriends】マッチングしませんでした。"
+    mail to: user.email, subject: "【LunchFriends】本日はランチ相手が見つかりませんでした。"
   end
 
   def contact_contents(params)
