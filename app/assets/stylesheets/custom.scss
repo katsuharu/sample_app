@@ -118,6 +118,12 @@ select {
   pointer-events: none;
 }
 
+/* 画像が空の場合に画像のサイズぶんスペースを埋める */
+.img_empty {
+  width: 30px;
+  height: 30px;
+}
+
 /* Top */
 .entry_top {
   margin-top: 34px;
