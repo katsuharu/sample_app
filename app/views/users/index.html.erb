@@ -50,8 +50,18 @@
 
           <article>
             <div class="lunch_card_category"><%= card[0] %></div>
-            <% entry_num = User.where(category_id: card[1]).count %>
+            <% entry_num = Lunch.where(category_id: card[1]).where(lunch_date: Date.today).where(canceled_at: nil).count %>
             <% if entry_num >0 %>
+              <!-- ログインユーザーがエントリー中の場合 -->
+              <% if entried? %>
+                  <!-- マッチング済みの場合 -->
+                <% if matched? %>
+                  マッチング済み！
+                <% else %>
+                  <!-- 未マッチングの場合 -->
+                  エントリー中！
+                <% end %>
+              <% end %>
               <p class="lunch_state"><%= entry_num %>名参加中</p>
               <% @users = User.where(category_id: card[1]) %>
               <!-- スライドショー -->
