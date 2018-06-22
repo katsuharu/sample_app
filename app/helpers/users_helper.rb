@@ -5,7 +5,7 @@ module UsersHelper extend ActiveSupport::Concern
 
 	def matched?
 		# ログインユーザーがマッチング済みの場合にtrueを返す
-		Lunch.where(user_id: current_user.id).where.not(pair_id: nil).present?
+		Lunch.where.not(pair_id: nil).where(user_id: current_user.id).where(lunch_date: Date.today).present?
 	end
 
 	def data_uri_to_file data_uri
