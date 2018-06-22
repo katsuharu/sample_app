@@ -7,17 +7,17 @@ class UserMailer < ApplicationMailer
 
   def password_reset(user)
   	@user = user
-    mail to: user.email, subject: "パスワードのリセット"
+    mail to: user.email, subject: "【LunchFriends】パスワードのリセット"
   end
 
   def matching_success(user)
   	@user = user
-    mail to: user.email, subject: "マッチングの完了のお知らせです"
+    mail to: user.email, subject: "【LunchFriends】ランチマッチングが成立しました。"
   end
 
   def matching_fail(user)
     @user = user
-    mail to: user.email, subject: "マッチング結果のお知らせです。"
+    mail to: user.email, subject: "【LunchFriends】マッチングしませんでした。"
   end
 
   def contact_contents(params)
