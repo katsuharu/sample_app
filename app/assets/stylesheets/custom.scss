@@ -114,6 +114,10 @@ select {
   margin: 0 auto;
 }
 
+.link_disabled {
+  pointer-events: none;
+}
+
 /* Top */
 .entry_top {
   margin-top: 34px;
