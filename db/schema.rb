@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180621144824) do
+ActiveRecord::Schema.define(version: 20180622162958) do
 
   create_table "authorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "provider"
@@ -23,23 +23,26 @@ ActiveRecord::Schema.define(version: 20180621144824) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "hira"
     t.string   "kana"
+    t.integer  "lock_version", default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "first_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "lock_version", default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "forth_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "third_category_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "lock_version",      default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "lunches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -48,10 +51,11 @@ ActiveRecord::Schema.define(version: 20180621144824) do
     t.integer  "pair_id"
     t.boolean  "is_deleted"
     t.datetime "deleted_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.date     "lunch_date"
     t.datetime "canceled_at"
+    t.integer  "lock_version", default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "positions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -63,39 +67,44 @@ ActiveRecord::Schema.define(version: 20180621144824) do
   create_table "second_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "first_category_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "lock_version",      default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "t_threads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",    limit: 65535
+    t.text     "content",      limit: 65535
     t.integer  "user_id"
     t.integer  "tweet_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "lock_version",               default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "third_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "second_category_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "lock_version",       default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",     limit: 65535
+    t.text     "content",      limit: 65535
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "lock_version",               default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "user_hobbies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "hobby_id"
     t.string   "hobby_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "lock_version", default: 0, null: false, comment: "ロックバージョン"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -121,6 +130,7 @@ ActiveRecord::Schema.define(version: 20180621144824) do
     t.string   "hobby"
     t.integer  "hobby_added"
     t.datetime "deleted_at",                                     comment: "削除日時"
+    t.integer  "lock_version",      default: 0,     null: false, comment: "ロックバージョン"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
