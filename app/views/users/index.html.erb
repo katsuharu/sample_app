@@ -31,6 +31,7 @@
       </div>
     </div>
     <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
+    <%= render 'shared/entry_state' %>
     <div class="today_date">開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %></div>
     <div class="lunch_card_container flex_container">
       <!-- ランチカードを表示 -->
