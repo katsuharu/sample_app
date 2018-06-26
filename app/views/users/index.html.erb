@@ -32,60 +32,9 @@
     </div>
     <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
     <div class="today_date">開催中ランチ　<%= @today.year %>/<%= @today.month %>/<%= @today.day %></div>
-     <div class="lunch_card_container flex_container">
-      <% @cards.each_with_index do |card, i| %>
-        <!-- 未エントリーの場合  -->
-        <% if @lunch.nil? %>
-          <a href="/entry?category_id=<%= p card[1] %>" class="lunch_card">
-        <!-- エントリー中の場合 -->
-        <% elsif @lunch.present? %>
-          <!-- マッチング済みの場合 -->
-          <% if matched? %>
-            <a href="#" class="lunch_card link_disabled">
-          <!-- 未マッチングの場合 -->
-          <% else %>
-            <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card">
-          <% end %>
-        <% end %>
-
-          <article>
-            <div class="lunch_card_category"><%= card[0] %></div>
-            <% entry_num = Lunch.where(category_id: card[1]).where(lunch_date: Date.today).where(canceled_at: nil).count %>
-            <% if entry_num >0 %>
-              <!-- ログインユーザーがエントリー中の場合 -->
-              <% if entried? %>
-                  <!-- マッチング済みの場合 -->
-                <% if matched? %>
-                  <a href="https://lunchfriends.jp/check">マッチング相手確認を確認する</a>
-                <% else %>
-                  <!-- 未マッチングの場合 -->
-                  エントリー中！
-                <% end %>
-              <% end %>
-              <p class="lunch_state"><%= entry_num %>名参加中</p>
-              <% @users = User.where(category_id: card[1]) %>
-              <!-- スライドショー -->
-                <div id="slider_wrap">
-                  <div id="slider">
-                      <div id="slider_inner_<%= p i %>">
-                          <ul id="photo_list_<%= p i %>">
-                            <% @users.each do |user| %>
-                              <li>
-                                <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                              </li>
-                            <% end %>
-                          </ul>
-                      </div><!-- end of #slider_inner --> 
-                  </div><!-- end of #slider --> 
-                </div><!-- end of #slider_wrap --> 
-                <!--  -->    
-              <!-- スライドショー -->
-            <% else %>
-              <p class="lunch_state">このカテゴリーで今日のランチを開催しますか？</p>
-            <% end %>
-          </article>
-        </a>
-      <% end %>
+    <div class="lunch_card_container flex_container">
+      <!-- ランチカードを表示 -->
+      <%=  render partial: 'users/card', collection: @cards %>
     </div><!-- lunch_card_container -->
     <div class="scroll_traiangle">
       <%= image_tag("footer_triangle.svg", alt: "footer_triangle", class: "footer_triangle") %>

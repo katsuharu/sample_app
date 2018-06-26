@@ -12,21 +12,33 @@ class UsersController < ApplicationController
       @tweets = Tweet.page(params[:page]).order('created_at DESC').per(14)
       @tweet = Tweet.new
       @today = Date.today
-      @lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil)
-      if current_user # current_userがnilのときにエラーになるのを防ぐため
-        # 「Hobby Cards」欄に、4人以上のユーザーが登録した趣味を一覧表示する
-        if category_id = current_user.category_id
-          @cards = { Category.find_by(id: category_id).name => category_id, "オールジャンル" => 128}
-        else
-          @cards = {"オールジャンル" => 128} #ログインユーザーが登録している趣味かつ4人以上のユーサーが登録している趣味
-        end
-        
-        user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name) #ログインユーザーが登録した趣味名の配列
-        # 自分が登録した趣味のなかで、登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
-        user_cards.each do |u_card|
-          if UserHobby.where(hobby_name: u_card).count > 3
-            @cards[u_card] = Category.find_by(name: u_card).id
-          end
+      # ログインユーザーがエントリー中のlunchモデルを取得
+      @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil)
+      # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
+      @cards = [{category_id: 128,
+                category_name: 'オールジャンル',
+                users: User.where(id: Lunch.get_entry_user_ids(128)) # オールジャンルにエントリー中のUserモデルの配列
+                }]
+      # ログインユーザーがエントリー中でかつそのカテゴリーがオールジャンルでない場合
+      if @my_lunch.present? && @my_lunch.category_id != 128
+        # 配列@cardsの先頭にハッシュを追加
+        @cards.unshift(
+        {category_id: @my_lunch.category_id, # ログインユーザーがエントリー中のカテゴリーID
+        category_name: Category.find_by(id: @my_lunch.category_id).name, # ログインユーザーがエントリー中のカテゴリ名
+        users: User.where(id: Lunch.get_entry_user_ids(@my_lunch.category_id)) # そのカテゴリーにエントリー中のUserモデルの配列
+        })
+      end
+      # ログインユーザーが登録したカテゴリー名の配列を取得
+      user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name)
+      user_cards.each do |u_card|
+        # 自分が登録したカテゴリーのなかで登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
+        if UserHobby.where(hobby_name: u_card).count > 3
+          category_id = Category.find_by(name: u_card).id
+          @cards.push(
+          {category_id: category_id, # カテゴリーID
+          category_name: u_card, # 4名以上のユーザーが登録したカテゴリーのカテゴリ名
+          users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
+          })
         end
       end
 
