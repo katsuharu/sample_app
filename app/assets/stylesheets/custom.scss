@@ -197,6 +197,12 @@ select {
   margin-left: 13px;
 }
 
+.entry_status {
+  margin-left: calc( 218px - #{$top_padding_top} );
+  margin-top:  20px;
+  margin-bottom: 85px;
+}
+
 .lunch_card {
   max-width: 224px;
   height: 168px;
@@ -393,6 +399,10 @@ img.tweet_form_img {
     object-fit: contain;
     margin-left: calc( 218px - #{$top_padding_top} );
     padding-top: 19px;
+  }
+
+  .entry_status {
+    margin-left: calc( 218px - #{$top_padding_top} );
     margin-bottom: 85px;
   }
 
@@ -575,6 +585,11 @@ img.tweet_form_img {
     object-fit: contain;
     margin-left: calc( 276px - 43px );
     padding-top: 24px;
+    margin-bottom: 107px;
+  }
+
+  .entry_status {
+    margin-left: calc( 276px - 43px );
     margin-bottom: 107px;
   }
 
