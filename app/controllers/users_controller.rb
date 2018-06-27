@@ -21,30 +21,28 @@ class UsersController < ApplicationController
                 }]
       # 投稿フォームのカテゴリーセレクト用のハッシュを定義
       @tw_selects = {"オールジャンル" => 128}
-      # ログインユーザーがエントリー中でかつそのカテゴリーがオールジャンルでない場合
-      if @my_lunch.present? && @my_lunch.category_id != 128
-        # カテゴリー名を取得
-        category_name = Category.find_by(id: @my_lunch.category_id).name 
-        # 配列@cardsの先頭にハッシュを追加
-        @cards.unshift(
-        {category_id: @my_lunch.category_id, # ログインユーザーがエントリー中のカテゴリーID
-        category_name: category_name, # ログインユーザーがエントリー中のカテゴリ名
-        users: User.where(id: Lunch.get_entry_user_ids(@my_lunch.category_id)) # そのカテゴリーにエントリー中のUserモデルの配列
-        })
-        # カテゴリーハッシュに追加
-        @tw_selects[category_name] = @my_lunch.category_id
-      end
-      # ログインユーザーが登録したカテゴリー名の配列を取得
+      # ログインユーザーが登録したカテゴリーの名前の配列を取得
       user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name)
       user_cards.each do |u_card|
         # 自分が登録したカテゴリーのなかで登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
         if UserHobby.where(hobby_name: u_card).count > 3
           category_id = Category.find_by(name: u_card).id
-          @cards.push(
-          {category_id: category_id, # カテゴリーID
-          category_name: u_card, # 4名以上のユーザーが登録したカテゴリーのカテゴリ名
-          users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
-          })
+          # このカテゴリーにエントリー中の場合
+          if category_id == @my_lunch.category_id
+            # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
+            @cards.unshift(
+            {category_id: category_id, # カテゴリーID
+            category_name: u_card, # 4名以上のユーザーが登録したカテゴリーのカテゴリ名
+            users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
+            })
+          else
+            # 配列の末尾にハッシュを追加
+            @cards.push(
+            {category_id: category_id, # カテゴリーID
+            category_name: u_card, # 4名以上のユーザーが登録したカテゴリーのカテゴリ名
+            users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
+            })
+          end
           # カテゴリーハッシュに追加
           @tw_selects[u_card] = category_id
         end
@@ -101,7 +99,6 @@ class UsersController < ApplicationController
     	elsif @user.save
         @user.send_activation_email
     		flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
-        UserHobby.create(:hobby_name => 'オールジャンル', :user_id => @user.id)
     		redirect_to root_url
         return
     	else
