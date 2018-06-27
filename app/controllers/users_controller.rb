@@ -28,7 +28,7 @@ class UsersController < ApplicationController
         if UserHobby.where(hobby_name: u_card).count > 3
           category_id = Category.find_by(name: u_card).id
           # このカテゴリーにエントリー中の場合
-          if category_id == @my_lunch.category_id
+          if @my_lunch.present? && category_id == @my_lunch.category_id
             # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
             @cards.unshift(
             {category_id: category_id, # カテゴリーID
