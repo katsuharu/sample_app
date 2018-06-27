@@ -160,7 +160,6 @@ select {
   object-fit: contain;
   margin-left: calc( 218px - #{$top_padding_top} );
   padding-top: 19px;
-  margin-bottom: 85px;
 }
 
 .today_date {
@@ -246,7 +245,7 @@ img.lunch_card_img {
 }
 
 .scroll_traiangle {
-  text-align:  center;
+  text-align: center;
   margin-top: 33px;
 }
 
@@ -585,11 +584,10 @@ img.tweet_form_img {
     object-fit: contain;
     margin-left: calc( 276px - 43px );
     padding-top: 24px;
-    margin-bottom: 107px;
   }
 
   .entry_status {
-    margin-left: calc( 276px - 43px );
+    margin-left: calc( 276px - 23px );
     margin-bottom: 107px;
   }
 
