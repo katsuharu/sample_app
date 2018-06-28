@@ -24,22 +24,22 @@ class UsersController < ApplicationController
       # ログインユーザーが登録したカテゴリーの名前の配列を取得
       user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name)
       user_cards.each do |u_card|
-        # 自分が登録したカテゴリーのなかで登録ユーザー数が4人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
-        if UserHobby.where(hobby_name: u_card).count > 3
+        # 自分が登録したカテゴリーのなかで登録ユーザー数が3人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
+        if UserHobby.where(hobby_name: u_card).count > 2
           category_id = Category.find_by(name: u_card).id
           # このカテゴリーにエントリー中の場合
           if @my_lunch.present? && category_id == @my_lunch.category_id
             # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
             @cards.unshift(
             {category_id: category_id, # カテゴリーID
-            category_name: u_card, # 4名以上のユーザーが登録したカテゴリーのカテゴリ名
+            category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
             users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
             })
           else
             # 配列の末尾にハッシュを追加
             @cards.push(
             {category_id: category_id, # カテゴリーID
-            category_name: u_card, # 4名以上のユーザーが登録したカテゴリーのカテゴリ名
+            category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
             users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
             })
           end
