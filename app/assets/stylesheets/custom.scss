@@ -197,9 +197,16 @@ select {
 }
 
 .entry_status {
-  margin-left: calc( 218px - #{$top_padding_top} );
   margin-top:  20px;
   margin-bottom: 85px;
+}
+
+.entry_state_show {
+  margin-left: calc( 218px - #{$top_padding_top} );
+}
+
+.matching_time_show {
+  margin-left: calc( 218px - 55px );
 }
 
 .lunch_card {
@@ -401,8 +408,15 @@ img.tweet_form_img {
   }
 
   .entry_status {
-    margin-left: calc( 218px - #{$top_padding_top} );
     margin-bottom: 85px;
+  }
+
+  .entry_state_show {
+    margin-left: calc( 218px - #{$top_padding_top} );
+  }
+
+  .matching_time_show {
+    margin-left: calc( 218px - 60px );
   }
 
   .today_date {
@@ -587,8 +601,15 @@ img.tweet_form_img {
   }
 
   .entry_status {
-    margin-left: calc( 276px - 23px );
     margin-bottom: 107px;
+  }
+
+  .entry_state_show {
+    margin-left: calc( 276px - 23px );
+  }
+
+  .matching_time_show {
+    margin-left: calc( 276px - 45px );
   }
 
   .today_date {

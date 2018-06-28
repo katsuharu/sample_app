@@ -3,11 +3,17 @@
   <% if entried? %>
       <!-- マッチング済みの場合 -->
     <% if matched? %>
-      <a href="https://lunchfriends.jp/check">マッチング相手確認を確認する</a>
+      <div class="entry_state_show">
+        <a href="https://lunchfriends.jp/check">マッチング相手確認を確認する</a>
+      </div>
     <% else %>
       <!-- 未マッチングの場合 -->
-      <p>エントリー中!!</p>
-      <small>※12:30相手が決まります</small>
+      <div class="entry_state_show">
+        <p>エントリー中!!</p>
+      </div>
+      <div class="matching_time_show">
+        <small>※12:30に相手が決まります</small>
+      </div>
     <% end %>
   <% end %>
 </div>
