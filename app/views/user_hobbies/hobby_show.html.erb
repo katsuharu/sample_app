@@ -23,25 +23,25 @@
 
 <div class="cta first_categories">
   <% @first_categories.each do |first| %>
-    <div class="active" data-first="<%= p first[0] %>"><%= first[1] %></div>
+    <div class="active" data-first="<%= first[0] %>"><%= first[1] %></div>
   <% end %>
 </div>
 
 <div class="second_categories">
   <% @second_categories.each do |second| %>
-    <div class="standby" data-first-id="<%= p second[2] %>" data-second="<%= p second[0] %>"><%= second[1] %></div>
+    <div class="standby" data-first-id="<%= second[2] %>" data-second="<%= second[0] %>"><%= second[1] %></div>
   <% end %>
 </div>
 
 <div class="third_categories">
   <% @third_categories.each do |third| %>
-    <div class="standby" data-second-id="<%= p third[2] %>" data-third="<%= p third[0] %>"><%= third[1] %></div>
+    <div class="standby" data-second-id="<%= third[2] %>" data-third="<%= third[0] %>"><%= third[1] %></div>
   <% end %>
 </div>
 
 <div class="forth_categories">
   <% @forth_categories.each do |forth| %>
-    <div class="standby" data-third-id="<%= p forth[2] %>" data-forth="<%= p forth[0] %>"><%= forth[1] %></div>
+    <div class="standby" data-third-id="<%= forth[2] %>" data-forth="<%= forth[0] %>"><%= forth[1] %></div>
   <% end %>
 </div>
   
