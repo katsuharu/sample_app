@@ -187,8 +187,8 @@ class UsersController < ApplicationController
     # @lunchが存在している場合
     if @matched_lunch.present?
       pair_id = @matched_lunch.pair_id
-      # マッチング相手のuser_idの配列を取得
-      user_ids = Lunch.where(pair_id: pair_id).where.not(user_id: current_user.id).pluck(:user_id)
+      # 本日付のマッチング相手のuser_idの配列を取得
+      user_ids = Lunch.where(pair_id: pair_id).where(lunch_date: Date.today).where.not(sent_at: nil).where.not(user_id: current_user.id).pluck(:user_id)
       # マッチング相手のUserモデルの配列を取得
       @pairs = User.where(id: user_ids)
     end
