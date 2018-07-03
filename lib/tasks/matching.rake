@@ -4,10 +4,10 @@ namespace :matching do
     p Time.now.to_s + 'matching start'
     # ペアのナンバリング用のグローバル変数を定義
     $pair_id = 0
-    # 本日のキャンセルされていない開催中のLunchモデルを全て取得する
-    today_category_ids = Lunch.where(lunch_date: Date.today).where(canceled_at: nil).where(pair_id: nil).pluck(:category_id).uniq
+    # 本日のキャンセルされていないエントリ中の結果メール未送信のLunchモデルのcategory_idを重複なく全て取得する
+    today_category_ids = Lunch.where(lunch_date: Date.today).where(canceled_at: nil).where(sent_at: nil).pluck(:category_id).uniq
     today_category_ids.each do |category_id|
-      lunches = Lunch.where(category_id: category_id).where(lunch_date: Date.today).where(canceled_at: nil)
+      lunches = Lunch.where(category_id: category_id).where(lunch_date: Date.today).where(canceled_at: nil).where(sent_at: nil)
       # カテゴリー毎のエントリーユーザー数を取得
       entry_numbers = lunches.count
 
@@ -76,7 +76,17 @@ namespace :matching do
       lunches.each do |lunch|
         user = User.where(deleted_at: nil).find_by(id: lunch.user_id)
         if user.present?
-          user.send_fail_email
+          begin
+            # メール送信
+            user.send_fail_email
+            # sent_atカラムを更新
+            lunch.update_attribute(:sent_at, DateTime.now)
+          rescue => e
+            # 例外発生時間を取得
+            time = Time.now.to_s
+            # フォロワーIDリスト取得エラーログ
+            p e.backtrace.join("\n").to_s
+          end
         end
       end
     end    
@@ -85,7 +95,17 @@ namespace :matching do
       lunches.each do |lunch|
         user = User.where(deleted_at: nil).find_by(id: lunch.user_id)
         if user.present?
-          user.send_success_email
+          begin
+            # メール送信
+            user.send_success_email
+            # sent_atカラムを更新
+            lunch.update_attribute(:sent_at, DateTime.now)
+          rescue => e
+            # 例外発生時間を取得
+            time = Time.now.to_s
+            # フォロワーIDリスト取得エラーログ
+            p e.backtrace.join("\n").to_s
+          end
         end
       end
     end

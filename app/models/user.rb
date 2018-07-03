@@ -92,12 +92,12 @@ class User < ApplicationRecord
 
 	#マッチングが成功したことを知らせるメールを送信
 	def send_success_email
-		UserMailer.matching_success(self).deliver_now
+		UserMailer.matching_success(self).deliver_now!
 	end
 
 	#マッチング失敗したことを知らせるメールを送信
 	def send_fail_email
-		UserMailer.matching_fail(self).deliver_now
+		UserMailer.matching_fail(self).deliver_now!
 	end
 
 	def set_profile_img_from_data_uri
