@@ -7,7 +7,7 @@ $navi-color: #FFCB00;
 $content-color: #0D0D0D;
 $header-font: 'Lobster', cursive;
 
-$top_padding_side: 28px;
+$top_padding_side: 0;
 $top_padding_top: 34px;
 
 @mixin box_sizing {
@@ -126,18 +126,18 @@ select {
 
 /* Top */
 .entry_top {
-  margin-top: 34px;
+  margin-top: $top_padding_top;
 }
 
 .lunch_cover {
   position: relative;
   /* トップページ全体のpaddingの値を考慮した値 */
   padding-top: calc( 117px - #{$top_padding_top} + 10px );
-  padding-left: calc( 165px - #{$top_padding_side} );
+  padding-left: 165px;
   div {
     position: absolute; /*絶対配置*/
-    top: calc( 131px - #{$top_padding_side} );
-    left: calc( 194px - #{$top_padding_top} );
+    top: calc( 131px - #{$top_padding_top} );
+    left: 194px;
     }
 }
 
@@ -158,7 +158,7 @@ select {
 .Asset-73x {
   width: 112px;
   object-fit: contain;
-  margin-left: calc( 218px - #{$top_padding_top} );
+  margin-left: 218px;
   padding-top: 19px;
 }
 
@@ -355,7 +355,7 @@ img.tweet_form_img {
 }
 
 @media (min-width: 1024px) {
-  $top_padding_side: 39px;
+  $top_padding_side: 2%;
   $top_padding_top: 45px;
 
   /* Lunch Top */
@@ -371,18 +371,17 @@ img.tweet_form_img {
 
   .entry_top {
     display: flex;
-    margin-top: 34px;
   }
 
   .lunch_cover {
     position: relative;
     /* トップページ全体のpaddingの値を考慮した値 */
     padding-top: calc( 117px - #{$top_padding_top} + 10px );
-    padding-left: calc( 165px - #{$top_padding_side} );
+    padding-left: 165px;
     div {
       position: absolute; /*絶対配置*/
-      top: calc( 131px - #{$top_padding_side} );
-      left: calc( 194px - #{$top_padding_top} );
+      top: calc( 131px - #{$top_padding_top} );
+      left: 194px;
       }
   }
 
@@ -403,7 +402,7 @@ img.tweet_form_img {
   .Asset-73x {
     width: 112px;
     object-fit: contain;
-    margin-left: calc( 218px - #{$top_padding_top} );
+    margin-left: 218px;
     padding-top: 19px;
   }
 
@@ -585,18 +584,18 @@ img.tweet_form_img {
 @media (min-width: 1300px) {
   .lunch_cover {
     padding-top: calc( 148px - #{$top_padding_top} + 12px );
-    padding-left: calc( 235px - #{$top_padding_side} );
+    padding-left: 235px;
     div {
       position: absolute; /*絶対配置*/
-      top: calc( 166px - #{$top_padding_side} );
-      left: calc( 260px - #{$top_padding_top} );
+      top: calc( 166px - #{$top_padding_top} );
+      left: 260px;
     }
   }
 
   .Asset-73x {
     width: 142px;
     object-fit: contain;
-    margin-left: calc( 276px - 43px );
+    margin-left: 276px;
     padding-top: 24px;
   }
 
