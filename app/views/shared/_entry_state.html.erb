@@ -9,10 +9,20 @@
     <% else %>
       <!-- 未マッチングの場合 -->
       <div class="entry_state_show">
-        <p>エントリー中!!</p>
+        <% if (@time_now.to_time - @today.to_time) < 45000 %>
+          <!-- 12:30以前の場合 -->
+          <p>エントリー中!!</p>
+        <% else %>
+          <!-- 12:30以降の場合 -->
+          <p>また明日エントリーをお待ちしております。</p>
+        <% end %>
       </div>
       <div class="matching_time_show">
-        <small>※12:30に相手が決まります</small>
+        <% if (@time_now.to_time - @today.to_time) < 45000 %>
+          <small>※12:30に相手が決まります</small>
+        <% else %>
+          <small>※本日選択されたカテゴリーのマッチングは<br>エントリー人数が少なく行われませんでした。</small>
+        <% end %>
       </div>
     <% end %>
   <% end %>

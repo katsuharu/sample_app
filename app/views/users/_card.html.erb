@@ -1,27 +1,39 @@
-<!-- 未エントリーの場合  -->
-<% if @my_lunch.nil? %>
-  <a href="/entry?category_id=<%= card[:category_id] %>" class="lunch_card">
-<!-- エントリー中の場合 -->
-<% elsif @my_lunch.present? %>
-  <!-- マッチング済みの場合 -->
-  <% if matched? %>
-    <a href="#" class="lunch_card link_disabled">
-  <!-- 未マッチングの場合 -->
-  <% else %>
-    <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card">
+<% if (@time_now.to_time - @today.to_time) < 45000 %>
+  <!-- 12:30以前の場合 -->
+  <% if @my_lunch.nil? %>
+    <!-- 未エントリーの場合  -->
+    <a href="/entry?category_id=<%= card[:category_id] %>" class="lunch_card">
+  <% elsif @my_lunch.present? %>
+    <!-- エントリー中の場合 -->
+    <% if matched? %>
+      <!-- マッチング済みの場合 -->
+      <a href="#" class="lunch_card link_disabled">
+    <% else %>
+      <!-- 未マッチングの場合 -->
+      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card">
+    <% end %>
   <% end %>
+<% else %>
+  <!-- 12:30以降の場合 -->
+  <a href="#" class="lunch_card link_disabled">
 <% end %>
   <article>
     <div class="lunch_card_category"><%= card[:category_name] %></div>
-      <% if matched? %>
-      <!-- マッチング済みの場合 -->
-        <p class="lunch_state">また明日エントリーをお待ちしております！</p>
-      <% elsif entried? %>
-      <!-- エントリー済みでマッチングしてない場合 -->
-        <p class="lunch_state">クリックで現在のエントリーをキャンセルします >_<。</p>
-      <!-- 未エントリーの場合 -->
+      <% if (@time_now.to_time - @today.to_time) < 45000 %>
+        <!-- 12:30以前の場合 -->
+        <% if matched? %>
+        <!-- マッチング済みの場合 -->
+          <p class="lunch_state">また明日エントリーをお待ちしております！</p>
+        <% elsif entried? %>
+        <!-- エントリー済みでマッチングしてない場合 -->
+          <p class="lunch_state">クリックで現在のエントリーをキャンセルします >_<。</p>
+        <!-- 未エントリーの場合 -->
+        <% else %>
+          <p class="lunch_state">クリックでこのランチにエントリーできます！</p>
+        <% end %>
       <% else %>
-        <p class="lunch_state">クリックでこのランチにエントリーできます！</p>
+        <!-- 12:30以降の場合 -->
+        <p class="lunch_state">また明日エントリーをお待ちしております！</p>
       <% end %>
       <!-- スライドショー -->
       <div id="slider_wrap">

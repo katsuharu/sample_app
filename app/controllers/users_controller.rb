@@ -11,7 +11,10 @@ class UsersController < ApplicationController
       # Timelineに表示するtweetを取得(14/page)
       @tweets = Tweet.page(params[:page]).order('created_at DESC').per(14)
       @tweet = Tweet.new
+      # 本日の日付を取得
       @today = Date.today
+      # アクセス時時刻を取得する
+      @time_now = DateTime.now
       # ログインユーザーがエントリー中のlunchモデルを取得
       @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil)
       # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
