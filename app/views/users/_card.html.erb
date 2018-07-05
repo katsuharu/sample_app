@@ -1,4 +1,4 @@
-<% if (@time_now.to_time - @today.to_time) < 45000 %>
+<% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
   <!-- 12:30以前の場合 -->
   <% if @my_lunch.nil? %>
     <!-- 未エントリーの場合  -->
@@ -19,7 +19,7 @@
 <% end %>
   <article>
     <div class="lunch_card_category"><%= card[:category_name] %></div>
-      <% if (@time_now.to_time - @today.to_time) < 45000 %>
+      <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
         <!-- 12:30以前の場合 -->
         <% if matched? %>
         <!-- マッチング済みの場合 -->
