@@ -101,7 +101,7 @@ class User < ApplicationRecord
 	end
 
 	def set_profile_img_from_data_uri
-		if profile_img_data_uri
+		if profile_img_data_uri.present?
 	    	self.profile_img = data_uri_to_file(profile_img_data_uri)
 		end
 	end
