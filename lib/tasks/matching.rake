@@ -37,7 +37,7 @@ namespace :matching do
         # pair_idをカウントアップ
         $pair_id = $pair_id + 1
         lunches.update_all(pair_id: $pair_id)
-        #マッチング成立のメールを送信
+        # マッチング成立のメールを送信
         success_mail(lunches)
       else
         #3人のペアを quotient数ぶん作る。
@@ -82,14 +82,13 @@ namespace :matching do
             # sent_atカラムを更新
             lunch.update_attribute(:sent_at, DateTime.now)
           rescue => e
-            # 例外発生時間を取得
-            time = Time.now.to_s
-            # フォロワーIDリスト取得エラーログ
-            p e.backtrace.join("\n").to_s
+            # 例外のクラス名、エラーメッセージ、バックトレースをターミナルに出力
+            puts "#{e.class}:#{e.message}"
+            puts e.backtrace
           end
         end
       end
-    end    
+    end
 
     def success_mail(lunches)
       lunches.each do |lunch|
@@ -101,10 +100,9 @@ namespace :matching do
             # sent_atカラムを更新
             lunch.update_attribute(:sent_at, DateTime.now)
           rescue => e
-            # 例外発生時間を取得
-            time = Time.now.to_s
-            # フォロワーIDリスト取得エラーログ
-            p e.backtrace.join("\n").to_s
+            # 例外のクラス名、エラーメッセージ、バックトレースをターミナルに出力
+            puts "#{e.class}:#{e.message}"
+            puts e.backtrace
           end
         end
       end
