@@ -2,7 +2,7 @@
   <!-- 12:30以前の場合 -->
   <% if @my_lunch.nil? %>
     <!-- 未エントリーの場合  -->
-    <a href="/entry?category_id=<%= card[:category_id] %>" class="lunch_card">
+    <a href="/entry?category_id=<%= card[:category_id] %>" data-confirm="エントリーしますか？" class="lunch_card">
   <% elsif @my_lunch.present? %>
     <!-- エントリー中の場合 -->
     <% if matched? %>
