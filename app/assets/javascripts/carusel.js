@@ -1,13 +1,12 @@
 var slide_ary = []
 
 $(document).on('turbolinks:load', function() {
-  // var len = $('article.lunch_card').length
-  $('article.lunch_card').each(function(index) {
-    console.log(index)
+  $('a.lunch_card').each(function(index) {
     var photo_list$ = $("#photo_list_" + index)
     var li$ = $('#photo_list_' + index + ' li')
     var li_count = li$.length
-    if(li_count > 4) {
+    // 6人以上エントリーしている場合にスライドさせる
+    if(li_count >= 6) {
       var li_width = li$.width() + parseInt(li$.css('margin-left'), 10) + parseInt(li$.css('margin-right'), 10)
       var ul_padding = parseInt(photo_list$.css('padding-left') , 10) + parseInt(photo_list$.css('padding-right') , 10);
       var slider_inner$ = $('#slider_inner_' + index);
@@ -36,7 +35,7 @@ $(document).on('turbolinks:load', function() {
   }
     
   //自動的にスタートするように設定。スライドの枚数文動かす
-  $('article.lunch_card').each(function(index) {
+  $('a.lunch_card').each(function(index) {
     var li$ = $('#photo_list_' + index + ' li')
     var li_count = li$.length
     if(li_count > 4) {
