@@ -3,27 +3,30 @@
   <% if entried? %>
       <!-- マッチング済みの場合 -->
     <% if matched? %>
-      <div class="entry_state_show">
-        <a href="https://lunchfriends.jp/check">マッチング相手確認を確認する</a>
+      <!-- <div class="entry_state_show"> -->
+      <div class="pair_check">
+        <a href="https://lunchfriends.jp/check">マッチング相手を確認する</a>
       </div>
     <% else %>
       <!-- 未マッチングの場合 -->
-      <div class="entry_state_show">
+      <div>
         <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
           <!-- 12:30以前の場合 -->
-          <p>エントリー中!!</p>
+          <p class="entry_now">エントリー中!!</p>
         <% else %>
           <!-- 12:30以降の場合 -->
-          <p>また明日エントリーをお待ちしております。</p>
+          <p class="lunch_time_end">また明日エントリーをお待ちしております。</p>
         <% end %>
       </div>
-      <div class="matching_time_show">
-        <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
+      <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
+        <div class="matching_time_show">
           <small>※12:30に相手が決まります</small>
-        <% else %>
-          <small>※本日選択されたカテゴリーのマッチングは<br>エントリー人数が少なく行われませんでした。</small>
-        <% end %>
-      </div>
+        </div>
+      <% else %>
+        <div class="lack_of_members">
+          <small >※本日選択されたカテゴリーのマッチングは<br>エントリー人数が少なく行われませんでした。</small>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
