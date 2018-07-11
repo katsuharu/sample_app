@@ -2,15 +2,15 @@
   <!-- 12:30以前の場合 -->
   <% if @my_lunch.nil? %>
     <!-- 未エントリーの場合  -->
-    <a href="/entry?category_id=<%= card[:category_id] %>" data-confirm="エントリーしますか？" class="lunch_card">
+    <a href="/entry?category_id=<%= card[:category_id] %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
   <% elsif @my_lunch.present? %>
     <!-- エントリー中の場合 -->
     <% if matched? %>
       <!-- マッチング済みの場合 -->
-      <a href="#" class="lunch_card link_disabled">
+      <a href="#" class="lunch_card link_disabled" style="text-decoration: none;">
     <% else %>
       <!-- 未マッチングの場合 -->
-      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card">
+      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card" style="text-decoration: none;">
     <% end %>
   <% end %>
 <% else %>
