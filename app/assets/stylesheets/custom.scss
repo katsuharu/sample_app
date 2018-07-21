@@ -865,10 +865,6 @@ header.navbar.navbar-default {
   #logo {
     float: none;
   }
-  nav {
-      background-color: #ffe000;
-  }
-
   .navbar-default .navbar-header {
     margin: 0;
     text-align:  center;
@@ -879,9 +875,6 @@ header.navbar.navbar-default {
 
   .navbar-nav {
     margin: 0;
-    > li {
-      border-bottom: 1px solid #666;
-    }
   }
 
   .nav > li > a {
@@ -1371,6 +1364,18 @@ h4.cate_selected {
   }
   .prof-cnt.prof-img {
     text-align: center;
+  }
+  /* 767px以下でもnavbarが表示されるように追記 */
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-collapse {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
   }
 }
 
