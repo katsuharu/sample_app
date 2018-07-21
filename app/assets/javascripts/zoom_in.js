@@ -19,43 +19,45 @@ $(document).on('turbolinks:load', function() {
     ALREADY = false
   })
 
+  /* 第1層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
+  // クリックした第1層のカテゴリのdata-first属性の値を取得する
+  var $firsts = $('.first_categories [data-first]')
   // 第一層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
-  var $firsts = $('.first_categories [data-first]'),
-    $first_parents = $('.second_categories [data-first-id]')
+  var $first_parents = $('.second_categories [data-first-id]')
   $firsts.on('click', function(e) {
     e.preventDefault()
     var $this = $(this)
-    
+    // 以前クリックされたカテゴリのactiveクラスを削除
     $firsts.removeClass('active')
+    // 今回クリックしたカテゴリにactiveクラスを追加
     $this.addClass('active')
-
+    // クリックした第一階層のカテゴリを取得
     var $firstChild = $this.attr('data-first')
-
+    // クリックしたカテゴリーの子のカテゴリーをフェードイン
     $first_parents.removeClass('is-animated')
       .fadeOut().promise().done(function() {
         $first_parents.filter('[data-first-id = "' + $firstChild + '"]')
           .addClass('is-animated').fadeIn();
       })
+    // 第3,第4カテゴリーを非表示に
+    hide_lower_layers('first')
   })
   //
 
-  // 第二層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
+  /* 第2層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
   var $seconds = $('.second_categories [data-second]'),
-    $second_parents = $('.third_categories [data-second-id]')
+  $second_parents = $('.third_categories [data-second-id]')
   $seconds.on('click', function(e) {
     e.preventDefault()
     var $this = $(this)
     $seconds.removeClass('active');
     $this.addClass('active');
-
     var $secondChild = $this.attr('data-second')
-
     $second_parents.removeClass('is-animated')
       .fadeOut().promise().done(function() {
         if($second_parents.filter('[data-second-id = "' + $secondChild + '"]').length) {
           $second_parents.filter('[data-second-id = "' + $secondChild + '"]')
             .addClass('is-animated').fadeIn()
-          console.log(true)
         }else {   //「Add Hobby」に表示して、趣味登録の候補に追加する
           $('.my_hobbies input').each(function() {
             if($(this).val() == $this.text()) {
@@ -68,13 +70,14 @@ $(document).on('turbolinks:load', function() {
             $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
           }
           ALREADY = false
-          console.log(false)
         }
       })
+    // 第4カテゴリーを非表示に
+    hide_lower_layers('second')
   })
   //
 
-  // 第三層のカテゴリーを選択した時に、その下層のカテゴリーを表示する
+  /* 第3層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
   var $thirds = $('.third_categories [data-third]'),
     $third_parents = $('.forth_categories [data-third-id]')
   $thirds.on('click', function(e) {
@@ -90,7 +93,6 @@ $(document).on('turbolinks:load', function() {
         if($third_parents.filter('[data-third-id = "' + $thirdChild + '"]').length) {
           $third_parents.filter('[data-third-id = "' + $thirdChild + '"]')
             .addClass('is-animated').fadeIn()
-          console.log(true)
         }else {
           $('.my_hobbies input').each(function() {
             if($(this).val() == $this.text()) {
@@ -103,13 +105,12 @@ $(document).on('turbolinks:load', function() {
             $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
           }
           ALREADY = false
-          console.log(false)
         }
       })
   })
   //
 
-  // 第四層のカテゴリーを選択した時、候補に追加
+  /* 第4層のカテゴリーを選択した時、候補に追加 */
   var $forths = $('.forth_categories [data-forth]')
   $forths.on('click', function(e) {
     e.preventDefault()
@@ -126,6 +127,24 @@ $(document).on('turbolinks:load', function() {
     }
     ALREADY = false
   })
+
+  // params layer: String
+  // 引数のカテゴリーの2下層下のカテゴリー以降を非表示にする
+  function hide_lower_layers(layer) {
+    switch(layer){
+      // 第1階層のカテゴリーがクリックされたとき
+      case 'first' :
+        // 第3,第4層のカテゴリを非表示に
+        $('.third_category').hide()
+        $('.forth_category').hide()
+        break
+      // 第2階層のカテゴリーがクリックされたとき
+      case 'second' :
+        // 第4層のカテゴリを非表示に
+        $('.forth_category').hide()
+        break
+    }
+  }
 
   $(document).on('click', '#hobby_delete label', function() {
     var index = $('#hobby_delete label').index(this)

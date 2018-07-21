@@ -10,19 +10,19 @@
 
   <div class="second_categories">
     <% @second_categories.each do |second| %>
-      <div class="standby" data-first-id="<%= second[2] %>" data-second="<%= second[0] %>"><%= second[1] %></div>
+      <div class="standby second_category" data-first-id="<%= second[2] %>" data-second="<%= second[0] %>"><%= second[1] %></div>
     <% end %>
   </div>
 
   <div class="third_categories">
     <% @third_categories.each do |third| %>
-      <div class="standby" data-second-id="<%= third[2] %>" data-third="<%= third[0] %>"><%= third[1] %></div>
+      <div class="standby third_category" data-second-id="<%= third[2] %>" data-third="<%= third[0] %>"><%= third[1] %></div>
     <% end %>
   </div>
 
   <div class="forth_categories">
     <% @forth_categories.each do |forth| %>
-      <div class="standby" data-third-id="<%= forth[2] %>" data-forth="<%= forth[0] %>"><%= forth[1] %></div>
+      <div class="standby forth_category" data-third-id="<%= forth[2] %>" data-forth="<%= forth[0] %>"><%= forth[1] %></div>
     <% end %>
   </div>
   
