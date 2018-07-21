@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check]
 
   def index
+    # ログイン済みの場合
     if logged_in?
       # Top5のhobbyを取得
       @hobby_pop = UserHobby.group(:hobby_name).order('count_all desc').limit(5).count
@@ -54,7 +55,9 @@ class UsersController < ApplicationController
       @user = current_user
       # @user.update_attribute(:logined_at, DateTime.now)
       @users = User.where.not(category_id: nil)
+    # 未ログインの場合
     else
+      # ログイン前トップ画面を表示
       render 'sessions/index'
     end
   end
@@ -119,25 +122,25 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # 戻るボタンが押された場合
     if params[:back]
-      render :edit
+      redirect_to edit_use_path
     # 写真を選択した状態で「変更を保存」を押した場合
     elsif user_params[:profile_img]
       if @user.update_attributes(user_params)
         flash[:success] = "ユーザー情報を更新しました。"
-        render 'show'
+        redirect_to user_path
       else
         flash[:info] = "プロフィールを更新しませんでした。"
-        render 'edit'
+        redirect_to edit_use_path
       end
-    else
     # 写真を選択せず「変更を保存」を押した場合
+    else
       #写真以外のカラムを更新
       if User.find(@user.id).update_attributes(name: user_params[:name], email: user_params[:email], password: user_params[:password],password_confirmation: user_params[:password_confirmation] , department_name: user_params[:department_name], slack_id: user_params[:slack_id], self_intro: user_params[:self_intro])
         flash[:success] = "ユーザー情報を更新しました。"
-        render 'show'
+        redirect_to user_path 
       else
         flash[:info] = "プロフィールを更新しませんでした。"
-        render 'edit'
+        redirect_to edit_use_path
       end
     end
   end
@@ -181,7 +184,7 @@ class UsersController < ApplicationController
   def check_entry_cnt
     #エントリー画面(entry.html.erb)でユーザー情報を表示するために変数に代入
     @user = current_user
-    render action: 'check_entry_cnt'
+    redirect_to check_entry_cnt_path
   end
   
   def check
