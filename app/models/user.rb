@@ -108,17 +108,15 @@ class User < ApplicationRecord
 
   def User.create_from_auth!(auth)
     @user = User.new(
-        name: auth.info.name,
-        email: auth.info.email,
-        password: "sasaki",
-        profile_img: auth.info.image,
+      name: auth.info.name,
+      email: auth.info.email,
+      password: "sasaki",
+      profile_img: auth.info.image,
       activated: true,
       activated_at: Time.zone.now
     )
     @user.save(context: :fb_login)
-      @user
   end
-
 
   private
 
@@ -127,14 +125,13 @@ class User < ApplicationRecord
         self.email = email.downcase
       end
 
-      # 有効化トークンとダイジェストを作成および代入する
-      def create_activation_digest
-        self.activation_token  = User.new_token
-        self.activation_digest = User.digest(activation_token)
-      end
+    # 有効化トークンとダイジェストを作成および代入する
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 
-
-      # アップロードされた画像のサイズをバリデーションする
+    # アップロードされた画像のサイズをバリデーションする
     def picture_size
       if profile_img.size > 5.megabytes
         errors.add("ファイルは5MBより大きいサイズのファイルはアップロードできません。")
