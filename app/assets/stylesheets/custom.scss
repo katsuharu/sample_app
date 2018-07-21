@@ -229,6 +229,12 @@ p.lunch_time_end {
   flex: 1 1 224px;
   margin-right: 11px;
   margin-bottom: 10px;
+  background-color: #FF9E66;
+}
+
+/* エントリー中のランチカードのデザイン */
+.my_entry_card {
+  background-color: #FF6A4B;
 }
 
 .lunch_card_category {
@@ -736,30 +742,16 @@ select#tweet_category_id {
   text-align: center;
 }
 
-
 .flex_container {
   display:  flex;
   flex-wrap:  wrap;
 }
 
-
-.lunch_card_container a:nth-child(3n+1){
-  background-color: #ff652c;
-}
-
-.lunch_card_container a:nth-child(3n+2){
-  background-color: #ffcf4b;
-}
-
-.lunch_card_container a:nth-child(3n){
-  background-color: #a0e8d0;
-}
-
 /* tweet new design */
 .tweet_name {
-    color:  #f5a623;
-    letter-spacing: 2px;
-    font-size:  14px;
+  color:  #f5a623;
+  letter-spacing: 2px;
+  font-size:  14px;
 }
 
 .tweet_data {
@@ -1298,10 +1290,6 @@ a.square_btn.bf-top {
   height:200px;
 }
 
-
-/* ランチカード */
-.lunch_card.lunch_activated {
-}
 /* ランチカード */
 
 /* エントリー完了画面 */
@@ -1592,8 +1580,6 @@ ul {
     transform: none;
   }
 }
-
-
 
 .hobby_list {
   display: flex;
