@@ -130,7 +130,7 @@ class UsersController < ApplicationController
         redirect_to user_path
       else
         flash[:info] = "プロフィールを更新しませんでした。"
-        redirect_to edit_use_path
+        redirect_to edit_user_path
       end
     # 写真を選択せず「変更を保存」を押した場合
     else
@@ -140,7 +140,7 @@ class UsersController < ApplicationController
         redirect_to user_path 
       else
         flash[:info] = "プロフィールを更新しませんでした。"
-        redirect_to edit_use_path
+        redirect_to edit_user_path
       end
     end
   end
