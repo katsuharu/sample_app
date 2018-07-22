@@ -42,10 +42,16 @@ class TweetsController < ApplicationController
     end
   end
 
+  def thread_cmd_create
+    @tthreads = TThread.where(tweet_id: params[:t_thread][:tweet_id]).order('created_at DESC')
+    @tthread = TThread.new(tweet_id: params[:t_thread][:tweet_id], content: tthread_params[:content], user_id: current_user.id)
+    @tthread.save
+  end
+
   private
 
     def tweet_params
-          params.require(:tweet).permit(:content, :user_id, :category_id)
+      params.require(:tweet).permit(:content, :user_id, :category_id)
     end
 
     def tthread_params

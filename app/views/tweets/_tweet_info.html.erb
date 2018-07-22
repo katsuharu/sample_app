@@ -1,10 +1,10 @@
 <% if u = User.find_by(id: Tweet.find_by(id:params[:id]).user_id) %>
-  <div class="">
     <%= image_tag(u.profile_img.url, :size => "35x35") if u.profile_img? %>
-  </div>
 <% end %>
-<%= u.name if u.present? %>
-
-<div class="">
+<strong class="tweet_info_name">
+	<%= u.name if u.present? %>
+</strong>
+<p class="tweet_info_content">
   <%= Tweet.find_by(id:params[:id]).content %>
-</div>
+</p>
+<span id="reply_tweet_id"><%= params[:id] %></span>

@@ -1,19 +1,24 @@
-<tr>
-	<td class="tweet_info">
-		<% if u = User.find_by(id: tthread.user_id) %>
-			<%=	image_tag(u.profile_img.url, :size => "35x35") if u.profile_img? %>
-		<% end %>
-	</td>
-
-	<td class="tweet_info">
-		<%= u.name if u %>
-	</td>
-
-	<td class="tweet_cnt">
-		<%= tthread.content %>
-	</td>
-
-	<td class="tweet_time">
-		<%= tthread.created_at %>
-	</td>
-</tr>
+<div class="thread_tr">
+	<div class="flex_container">
+		<!-- reply投稿ユーザー写真 -->
+		<div>
+			<% if u = User.find_by(id: tthread.user_id) %>
+				<%=	image_tag(u.profile_img.url, :size => "35x35", class: "reply_user_img") if u.profile_img? %>
+			<% end %>
+		</div>
+		<div class="reply_sentences">
+			<!-- reply投稿ユーザー名 -->
+			<span>
+				<%= u.name if u %>
+			</span>
+			<!-- reply投稿時間 -->
+			<span>
+				<%= tthread.created_at %>
+			</span>
+			<!-- reply本文 -->
+			<p>
+				<%= tthread.content %>
+			</p>
+		</div>
+	</div>
+</div>

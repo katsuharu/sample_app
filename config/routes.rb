@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post  'tweets/btn_create'
   post  'tweets/tweet_create'
   post  'tweets/thread_create'
+  post  'tweets/thread_cmd_create'
 
   # match '/auth/:provider/callback', to: 'users#create', via: [:get, :post]
   
