@@ -4,7 +4,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token, :profile_img_data_uri, :profile_img_cache
   before_save :downcase_email
   before_create :create_activation_digest
-  before_validation :set_profile_img_from_data_uri
+  after_validation :set_profile_img_from_data_uri
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   has_secure_password
   mount_uploader :profile_img, PictureUploader
@@ -102,7 +102,7 @@ class User < ApplicationRecord
 
   def set_profile_img_from_data_uri
     if profile_img_data_uri.present?
-        self.profile_img = data_uri_to_file(profile_img_data_uri)
+      self.profile_img = data_uri_to_file(profile_img_data_uri)
     end
   end
 
@@ -134,7 +134,8 @@ class User < ApplicationRecord
     # アップロードされた画像のサイズをバリデーションする
     def picture_size
       if profile_img.size > 5.megabytes
-        errors.add("ファイルは5MBより大きいサイズのファイルはアップロードできません。")
+        errors.add(:profile_img, "ファイルは5MBより大きいサイズのファイルはアップロードできません。")
       end
     end
+
 end
