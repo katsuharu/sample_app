@@ -12,12 +12,8 @@ $(document).ready(function (){
 				  	}
 				  }
 				}).done(function(data) {
-					console.log('Done!!!')
 				}).fail(function(data) {
-					console.log('Fail!!!')
 				})
-			} else {
-				console.log('empty & Invalid')
 			}
 		}
 	})
