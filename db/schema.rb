@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180703034210) do
+ActiveRecord::Schema.define(version: 20180802125327) do
 
   create_table "authorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "provider"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20180703034210) do
     t.string   "hira"
     t.string   "kana"
     t.integer  "lock_version", default: 0, null: false, comment: "ロックバージョン"
+  end
+
+  create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "text",         limit: 65535,                          comment: "テキスト"
+    t.integer  "user_id",                                             comment: "ユーザーID"
+    t.integer  "pair_id",                                             comment: "ペアID"
+    t.date     "lunch_date",                                          comment: "ランチ日時"
+    t.datetime "deleted_at",                                          comment: "削除日時"
+    t.integer  "lock_version",               default: 0, null: false, comment: "ロックバージョン"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "first_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
