@@ -1,0 +1,28 @@
+<div class="flex_container tweet">
+	<div class="tweet_img">
+	<% u = User.find_by(id: chat.user_id) %>
+	<!-- ユーザーのプロフィール画像が登録されている場合 -->
+	<% if u.profile_img? %>
+	 <%= image_tag(u.profile_img.url, :size => "30x30") %>
+	<% else %>
+		<!-- 画像サイズぶんのスペースを埋める -->
+		<div class="img_empty"></div>
+	<% end %>
+	</div>
+	<div class="tweet_text">
+		<div class="tweet_name">
+			<%= u.name if u %>
+		</div>
+		<%= chat.text %>
+		<div class="flex_container tweet_data">
+			<div class="tweet_at">
+				<% posted_at = chat.created_at %>
+				<% if Time.now - posted_at >= 86400 %>
+					<%= posted_at.strftime("%Y年 %m月 %d日") %>
+				<% else %>
+					<%= time_ago_in_words(posted_at) %>前
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
