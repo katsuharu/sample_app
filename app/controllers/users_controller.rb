@@ -192,11 +192,17 @@ class UsersController < ApplicationController
     @matched_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).where.not(pair_id: nil).first
     # @lunchが存在している場合
     if @matched_lunch.present?
-      pair_id = @matched_lunch.pair_id
+      @pair_id = @matched_lunch.pair_id
       # 本日付のマッチング相手のuser_idの配列を取得
-      user_ids = Lunch.where(pair_id: pair_id).where(lunch_date: Date.today).where.not(sent_at: nil).where.not(user_id: current_user.id).pluck(:user_id)
+      # where.not(sent_at: nil):マッチング結果メールが送信済み
+      user_ids = Lunch.where(pair_id: @pair_id).where(lunch_date: Date.today).where.not(sent_at: nil).where.not(user_id: current_user.id).pluck(:user_id)
       # マッチング相手のUserモデルの配列を取得
       @pairs = User.where(id: user_ids)
+
+      # formで必要なインスタンス変数を定義
+      @chat = Chat.new
+      # 本日のマッチングメンバーのチャットを取得
+      @chats = Chat.where(pair_id: @pair_id).where(lunch_date: Date.today).page(params[:page]).order('created_at DESC')
     end
   end
 
