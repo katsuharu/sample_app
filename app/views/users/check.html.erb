@@ -3,28 +3,30 @@
 <% if @matched_lunch.nil? %>
   <p>まだマッチングしておりません</p>
 <% else %>
-  <h1 class="eigo-title">You got new Lunch Friends !!</h1>
-  <% @pairs.each.with_index(1) do |pair, index| %>
-    <div class="user-cnt col-lg-12">
-      <h2>マッチング相手<%= index %></h2>    
-        <div class="pair-info">
-          <div class="pair-img">
-            <div><%= image_tag pair.profile_img.url if pair.profile_img? %></div>
+<div class="entry_top">
+  <div class="index_left">
+    <h1 class="eigo-title">You got new Lunch Friends !!</h1>
+    <% @pairs.each.with_index(1) do |pair, index| %>
+      <div class="user-cnt col-lg-12">
+        <h2>マッチング相手<%= index %></h2>    
+          <div class="pair-info">
+            <div class="pair-img">
+              <div><%= image_tag pair.profile_img.url if pair.profile_img? %></div>
+            </div>
+            <div class="pair-text">
+              <h4 class="cate_selected"><%= pair.try :name %>　さん</h4>
+              <label>Slack ID（このIDを使い、グループを作成して下さい）</label>
+              <p class="slack_id"><%= pair.try :slack_id %></p>
+            </div>
           </div>
-
-          <div class="pair-text">
-            <h4 class="cate_selected"><%= pair.try :name %>　さん</h4>
-            <label>Slack ID（このIDを使い、グループを作成して下さい）</label>
-            <p class="slack_id"><%= pair.try :slack_id %></p>
-          </div>
-
-        </div>
-          
+      </div>
+    <% end %>
+    <div class="btn-center">
+      <%= link_to "TOP", root_path, class: "square_btn" %>
     </div>
-  <% end %>
-
-  <div class="btn-center">
-    <%= link_to "TOP", root_path, class: "square_btn" %>
   </div>
-  <%= render 'users/pair_chat' %>
+  <div class="index_right">
+    <%= render 'users/pair_chat' %>
+  </div>
+</div>
 <% end %>
