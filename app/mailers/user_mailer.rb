@@ -20,7 +20,9 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "【LunchFriends】本日はランチ相手が見つかりませんでした。"
   end
 
-  def chat_notification(user)
+  def chat_notification(user, speaker, text)
+    @speaker = speaker
+    @text = text
     @user = user
     mail to: user.email, subject: "【LunchFriends/新着メッセージ】マッチング相手からメッセージが届きました！"
   end
