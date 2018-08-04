@@ -100,6 +100,11 @@ class User < ApplicationRecord
     UserMailer.matching_fail(self).deliver_now!
   end
 
+  # マッチングメンバーがチャットを投稿したことを通知するメールを送信
+  def chat_notification_email
+    UserMailer.chat_notification(self).deliver_now!
+  end
+
   def set_profile_img_from_data_uri
     if profile_img_data_uri.present?
       self.profile_img = data_uri_to_file(profile_img_data_uri)
