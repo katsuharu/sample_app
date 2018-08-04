@@ -22,7 +22,7 @@ class UserMailer < ApplicationMailer
 
   def chat_notification(user)
     @user = user
-    mail to: user.email, subject: "【LunchFriends】マッチングメンバーが新規投稿をしました。"
+    mail to: user.email, subject: "【LunchFriends/新着メッセージ】マッチング相手からメッセージが届きました！"
   end
 
   def contact_contents(params)
