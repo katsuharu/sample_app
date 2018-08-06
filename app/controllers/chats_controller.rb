@@ -13,7 +13,7 @@ class ChatsController < ApplicationController
           # idからユーザーを取得
           user = User.find(id)
           # ユーザーに投稿通知用のメールを送信
-          user.chat_notification_email(User.find(current_user.id), chat_params[:text])
+          user.chat_notification_email
         end
 
         format.html
@@ -37,7 +37,7 @@ class ChatsController < ApplicationController
         # idからユーザーを取得
         user = User.find(id)
         # ユーザーに投稿通知用のメールを送信
-        user.chat_notification_email(User.find(current_user.id), chat_params[:text])
+        user.chat_notification_email
       end
     end
   end
