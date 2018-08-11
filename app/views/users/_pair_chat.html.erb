@@ -1,4 +1,4 @@
-<div class="tweet_form">
+<div class="tweet_form chat_form">
   <%= form_for(@chat, remote: true, url: { controller: 'chats', action: 'btn_create'}) do |f| %>
     <%= f.text_area :text, size: "55x2", required: true %>
     <div class="flex_container">
