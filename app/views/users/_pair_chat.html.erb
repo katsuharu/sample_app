@@ -1,6 +1,6 @@
 <div class="tweet_form chat_form">
   <%= form_for(@chat, remote: true, url: { controller: 'chats', action: 'btn_create'}) do |f| %>
-    <%= f.text_area :text, size: "55x2", required: true %>
+    <%= f.text_area :text, size: "55x2", required: true, placeholder:"待ち合わせ場所と時間を決めてください（推奨:at グランドタワー1階 time 13:00)" %>
     <div class="flex_container">
       <%= f.hidden_field :pair_id, :value => @pair_id %>
       <%= f.submit "投稿", class: "post_tweet" %>
