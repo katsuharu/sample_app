@@ -3,9 +3,9 @@
 <% if @matched_lunch.nil? %>
   <p>まだマッチングしておりません</p>
 <% else %>
+<h1 class="eigo-title">You got new Lunch Friends !!</h1>
 <div class="entry_top">
   <div class="index_left">
-    <h1 class="eigo-title">You got new Lunch Friends !!</h1>
     <% @pairs.each.with_index(1) do |pair, index| %>
       <div class="user-cnt col-lg-12">
         <h2>マッチング相手<%= index %></h2>    
