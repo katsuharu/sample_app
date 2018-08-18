@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get    '/contact', to: 'static_pages#contact'
   
   get    '/check', to: 'users#check'
+  post   'users/check'
   get    '/signup',  to: 'users#new'
   get    'check_entry_cnt',   to: 'users#check_entry_cnt'
   patch '/edit_confirm', to: 'users#edit_confirm'

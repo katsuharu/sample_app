@@ -1,3 +1,7 @@
+require 'action_view'
+require 'action_view/helpers'
+include ActionView::Helpers::DateHelper
+
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry, :cancel, :check]
   # before_action :correct_user, only: [:show, :edit, :update]
@@ -63,11 +67,11 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def confirm
@@ -93,7 +97,7 @@ class UsersController < ApplicationController
         redirect_back_or user
       end
     else
-    	@user = User.new(user_params)
+      @user = User.new(user_params)
       begin
         @user.profile_img.retrieve_from_cache! params[:cache][:profile_img]
       rescue => e
@@ -102,15 +106,15 @@ class UsersController < ApplicationController
       if params[:back]
         render :new
         return
-    	elsif @user.save
+      elsif @user.save
         @user.send_activation_email
-    		flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
-    		redirect_to root_url
+        flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
+        redirect_to root_url
         return
-    	else
-    		render 'new'
+      else
+        render 'new'
         return
-    	end
+      end
     end
   end
 
@@ -194,7 +198,7 @@ class UsersController < ApplicationController
     if @matched_lunch.present?
       @pair_id = @matched_lunch.pair_id
       # 本日付のマッチング相手のuser_idの配列を取得
-      # where.not(sent_at: nil):マッチング結果メールが送信済み
+      # カラム：where.not(sent_at: nil):マッチング結果メールが送信済み
       user_ids = Lunch.where(pair_id: @pair_id).where(lunch_date: Date.today).where.not(sent_at: nil).where.not(user_id: current_user.id).pluck(:user_id)
       # マッチング相手のUserモデルの配列を取得
       @pairs = User.where(id: user_ids)
@@ -203,15 +207,39 @@ class UsersController < ApplicationController
       @chat = Chat.new
       # 本日のマッチングメンバーのチャットを取得
       @chats = Chat.where(pair_id: @pair_id).where(lunch_date: Date.today).page(params[:page]).order('created_at DESC')
+
+      # マッチングメンバーの投稿の場合
+      if params[:pair_id].present? && params[:pair_id].to_i == @pair_id
+        @new_chat = []
+        chats = Chat.where('id > ?', params[:id]).where(lunch_date: Date.today).where(pair_id: @pair_id)
+        chats.each do |chat|
+          # 時刻の表示を整形
+          # モデルの作成から1日以上経過している場合
+          if Time.now - chat.created_at >= 86400
+            post_at = posted_at.strftime("%Y年 %m月 %d日")
+          else
+            post_at = time_ago_in_words(chat.created_at) + "前"
+          end
+          @new_chat.push({ chat: chat, # Chatモデル
+                          img_url: chat.user.profile_img.url, # 投稿者のimg_URL
+                          user_name: chat.user.name, # 投稿者名
+                          post_at: post_at # 投稿時刻(表示用に整形済)
+                        })
+        end
+        respond_to do |format| 
+          format.html # html形式でアクセスがあった場合は特に何もなし
+          format.json { @new_chat }
+        end
+      end
     end
   end
 
   private
 
-  	def user_params
-  		params.require(:user).permit(:name, :email, :password, :password_confirmation,
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
         :profile_img, :profile_img_cache, :department_name, :slack_id, :category_id, :self_intro, :profile_img_data_uri)
-  	end
+    end
 
     def correct_user
       @user = User.find(params[:id])
