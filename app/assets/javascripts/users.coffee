@@ -5,7 +5,12 @@ onPageLoad 'users#index', ->
 
 onPageLoad 'users#index', ->
   buildTweet = (tweet) ->
-    chat = $('.timeline-shows').prepend('<div class="flex_container tweet tweets" data-id=' + tweet.tweet.id + '>' + '<div class="tweet_img">' + '<img src="' + tweet.img_url + '" alt="プロフィール画像" class="timeline_user_img">' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + tweet.user_name + '</div>' + tweet.tweet.content + '<div class="flex_container tweet_data">' + '<div class="tweet_thread_mark">' + '<a href="/tweets/' + tweet.tweet.id + '" data-toggle="modal" data-target=".t_detail" data-remote="true"><i class="far fa-comment"></i></a>' + '</div>' + '<div class="thread_count_' + tweet.tweet.id + '">' + tweet.thread_count + '</div>' + '<div class="tweet_category">' + tweet.category_name + '</div>' + '<div class="tweet_at">' + tweet.post_at + '</div>' + '</div>' + '</div>' + '</div>')
+    `var chat`
+    # 投稿者の写真が登録されていない場合
+    if tweet.img_url == null
+      chat = $('.timeline-shows').prepend('<div class="flex_container tweet tweets" data-id=' + tweet.tweet.id + '>' + '<div class="tweet_img">' + '<div class="img_empty"></div>' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + tweet.user_name + '</div>' + tweet.tweet.content + '<div class="flex_container tweet_data">' + '<div class="tweet_thread_mark">' + '<a href="/tweets/' + tweet.tweet.id + '" data-toggle="modal" data-target=".t_detail" data-remote="true"><i class="far fa-comment"></i></a>' + '</div>' + '<div class="thread_count_' + tweet.tweet.id + '">' + tweet.thread_count + '</div>' + '<div class="tweet_category">' + tweet.category_name + '</div>' + '<div class="tweet_at">' + tweet.post_at + '</div>' + '</div>' + '</div>' + '</div>')
+    else
+      chat = $('.timeline-shows').prepend('<div class="flex_container tweet tweets" data-id=' + tweet.tweet.id + '>' + '<div class="tweet_img">' + '<img src="' + tweet.img_url + '" alt="プロフィール画像" class="timeline_user_img">' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + tweet.user_name + '</div>' + tweet.tweet.content + '<div class="flex_container tweet_data">' + '<div class="tweet_thread_mark">' + '<a href="/tweets/' + tweet.tweet.id + '" data-toggle="modal" data-target=".t_detail" data-remote="true"><i class="far fa-comment"></i></a>' + '</div>' + '<div class="thread_count_' + tweet.tweet.id + '">' + tweet.thread_count + '</div>' + '<div class="tweet_category">' + tweet.category_name + '</div>' + '<div class="tweet_at">' + tweet.post_at + '</div>' + '</div>' + '</div>' + '</div>')
     return
 
   update = ->
@@ -40,10 +45,14 @@ onPageLoad 'users#check', ->
   entire_contents.classList.remove 'container'
   $('body').addClass('bg_color')
 
-
+  # timeline自動更新
   buildChat = (chat) ->
     `var chat`
-    chat = $('.timeline-shows').prepend('<div class="flex_container tweet chats" data-id=' + chat.chat.id + ' data-pair_id=' + chat.chat.pair_id + '>' + '<div class="tweet_img">' + '<img src="' + chat.img_url + '" alt="Data uri" class="timeline_user_img">' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + chat.user_name + '</div>' + chat.chat.text + '<div class="flex_container tweetet_data">' + '<div class="tweet_at">' + chat.post_at + '</div>' + '</div>' + '</div>' + '</div>')
+    # 投稿者の写真が登録されていない場合
+    if chat.img_url == null
+      chat = $('.timeline-shows').prepend('<div class="flex_container tweet chats" data-id=' + chat.chat.id + ' data-pair_id=' + chat.chat.pair_id + '>' + '<div class="tweet_img">' + '<div class="img_empty"></div>' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + chat.user_name + '</div>' + chat.chat.text + '<div class="flex_container tweet_data">' + '<div class="tweet_at">' + chat.post_at + '</div>' + '</div>' + '</div>' + '</div>')
+    else
+      chat = $('.timeline-shows').prepend('<div class="flex_container tweet chats" data-id=' + chat.chat.id + ' data-pair_id=' + chat.chat.pair_id + '>' + '<div class="tweet_img">' + '<img src="' + chat.img_url + '" alt="Data uri" class="timeline_user_img">' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + chat.user_name + '</div>' + chat.chat.text + '<div class="flex_container tweet_data">' + '<div class="tweet_at">' + chat.post_at + '</div>' + '</div>' + '</div>' + '</div>')
     return
 
   update = ->
