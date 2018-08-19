@@ -1,4 +1,4 @@
-<div class="flex_container tweet">
+<div class="flex_container tweet" data-id=<%= tweet.id %>>
 	<div class="tweet_img">
 	<% u = User.find_by(id: tweet.user_id) %>
 	<!-- ユーザーのプロフィール画像が登録されている場合 -->

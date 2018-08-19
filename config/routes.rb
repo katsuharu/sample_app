@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   get    '/contact', to: 'static_pages#contact'
   
+  post   'users/index'
   get    '/check', to: 'users#check'
   post   'users/check'
   get    '/signup',  to: 'users#new'
