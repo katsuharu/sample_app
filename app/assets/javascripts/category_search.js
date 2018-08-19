@@ -28,7 +28,6 @@ $(document).on('turbolinks:load', function(){
                     $('#search_result').append('<li>' + category.name + '</li>') //resultというidの要素に対して、<li>ユーザーの名前</li>を追加する。
                     })
                 }).fail(function(data) {
-                    console.log('category search engine fails!!!')
                 })
 
             }
