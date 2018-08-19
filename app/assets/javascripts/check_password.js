@@ -1,10 +1,5 @@
 $(document).on('turbolinks:load', function() {
-	// 以前にアップロードした画像が存在する場合、画像のアップロードの必須化を解除
-	if($('.vanish').attr('src')) {
-		$('#user_profile_img').removeAttr("required")
-	} else {
-	}
-
+	// 入力したパスワードと確認パスワードが一致しないときにsubmitを無効化する
 	$(document).on('click', '#submitBtn', function() {
 		if ($('#user_password').val() != $('#user_password_confirmation').val()) {
 			alert('パスワードと確認用パスワードが一致しません。')
