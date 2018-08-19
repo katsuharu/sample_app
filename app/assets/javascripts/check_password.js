@@ -15,13 +15,14 @@ $(document).on('turbolinks:load', function() {
 	// 確認画面で登録ボタン押下時に処理中であることを表示
 	$(document).on('click', '#register_user', function() {
 	    $('body').attr('id', 'progressing');
-	    $('body').prepend('<img alt="LF" src="/assets/loading.gif" id="loading_img">')
+	    // $('body').prepend('<img alt="LF" src="/assets/loading.gif" id="loading_img">')
+	    $('body').prepend('<img src="/loading_img/loading.gif" alt="Loading Image" id="loading_img">')
 	})
 
 	// Infinite Scroll
 	$(".timeline-shows").infinitescroll({
 	    loading: {
-	      img: "/assets/loading.gif",
+	      img: "/loading_img/loading.gif",
 	      msgText: "loading..."
 	    },
 	    navSelector: "nav.pagination",
