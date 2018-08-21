@@ -39,8 +39,8 @@ set :keep_releases, 5
 
 # set whenever command
 # set :whenever_command, "bundle exec whenever --update-crontab"
-set :whenever_command, "bundle exec whenever"
-require "whenever/capistrano"
+# set :whenever_command, "bundle exec whenever"
+# require "whenever/capistrano"
 
 namespace :deploy do
 
