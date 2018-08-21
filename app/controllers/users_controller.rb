@@ -219,12 +219,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def check_entry_cnt
-    #エントリー画面(entry.html.erb)でユーザー情報を表示するために変数に代入
-    @user = current_user
-    redirect_to check_entry_cnt_path
-  end
-  
   def check
     # マッチング済みのLunchモデルを取得
     @matched_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).where.not(pair_id: nil).first

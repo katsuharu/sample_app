@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get    '/check', to: 'users#check'
   post   'users/check'
   get    '/signup',  to: 'users#new'
-  get    'check_entry_cnt',   to: 'users#check_entry_cnt'
   patch '/edit_confirm', to: 'users#edit_confirm'
   post   '/confirm', to: 'users#confirm'
   get   'entry',        to: 'users#entry'
