@@ -107,22 +107,6 @@ class User < ApplicationRecord
     UserMailer.chat_notification(self).deliver_now!
   end
 
-  # 投稿者以外のマッチングメンバーにメールを送信するメソッド
-  # where.not(sent_at: nil):マッチング結果メールが送信済み
-  # param String user_id 投稿者のユーザーID
-  # param String pair_id ペアID
-  def self.chat_notify(user_id, pair_id)
-    user_ids = Lunch.where(pair_id: pair_id).where(lunch_date: Date.today) \
-    .where.not(sent_at: nil).where.not(user_id: user_id).pluck(:user_id)
-    # マッチングメンバーの数だけ繰り返し処理を実行
-    user_ids.each do |id|
-      # idからユーザーを取得
-      user = User.find(id)
-      # ユーザーに投稿通知用のメールを送信
-      user.chat_notification_email
-    end
-  end
-
   def set_profile_img_from_data_uri
     if profile_img_data_uri.present?
       self.profile_img = data_uri_to_file(profile_img_data_uri)
