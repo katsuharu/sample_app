@@ -67,7 +67,11 @@ $(document).ready(function (){
             }
           }
         }).done(function(data) {
+          // 投稿フォームの入力を消去
+          $('textarea[name="chat[text]"]').val('')
+          // 投稿内容を画面に動的表示
           buildChat(data)
+          // マッチングメンバーにメール送信
           send_mail(data)
         }).fail(function(data) {
         })
@@ -87,7 +91,11 @@ $(document).ready(function (){
         }
       }
     }).done(function(data) {
+      // 投稿フォームの入力を消去
+      $('textarea[name="chat[text]"]').val('')
+      // 投稿内容を画面に動的表示
       buildChat(data)
+      // マッチングメンバーにメール送信
       send_mail(data)
     }).fail(function(data) {
     })
