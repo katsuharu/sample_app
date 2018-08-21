@@ -55,16 +55,6 @@ onPageLoad 'users#check', ->
       chat = $('.timeline-shows').prepend('<div class="flex_container tweet chats" data-id=' + chat.chat.id + ' data-pair_id=' + chat.chat.pair_id + '>' + '<div class="tweet_img">' + '<img src="' + chat.img_url + '" alt="Data uri" class="timeline_user_img">' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + chat.user_name + '</div>' + chat.chat.text + '<div class="flex_container tweet_data">' + '<div class="tweet_at">' + chat.post_at + '</div>' + '</div>' + '</div>' + '</div>')
     return
 
-  send_mail = (chat) ->
-    $.ajax
-      url: '/chats/send_mail'
-      type: 'POST'
-      dataType: 'json'
-      data:
-        'user_id': chat.chat.user_id
-        'pair_id': chat.chat.pair_id
-    return
-
   update = ->
     `var chat_id`
     if $('.chats')[0]
@@ -87,8 +77,6 @@ onPageLoad 'users#check', ->
         #'data'を'data'に代入してeachで回す
         buildChat data
         #buildChatを呼び出す
-        send_mail data
-        # メール送信処理
         return
       return
     return
