@@ -37,6 +37,10 @@ set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/ca
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
+# set whenever command
+require "whenever/capistrano"
+set :whenever_command, "bundle exec whenever --update-crontab"
+
 namespace :deploy do
 
   desc 'rails db migrate reset & db seed'
