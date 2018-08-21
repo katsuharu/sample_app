@@ -2,6 +2,8 @@ class ChatsController < ApplicationController
   def btn_create
     @chats = Chat.where(pair_id: chat_params[:pair_id]).where(lunch_date: Date.today).order('created_at DESC')
     @chat = Chat.new(text: chat_params[:text], user_id: current_user.id, pair_id: chat_params[:pair_id], lunch_date: Date.today)
+
+    # 画面に投稿を表示
     respond_to do |format|
       if @chat.save
         format.html
@@ -10,6 +12,8 @@ class ChatsController < ApplicationController
         format.js {render :index}
       end
     end
+    # 投稿者以外のマッチングメンバーにメールを送信
+    User.chat_notify(current_user.id, chat_params[:pair_id])
   end
 
   def create
