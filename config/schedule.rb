@@ -15,3 +15,8 @@ end
 every :weekday, at: '11:30 am' do
     command "echo 'Batch exactly works well!!'"
 end
+
+
+every 1.minute do
+  rake 'test:test'
+end
