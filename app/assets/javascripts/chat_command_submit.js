@@ -1,7 +1,7 @@
 $(document).ready(function (){
 	function buildChat(chat) {
 	  // 投稿者の写真が登録されていない場合
-	  if (chat.img_url == null) {
+	  if (chat.chat.img_url == null) {
 	    var chat = $('.timeline-shows').prepend(
 	      '<div class="flex_container tweet chats" data-id=' + chat.chat.chat.id + ' data-pair_id=' + chat.chat.chat.pair_id + '>'
 	      + '<div class="tweet_img">'
@@ -48,8 +48,8 @@ $(document).ready(function (){
 	      type: 'POST',
 	      dataType: 'json',
 	      data:{
-	        'user_id': chat.chat.user_id,
-	        'pair_id': chat.chat.pair_id,
+	        'user_id': chat.chat.chat.user_id,
+	        'pair_id': chat.chat.chat.pair_id,
 	      },
 	  })
 	}
