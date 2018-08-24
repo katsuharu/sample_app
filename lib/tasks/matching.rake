@@ -53,9 +53,6 @@ namespace :matching do
 
         # 3で割った余りの数で場合分け
         case remainder
-        # 余りが0の場合
-        when 0
-          # 何も実行せず
         # 余りが1の場合
         when 1
           # pair_idの値が最大のペアに1人足して4人のペアを作る
