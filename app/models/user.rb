@@ -94,12 +94,14 @@ class User < ApplicationRecord
 
   #マッチングが成功したことを知らせるメールを送信
   def send_success_email
-    UserMailer.matching_success(self).deliver_now!
+    p "マッチング成功メール送信"
+    p UserMailer.matching_success(self).deliver_now!
   end
 
   #マッチング失敗したことを知らせるメールを送信
   def send_fail_email
-    UserMailer.matching_fail(self).deliver_now!
+    p "マッチング不成立メール送信！！！"
+    p UserMailer.matching_fail(self).deliver_now!
   end
 
   # マッチングメンバーがチャットを投稿したことを通知するメールを送信
