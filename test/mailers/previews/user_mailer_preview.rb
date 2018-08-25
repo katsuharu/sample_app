@@ -32,4 +32,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.contact_contents(params)
   end
 
+  def chat_notification
+    user = User.first
+    user.activation_token = User.new_token
+    UserMailer.chat_notification(user)
+  end
+
 end
