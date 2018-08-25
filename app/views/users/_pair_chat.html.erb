@@ -7,7 +7,7 @@
 </div>
 
 
-<div class="timeline-shows">
+<div class="timeline-shows" data-pair_id=<%= @pair_id %>>
   <%= render partial: 'chats/chat', collection: @chats %>
 </div>
 <%= paginate @chats, remote: true %>

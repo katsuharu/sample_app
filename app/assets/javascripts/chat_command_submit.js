@@ -3,7 +3,7 @@ $(document).ready(function (){
     // 投稿者の写真が登録されていない場合
     if (chat.chat.img_url == null) {
       var chat = $('.timeline-shows').prepend(
-        '<div class="flex_container tweet chats" data-id=' + chat.chat.chat.id + ' data-pair_id=' + chat.chat.chat.pair_id + '>'
+        '<div class="flex_container tweet chats" data-id=' + chat.chat.chat.id + '>'
         + '<div class="tweet_img">'
         + '<div class="img_empty"></div>'
         + '</div>'
@@ -22,7 +22,7 @@ $(document).ready(function (){
       )
     } else {
       var chat = $('.timeline-shows').prepend(
-        '<div class="flex_container tweet chats" data-id=' + chat.chat.chat.id + ' data-pair_id=' + chat.chat.chat.pair_id + '>'
+        '<div class="flex_container tweet chats" data-id=' + chat.chat.chat.id + '>'
         + '<div class="tweet_img">'
         + '<img src="' + chat.chat.img_url + '" alt="Data uri" class="timeline_user_img">'
         + '</div>'
