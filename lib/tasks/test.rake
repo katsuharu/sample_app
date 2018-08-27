@@ -12,7 +12,7 @@ namespace :test do
       # マッチング成功メールを送信
       UserMailer.matching_success(user)
       # マッチング失敗メールを送信
-      UserMailer.matching_fail(self).deliver_now!
+      UserMailer.matching_fail(user).deliver_now!
       p "Chat notification!!"
     else
       # 投稿通知用のメール送信に失敗
