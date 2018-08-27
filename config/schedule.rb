@@ -8,11 +8,11 @@ set :environment, ENV['RAILS_ENV']
 
 # 平日の12時30分にスケジューリング
 every :weekday, at: '12:30 pm' do
-    rake 'matching:matching'
+  rake 'matching:matching'
 end
 
 # 平日の11時30にバッチが起動していることをログに出力する
 every :weekday, at: '10:30 am' do
-    command "echo 'Batch exactly works well!!'"
-    rake 'test:test'
+  command "echo 'Batch exactly works well!!'"
+  rake 'test:test'
 end
