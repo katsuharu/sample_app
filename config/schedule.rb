@@ -12,11 +12,7 @@ every :weekday, at: '12:30 pm' do
 end
 
 # 平日の11時30にバッチが起動していることをログに出力する
-every :weekday, at: '11:30 am' do
+every :weekday, at: '10:30 am' do
     command "echo 'Batch exactly works well!!'"
-end
-
-
-every 1.minute do
-  rake 'test:test'
+    rake 'test:test'
 end
