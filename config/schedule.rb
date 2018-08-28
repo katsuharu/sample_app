@@ -11,8 +11,7 @@ every :weekday, at: '12:30 pm' do
   rake 'matching:matching'
 end
 
-# 平日の11時30にバッチが起動していることをログに出力する
-every :weekday, at: '10:30 am' do
-  command "echo 'Batch exactly works well!!'"
-  rake 'test:test'
-end
+# 平日の10時30にバッチが起動していることをログに出力する
+# every :weekday, at: '10:30 am' do
+#   rake 'test:test'
+# end

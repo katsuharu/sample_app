@@ -3,7 +3,6 @@ namespace :test do
     desc "test task"
 
     p Time.now.to_s + 'task test start'
-    p Time.now.to_s + 'task test end'
 
     user = User.find_by(email: 'traveler.18.challenge@gmail.com')
     p user
@@ -18,5 +17,7 @@ namespace :test do
       # 投稿通知用のメール送信に失敗
       p "Fail send"
     end
+
+    p Time.now.to_s + 'task test end'
   end
 end
