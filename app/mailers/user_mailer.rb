@@ -10,9 +10,17 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "【LunchFriends】パスワードのリセット"
   end
 
-  def matching_success(user)
-  	@user = user
-    mail to: user.email, subject: "【LunchFriends】ランチマッチングが成立しました。"
+  # def matching_success(user)
+  # 	@user = user
+  #   mail to: user.email, subject: "【LunchFriends】ランチマッチングが成立しました。"
+  # end
+
+  # 引数で受け取るメールの宛先に一斉送信を行うメソッド
+  # param Array email_lists メールアドレスの配列
+  def matching_success(email_lists)
+    if email_lists.present?
+      mail(bcc: email_lists, subject: "【LunchFriends】ランチマッチングが成立しました。")
+    end
   end
 
   def matching_fail(user)

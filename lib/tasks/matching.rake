@@ -88,20 +88,28 @@ namespace :matching do
     end
 
     def success_mail(lunches)
-      lunches.each do |lunch|
-        user = User.where(deleted_at: nil).find_by(id: lunch.user_id)
-        if user.present?
-          begin
-            # メール送信
-            user.send_success_email
-            # sent_atカラムを更新
-            lunch.update_attribute(:sent_at, DateTime.now)
-          rescue => e
-            # 例外のクラス名、エラーメッセージ、バックトレースをターミナルに出力
-            puts "#{e.class}:#{e.message}"
-            puts e.backtrace
-          end
-        end
-      end
+      # lunch参加ユーザーのidの配列を取得
+      user_ids = lunches.pluck(:user_id)
+      # 参加ユーザーのメアドの配列を取得
+      email_lists = User.where(id: user_ids).pluck(:email).count
+      # ランチ参加者にマッチング成功メールを一斉送信
+      UserMailer.matching_success(email_lists).deliver_now!
+      
+
+      # lunches.each do |lunch|
+      #   user = User.where(deleted_at: nil).find_by(id: lunch.user_id)
+      #   if user.present?
+      #     begin
+      #       # メール送信
+      #       user.send_success_email
+      #       # sent_atカラムを更新
+      #       lunch.update_attribute(:sent_at, DateTime.now)
+      #     rescue => e
+      #       # 例外のクラス名、エラーメッセージ、バックトレースをターミナルに出力
+      #       puts "#{e.class}:#{e.message}"
+      #       puts e.backtrace
+      #     end
+      #   end
+      # end
     end
 end
