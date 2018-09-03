@@ -92,16 +92,6 @@ class User < ApplicationRecord
     reset_sent_at <= 24.hours.ago
   end
 
-  #マッチングが成功したことを知らせるメールを送信
-  def send_success_email
-    UserMailer.matching_success(self).deliver_now!
-  end
-
-  #マッチング失敗したことを知らせるメールを送信
-  def send_fail_email
-    UserMailer.matching_fail(self).deliver_now!
-  end
-
   # マッチングメンバーがチャットを投稿したことを通知するメールを送信
   def chat_notification_email
     UserMailer.chat_notification(self).deliver_now!
