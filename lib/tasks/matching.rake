@@ -88,13 +88,13 @@ namespace :matching do
     end
 
     def success_mail(lunches)
-      # lunch参加ユーザーのidの配列を取得
-      user_ids = lunches.pluck(:user_id)
       # 参加ユーザーのメアドの配列を取得
-      email_lists = User.where(id: user_ids).pluck(:email).count
-      # ランチ参加者にマッチング成功メールを一斉送信
-      UserMailer.matching_success(email_lists).deliver_now!
-      
+      email_lists = User.where(id: lunches.pluck(:user_id)).pluck(:email)
+      # 配列に要素が存在する場合
+      while email_lists.present?
+        # 配列から先頭100件をとり出してメール送信を実行
+        Lunch.send_success_email(email_lists.slice!(0..99))
+      end
 
       # lunches.each do |lunch|
       #   user = User.where(deleted_at: nil).find_by(id: lunch.user_id)
