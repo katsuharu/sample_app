@@ -70,21 +70,14 @@ namespace :matching do
     end
 
     def fail_mail(lunches)
-      lunches.each do |lunch|
-        user = User.where(deleted_at: nil).find_by(id: lunch.user_id)
-        if user.present?
-          begin
-            # メール送信
-            user.send_fail_email
-            # sent_atカラムを更新
-            lunch.update_attribute(:sent_at, DateTime.now)
-          rescue => e
-            # 例外のクラス名、エラーメッセージ、バックトレースをターミナルに出力
-            puts "#{e.class}:#{e.message}"
-            puts e.backtrace
-          end
-        end
+      # 参加ユーザーのメアドの配列を取得
+      email_lists = User.where(id: lunches.pluck(:user_id)).pluck(:email)
+      # 配列に要素が存在する場合
+      while email_lists.present?
+        # 配列から先頭100件をとり出してメール送信を実行
+        Lunch.send_fail_email(email_lists.slice!(0..99))
       end
+      lunches.update_all(sent_at: DateTime.now)
     end
 
     def success_mail(lunches)
@@ -95,21 +88,6 @@ namespace :matching do
         # 配列から先頭100件をとり出してメール送信を実行
         Lunch.send_success_email(email_lists.slice!(0..99))
       end
-
-      # lunches.each do |lunch|
-      #   user = User.where(deleted_at: nil).find_by(id: lunch.user_id)
-      #   if user.present?
-      #     begin
-      #       # メール送信
-      #       user.send_success_email
-      #       # sent_atカラムを更新
-      #       lunch.update_attribute(:sent_at, DateTime.now)
-      #     rescue => e
-      #       # 例外のクラス名、エラーメッセージ、バックトレースをターミナルに出力
-      #       puts "#{e.class}:#{e.message}"
-      #       puts e.backtrace
-      #     end
-      #   end
-      # end
+      lunches.update_all(sent_at: DateTime.now)
     end
 end
