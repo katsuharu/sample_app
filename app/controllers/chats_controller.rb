@@ -21,21 +21,25 @@ class ChatsController < ApplicationController
       }
   end
 
-
+  # param String pair_id ペアID(ajaxで送信)
+  # param String user_id 投稿者のユーザーID(ajaxで送信)
   def send_mail
-    # 投稿者以外の本日付のマッチング相手のuser_idの配列を取得
-    # where.not(sent_at: nil):マッチング結果メールが送信済み
-    # param String pair_id ペアID(ajaxで送信)
-    # param String user_id 投稿者のユーザーID(ajaxで送信)
+    # 投稿者以外のマッチング相手のuser_idを配列で取得
     user_ids = Lunch.where(pair_id: params[:pair_id]).where(lunch_date: Date.today) \
-    .where.not(sent_at: nil).where.not(user_id: params[:user_id]).pluck(:user_id)
-    # マッチングメンバーの数だけ繰り返し処理を実行
-    user_ids.each do |id|
-      # idからユーザーを取得
-      user = User.find(id)
-      # ユーザーに投稿通知用のメールを送信
-      user.chat_notification_email
-    end
+    .where.not(sent_at: nil).where.not(user_id: params[:user_id]).pluck(:user_id) # where.not(sent_at: nil):マッチング結果メールが送信済み
+
+    # ユーザーのメアドの配列を取得
+    email_lists = User.where(id: user_ids).pluck(:email)
+    # メンバーに投稿通知用のメールを送信
+    User.chat_notification_email(email_lists)
+
+    # # マッチングメンバーの数だけ繰り返し処理を実行
+    # user_ids.each do |id|
+    #   # idからユーザーを取得
+    #   user = User.find(id)
+    #   # ユーザーに投稿通知用のメールを送信
+    #   user.chat_notification_email
+    # end
   end
 
   private
