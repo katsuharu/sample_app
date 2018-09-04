@@ -7,7 +7,7 @@ class ChatsController < ApplicationController
     # 時刻の表示を整形
     # モデルの作成から1日以上経過している場合
     if Time.now - @chat.created_at >= 86400
-      post_at = posted_at.strftime("%Y年 %m月 %d日")
+      post_at = @chat.created_at.strftime("%Y年 %m月 %d日")
     else
       post_at = time_ago_in_words(@chat.created_at) + "前"
     end
