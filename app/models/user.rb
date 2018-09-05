@@ -72,7 +72,7 @@ class User < ApplicationRecord
 
   # 有効化用のメールを送信する
   def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+    UserMailer.account_activation(self).deliver_later
   end
 
   # パスワード再設定の属性を設定する
@@ -84,7 +84,7 @@ class User < ApplicationRecord
 
   # パスワード再設定のメールを送信する
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self).deliver_later
   end
 
   # パスワード再設定の期限が切れている場合はtrueを返す
