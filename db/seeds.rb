@@ -41,5 +41,5 @@ CSV.foreach('db/make_pair_lunches.csv') do |info|
 end
 
 CSV.foreach('db/all_pair_one_chat.csv') do |info|
-  Chat.create(text: 'a' ,user_id: info[0], pair_id: info[1], lunch_date: Date.today, sent_at: DateTime.now)
+  Chat.create(text: 'a' ,user_id: info[0], pair_id: info[1], lunch_date: Date.today)
 end
