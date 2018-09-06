@@ -33,11 +33,14 @@ namespace :chat_notification_mail do
     # マッチングメンバーのユーザーIDからメールアドレスの配列を重複なしで取得
     email_lists = User.where(id: member_ids).pluck(:email).uniq
     p email_lists
-    # メアドの配列を使ってユーザーに投稿通知メールを一斉送信
-    if User.chat_notification_email(email_lists)
-      # レコードのsent_atカラムを現在時刻の値で更新
-      chats.update_all(sent_at: DateTime.now)
+
+    while email_lists.present?
+      # 500件の宛先に一斉送信
+      p User.chat_notification_email(email_lists.slice!(0..499))
     end
+    # レコードのsent_atカラムを現在時刻の値で更新
+    chats.update_all(sent_at: DateTime.now)
+
     p Time.now.to_s + 'chat_notification_mail end'
   end
 
