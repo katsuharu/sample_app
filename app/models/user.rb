@@ -95,7 +95,7 @@ class User < ApplicationRecord
   # マッチングメンバーがチャットを投稿したことを通知するメールを送信
   def self.chat_notification_email(email_lists)
     # メール一斉位送信
-    UserMailer.chat_notification(email_lists).deliver_later
+    UserMailer.chat_notification(email_lists).deliver_now
   end
 
   def set_profile_img_from_data_uri
