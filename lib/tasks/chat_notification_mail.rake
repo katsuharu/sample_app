@@ -4,7 +4,7 @@ namespace :chat_notification_mail do
     p Time.now.to_s + 'chat_notification_mail start'
     
     # chatsテーブルから投稿通知メール未返信のレコードを取得
-    chats = Chat.where(sent_at: nil).where(lunch_date: Date.today).limit(200)
+    chats = Chat.where(sent_at: nil).where(lunch_date: Date.today).limit(100)
     p chats
     # 取得件数が0の場合は処理を終了する
     if chats.count == 0
@@ -33,10 +33,12 @@ namespace :chat_notification_mail do
     # マッチングメンバーのユーザーIDからメールアドレスの配列を重複なしで取得
     email_lists = User.where(id: member_ids).pluck(:email).uniq
     p email_lists
+    p "email counts #{email_lists.count}"
 
     while email_lists.present?
-      # 500件の宛先に一斉送信
-      p User.chat_notification_email(email_lists.slice!(0..499))
+      # 300件の宛先に一斉送信
+      p User.chat_notification_email(email_lists.slice!(0..299))
+      p "Show minus email lists #{email_lists.count}"
     end
     # レコードのsent_atカラムを現在時刻の値で更新
     chats.update_all(sent_at: DateTime.now)
