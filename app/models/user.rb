@@ -92,11 +92,6 @@ class User < ApplicationRecord
     reset_sent_at <= 24.hours.ago
   end
 
-  # # マッチングメンバーがチャットを投稿したことを通知するメールを送信
-  # def chat_notification_email
-  #   UserMailer.chat_notification(self).deliver_now!
-  # end
-
   # マッチングメンバーがチャットを投稿したことを通知するメールを送信
   def self.chat_notification_email(email_lists)
     # メール一斉位送信

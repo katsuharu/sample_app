@@ -34,11 +34,6 @@ class UserMailer < ApplicationMailer
     end
   end
 
-  # def chat_notification(user)
-  #   @user = user
-  #   mail to: user.email, subject: "【LunchFriends/新着メッセージ】マッチング相手からメッセージが届きました！"
-  # end
-
   def contact_contents(params)
     @contents = params
     mail to: 'lunchcommunication@gmail.com', subject: "【Lunch Friends】お問い合わせ"
