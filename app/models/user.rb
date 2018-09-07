@@ -72,7 +72,7 @@ class User < ApplicationRecord
 
   # 有効化用のメールを送信する
   def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+    UserMailer.account_activation(self).deliver_later
   end
 
   # パスワード再設定の属性を設定する
@@ -84,7 +84,7 @@ class User < ApplicationRecord
 
   # パスワード再設定のメールを送信する
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self).deliver_later
   end
 
   # パスワード再設定の期限が切れている場合はtrueを返す
@@ -93,8 +93,9 @@ class User < ApplicationRecord
   end
 
   # マッチングメンバーがチャットを投稿したことを通知するメールを送信
-  def chat_notification_email
-    UserMailer.chat_notification(self).deliver_now!
+  def self.chat_notification_email(email_lists)
+    # メール一斉位送信
+    UserMailer.chat_notification(email_lists).deliver_now
   end
 
   def set_profile_img_from_data_uri

@@ -42,18 +42,6 @@ $(document).ready(function (){
     }
   }
 
-  function send_mail(chat) {
-    $.ajax({
-        url: '/chats/send_mail',
-        type: 'POST',
-        dataType: 'json',
-        data:{
-          'user_id': chat.chat.chat.user_id,
-          'pair_id': chat.chat.chat.pair_id,
-        },
-    })
-  }
-
   $(document).on('keydown', '#chat_text', function(e){
     if(e.metaKey && e.keyCode === 13){
       if((text = $('#chat_text').val()) != ''){
@@ -71,8 +59,6 @@ $(document).ready(function (){
           $('textarea[name="chat[text]"]').val('')
           // 投稿内容を画面に動的表示
           buildChat(data)
-          // マッチングメンバーにメール送信
-          send_mail(data)
         }).fail(function(data) {
         })
       }
@@ -95,8 +81,6 @@ $(document).ready(function (){
       $('textarea[name="chat[text]"]').val('')
       // 投稿内容を画面に動的表示
       buildChat(data)
-      // マッチングメンバーにメール送信
-      send_mail(data)
     }).fail(function(data) {
     })
   })

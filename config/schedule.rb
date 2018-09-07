@@ -11,6 +11,10 @@ every :weekday, at: '12:30 pm' do
   rake 'matching:matching'
 end
 
+every 1.minutes do
+  rake 'chat_notification_mail:chat_notification_mail'
+end
+
 # 平日の10時30にバッチが起動していることをログに出力する
 # every :weekday, at: '10:30 am' do
 #   rake 'test:test'

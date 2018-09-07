@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180802125327) do
+ActiveRecord::Schema.define(version: 20180906020148) do
 
   create_table "authorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "provider"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180802125327) do
     t.integer  "lock_version",               default: 0, null: false, comment: "ロックバージョン"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.datetime "sent_at",                                             comment: "投稿通知メール送信時刻"
   end
 
   create_table "first_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

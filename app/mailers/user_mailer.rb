@@ -26,9 +26,12 @@ class UserMailer < ApplicationMailer
     end
   end
 
-  def chat_notification(user)
-    @user = user
-    mail to: user.email, subject: "【LunchFriends/新着メッセージ】マッチング相手からメッセージが届きました！"
+  # 引数で受け取るメールの宛先に一斉送信を行うメソッド
+  # param Array email_lists メールアドレスの配列
+  def chat_notification(email_lists)
+    if email_lists.present?
+      mail(bcc: email_lists, subject: "【LunchFriends/新着メッセージ】マッチング相手からメッセージが届きました！")
+    end
   end
 
   def contact_contents(params)
