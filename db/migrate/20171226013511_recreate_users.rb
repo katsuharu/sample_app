@@ -5,8 +5,6 @@ class RecreateUsers < ActiveRecord::Migration[5.0]
   	  t.string :email
   	  t.string :department_name
   	  t.string :slack_id
-  	  t.integer :category_id
-  	  t.integer :pair_id
   	  t.string   :password_digest
   	  t.string   :remember_digest
   	  t.string   :activation_digest
