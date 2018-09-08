@@ -3,8 +3,8 @@ namespace :chat_notification_mail do
     desc "send chat notification mail"
     p Time.now.to_s + 'chat_notification_mail start'
     
-    # chatsテーブルから投稿通知メール未返信のレコードを取得
-    chats = Chat.where(sent_at: nil).where(lunch_date: Date.today).limit(167)
+    # chatsテーブルから投稿通知メール未返信のレコードを最大で100件取得
+    chats = Chat.where(sent_at: nil).where(lunch_date: Date.today).limit(100)
     # 取得件数が0の場合は処理を終了する
     if chats.count == 0
       p Time.now.to_s + 'chat_notification_mail count 0 end'
