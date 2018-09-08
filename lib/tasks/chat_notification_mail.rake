@@ -13,20 +13,19 @@ namespace :chat_notification_mail do
 
     # user_idとpair_idの配列を要素とする配列を重複なく取得する
     chat_user_datas = chats.pluck(:user_id, :pair_id).uniq
-    # ユーザーID用の配列を定義
-    member_ids = []
+    # メール送信宛先のユーザーIDの配列を定義
+    send_user_ids = []
     chat_user_datas.each do |data|
-      # 投稿者以外のマッチングメンバーのユーザーIDの配列を取得
-      ids = Lunch.where(pair_id: data[1]).where(lunch_date: Date.today) \
-      .where.not(user_id: data[0]).pluck(:user_id)
-      # 投稿者以外のマッチングメンバーのuser_idをmember_ids配列に追加する
-      ids.each do |id|
-        member_ids.push(id)
+      # 各マッチングペアの投稿者以外のユーザーIDの配列を取得
+      pair_recieve_message_user_ids = getPairRecieveMessageUserIds(data[0], data[1])
+      # 投稿者以外のマッチングメンバーのuser_idをsend_user_ids配列に追加
+      pair_recieve_message_user_ids.each do |id|
+        send_user_ids.push(id)
       end
     end
 
     # マッチングメンバーのユーザーIDからメールアドレスの配列を重複なしで取得
-    email_lists = User.where(id: member_ids).pluck(:email).uniq
+    email_lists = User.where(id: send_user_ids).pluck(:email).uniq
     p "email counts #{email_lists.count}"
 
     while email_lists.present?
@@ -39,5 +38,15 @@ namespace :chat_notification_mail do
 
     p Time.now.to_s + 'chat_notification_mail end'
   end
+
+  private
+
+    # 投稿者以外のマッチングメンバーのユーザーIDの配列を取得する関数
+    # param Integer user_id ユーザーID
+    # param Integer pair_id ペアID
+    def getPairRecieveMessageUserIds(user_id, pair_id)
+      Lunch.where(pair_id: pair_id).where(lunch_date: Date.today) \
+      .where.not(user_id: user_id).pluck(:user_id)
+    end
 
 end
