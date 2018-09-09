@@ -71,38 +71,38 @@ $(document).on('turbolinks:load', function() {
     ALREADY = false
   })
 
-  /* 第2層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
-  var $seconds = $('.second_categories [data-second]'),
-  $second_parents = $('.third_categories [data-second-id]')
-  $seconds.on('click', function(e) {
-    e.preventDefault()
-    var $this = $(this)
-    $seconds.removeClass('active');
-    $this.addClass('active');
-    var $secondChild = $this.attr('data-second')
-    $second_parents.removeClass('is-animated')
-      .fadeOut().promise().done(function() {
-        if($second_parents.filter('[data-second-id = "' + $secondChild + '"]').length) {
-          $second_parents.filter('[data-second-id = "' + $secondChild + '"]')
-            .addClass('is-animated').fadeIn()
-        }else {   //「Add Hobby」に表示して、趣味登録の候補に追加する
-          $('.my_hobbies input').each(function() {
-            if($(this).val() == $this.text()) {
-              ALREADY = true
-              return false
-            }
-          })
-          if(!ALREADY) {
-            $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
-            $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
-          }
-          ALREADY = false
-        }
-      })
-    // 第4カテゴリーを非表示に
-    hide_lower_layers('second')
-  })
-  //
+  // /* 第2層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
+  // var $seconds = $('.second_categories [data-second]'),
+  // $second_parents = $('.third_categories [data-second-id]')
+  // $seconds.on('click', function(e) {
+  //   e.preventDefault()
+  //   var $this = $(this)
+  //   $seconds.removeClass('active');
+  //   $this.addClass('active');
+  //   var $secondChild = $this.attr('data-second')
+  //   $second_parents.removeClass('is-animated')
+  //     .fadeOut().promise().done(function() {
+  //       if($second_parents.filter('[data-second-id = "' + $secondChild + '"]').length) {
+  //         $second_parents.filter('[data-second-id = "' + $secondChild + '"]')
+  //           .addClass('is-animated').fadeIn()
+  //       }else {   //「Add Hobby」に表示して、趣味登録の候補に追加する
+  //         $('.my_hobbies input').each(function() {
+  //           if($(this).val() == $this.text()) {
+  //             ALREADY = true
+  //             return false
+  //           }
+  //         })
+  //         if(!ALREADY) {
+  //           $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
+  //           $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
+  //         }
+  //         ALREADY = false
+  //       }
+  //     })
+  //   // 第4カテゴリーを非表示に
+  //   hide_lower_layers('second')
+  // })
+  // //
 
   /* 第3層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
   var $thirds = $('.third_categories [data-third]'),
