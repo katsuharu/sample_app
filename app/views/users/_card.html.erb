@@ -1,41 +1,43 @@
-<!-- 12:30以前の場合 -->
 <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
+<!-- 12:30以前の場合 -->
   <!-- 未エントリーの場合  -->
   <% if @my_lunch.nil? %>
+    <!-- リンク先をentry APIにセット -->
     <a href="/entry?category_id=<%= card[:category_id] %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
-  <!-- エントリー中の場合 -->
-  <% elsif @my_lunch.present? %>
-    <!-- マッチング済みの場合 -->
-    <% if matched? %>
-      <!-- 対象のランチカードにエントリー中の場合 -->
-      <% if @my_lunch.category_id == card[:category_id] %>
-        <a href="#" class="lunch_card my_entry_card link_disabled" style="text-decoration: none;">
-      <% else %>
-        <a href="#" class="lunch_card link_disabled" style="text-decoration: none;">
-      <% end %>
-    <!-- 未マッチングの場合 -->
+  <!-- エントリー中の場合、リンク先をcancel APIにセット -->
+  <% else %>
+    <!-- 対象のランチカードにエントリー中の場合 -->
+    <% if @my_lunch.category_id == card[:category_id] %>
+      <!-- 左上に表示してカードの色を有効色に変更 -->
+      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
     <% else %>
-      <!-- 対象のランチカードにエントリー中の場合 -->
-      <% if @my_lunch.category_id == card[:category_id] %>
-        <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
-      <% else %>
-        <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card" style="text-decoration: none;">
-      <% end %>
+      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card" style="text-decoration: none;">
     <% end %>
   <% end %>
-<!-- 12:30以降の場合 -->
 <% else %>
-  <a href="#" class="lunch_card link_disabled">
+<!-- 12:30以降の場合 -->
+  <!-- 明日のランチに未エントリーの場合  -->
+  <% if @my_lunch.nil? %>
+    <!-- リンク先をentry APIにセット -->
+    <a href="/entry?category_id=<%= card[:category_id] %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
+  <!-- 明日のランチにエントリー済みの場合 -->
+  <% else %>
+    <!-- 対象のランチカードにエントリー中の場合 -->
+    <% if @my_lunch.category_id == card[:category_id] %>
+      <!-- 左上に表示してカードの色を有効色に変更 -->
+      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
+    <% else %>
+      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card" style="text-decoration: none;">
+    <% end %>
+  <% end %>
 <% end %>
+  
   <article>
     <div class="lunch_card_category"><%= card[:category_name] %></div>
+      <!-- 12:30以前の場合 -->
       <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
-        <!-- 12:30以前の場合 -->
-        <% if matched? %>
-        <!-- マッチング済みの場合 -->
-          <p class="lunch_state">また明日エントリーをお待ちしております！</p>
-        <% elsif entried? %>
-        <!-- エントリー済みでマッチングしてない場合 -->
+        <!-- エントリー済みの場合 -->
+        <% if entried? %>
           <p class="lunch_state">クリックで現在のエントリーをキャンセルします >_<。</p>
         <!-- 未エントリーの場合 -->
         <% else %>
@@ -43,7 +45,7 @@
         <% end %>
       <% else %>
         <!-- 12:30以降の場合 -->
-        <p class="lunch_state">また明日エントリーをお待ちしております！</p>
+        <p class="lunch_state">クリックで明日のランチにエントリーできます！</p>
       <% end %>
       <!-- スライドショー -->
       <div id="slider_wrap">
