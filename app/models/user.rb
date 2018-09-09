@@ -7,7 +7,8 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest
   after_validation :set_profile_img_from_data_uri
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_EMAIL_REGEX =   /\A[\w+\-.]+@(dmm.com|kcgrp.jp)/
   has_secure_password
   mount_uploader :profile_img, PictureUploader
   
