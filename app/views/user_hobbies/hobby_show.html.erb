@@ -1,6 +1,6 @@
-<% provide(:title, "趣味を編集") %>
+<% provide(:title, "カテゴリーを編集") %>
 
-<h1 class="basic-heading">趣味を編集</h1>
+<h1 class="basic-heading">カテゴリーを編集</h1>
 
 <h3>My Hobby</h3>
 <%= form_tag("/user_hobbies/del_hobby", method: "post", data: { confirm: '削除してよろしいでしょうか？' }, class: "col-sm-9") do %>
@@ -21,6 +21,8 @@
 <ul id="search_result" class="category_search">
 </ul>
 
+<p>下記のボタンから、興味のあるカテゴリーを選択してください。</p>
+
 <div class="first_categories">
   <% @first_categories.each do |first| %>
     <div class="" data-first="<%= first[0] %>"><%= first[1] %></div>
@@ -35,7 +37,7 @@
 
 <hr>
 
-<h3>新たに登録する趣味一覧</h3>
+<h3>新たに登録するカテゴリー一覧</h3>
 <%= form_tag({ controller: :user_hobbies, action: :hobby_save}, class: 'form-horizontal') do %>
   <div class="hobby_list">
     <div id="my_hobby" class="my_hobbies">
