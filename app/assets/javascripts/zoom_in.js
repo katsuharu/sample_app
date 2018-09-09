@@ -44,6 +44,33 @@ $(document).on('turbolinks:load', function() {
   })
   //
 
+  /* 第2層のカテゴリーを選択した時、登録一覧に追加 */
+  var $seconds = $('.second_categories [data-second]')
+  $seconds.on('click', function(e) {
+    e.preventDefault()
+    var $this = $(this)
+    // 選択した第二カテゴリーの要素のdata-second属性の値を取得
+    var data_second = $this.data('second')
+    // 選択したカテゴリーの要素にクラスセレクタを追加
+    $this.addClass('lunch_selected')
+    // 登録趣味一覧の趣味の数分繰り返す
+    $('.my_hobbies input').each(function() {
+      // 選択した要素が選択一覧に既に存在する場合
+      if($(this).val() == $this.text()) {
+        // ALREADYフラグをtrueにセット
+        ALREADY = true
+        return false
+      }
+    })
+    // 選択したカテゴリーが登録一覧に追加されていない場合
+    if(!ALREADY) {
+      // 登録趣味一覧にラベルと削除タグをそれぞれ追加
+      $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
+      $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" data-second="' + data_second + '" value="' + $this.text()+ '" readonly>')
+    }
+    ALREADY = false
+  })
+
   /* 第2層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
   var $seconds = $('.second_categories [data-second]'),
   $second_parents = $('.third_categories [data-second-id]')
