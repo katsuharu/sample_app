@@ -196,32 +196,64 @@ class UsersController < ApplicationController
   end
 
   def entry
-    #エントリー確認画面でユーザープロフィールを表示するためにインスタンス変数に代入
+    # エントリー確認画面でユーザープロフィールを表示するためにインスタンス変数に代入
     @user = current_user
-    # 今日の日付でユーザーがエントリー状態でない場合
-    if Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil).nil?
-      # viewからカテゴリーIDが取得できている場合
-      if category_id = params[:category_id]
-        Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.today)
-        flash[:success] = "エントリーしました。"
-      else
-        flash[:danger] = "エントリーできませんでした。"
+    # アクセス時時刻を取得する
+    @time_now = DateTime.now
+    # 12:30以前の場合
+    if @time_now.strftime('%H:%M:%S') < "12:30:00"
+      # 今日の日付でユーザーがエントリー状態でない場合
+      if Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil).nil?
+        # viewからカテゴリーIDが取得できている場合
+        if category_id = params[:category_id]
+          Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.today)
+          flash[:success] = "エントリーしました。"
+        else
+          flash[:danger] = "エントリーできませんでした。"
+        end
+        redirect_to root_url
       end
-      redirect_to root_url
+    else
+      # 明日の日付でユーザーがエントリーしていない場合
+      if Lunch.where(user_id: current_user.id).where(lunch_date: Date.tomorrow).where.not(category_id: nil).find_by(canceled_at: nil).nil?
+        # viewからカテゴリーIDが取得できている場合
+        if category_id = params[:category_id]
+          Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.tomorrow)
+          flash[:success] = "エントリーしました。"
+        else
+          flash[:danger] = "エントリーできませんでした。"
+        end
+        redirect_to root_url
+      end
     end
   end
 
   def cancel
-    # エントリー中で未マッチングのユーザーが存在する場合
-    lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).
-      where.not(category_id: nil).where(canceled_at: nil).find_by(pair_id: nil)
-    if !lunch.nil?
-      if lunch.update_attribute(:canceled_at, DateTime.now)
-        flash[:success] = "キャンセルいたしました。"
-        redirect_to(root_url)
-      else
+    # アクセス時時刻を取得する
+    @time_now = DateTime.now
+    # 12:30以前の場合
+    if @time_now.strftime('%H:%M:%S') < "12:30:00"
+      # 本日のランチモデルを取得
+      lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).
+        where.not(category_id: nil).where(canceled_at: nil).find_by(pair_id: nil)
+      # 本日付のランチモデルが存在する場合
+      if lunch.present?
+        if lunch.update_attribute(:canceled_at, DateTime.now)
+          flash[:success] = "キャンセルいたしました。"
+          redirect_to(root_url)
+        end
       end
     else
+      # 明日付のランチモデルを取得
+      lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.tomorrow).
+        where.not(category_id: nil).where(canceled_at: nil).find_by(pair_id: nil)
+      # ランチモデルが存在する場合
+      if lunch.present?
+        if lunch.update_attribute(:canceled_at, DateTime.now)
+          flash[:success] = "キャンセルいたしました。"
+          redirect_to(root_url)
+        end
+      end
     end
   end
 
