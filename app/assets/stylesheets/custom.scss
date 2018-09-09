@@ -1,11 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@font-face {
+  font-family: 'Leafy';
+  font-style: normal;
+  src: url((asset-path('leafy.woff'))) format('woff');
+}
+
 /* mixins, variables, etc. */
 
 $navi-color: #FFCB00;
 $content-color: #0D0D0D;
-$header-font: 'Lobster', cursive;
+$main-font: 'Leafy';
 
 $top_padding_side: 0;
 $top_padding_top: 34px;
@@ -748,7 +754,7 @@ h1 {
 }
 
 h1.eigo-title {
-  font-family: $header-font;
+  font-family: $main-font;
   margin: 30px auto;
 }
 
@@ -787,7 +793,7 @@ p {
   color: $content-color;
   letter-spacing: -1px;
   font-weight: bold;
-  font-family: $header-font;
+  font-family: $main-font;
   &:hover {
     color: #F2F2F2;
     text-decoration: none;
@@ -1082,7 +1088,7 @@ input {
 
 /* ログイン前ページ */
 h1.bf-title {
-    font-family: "Lobster", cursive;
+    font-family: $main-font;
     font-size: 4.4em;
     margin: 30px auto;
 }
@@ -1113,7 +1119,7 @@ h2.bf-sub-title {
 
 /* ログインページ */
 h1.login-title {
-    font-family: "Lobster", cursive;
+    font-family: $main-font;
     font-size: 4.4em;
     margin: 60px auto;
 }
@@ -1263,7 +1269,7 @@ a.square_btn.bf-top {
 
 .comp-entry h1 {
   font-size: 2.3em;
-  font-family: $header-font;
+  font-family: $main-font;
 }
 
 .comp-entry h2 {
