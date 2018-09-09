@@ -110,56 +110,56 @@ $(document).on('turbolinks:load', function() {
   // })
   // //
 
-  /* 第3層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
-  var $thirds = $('.third_categories [data-third]'),
-    $third_parents = $('.forth_categories [data-third-id]')
-  $thirds.on('click', function(e) {
-    e.preventDefault()
-    var $this = $(this)
-    $thirds.removeClass('active')
-    $this.addClass('active')
+  // /* 第3層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
+  // var $thirds = $('.third_categories [data-third]'),
+  //   $third_parents = $('.forth_categories [data-third-id]')
+  // $thirds.on('click', function(e) {
+  //   e.preventDefault()
+  //   var $this = $(this)
+  //   $thirds.removeClass('active')
+  //   $this.addClass('active')
 
-    var $thirdChild = $this.attr('data-third')
+  //   var $thirdChild = $this.attr('data-third')
 
-    $third_parents.removeClass('is-animated')
-      .fadeOut().promise().done(function() {
-        if($third_parents.filter('[data-third-id = "' + $thirdChild + '"]').length) {
-          $third_parents.filter('[data-third-id = "' + $thirdChild + '"]')
-            .addClass('is-animated').fadeIn()
-        }else {
-          $('.my_hobbies input').each(function() {
-            if($(this).val() == $this.text()) {
-              ALREADY = true
-              return false
-            }
-          })
-          if(!ALREADY) {
-            $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
-            $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
-          }
-          ALREADY = false
-        }
-      })
-  })
-  //
+  //   $third_parents.removeClass('is-animated')
+  //     .fadeOut().promise().done(function() {
+  //       if($third_parents.filter('[data-third-id = "' + $thirdChild + '"]').length) {
+  //         $third_parents.filter('[data-third-id = "' + $thirdChild + '"]')
+  //           .addClass('is-animated').fadeIn()
+  //       }else {
+  //         $('.my_hobbies input').each(function() {
+  //           if($(this).val() == $this.text()) {
+  //             ALREADY = true
+  //             return false
+  //           }
+  //         })
+  //         if(!ALREADY) {
+  //           $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
+  //           $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
+  //         }
+  //         ALREADY = false
+  //       }
+  //     })
+  // })
+  // //
 
-  /* 第4層のカテゴリーを選択した時、候補に追加 */
-  var $forths = $('.forth_categories [data-forth]')
-  $forths.on('click', function(e) {
-    e.preventDefault()
-    var $this = $(this)
-    $('.my_hobbies input').each(function() {
-      if($(this).val() == $this.text()) {
-        ALREADY = true
-        return false
-      }
-    })
-    if(!ALREADY) {
-      $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
-      $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
-    }
-    ALREADY = false
-  })
+  // /* 第4層のカテゴリーを選択した時、候補に追加 */
+  // var $forths = $('.forth_categories [data-forth]')
+  // $forths.on('click', function(e) {
+  //   e.preventDefault()
+  //   var $this = $(this)
+  //   $('.my_hobbies input').each(function() {
+  //     if($(this).val() == $this.text()) {
+  //       ALREADY = true
+  //       return false
+  //     }
+  //   })
+  //   if(!ALREADY) {
+  //     $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
+  //     $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + $this.text()+ '" readonly>')
+  //   }
+  //   ALREADY = false
+  // })
 
   // params layer: String
   // 引数のカテゴリーの2下層下のカテゴリー以降を非表示にする
