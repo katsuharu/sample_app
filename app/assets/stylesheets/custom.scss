@@ -1476,6 +1476,15 @@ ul {
   margin-right: 30px;
 }
 
+/* 趣味登録ページでクリックした要素に追加されるセレクタ */
+.active {
+  background-color: #FFFF99;
+}
+
+.lunch_selected {
+  background-color: #C0C0C0;
+}
+
 .standby {
   display: none;
 }
@@ -1506,7 +1515,7 @@ ul {
   position: relative;
   margin-right: 20px;
   margin-bottom: 20px;
-  background: #FFFF99;
+  /*background: #FFFF99;*/
 }
 
 
@@ -1516,7 +1525,7 @@ ul {
   position: relative;
   margin-right: 20px;
   margin-bottom: 20px;
-  background:#A4C6FF;
+  /*background:#A4C6FF;*/
 }
 
 .third_categories div {
@@ -1525,7 +1534,7 @@ ul {
   position: relative;
   margin-right: 20px;
   margin-bottom: 20px;
-  background:#FFD5EC;
+  /*background:#FFD5EC;*/
 }
 
 .forth_categories div {
@@ -1534,7 +1543,7 @@ ul {
   position: relative;
   margin-right: 20px;
   margin-bottom: 20px;
-  background: #CBFFD3;
+  /*background: #CBFFD3;*/
 }
 
 .is-animated {
