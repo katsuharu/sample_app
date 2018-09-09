@@ -175,11 +175,16 @@ $(document).on('turbolinks:load', function() {
   //趣味登録ページで、my hobbyから趣味を削除するかどうかをcheckboxの値で判断
   $(document).on('click', '#hobby_delete label', function() {
     var index = $('#hobby_delete label').index(this)
+    // 選択した第二カテゴリーの要素のdata-second属性の値を取得
+    var data_second = $('#my_hobby input:eq(' + index+ ')').data('second')
+    // 削除したinput要素のvalueと同じ値を持つカテゴリーのclass'lunch_selected'を削除
+    $('[data-second="' + data_second + '"]').removeClass('lunch_selected')
     // カテゴリーlabeを削除
-    $('#my_hobby input:eq(' + index+ ')').remove();
+    $('#my_hobby input:eq(' + index+ ')').remove()
     // 削除ラベルを削除
-    $('#hobby_delete label:eq(' + index+ ')').remove();    
+    $('#hobby_delete label:eq(' + index+ ')').remove()
   })
+
   // 趣味登録ボタン押下時
   $(document).on('click', '#hobby_register', function() {
     // 趣味が一つも選択されていない場合
