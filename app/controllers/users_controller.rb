@@ -37,6 +37,7 @@ class UsersController < ApplicationController
       @tw_selects = {"オールジャンル" => 128}
       # ログインユーザーが登録したカテゴリーの名前の配列を取得
       user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name)
+      # 登録したカテゴリーの数分繰り返す
       user_cards.each do |u_card|
         # 自分が登録したカテゴリーのなかで登録ユーザー数が3人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
         if UserHobby.where(hobby_name: u_card).count > 2
@@ -69,8 +70,6 @@ class UsersController < ApplicationController
 
       @user = current_user
       # @user.update_attribute(:logined_at, DateTime.now)
-      @users = User.where.not(category_id: nil)
-
 
       # Timelineに投稿された場合
       if params[:id].present?
