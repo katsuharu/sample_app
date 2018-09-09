@@ -30,8 +30,14 @@
     <div class="lunch_kun">
       <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
     </div>
+    <!-- マッチング済みの場合にマッチング相手確認ページリンクを表示 -->
+    <% if matched? %>
+      <div class="pair_check">
+        <%= link_to "マッチング相手を確認する", check_path %>
+      </div>
+    <% end %>
+    <!-- 日付とエントリー状態を表示 -->
     <%= render 'shared/entry_state' %>
-
     <div class="lunch_card_container flex_container">
       <!-- ランチカードを表示 -->
       <%=  render partial: 'users/card', collection: @cards %>

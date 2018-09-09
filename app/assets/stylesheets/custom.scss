@@ -193,8 +193,15 @@ p.entry_now {
 }
 /* マッチング相手を確認する */
 .pair_check {
-    margin-left: 194px;
+  text-align: center;
+  width: 300px;
+  margin: 0 auto;
+  margin-top:  20px;
+  font-size: 14px;
+  font-weight: 450;
+  text-decoration:  underline;
 }
+
 
 /* また明日エントリーをお待ちしております。 */
 p.lunch_time_end {
@@ -586,10 +593,6 @@ img.tweet_form_img {
     margin-left: 296px;
   }
 
-  /* マッチング相手を確認する */
-  .pair_check {
-    margin-left: 266px;
-  }
   /* また明日エントリーをお待ちしております。 */
   p.lunch_time_end {
     margin-left: 221px;
