@@ -20,8 +20,14 @@ class UsersController < ApplicationController
       @today = Date.today
       # アクセス時時刻を取得する
       @time_now = DateTime.now
-      # ログインユーザーがエントリー中のlunchモデルを取得
-      @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil)
+      # 12:30以前の場合
+      if @time_now.strftime('%H:%M:%S') < "12:30:00"
+        # 本日のlunchモデルを取得
+        @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil)
+      else
+        # 明日の日付のlunchモデルを取得
+        @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.tomorrow).where.not(category_id: nil).find_by(canceled_at: nil)
+      end
       # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
       @cards = [{category_id: 128,
                 category_name: 'オールジャンル',
