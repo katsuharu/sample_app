@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function() {
           .addClass('is-animated').fadeIn();
       })
     // 第3,第4カテゴリーを非表示に
-    hide_lower_layers('first')
+    // hide_lower_layers('first')
   })
   //
 
@@ -161,23 +161,24 @@ $(document).on('turbolinks:load', function() {
   //   ALREADY = false
   // })
 
-  // params layer: String
-  // 引数のカテゴリーの2下層下のカテゴリー以降を非表示にする
-  function hide_lower_layers(layer) {
-    switch(layer){
-      // 第1階層のカテゴリーがクリックされたとき
-      case 'first' :
-        // 第3,第4層のカテゴリを非表示に
-        $('.third_category').hide()
-        $('.forth_category').hide()
-        break
-      // 第2階層のカテゴリーがクリックされたとき
-      case 'second' :
-        // 第4層のカテゴリを非表示に
-        $('.forth_category').hide()
-        break
-    }
-  }
+  // // params layer: String
+  // // 引数のカテゴリーの2下層下のカテゴリー以降を非表示にする
+  // function hide_lower_layers(layer) {
+  //   switch(layer){
+  //     // 第1階層のカテゴリーがクリックされたとき
+  //     case 'first' :
+  //       // 第3,第4層のカテゴリを非表示に
+  //       $('.third_category').hide()
+  //       $('.forth_category').hide()
+  //       break
+  //     // 第2階層のカテゴリーがクリックされたとき
+  //     case 'second' :
+  //       // 第4層のカテゴリを非表示に
+  //       $('.forth_category').hide()
+  //       break
+  //   }
+  // }
+  
   //趣味登録ページで、my hobbyから趣味を削除するかどうかをcheckboxの値で判断
   $(document).on('click', '#hobby_delete label', function() {
     var index = $('#hobby_delete label').index(this)
