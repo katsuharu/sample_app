@@ -1,32 +1,24 @@
-<div class="entry_status">
-  <!-- ログインユーザーがエントリー中の場合 -->
+<% wd = ["日", "月", "火", "水", "木", "金", "土"] %>
+
+<!-- 12:30以前の場合 -->
+<% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
+  <!-- エントリー済みの場合 -->
   <% if entried? %>
-      <!-- マッチング済みの場合 -->
-    <% if matched? %>
-      <!-- <div class="entry_state_show"> -->
-      <div class="pair_check">
-        <%= link_to "マッチング相手を確認する", check_path %>
-      </div>
-    <% else %>
-      <!-- 未マッチングの場合 -->
-      <div>
-        <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
-          <!-- 12:30以前の場合 -->
-          <p class="entry_now">エントリー中!!</p>
-        <% else %>
-          <!-- 12:30以降の場合 -->
-          <p class="lunch_time_end">また明日エントリーをお待ちしております。</p>
-        <% end %>
-      </div>
-      <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
-        <div class="matching_time_show">
-          <small>※12:30に相手が決まります</small>
-        </div>
-      <% else %>
-        <div class="lack_of_members">
-          <small >※本日選択されたカテゴリーのマッチングは<br>エントリー人数が少なく行われませんでした。</small>
-        </div>
-      <% end %>
-    <% end %>
+    <div class="today_date">
+      <%= @today.month %>/<%= @today.day %>(<%= wd[@today.wday] %>)
+      12:30にマッチング相手を確認
+    </div>
+  <!-- 未エントリーの場合 -->
+  <% else %>
+    <div class="today_date">
+      <%= @today.month %>/<%= @today.day %>(<%= wd[@today.wday] %>)
+      今日のランチにエントリー
+    </div>
   <% end %>
-</div>
+<!-- 12:30以降の場合 -->
+<% else %>
+  <div class="today_date">
+    <%= Date.tomorrow.month %>/<%= Date.tomorrow.day %>(<%= wd[Date.tomorrow.wday] %>)
+    明日のランチにエントリー
+  </div>
+<% end %>
