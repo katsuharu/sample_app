@@ -1,6 +1,13 @@
 class Lunch < ApplicationRecord
   def self.get_entry_user_ids(category_id)
-    return Lunch.where(lunch_date: Date.today).where(category_id: category_id).where(canceled_at: nil).pluck(:user_id)
+    # 12:30以前の場合
+    if DateTime.now.strftime('%H:%M:%S') < "12:30:00"
+      # 今日の日付で引数のカテゴリーidを持つランチモデルを取得してそれらのuser_idを取得
+      Lunch.where(lunch_date: Date.today).where(category_id: category_id).where(canceled_at: nil).pluck(:user_id).uniq
+    else
+      # 明日の日付で引数のカテゴリーidを持つランチモデルを取得してそれらのuser_idを取得
+      Lunch.where(lunch_date: Date.tomorrow).where(category_id: category_id).where(canceled_at: nil).pluck(:user_id).uniq
+    end
   end
 
   def self.send_success_email(email_lists)
