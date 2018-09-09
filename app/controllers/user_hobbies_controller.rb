@@ -1,6 +1,8 @@
 class UserHobbiesController < ApplicationController
   def hobby
     @hobby = UserHobby.new
+    # オールジャンル以外の登録したUserHobbyモデルを取得
+    @hobbies = UserHobby.where(user_id: current_user.id).where.not(hobby_name: 'オールジャンル')
     @first_categories = FirstCategory.pluck(:id, :name)
     @second_categories = SecondCategory.pluck(:id, :name, :first_category_id)
     @third_categories = ThirdCategory.pluck(:id, :name, :second_category_id)
@@ -51,14 +53,6 @@ class UserHobbiesController < ApplicationController
         UserHobby.where(user_id: current_user.id).where(hobby_name: str).destroy_all
       end
     end
-  end
-
-  def hobby_show
-    @first_categories = FirstCategory.pluck(:id, :name)
-    @second_categories = SecondCategory.pluck(:id, :name, :first_category_id)
-    @third_categories = ThirdCategory.pluck(:id, :name, :second_category_id)
-    @forth_categories = ForthCategory.pluck(:id, :name, :third_category_id)
-    @hobbies = UserHobby.where(user_id: current_user.id).where.not(hobby_name: 'オールジャンル')
   end
 
   def del_hobby

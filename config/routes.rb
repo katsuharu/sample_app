@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   get   '/hobby', to: 'user_hobbies#hobby'
-  get   '/hobby_show', to: 'user_hobbies#hobby_show'
   post  '/hobby_save',        to: 'user_hobbies#hobby_save'
   post  '/edit',      to:   'user_hobbies#edit'
   post 'user_hobbies/del_hobby'
