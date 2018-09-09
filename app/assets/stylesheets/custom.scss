@@ -155,18 +155,13 @@ select {
 }
 
 .today_date {
-  letter-spacing: 4.4px;
-  font-size: 18px;
-}
-
-.today_date {
   height: 26px;
   font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
-  margin-bottom: 27px;
+  margin: 27px 0;
   color: #3b6793;
   letter-spacing: 4.4px;
   font-size: 18px;
@@ -410,11 +405,6 @@ img.tweet_form_img {
 
   .matching_time_show {
     margin-left: 218px;
-  }
-
-  .today_date {
-    letter-spacing: 4.4px;
-    font-size: 18px;
   }
 
   .today_date {
