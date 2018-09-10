@@ -193,13 +193,16 @@ p.entry_now {
 }
 /* マッチング相手を確認する */
 .pair_check {
-  text-align: center;
-  width: 300px;
-  margin: 0 auto;
   margin-top:  20px;
   font-size: 14px;
   font-weight: 450;
   text-decoration:  underline;
+}
+
+/* マッチング相手を確認するリンクをブロックして中央よせ */
+a.pair_check_link {
+  display:  block;
+  text-align:  center;
 }
 
 
