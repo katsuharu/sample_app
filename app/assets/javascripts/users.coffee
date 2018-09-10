@@ -3,7 +3,7 @@ onPageLoad 'users#index', ->
   entire_contents.classList.remove 'container'
   $('body').addClass('bg_color')
 
-onPageLoad 'users#index', ->
+  # TOPページTimeline自動更新処理
   buildTweet = (tweet) ->
     `var chat`
     # 投稿者の写真が登録されていない場合
@@ -40,6 +40,7 @@ onPageLoad 'users#index', ->
     return
   return
 
+# マッチング相手確認画面チャット更新
 onPageLoad 'users#check', ->
   entire_contents = document.getElementById('entire_contents')
   entire_contents.classList.remove 'container'
