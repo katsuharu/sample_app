@@ -50,15 +50,15 @@ onPageLoad 'users#check', ->
     `var chat`
     # 投稿者の写真が登録されていない場合
     if chat.img_url == null
-      chat = $('.timeline-shows').prepend('<div class="flex_container tweet chats" data-id=' + chat.chat.id + '>' + '<div class="tweet_img">' + '<div class="img_empty"></div>' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + chat.user_name + '</div>' + chat.chat.text + '<div class="flex_container tweet_data">' + '<div class="tweet_at">' + chat.post_at + '</div>' + '</div>' + '</div>' + '</div>')
+      chat = $('.timeline-shows.pair_chats').prepend('<div class="flex_container tweet chats" data-id=' + chat.chat.id + '>' + '<div class="tweet_img">' + '<div class="img_empty"></div>' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + chat.user_name + '</div>' + chat.chat.text + '<div class="flex_container tweet_data">' + '<div class="tweet_at">' + chat.post_at + '</div>' + '</div>' + '</div>' + '</div>')
     else
-      chat = $('.timeline-shows').prepend('<div class="flex_container tweet chats" data-id=' + chat.chat.id + '>' + '<div class="tweet_img">' + '<img src="' + chat.img_url + '" alt="Data uri" class="timeline_user_img">' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + chat.user_name + '</div>' + chat.chat.text + '<div class="flex_container tweet_data">' + '<div class="tweet_at">' + chat.post_at + '</div>' + '</div>' + '</div>' + '</div>')
+      chat = $('.timeline-shows.pair_chats').prepend('<div class="flex_container tweet chats" data-id=' + chat.chat.id + '>' + '<div class="tweet_img">' + '<img src="' + chat.img_url + '" alt="Data uri" class="timeline_user_img">' + '</div>' + '<div class="tweet_text">' + '<div class="tweet_name">' + chat.user_name + '</div>' + chat.chat.text + '<div class="flex_container tweet_data">' + '<div class="tweet_at">' + chat.post_at + '</div>' + '</div>' + '</div>' + '</div>')
     return
   
   update = ->
     `var chat_id`
     # マッチングペアのidを取得
-    pair_id = $('.timeline-shows').data('pair_id')
+    pair_id = $('.timeline-shows.pair_chats').data('pair_id')
     if $('.chats')[0]
       #もし'messages'というクラスがあったら
       #一番最後にある'chats'というクラスの'id'というデータ属性を取得し、'chat_id'という変数に代入
