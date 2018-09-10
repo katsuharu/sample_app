@@ -6,7 +6,7 @@
   <%= form_tag("/user_hobbies/del_hobby", method: "post", data: { confirm: '削除してよろしいでしょうか？' }, class: "col-sm-9") do %>
   <% if @hobbies.present? %>
     <% @hobbies.each do |hobby| %>
-      <div class="display_flex">
+      <div class="display_flex registered_hobbies">
         <%= label_tag 'user_hobbies[id]', hobby.hobby_name %>
         <%= check_box_tag 'user_hobbies[id][]', hobby.id %>
       </div>
