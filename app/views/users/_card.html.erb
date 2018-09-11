@@ -34,19 +34,6 @@
   
   <article>
     <div class="lunch_card_category"><%= card[:category_name] %></div>
-      <!-- 12:30以前の場合 -->
-      <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
-        <!-- エントリー済みの場合 -->
-        <% if entried? %>
-          <p class="lunch_state">クリックで現在のエントリーをキャンセルします >_<。</p>
-        <!-- 未エントリーの場合 -->
-        <% else %>
-          <p class="lunch_state">クリックでこのランチにエントリーできます！</p>
-        <% end %>
-      <% else %>
-        <!-- 12:30以降の場合 -->
-        <p class="lunch_state">クリックで明日のランチにエントリーできます！</p>
-      <% end %>
       <!-- スライドショー -->
       <div id="slider_wrap">
         <div id="slider">
