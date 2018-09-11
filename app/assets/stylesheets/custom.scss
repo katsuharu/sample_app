@@ -12,6 +12,7 @@
 $navi-color: #FFCB00;
 $content-color: #0D0D0D;
 $main-font: 'Leafy';
+$main-dark-color: #FF6A4B;
 
 $top_padding_side: 0;
 $top_padding_top: 34px;
@@ -31,6 +32,7 @@ $top_padding_top: 34px;
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  letter-spacing: 0.1em;
 }
 
 a {
@@ -81,6 +83,10 @@ select {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.main_dark_color {
+  color: $main_dark_color;
 }
 
 #progressing {
@@ -287,6 +293,36 @@ img.lunch_card_img {
   justify-content: center;
 }
 
+/* How To Use Lunch Frineds */
+.instruction_title {
+  font-family: $main-font;
+  font-size: 30px;
+  color: #FF6A4B;
+  margin-bottom: 75px;
+}
+
+.instruction_step {
+  font-weight:  900;
+  font-size:  16px;
+  color: #FF6A4B;
+}
+
+.instruction_sentence {
+  font-weight:  600;
+  font-size:  14px;
+  line-height: 24.5px;
+  padding-left: 14px;
+}
+
+.instruction_aserisk {
+  font-weight:  500;
+  font-size:  12px;
+  line-height: 21px;
+}
+
+.instruction_flex {
+  display: flex;
+}
 
 /* Timeline */
 .tweet_form {
