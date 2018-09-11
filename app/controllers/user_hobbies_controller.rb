@@ -15,17 +15,21 @@ class UserHobbiesController < ApplicationController
   end
 
   def hobby_save
-    hobby_num = params[:user_hobby][:hobby_name].count()
+    begin
+      hobby_num = params[:user_hobby][:hobby_name].count()
 
-    for i in 0..hobby_num - 1
-      if params[:user_hobby][:hobby_name][i].empty?
-      else
-        @hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
+      for i in 0..hobby_num - 1
+        if params[:user_hobby][:hobby_name][i].empty?
+        else
+          @hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
+        end
       end
+      User.find_by(id: current_user.id).update_attribute(:hobby_added, 1)
+      flash[:success] = "趣味を登録いたしました。"
+    rescue => e
+      p e
+      redirect_to root_url
     end
-    User.find_by(id: current_user.id).update_attribute(:hobby_added, 1)
-    flash[:success] = "趣味を登録いたしました。"
-    redirect_to root_url
   end
 
   def edit
