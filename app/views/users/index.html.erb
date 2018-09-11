@@ -45,43 +45,5 @@
   </div>
 
   <div class="index_right">
-    <div class="tweet_form">
-      <%= form_for(@tweet, remote: true, url: { controller: 'tweets', action: 'btn_create'}) do |f| %>
-        <%= f.text_area :content, size: "55x2", required: true %>
-        <div class="flex_container">
-          <div class="select_width">
-            <p class="select_label select-group">オールジャンル</p>
-            <%= select(:tweet, :category_id, options_for_select( @tw_selects, {:selected => 128 } ),{required: true}) %>
-          </div>
-          <%= f.submit "投稿", class: "post_tweet" %>
-        </div>
-      <% end %>
-    </div>
-    <!-- Timeline -->
-    <div class="timeline-shows">
-      <%= render partial: 'tweets/tweet', collection: @tweets %>
-    </div>
-    <%= paginate @tweets, remote: true %>
-    <!-- Timeline -->
-    <!-- Thread -->
-    <div class="modal fade t_detail">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!-- reply元のtweet情報 -->
-            <h4 class="t_thread_name"></h4>
-          </div>
-          <div class="modal-body">
-            <!-- reply投稿用フォーム -->
-            <div class="t_thread_form">
-            </div>
-            <!-- reply一覧 -->
-            <div id="t_threads">
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </div><!-- /Thread  -->
   </div>
 </div>
