@@ -227,6 +227,7 @@ p.lunch_time_end {
   margin-right: 11px;
   margin-bottom: 10px;
   background-color: #FF9E66;
+  position: relative;
 }
 
 /* エントリー中のランチカードのデザイン */
@@ -267,6 +268,25 @@ img.lunch_card_img {
   width:  42px;
   height:  42px;
 }
+
+/* エントリーボタン */
+.entry_button {
+  width: 150px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: white;
+  color: #FF6A4B;
+  position:  absolute;
+  bottom:  20px;
+  left:  0;
+  right:  0;
+  margin: 0 auto;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 /* Timeline */
 .tweet_form {
