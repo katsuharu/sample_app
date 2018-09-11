@@ -1,8 +1,13 @@
 class UserHobbiesController < ApplicationController
+  before_action :logged_in_user, only: [:hobby, :hobby_save, :edit, :del_hobby]
+
   def hobby
     @hobby = UserHobby.new
-    # オールジャンル以外の登録したUserHobbyモデルを取得
-    @hobbies = UserHobby.where(user_id: current_user.id).where.not(hobby_name: 'オールジャンル')
+    # ログインユーザーが存在する場合
+    if current_user.present?
+      # オールジャンル以外の登録したUserHobbyモデルを取得
+      @hobbies = UserHobby.where(user_id: current_user.id).where.not(hobby_name: 'オールジャンル')
+    end
     @first_categories = FirstCategory.pluck(:id, :name)
     @second_categories = SecondCategory.pluck(:id, :name, :first_category_id)
     @third_categories = ThirdCategory.pluck(:id, :name, :second_category_id)
