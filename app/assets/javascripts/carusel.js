@@ -1,7 +1,7 @@
 var slide_ary = []
 
 $(document).on('turbolinks:load', function() {
-  $('a.lunch_card').each(function(index) {
+  $('.lunch_card').each(function(index) {
     var photo_list$ = $("#photo_list_" + index)
     var li$ = $('#photo_list_' + index + ' li')
     var li_count = li$.length
@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function() {
   }
     
   //自動的にスタートするように設定。スライドの枚数文動かす
-  $('a.lunch_card').each(function(index) {
+  $('.lunch_card').each(function(index) {
     var li$ = $('#photo_list_' + index + ' li')
     var li_count = li$.length
     if(li_count > 4) {
