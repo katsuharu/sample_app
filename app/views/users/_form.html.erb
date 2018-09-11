@@ -79,7 +79,10 @@
         プロフィール画像（本人写真）
         / profile picture
       <% end %>
-      <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください</p>
+      <p class="help-block">
+        ※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください<br>
+        拡張子がjpg, jpeg, gif, pngのファイルのみアップロードできます。
+      </p>
     </div>
     <div class="col-sm-7">
       <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input', required: true %>
