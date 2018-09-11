@@ -20,7 +20,6 @@ class User < ApplicationRecord
 
   with_options on: :create do |create|
       create.validates :department_name, presence: true
-      create.validates :slack_id, presence: true
     # create.validates :profile_img,  presence: true
   end
 
@@ -28,7 +27,6 @@ class User < ApplicationRecord
     fb_login.validates :password, presence: false
     fb_login.validates :password_confirmation, presence: false
     fb_login.validates :department_name, presence: false
-    fb_login.validates :slack_id, presence: false
     fb_login.validates :profile_img,  presence: false
   end
 
