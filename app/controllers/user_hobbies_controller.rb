@@ -43,6 +43,8 @@ class UserHobbiesController < ApplicationController
         # UserHobbyを作成
         UserHobby.create(hobby_id: user_hobby[:hobby_id], hobby_name: user_hobby[:hobby_name], user_id: current_user.id)
       end
+      flash[:success] = "趣味を登録いたしました。"
+      redirect_to hobby_path
     rescue
       p e
     end
