@@ -19,7 +19,9 @@
 <!-- 第2カテゴリ一覧 -->
 <div class="second_categories">
   <% @second_categories.each do |second| %>
-    <div class="standby second_category" data-first-id="<%= second.first_category_id %>" data-second="<%= second.id %>"><%= second.name %></div>
+    <div class="standby second_category" data-first-id="<%= second.first_category_id %>" data-second="<%= second.id %>">
+      <%= second.name %>
+    </div>
   <% end %>
 </div>
 <hr>
