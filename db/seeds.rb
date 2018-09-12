@@ -29,15 +29,15 @@ end
 #   ForthCategory.create(:name => info[0], :third_category_id => info[1])
 # end
 
-# 37人のサンプルユーザーデータ
-CSV.foreach('db/users_seeds.csv') do |info|
-  User.create(id: info[0], name: info[1], email: info[2], password: info[3], password_confirmation: info[3], department_name: info[4], slack_id: info[5], activated: info[6], activated_at: info[7])
-end
+# # 37人のサンプルユーザーデータ
+# CSV.foreach('db/users_seeds.csv') do |info|
+#   User.create(id: info[0], name: info[1], email: info[2], password: info[3], password_confirmation: info[3], department_name: info[4], slack_id: info[5], activated: info[6], activated_at: info[7])
+# end
 
 # 37人のランチテーブルデータ
-CSV.foreach('db/lunch_seeds.csv') do |info|
-  Lunch.create(user_id: info[0], lunch_date: Date.today, category_id: info[2])
-end
+# CSV.foreach('db/lunch_seeds.csv') do |info|
+#   Lunch.create(user_id: info[0], lunch_date: Date.today, category_id: info[2])
+# end
 
 # 1000人のサンプルユーザーデータ
 # CSV.foreach('db/user_thousand.csv') do |info|
