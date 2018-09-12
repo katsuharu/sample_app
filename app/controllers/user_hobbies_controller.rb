@@ -33,35 +33,18 @@ class UserHobbiesController < ApplicationController
     redirect_to root_url
   end
 
+  # 既存の登録済みのUserHobbyを全て削除し、新たに送られたパラメータでUserHobbyを作り直すメソッド
   def edit
-    #すでに登録されている趣味項目が削除ボタンを押された場合、アラートで確認後、実際に削除する
-    #新規にこの時登録するとき、 user_hobbiesテーブルのレコードに、今登録していようとしている趣味のuser_idとhobby_idが
-    #同一のレコードは既に登録されているとみなして登録しない。
-
-    # add hobby リストにユーザーが追加した趣味を正式にユーザーの趣味として登録する
-    if add_hobbies = params[:user_hobby][:hobby_name]
-      i = 0
-      for str in add_hobbies
-        unless UserHobby.where(user_id: current_user.id).where(hobby_name: str).exists? then
-          if str.empty?
-            puts "this value is empty"
-          else
-            p "not exit this record"
-            UserHobby.create(hobby_name: str, user_id: current_user.id)
-          end
-        end
-        i += 1
+    begin
+      # 登録済みUserHobbyを削除
+      UserHobby.where(user_id: current_user.id).delete_all
+      # 選択したカテゴリーの数分繰り返す
+      params[:user_hobby].each do |user_hobby|
+        # UserHobbyを作成
+        UserHobby.create(hobby_id: user_hobby[:hobby_id], hobby_name: user_hobby[:hobby_name], user_id: current_user.id)
       end
-      redirect_to hobby_show_path
-      flash[:success] = "趣味を更新しました"
-    end
-
-    # ユーザーが削除するためにチェックした趣味をテーブルから削除
-    del_hobbies = params[:del_hobbies]
-    if del_hobbies.present?
-      for str in del_hobbies
-        UserHobby.where(user_id: current_user.id).where(hobby_name: str).destroy_all
-      end
+    rescue
+      p e
     end
   end
 
