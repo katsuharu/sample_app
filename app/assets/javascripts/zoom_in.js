@@ -39,6 +39,19 @@ $(document).on('turbolinks:load', function() {
         $first_parents.filter('[data-first-id = "' + $firstChild + '"]')
           .addClass('is-animated').fadeIn();
       })
+    // クリックした1層の下層のカテゴリーの数だけ繰り返す
+    $first_parents.filter('[data-first-id = "' + $firstChild + '"]').each(function() {
+      // カテゴリーを変数に代入
+      var $category = $(this)
+      // 登録一覧のカテゴリーの数分繰り返し
+      $('input[name="user_hobby[][hobby_name]"]').each(function() {
+        // 登録一覧のカテゴリー名がカテゴリーのテキストと等しい場合
+        if ($(this).val() == $category.text()) {
+          // classを追加してグレーアウトする
+          $category.addClass('lunch_selected')
+        }
+      })
+    })
     // 第3,第4カテゴリーを非表示に
     // hide_lower_layers('first')
   })
