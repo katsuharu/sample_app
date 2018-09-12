@@ -9,8 +9,9 @@ class UserHobbiesController < ApplicationController
       @hobbies = UserHobby.where(user_id: current_user.id).where.not(hobby_name: 'オールジャンル')
     end
     @first_categories = FirstCategory.pluck(:id, :name)
-    @second_categories = SecondCategory.pluck(:id, :name, :first_category_id)
-    # TODO 第3層以降のカテゴリーを一旦非表示に
+    # 第二階層の全カテゴリーを取得
+    @second_categories = SecondCategory.all
+    # TODO 第3層以降のカテゴリーを一旦コメントアウト
     # @third_categories = ThirdCategory.pluck(:id, :name, :second_category_id)
     # @forth_categories = ForthCategory.pluck(:id, :name, :third_category_id)
   end
