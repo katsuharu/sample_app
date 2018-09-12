@@ -34,11 +34,6 @@
         <input type="hidden" name="user_hobby[][hobby_id]" value="<%= my_hobby.hobby_id %>">
       <% end %>
     </div>
-    <div id="hobby_delete">
-      <% @my_hobbies.each do |my_hobby| %>
-        <label data-second="<%= my_hobby.id %>" for="user_hobby[][hobby_name]">削除</label>
-      <% end %>
-    </div>
   </div>
   <div class="center">
     <%= submit_tag "趣味を登録", class: "square_btn confirm_btn", id: 'hobby_register' %>
