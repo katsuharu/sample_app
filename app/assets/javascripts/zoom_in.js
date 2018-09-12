@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function() {
 
     if(!ALREADY) {
       $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
-      $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + clicked_category + '" readonly>')
+      $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + clicked_category + '" readonly id="selected_category">')
     }
     ALREADY = false
   })
@@ -96,7 +96,7 @@ $(document).on('turbolinks:load', function() {
     // 選択したカテゴリーが登録一覧に追加されていない場合
     if(ALREADY == false) {
       // 登録趣味一覧にカテゴリを追加
-      $('#my_hobby').append('<input type="text" name="user_hobby[][hobby_name]" data-second="' + data_second + '" value="' + $this.text()+ '" readonly>')
+      $('#my_hobby').append('<input type="text" name="user_hobby[][hobby_name]" data-second="' + data_second + '" value="' + $this.text()+ '" readonly id="selected_category">')
       // hobby_idをhidden typeで追加
       $('#my_hobby').append('<input type="hidden" name="user_hobby[][hobby_id]" value="' + data_second + '">')
     }
