@@ -73,8 +73,6 @@ $(document).on('turbolinks:load', function() {
           ALREADY = true
           // 登録趣味一覧からこのカテゴリーlabeを削除
           $('#my_hobby input').filter('[data-second = "' + data_second + '"]').remove()
-          // 登録趣味一覧から削除ラベルを削除
-          $('#hobby_delete label').filter('[data-second = "' + data_second + '"]').remove()
           // 'lunch_selected'をclassから削除
           $this.removeClass('lunch_selected')
           return false
