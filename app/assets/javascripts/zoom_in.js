@@ -211,7 +211,7 @@ $(document).on('turbolinks:load', function() {
   // 趣味登録ボタン押下時
   $(document).on('click', '#hobby_register', function() {
     // 趣味が一つも選択されていない場合
-    if ($("input[name='user_hobby[hobby_name][]']").val() == undefined) {
+    if ($("input[name='user_hobby[][hobby_name]']").val() == undefined) {
         // アラートを出力
         alert('趣味を一つ以上選択してください')
         // submit処理を中止
