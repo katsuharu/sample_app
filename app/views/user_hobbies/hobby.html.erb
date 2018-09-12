@@ -19,9 +19,7 @@
 <!-- 第2カテゴリ一覧 -->
 <div class="second_categories">
   <% @second_categories.each do |second| %>
-    <div class="standby second_category" data-first-id="<%= second.first_category_id %>" data-second="<%= second.id %>">
-      <%= second.name %>
-    </div>
+    <div class="standby second_category" data-first-id="<%= second.first_category_id %>" data-second="<%= second.id %>"><%= second.name %></div>
   <% end %>
 </div>
 <hr>
@@ -32,7 +30,7 @@
   <div class="hobby_list">
     <div id="my_hobby" class="my_hobbies">
       <% @my_hobbies.each do |my_hobby| %>
-        <input type="text" name="user_hobby[][hobby_name]" data-second="<%= my_hobby.hobby_id %>" value="<%= my_hobby.hobby_name %>" readonly="" id="selected_category">
+        <input type="text" name="user_hobby[][hobby_name]" data-second="<%= my_hobby.hobby_id %>" value="<%= my_hobby.hobby_name.gsub(" ", "") %>" readonly="" id="selected_category">
         <!-- hobby_idをhiddenでセット -->
         <input type="hidden" name="user_hobby[][hobby_id]" value="<%= my_hobby.hobby_id %>">
       <% end %>
