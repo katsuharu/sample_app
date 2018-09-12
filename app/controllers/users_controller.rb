@@ -316,7 +316,11 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      begin
+        @user = User.find(params[:id])
+      rescue => e
+        p e
+      end
       redirect_to(root_url) unless current_user?(@user)
     end
 
