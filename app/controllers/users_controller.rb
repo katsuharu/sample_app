@@ -266,6 +266,10 @@ class UsersController < ApplicationController
     @matched_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).where.not(pair_id: nil).first
     # @lunchが存在している場合
     if @matched_lunch.present?
+      # 曜日表示用の配列を定義
+      wd = ["日", "月", "火", "水", "木", "金", "土"]
+      # 画面表示で使う日付を取得
+      @matching_date = Date.today.month.to_s + '/' + Date.today.day.to_s + '(' + wd[Date.today.wday]+ ')'
       @pair_id = @matched_lunch.pair_id
       # 本日付のマッチング相手のuser_idの配列を取得
       # カラム：where.not(sent_at: nil):マッチング結果メールが送信済み
