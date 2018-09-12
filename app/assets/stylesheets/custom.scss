@@ -1531,6 +1531,12 @@ ul {
   margin-right: 30px;
 }
 
+#selected_category {
+  border-bottom: solid 5px #FF6A4B;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 /* 趣味登録ページでクリックした要素に追加されるセレクタ */
 .active {
   background-color: #FFFF99;
@@ -1640,8 +1646,10 @@ input.hb-add {
 }
 
 #my_hobby input[type="text"] {
-    margin:  0;
-    border: none;
+  margin:  0;
+  border-width: 0 0 5px;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
 #hobby_delete label {
