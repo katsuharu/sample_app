@@ -84,8 +84,7 @@ $(document).on('turbolinks:load', function() {
 
     // 選択したカテゴリーが登録一覧に追加されていない場合
     if(ALREADY == false) {
-      // 登録趣味一覧にラベルと削除タグをそれぞれ追加
-      $('#hobby_delete').append('<label data-second="' + data_second + '" for="user_hobby[hobby_name][]">削除</label>')
+      // 登録趣味一覧にカテゴリを追加
       $('#my_hobby').append('<input type="text" name="user_hobby[][hobby_name]" data-second="' + data_second + '" value="' + $this.text()+ '" readonly>')
       // hobby_idをhidden typeで追加
       $('#my_hobby').append('<input type="hidden" name="user_hobby[][hobby_id]" value="' + data_second + '">')
