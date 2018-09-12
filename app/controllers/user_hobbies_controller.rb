@@ -42,6 +42,10 @@ class UserHobbiesController < ApplicationController
       params[:user_hobby].each do |user_hobby|
         # UserHobbyを作成
         UserHobby.create(hobby_id: user_hobby[:hobby_id], hobby_name: user_hobby[:hobby_name], user_id: current_user.id)
+        # ログインユーザーが存在かつhobby_addedカラムの値がtrueでない場合
+        if current_user.present? && current_user.hobby_added != true
+          User.find_by(id: current_user.id).update_attribute(:hobby_added, 1)
+        end
       end
       flash[:success] = "趣味を登録いたしました。"
       redirect_to hobby_path
