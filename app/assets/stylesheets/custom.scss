@@ -809,6 +809,7 @@ h1 {
 h1.eigo-title {
   font-family: $main-font;
   margin: 30px auto;
+  letter-spacing: 0.1em;
 }
 
 h1.basic-heading {
@@ -1336,9 +1337,25 @@ a.square_btn.bf-top {
   height: 200px;
 }
 
-h4.cate_selected {
-    font-size: 1.8em;
-    margin: 13px auto;
+.cate_selected {
+  font-size: 16px;
+  margin-left:  50px;
+  margin-top:  20px;
+  font-weight:  700;
+}
+
+.member_data {
+  font-weight:  500;
+  font-size:  14px;
+  margin-top:  20px;
+  margin-left:  50px;
+}
+
+.member_slack {
+  font-size: 12px;
+  font-weight:  500;
+  margin-left:  50px;
+  margin-top:  20px;
 }
 
 @media (max-width: 767px) {
@@ -1394,15 +1411,34 @@ h4.cate_selected {
 
 /* プロフィール編集ページ */
 .form-actions .square_btn.confirm_btn.edit_btn {
-    width: 8em;
-    margin: 30px 60px;
+  width: 8em;
+  margin: 30px 60px;
 }
 
 
 /* マッチング相手確認ページ */
+.check_content_title {
+  font-weight:  700;
+  font-size:  18px;
+  color: $main-dark-color;
+  text-align: center;
+}
+
+.matching_chat_asterisk {
+  font-size:  12px;
+  font-weight:  600;
+  text-align: center;
+}
+
+.matching_member {
+  font-weight:  900;
+  font-size:  16px;
+  color: $main-dark-color;
+}
+
 @media (min-width: 768px) {
   .user-cnt {
-      margin: 4em auto;
+    margin: 4em auto;
   }
 
   .pair-info {
@@ -1531,6 +1567,12 @@ ul {
   margin-right: 30px;
 }
 
+#selected_category {
+  border-bottom: solid 5px #FF6A4B;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 /* 趣味登録ページでクリックした要素に追加されるセレクタ */
 .active {
   background-color: #FFFF99;
@@ -1640,8 +1682,10 @@ input.hb-add {
 }
 
 #my_hobby input[type="text"] {
-    margin:  0;
-    border: none;
+  margin:  0;
+  border-width: 0 0 5px;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
 #hobby_delete label {

@@ -6,17 +6,21 @@
 <h1 class="eigo-title">You got new Lunch Friends !!</h1>
 <div class="entry_top">
   <div class="index_left">
+    <h3 class="check_content_title"><%= @matching_date %>のマッチング相手を確認</h3>
     <% @pairs.each.with_index(1) do |pair, index| %>
       <div class="user-cnt col-lg-12">
-        <h2>マッチング相手<%= index %></h2>    
+        <h2 class="matching_member">マッチングしたランチフレンズ.<%= index %></h2>    
           <div class="pair-info">
             <div class="pair-img">
               <div><%= image_tag pair.profile_img.url if pair.profile_img? %></div>
             </div>
             <div class="pair-text">
               <h4 class="cate_selected"><%= pair.try :name %>　さん</h4>
-              <label>Slack ID（このIDを使い、グループを作成して下さい）</label>
-              <p class="slack_id"><%= pair.try :slack_id %></p>
+              <h4 class="member_data"><%= pair.try :department_name %></h4>
+              <h4 class="cate_selected"><%= pair.try :self_intro %></h4>
+              <p class="member_slack"><%= pair.try :slack_id %>
+                <br>※右のチャットでどうしても連絡がとれない時のみ使ってください
+              </p>
             </div>
           </div>
       </div>

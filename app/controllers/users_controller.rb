@@ -4,7 +4,7 @@ include ActionView::Helpers::DateHelper
 
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry, :cancel, :check]
-  # before_action :correct_user, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:show, :edit, :update, :entry, :check]
   before_action :admin_user,     only: :destroy
   before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check]
 
@@ -266,6 +266,10 @@ class UsersController < ApplicationController
     @matched_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).where.not(pair_id: nil).first
     # @lunchが存在している場合
     if @matched_lunch.present?
+      # 曜日表示用の配列を定義
+      wd = ["日", "月", "火", "水", "木", "金", "土"]
+      # 画面表示で使う日付を取得
+      @matching_date = Date.today.month.to_s + '/' + Date.today.day.to_s + '(' + wd[Date.today.wday]+ ')'
       @pair_id = @matched_lunch.pair_id
       # 本日付のマッチング相手のuser_idの配列を取得
       # カラム：where.not(sent_at: nil):マッチング結果メールが送信済み
@@ -312,7 +316,11 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      begin
+        @user = User.find(params[:id])
+      rescue => e
+        p e
+      end
       redirect_to(root_url) unless current_user?(@user)
     end
 

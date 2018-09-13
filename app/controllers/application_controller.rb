@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   	end
 
     def hobby_registered
-      if current_user
+      if current_user.present?
         if current_user.hobby_added == nil
           redirect_to hobby_path
         end
