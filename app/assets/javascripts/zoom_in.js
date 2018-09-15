@@ -2,22 +2,22 @@ $(document).on('turbolinks:load', function() {
   'use strict'
   var ALREADY = false
 
-  // 検索窓で表示したカテゴリーをクリックして趣味候補欄に追加
-  $(document).on("click", 'ul#search_result.category_search li', function(){
-    var clicked_category = $(this).text()
-    $('.my_hobbies input').each(function() {
-      if($(this).val() == clicked_category) {
-        ALREADY = true
-        return false
-      }
-    })
+  // // 検索窓で表示したカテゴリーをクリックして趣味候補欄に追加
+  // $(document).on("click", 'ul#search_result.category_search li', function(){
+  //   var clicked_category = $(this).text()
+  //   $('.my_hobbies input').each(function() {
+  //     if($(this).val() == clicked_category) {
+  //       ALREADY = true
+  //       return false
+  //     }
+  //   })
 
-    if(!ALREADY) {
-      $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
-      $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + clicked_category + '" readonly id="selected_category">')
-    }
-    ALREADY = false
-  })
+  //   if(!ALREADY) {
+  //     $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
+  //     $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + clicked_category + '" readonly id="selected_category">')
+  //   }
+  //   ALREADY = false
+  // })
 
   /* 第1層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
   // クリックした第1層のカテゴリのdata-first属性の値を取得する
