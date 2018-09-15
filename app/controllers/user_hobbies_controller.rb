@@ -1,5 +1,5 @@
 class UserHobbiesController < ApplicationController
-  before_action :logged_in_user, only: [:hobby, :hobby_save, :edit, :del_hobby]
+  before_action :logged_in_user, only: [:hobby, :edit]
 
   def hobby
     @hobby = UserHobby.new
@@ -19,19 +19,19 @@ class UserHobbiesController < ApplicationController
     @my_hobbies = UserHobby.where(user_id: current_user.id)
   end
 
-  def hobby_save
-    hobby_num = params[:user_hobby][:hobby_name].count()
+  # def hobby_save
+  #   hobby_num = params[:user_hobby][:hobby_name].count()
 
-    for i in 0..hobby_num - 1
-      if params[:user_hobby][:hobby_name][i].empty?
-      else
-        @hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
-      end
-    end
-    User.find_by(id: current_user.id).update_attribute(:hobby_added, 1)
-    flash[:success] = "趣味を登録いたしました。"
-    redirect_to root_url
-  end
+  #   for i in 0..hobby_num - 1
+  #     if params[:user_hobby][:hobby_name][i].empty?
+  #     else
+  #       @hobby = UserHobby.create(:hobby_name => params[:user_hobby][:hobby_name][i], :user_id => current_user.id)
+  #     end
+  #   end
+  #   User.find_by(id: current_user.id).update_attribute(:hobby_added, 1)
+  #   flash[:success] = "趣味を登録いたしました。"
+  #   redirect_to root_url
+  # end
 
   # 既存の登録済みのUserHobbyを全て削除し、新たに送られたパラメータでUserHobbyを作り直すメソッド
   def edit
@@ -54,11 +54,11 @@ class UserHobbiesController < ApplicationController
     end
   end
 
-  def del_hobby
-    params[:user_hobbies][:id].each do |id| 
-      UserHobby.find(id).destroy()
-    end
-    flash[:success] = "趣味を削除いたしました。"
-    redirect_to hobby_show_path
-  end
+  # def del_hobby
+  #   params[:user_hobbies][:id].each do |id| 
+  #     UserHobby.find(id).destroy()
+  #   end
+  #   flash[:success] = "趣味を削除いたしました。"
+  #   redirect_to hobby_show_path
+  # end
 end
