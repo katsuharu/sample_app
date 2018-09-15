@@ -48,7 +48,7 @@ class UserHobbiesController < ApplicationController
         end
       end
       flash[:success] = "趣味を登録いたしました。"
-      redirect_to hobby_path
+      redirect_to root_url
     rescue
       p e
     end
