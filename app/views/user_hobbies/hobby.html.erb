@@ -30,7 +30,8 @@
   <div class="hobby_list">
     <div id="my_hobby" class="my_hobbies">
       <% @my_hobbies.each do |my_hobby| %>
-        <input type="text" name="user_hobby[][hobby_name]" data-second="<%= my_hobby.hobby_id %>" value="<%= my_hobby.hobby_name.gsub(" ", "") %>" readonly="" id="selected_category">
+        <!-- hobby_nameをvalueとしたinputタグ -->
+        <input type="text" name="user_hobby[][hobby_name]" data-second="<%= my_hobby.hobby_id %>" readonly id="selected_category" value="<%= my_hobby.hobby_name %>">
         <!-- hobby_idをhiddenでセット -->
         <input type="hidden" name="user_hobby[][hobby_id]" value="<%= my_hobby.hobby_id %>">
       <% end %>
