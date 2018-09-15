@@ -85,7 +85,7 @@ $(document).on('turbolinks:load', function() {
       // 登録趣味一覧にカテゴリを追加
       $('#my_hobby').append('<input type="text" name="user_hobby[][hobby_name]" data-second="' + data_second + '" value="' + $this.text()+ '" readonly id="selected_category">')
       // hobby_idをhidden typeで追加
-      $('#my_hobby').append('<input type="hidden" name="user_hobby[][hobby_id]" value="' + data_second + '">')
+      $('#my_hobby').append('<input type="hidden" name="user_hobby[][hobby_id]" data-second="' + data_second + '" value="' + data_second + '">')
     }
     ALREADY = false
   })

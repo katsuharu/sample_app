@@ -33,7 +33,7 @@
         <!-- hobby_nameをvalueとしたinputタグ -->
         <input type="text" name="user_hobby[][hobby_name]" data-second="<%= my_hobby.hobby_id %>" readonly id="selected_category" value="<%= my_hobby.hobby_name %>">
         <!-- hobby_idをhiddenでセット -->
-        <input type="hidden" name="user_hobby[][hobby_id]" value="<%= my_hobby.hobby_id %>">
+        <input type="hidden" name="user_hobby[][hobby_id]" data-second="<%= my_hobby.hobby_id %>" value="<%= my_hobby.hobby_id %>">
       <% end %>
     </div>
   </div>
