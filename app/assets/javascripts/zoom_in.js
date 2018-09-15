@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', function() {
     // 選択したカテゴリーの要素にクラスセレクタを追加
     $this.addClass('lunch_selected')
     // 登録趣味一覧の趣味の数分繰り返す
-    $('.my_hobbies input').each(function() {
+    $('input[name="user_hobby[][hobby_name]"]').each(function(){
       // 選択した要素が選択一覧に既に存在する場合
       if($(this).val() == $this.text()) {
         // ALREADYフラグをtrueにセット
