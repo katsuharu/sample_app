@@ -21,6 +21,20 @@ class ChatsController < ApplicationController
       }
   end
 
+  def btn_create
+    # 取得したものをajaxで一覧表示
+    @chats = Chat.where(pair_id: chat_params[:pair_id]).where(lunch_date: Date.today).order('created_at DESC')
+    @chat = Chat.new(text: chat_params[:text], user_id: current_user.id, pair_id: chat_params[:pair_id], lunch_date: Date.today)
+    respond_to do |format|
+      if @chat.save
+        format.html
+        format.js
+      else
+        format.js {render :index}
+      end
+    end
+  end
+
   private
 
     def chat_params
