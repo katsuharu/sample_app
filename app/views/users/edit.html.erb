@@ -21,6 +21,7 @@
     <div class="form-group">
       <%= f.label :email, class: 'col-sm-4' do %>
         メール / Mail
+        <p class="help-block">※@kcgrp.jpのメールアドレスのみ登録可能です</p>
       <% end %>
       <div class="col-sm-8">
         <%= f.email_field :email, class: 'form-control' %>
@@ -31,6 +32,7 @@
       <%= f.label :password, class: 'col-sm-4' do %>
         <span class="label label-danger">必須</span>
         パスワード / Password
+        <p class="help-block">パスワードは6文字以上で設定してください</p>
       <% end %>
       <div class="col-sm-8">
         <%= f.password_field :password, class: 'form-control', required: true, minlength: 6 %>
@@ -82,7 +84,7 @@
           / profile picture
         <% end %>
         <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください
-        <br>200*200以上の大きさの、拡張子がjpg, jpeg, gif, pngのファイルのみアップロードできます。
+        <br>※200*200以上の大きさの、拡張子がjpg, jpeg, gif, pngのファイルのみアップロードできます。
         </p>
       </div>
       <div class="col-sm-7">
