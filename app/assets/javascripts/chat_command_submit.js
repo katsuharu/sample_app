@@ -71,8 +71,10 @@ $(document).ready(function (){
     // console.log(clickEventType)
     // クリック、タップ時の処理を記述
   // $('#chat_submit').on('click', function(){
-  $(document).on('click', '#chat_submit', function() {
+  $(document).on('click', '#chat_submit', function(e) {
+    e.preventDefault()
     text = $('#chat_text').val()
+    console.log(text)
     // テキストフォームが空でない場合
     if(text != '') {
       $.ajax({
