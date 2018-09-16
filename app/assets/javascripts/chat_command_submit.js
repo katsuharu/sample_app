@@ -65,7 +65,12 @@ $(document).ready(function (){
     }
   })
 
-  $('#chat_submit').on('click', function(){
+  // clickイベントでの処理（mouseenter は省略）
+  var clickEventType=((window.ontouchstart!==null)?'click':'touchstart');
+  $("#chat_submit").on(clickEventType, function() {
+    console.log(clickEventType)
+    // クリック、タップ時の処理を記述
+  // $('#chat_submit').on('click', function(){
   // $(document).on('click', '#chat_submit', function() {
     text = $('#chat_text').val()
     $.ajax({
