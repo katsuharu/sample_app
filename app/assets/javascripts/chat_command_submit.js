@@ -65,33 +65,33 @@ $(document).ready(function (){
     }
   })
 
-  // clickイベントでの処理（mouseenter は省略）
-  // var clickEventType=((window.ontouchstart!==null)?'click':'touchstart');
-  // $("#chat_submit").on(clickEventType, function() {
-    // console.log(clickEventType)
-    // クリック、タップ時の処理を記述
-  // $('#chat_submit').on('click', function(){
-  $(document).on('click', '#chat_submit', function(e) {
-    e.preventDefault()
-    text = $('#chat_text').val()
-    console.log(text)
-    // テキストフォームが空でない場合
-    if(text != '') {
-      $.ajax({
-        type: 'POST',
-        url: '/chats/create',
-        data:{
-          'chat': {
-            'text': text,
-            'pair_id': $('[name="pair_id"').val(),
-          }
-        }
-      }).done(function(data) {
-        // 投稿フォームの入力を消去
-        $('textarea[name="chat[text]"]').val('')
-        // 投稿内容を画面に動的表示
-        buildChat(data)
-      })
-    }
-  })
+  // // clickイベントでの処理（mouseenter は省略）
+  // // var clickEventType=((window.ontouchstart!==null)?'click':'touchstart');
+  // // $("#chat_submit").on(clickEventType, function() {
+  //   // console.log(clickEventType)
+  //   // クリック、タップ時の処理を記述
+  // // $('#chat_submit').on('click', function(){
+  // $(document).on('click', '#chat_submit', function(e) {
+  //   e.preventDefault()
+  //   text = $('#chat_text').val()
+  //   console.log(text)
+  //   // テキストフォームが空でない場合
+  //   if(text != '') {
+  //     $.ajax({
+  //       type: 'POST',
+  //       url: '/chats/create',
+  //       data:{
+  //         'chat': {
+  //           'text': text,
+  //           'pair_id': $('[name="pair_id"').val(),
+  //         }
+  //       }
+  //     }).done(function(data) {
+  //       // 投稿フォームの入力を消去
+  //       $('textarea[name="chat[text]"]').val('')
+  //       // 投稿内容を画面に動的表示
+  //       buildChat(data)
+  //     })
+  //   }
+  // })
 })
