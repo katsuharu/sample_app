@@ -216,6 +216,11 @@ $(document).on('turbolinks:load', function() {
       }
   })
 
+  // 趣味登録ボタン押下時
+  $(document).on('click', '#chat_submit', function() {
+    alert('趣味を一つ以上選択してください')
+  })
+
   // //趣味編集ページで、my hobbyから趣味を削除するかどうかをcheckboxの値で判断
   // $(document).on('click', '#my_hobby_del', function() {
   //   if($('input:checkbox[name="user_hobbies[id][]"]:checked').length) {
