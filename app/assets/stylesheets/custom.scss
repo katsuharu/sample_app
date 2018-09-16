@@ -320,8 +320,16 @@ img.lunch_card_img {
   line-height: 21px;
 }
 
-.instruction_flex {
-  display: flex;
+@media (min-width: 768px) {
+  .instruction_flex {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .img_none {
+    text-align: center;
+  }
 }
 
 /* Timeline */
