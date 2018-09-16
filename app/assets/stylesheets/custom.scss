@@ -692,6 +692,7 @@ img.tweet_form_img {
 @media (max-width: 767px) {
   #slider_wrap {
     padding: 0;
+    /*width: 100%;*/
   }
 
   #slider > div {
@@ -1352,12 +1353,6 @@ a.square_btn.bf-top {
   font-weight:  500;
   margin-left:  50px;
   margin-top:  20px;
-}
-
-@media (max-width: 767px) {
-  #slider_wrap {
-    width: 100%;
-  }
 }
 
 /* プロフィール確認ページ */
