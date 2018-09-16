@@ -476,25 +476,15 @@ img.tweet_form_img {
 
   .today_date {
     height: 26px;
-    font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
     margin-bottom: 27px;
     color: #3b6793;
     letter-spacing: 4.4px;
     font-size: 18px;
-    display: flex;
-    align-items: center;
   }
 
   .today_date:before, .today_date:after {
-    content: "";
     width: 18%;
     height: 2px;
-    background: #3b6793;
-    display: block;
   }
   .today_date:before {
     margin-right: 13px;
