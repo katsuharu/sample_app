@@ -4,7 +4,7 @@
     <textarea required="required" placeholder="待ち合わせ場所と時間を決めてください（推奨:at グランドタワー1階 time 13:00)" name="chat[text]" id="chat_text" cols="55" rows="2"></textarea>
     <div class="flex_container">
       <%= hidden_field_tag :pair_id, @pair_id %>
-      <%= submit_tag "投稿", class: "post_tweet", id: 'chat_submit' %>
+      <button  name="commit" class="post_tweet" id="chat_submit">投稿</button>
     </div>
 </div>
 
