@@ -65,7 +65,8 @@ $(document).ready(function (){
     }
   })
 
-  $(document).on('click', '#chat_submit', function() {
+  $('#chat_submit').on('click', function(){
+  // $(document).on('click', '#chat_submit', function() {
     text = $('#chat_text').val()
     $.ajax({
       type: 'POST',
