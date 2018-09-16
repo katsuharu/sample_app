@@ -1363,6 +1363,12 @@ a.square_btn.bf-top {
   margin-top:  20px;
 }
 
+@media (max-width: 767px) {
+  .cate_selected, .member_data, .member_slack {
+    margin-left:  0;
+  }
+}
+
 /* プロフィール確認ページ */
 @media (min-width: 768px) {
   .prof-attr {
