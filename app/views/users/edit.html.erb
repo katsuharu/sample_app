@@ -108,8 +108,8 @@
     </div>
    
     <div class="form-actions btn-center">
-      <%= link_to '戻る', current_user, class: "square_btn confirm_btn edit_btn"%>
       <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn confirm_btn edit_btn" %>
+      <%= link_to '戻る', current_user, class: "square_btn confirm_btn edit_btn"%>
     </div>
 
   <% end %>
