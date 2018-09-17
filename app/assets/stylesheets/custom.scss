@@ -211,6 +211,12 @@ p.entry_now {
   text-align:  center;
 }
 
+/*  */
+.matching_status {
+  color: #67c5ff;
+  font-size: 1.3em;
+}
+
 .matching_time_show {
   margin-left: 218px;
 }
@@ -1170,8 +1176,7 @@ h2.bf-sub-title {
   padding: 0.3em 1em;
   text-decoration: none;
   background: #67c5ff ;
-  color: white;
-  border: solid 2px #67c5ff ;
+  color: #67c5ff;
   border-radius: 3px;
   transition: .4s;
   font-size: 1.3em;
