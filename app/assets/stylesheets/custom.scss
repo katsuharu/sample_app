@@ -789,8 +789,8 @@ h1.eigo-title {
   letter-spacing: 0.1em;
 }
 
-h1.basic-heading {
-  font-size: 2.8em;
+.basic-heading {
+  font-size: 2em;
   margin-bottom: 45px;
 }
 
@@ -806,7 +806,7 @@ p {
 }
 
 @media (max-width: 767px) {
-  h1.basic-heading {
+  .basic-heading {
     font-size: 1.8em;
   }
 
@@ -1153,7 +1153,7 @@ h2.bf-sub-title {
 .login-title {
   font-family: $main-font;
   font-size: 4.4em;
-  margin: 60px auto;
+  margin: 50px auto;
   letter-spacing: 0.1em;
 }
 

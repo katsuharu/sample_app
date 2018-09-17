@@ -1,11 +1,13 @@
 <% if @hobbies.present? %>
 <!-- カテゴリーを登録済みの場合 -->
   <% provide(:title, "カテゴリーを編集") %>
-  <h1 class="basic-heading">カテゴリーを編集</h1>
+  <h1 class="login-title">Lunch Friends</h1>
+  <h2 class="basic-heading center">カテゴリーを編集</h2>
 <% else %>
 <!-- カテゴリー未登録の場合 -->
   <% provide(:title, "カテゴリーを登録") %>
-  <h1 class="basic-heading">カテゴリーを登録</h1>
+  <h1 class="login-title">Lunch Friends</h1>
+  <h2 class="basic-heading center">カテゴリーを登録</h2>
 <% end %>
 
 <p>下記のボタンから、興味のあるカテゴリーを選択してください。</p>
