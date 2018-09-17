@@ -31,7 +31,8 @@ class UsersController < ApplicationController
       # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
       @cards = [{category_id: 128,
                 category_name: 'オールジャンル',
-                users: User.where(id: Lunch.get_entry_user_ids(128)) # オールジャンルにエントリー中のUserモデルの配列
+                users: User.where(id: Lunch.get_entry_user_ids(128)), # オールジャンルにエントリー中のUserモデルの配列
+                can_entry: true
                 }]
       # 投稿フォームのカテゴリーセレクト用のハッシュを定義
       @tw_selects = {"オールジャンル" => 128}
@@ -39,32 +40,52 @@ class UsersController < ApplicationController
       user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name)
       # 登録したカテゴリーの数分繰り返す
       user_cards.each do |u_card|
-        # 自分が登録したカテゴリーのなかで登録ユーザー数が3人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
-        if UserHobby.where(hobby_name: u_card).count > 2
-          category = Category.find_by(name: u_card)
-          # カテゴリーが存在する場合
-          if category.present?
-            # カテゴリーidを取得
-            category_id = category.id
-            # このカテゴリーにエントリー中の場合
-            if @my_lunch.present? && category_id == @my_lunch.category_id
+        category = Category.find_by(name: u_card)
+        # カテゴリーが存在する場合
+        if category.present?
+          # カテゴリーidを取得
+          category_id = category.id
+          # このカテゴリーにエントリー中の場合
+          if @my_lunch.present? && category_id == @my_lunch.category_id
+            # 自分が登録したカテゴリーのなかで登録ユーザー数が3人以上場合
+            if UserHobby.where(hobby_name: u_card).count > 2
               # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
               @cards.unshift(
               {category_id: category_id, # カテゴリーID
               category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
-              users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
+              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              can_entry: true
+              })
+            else
+              # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
+              @cards.unshift(
+              {category_id: category_id, # カテゴリーID
+              category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
+              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              can_entry: false
+              })
+            end
+          else
+            if UserHobby.where(hobby_name: u_card).count > 2
+              # 配列の末尾にハッシュを追加
+              @cards.push(
+              {category_id: category_id, # カテゴリーID
+              category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
+              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              can_entry: true
               })
             else
               # 配列の末尾にハッシュを追加
               @cards.push(
               {category_id: category_id, # カテゴリーID
               category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
-              users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
+              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              can_entry: false
               })
             end
-            # カテゴリーハッシュに追加
-            @tw_selects[u_card] = category_id
           end
+          # カテゴリーハッシュに追加
+          @tw_selects[u_card] = category_id
         end
       end
 
