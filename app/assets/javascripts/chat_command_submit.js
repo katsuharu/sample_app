@@ -51,7 +51,7 @@ $(document).ready(function (){
           data:{
             'chat': {
               'text': text,
-              'pair_id': $('[name="pair_id"').val(),
+              'pair_id': $('[name="chat[pair_id]"').val(),
             }
           }
         }).done(function(data) {
