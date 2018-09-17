@@ -1193,55 +1193,6 @@ a.square_btn.bf-top {
   height:200px;
 }
 
-/* ランチカード */
-
-/* エントリー完了画面 */
-.comp-entry {
-  text-align: center;
-}
-
-.comp-entry h1 {
-  font-size: 2.3em;
-  font-family: $main-font;
-}
-
-.comp-entry h2 {
-  font-size: 2.3em;
-}
-
-.comp-entry img {
-  margin: 20px auto;
-  width: 200px;
-  height: 200px;
-}
-
-.cate_selected {
-  font-size: 16px;
-  margin-left:  50px;
-  margin-top:  20px;
-  font-weight:  700;
-}
-
-.member_data {
-  font-weight:  500;
-  font-size:  14px;
-  margin-top:  20px;
-  margin-left:  50px;
-}
-
-.member_slack {
-  font-size: 12px;
-  font-weight:  500;
-  margin-left:  50px;
-  margin-top:  20px;
-}
-
-@media (max-width: 767px) {
-  .cate_selected, .member_data, .member_slack {
-    margin-left:  0;
-  }
-}
-
 /* プロフィール確認ページ */
 @media (min-width: 768px) {
   .prof-attr {
@@ -1294,6 +1245,27 @@ a.square_btn.bf-top {
 
 
 /* マッチング相手確認ページ */
+.cate_selected {
+  font-size: 16px;
+  margin-left:  50px;
+  margin-top:  20px;
+  font-weight:  700;
+}
+
+.member_data {
+  font-weight:  500;
+  font-size:  14px;
+  margin-top:  20px;
+  margin-left:  50px;
+}
+
+.member_slack {
+  font-size: 12px;
+  font-weight:  500;
+  margin-left:  50px;
+  margin-top:  20px;
+}
+
 .check_content_title {
   font-weight:  700;
   font-size:  18px;
@@ -1336,8 +1308,11 @@ a.square_btn.bf-top {
   }
 }
 
-
 @media (max-width: 767px) {
+  .cate_selected, .member_data, .member_slack {
+    margin-left:  0;
+  }
+
   .pair-info {
       text-align:  center;
   }
@@ -1385,8 +1360,6 @@ a.square_btn.bf-top {
     background: transparent;
     border: 2px dotted #f2b4b3;
 }
-
-
 
 #crop_area_box {
   display: block;
