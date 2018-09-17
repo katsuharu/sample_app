@@ -37,8 +37,8 @@
         <div class="pair_check">
           <%= link_to "マッチング相手を確認する", check_path, class: "square_btn" %>
         </div>
-      <% else %>
-      <!-- 未マッチングの場合 -->
+      <% elsif today_entried? %>
+      <!-- エントリー済みの場合 -->
         <div class="btn-center">
           <p class="matching_status">本日はマッチングされませんでした</p>
         </div>

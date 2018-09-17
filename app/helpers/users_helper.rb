@@ -11,6 +11,12 @@ module UsersHelper extend ActiveSupport::Concern
     end
   end
 
+  # 本日の日付のランチにエントリ済みの場合にtrueを返す関数
+  def today_entried?
+    # 本日のランチにエントリ中の場合にtrueを返す
+    Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).where(canceled_at: nil).present?
+  end
+
   def matched?
     # ログインユーザーがマッチング済みの場合にtrueを返す
     Lunch.where.not(pair_id: nil).where(user_id: current_user.id).where(lunch_date: Date.today).present?
