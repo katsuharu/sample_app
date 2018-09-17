@@ -3,10 +3,10 @@ require 'action_view/helpers'
 include ActionView::Helpers::DateHelper
 
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry, :cancel, :check]
+  before_action :logged_in_user, only: [:show, :edit, :update, :entry, :cancel, :check]
   before_action :correct_user, only: [:show, :edit, :update, :entry, :cancel]
-  before_action :admin_user,     only: :destroy
-  before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check]
+  # before_action :admin_user,     only: :destroy
+  before_action :hobby_registered, only: [:index, :show, :edit, :update, :entry, :check]
 
   def index
     # ログイン済みの場合
@@ -193,11 +193,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "ユーザーを削除しました"
-    redirect_to users_url
-  end
+  # def destroy
+  #   User.find(params[:id]).destroy
+  #   flash[:success] = "ユーザーを削除しました"
+  #   redirect_to users_url
+  # end
 
   def entry
     # エントリー確認画面でユーザープロフィールを表示するためにインスタンス変数に代入
