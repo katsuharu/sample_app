@@ -1132,20 +1132,21 @@ h2.bf-sub-title {
 
 
 /* ログインページ */
-h1.login-title {
+.login-title {
   font-family: $main-font;
   font-size: 4.4em;
   margin: 60px auto;
+  letter-spacing: 0.1em;
 }
 
 .login-row {
-    max-width: 700px;
-    margin: 30px auto;
+  max-width: 700px;
+  margin: 30px auto;
 }
 
-h2.login-sub-title {
-    font-size: 1.8em;
-    margin: 40px auto;
+.login-sub-title {
+  font-size: 1.8em;
+  margin: 40px auto;
 }
 
 .login-row .form-control {
