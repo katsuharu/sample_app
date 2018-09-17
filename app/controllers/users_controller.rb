@@ -92,37 +92,37 @@ class UsersController < ApplicationController
       @user = current_user
       # @user.update_attribute(:logined_at, DateTime.now)
 
-      # Timelineに投稿された場合
-      if params[:id].present?
-        @new_tweets = []
-        tweets = Tweet.where('id > ?', params[:id])
-        tweets.each do |tweet|
-          # 時刻の表示を整形
-          # モデルの作成から1日以上経過している場合
-          if Time.now - tweet.created_at >= 86400
-            post_at = tweet.created_at.strftime("%Y年 %m月 %d日")
-          else
-            post_at = time_ago_in_words(tweet.created_at) + "前"
-          end
+      # # Timelineに投稿された場合
+      # if params[:id].present?
+      #   @new_tweets = []
+      #   tweets = Tweet.where('id > ?', params[:id])
+      #   tweets.each do |tweet|
+      #     # 時刻の表示を整形
+      #     # モデルの作成から1日以上経過している場合
+      #     if Time.now - tweet.created_at >= 86400
+      #       post_at = tweet.created_at.strftime("%Y年 %m月 %d日")
+      #     else
+      #       post_at = time_ago_in_words(tweet.created_at) + "前"
+      #     end
 
-          # カテゴリー名を取得
-          category_name = Category.find_by(id: tweet.category_id).name if tweet.category_id.present?
-          # 返信数を取得
-          thread_count = TThread.where(tweet_id: tweet.id).count
+      #     # カテゴリー名を取得
+      #     category_name = Category.find_by(id: tweet.category_id).name if tweet.category_id.present?
+      #     # 返信数を取得
+      #     thread_count = TThread.where(tweet_id: tweet.id).count
 
-          @new_tweets.push({ tweet: tweet, # Tweetモデル
-                          img_url: tweet.user.profile_img.url, # 投稿者のimg_URL
-                          user_name: tweet.user.name, # 投稿者名
-                          post_at: post_at, # 投稿時刻(表示用に整形済)
-                          category_name: category_name, # カテゴリー名
-                          thread_count: thread_count, # 返信数
-                        })
-        end
-        respond_to do |format| 
-          format.html # html形式でアクセスがあった場合は特に何もなし
-          format.json { @new_tweets }
-        end
-      end
+      #     @new_tweets.push({ tweet: tweet, # Tweetモデル
+      #                     img_url: tweet.user.profile_img.url, # 投稿者のimg_URL
+      #                     user_name: tweet.user.name, # 投稿者名
+      #                     post_at: post_at, # 投稿時刻(表示用に整形済)
+      #                     category_name: category_name, # カテゴリー名
+      #                     thread_count: thread_count, # 返信数
+      #                   })
+      #   end
+      #   respond_to do |format| 
+      #     format.html # html形式でアクセスがあった場合は特に何もなし
+      #     format.json { @new_tweets }
+      #   end
+      # end
 
     # 未ログインの場合
     else
