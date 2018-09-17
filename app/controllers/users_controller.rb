@@ -29,13 +29,13 @@ class UsersController < ApplicationController
         @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.tomorrow).where.not(category_id: nil).find_by(canceled_at: nil)
       end
       # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
-      @cards = [{category_id: 128,
+      @cards = [{category_id: 43,
                 category_name: 'オールジャンル',
                 users: User.where(id: Lunch.get_entry_user_ids(128)), # オールジャンルにエントリー中のUserモデルの配列
                 can_entry: true
                 }]
       # 投稿フォームのカテゴリーセレクト用のハッシュを定義
-      @tw_selects = {"オールジャンル" => 128}
+      @tw_selects = {"オールジャンル" => 43}
       # ログインユーザーが登録したカテゴリーの名前の配列を取得
       user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name)
       # 登録したカテゴリーの数分繰り返す
