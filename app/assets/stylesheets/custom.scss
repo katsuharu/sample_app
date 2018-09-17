@@ -73,7 +73,6 @@ select {
   display: none;
 }
 
-
 .navbar {
   margin-bottom: 0;
 }
@@ -211,18 +210,8 @@ p.entry_now {
   text-align:  center;
 }
 
-
-/* また明日エントリーをお待ちしております。 */
-p.lunch_time_end {
-  margin-left: 135px;
-}
-
 .matching_time_show {
   margin-left: 218px;
-}
-/* エントリー数が少なくて行われませんでした。 */
-.lack_of_members {
-  margin-left: 153px;
 }
 
 .lunch_card {
@@ -255,19 +244,6 @@ p.lunch_time_end {
   color: #ffffff;
   margin-top:14px;
   margin-left:14px;
-}
-
-p.lunch_state {
-  font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
-  font-size: 12px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: 2.6px;
-  text-align: left;
-  color: #ffffff;
-  margin: 0 14px  9.8px 14px;
 }
 
 img.lunch_card_img {
@@ -525,19 +501,6 @@ img.tweet_form_img {
     margin-left:20px;
   }
 
-  p.lunch_state {
-    font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
-    font-size: 12px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: 2.6px;
-    text-align: left;
-    color: #ffffff;
-    margin: 0 14px  9.8px 14px;
-  }
-
   img.lunch_card_img {
     width:  42px;
     height:  42px;
@@ -650,18 +613,10 @@ img.tweet_form_img {
   p.entry_now {
     margin-left: 296px;
   }
-
-  /* また明日エントリーをお待ちしております。 */
-  p.lunch_time_end {
-    margin-left: 221px;
-  }
+  
   /* 12:30に相手が決まります */
   .matching_time_show {
     margin-left: 276px;
-  }
-  /* エントリー数が少なくて行われませんでした。 */
-  .lack_of_members {
-    margin-left: 243px;
   }
 
   .today_date {
@@ -1231,88 +1186,6 @@ a.square_btn.bf-top {
   }
 }
 
-
-/* エントリー中ユーザ一覧 */
-
-.entry-user .user-info img {
-  width: 180px;
-  height: 180px;
-}
-
-.entry-user .user-info .col-xs-10 {
-  padding-left: 55px;
-}
-
-.entry-user .entry-photo {
-  flex: 2;
-  min-height: 150px;
-  background-position: center;
-  background-size: cover;
-}
-
-.entry-user .entry-text {
-  flex: 3;
-  margin: 10px;
-}
-
-.entry-user h2 {
-  margin-bottom: 60px;
-  font-size: 1.6em;
-  text-align: left;
-  margin: 15px 0;
-}
-
-.entry-user .entry-state h3 {
-    color: #ff8c00;
-    font-size: 2.5em;
-    padding-left: 90px;
-    margin: 25px auto;
-}
-
-.entry-state.entried h3 {
-    text-align:  center;
-    padding: 0;
-}
-
-
-.entry-user .entry-cnt {
-    margin-bottom: 25px;
-}
-
-.category-center {
-  text-align: center;
-  margin: 30px auto;
-}
-
-.category-select {
-  padding-left: 5em;
-  font-weight: 500;
-  font-size: 1.2em;
-  display: inline;
-}
-
-
-.checkbox-center {
-    text-align: center;
-}
-
-
-@media (max-width: 767px) {
-  .user-info .col-sm-4 {
-      text-align:  center;
-  }
-
-  .category-center {
-    text-align: left;
-    margin: 30px auto;
-  }
-}
-
-@media (max-width: 384px) {
-  .entry-user .entry-photo {
-    flex: 1;
-  }
-}
 
 /* プロフィールページ */
 .col-lg-12 img {
