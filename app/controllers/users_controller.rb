@@ -284,6 +284,9 @@ class UsersController < ApplicationController
             flash[:success] = "キャンセルいたしました。"
             redirect_to(root_url)
           end
+        else
+          flash[:info] = "未エントリーのためキャンセルできません。"
+          redirect_to(root_url)
         end
       end
     else
@@ -296,6 +299,9 @@ class UsersController < ApplicationController
           flash[:success] = "キャンセルいたしました。"
           redirect_to(root_url)
         end
+      else
+        flash[:info] = "未エントリーのためキャンセルできません。"
+        redirect_to(root_url)
       end
     end
   end
