@@ -64,24 +64,33 @@
         </div>          
       <% end %>
     <% else %>
-      <div class="lunch_card">
-        <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <!-- スライドショー -->
-        <div id="slider_wrap">
-          <div id="slider">
-              <div id="slider_inner_<%= card_counter %>">
-                  <ul id="photo_list_<%= card_counter %>">
-                    <% card[:users].each do |user| %>
-                      <li>
-                        <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </div><!-- end of #slider_inner --> 
-          </div><!-- end of #slider --> 
-        </div><!-- end of #slider_wrap --> 
-        <!-- スライドショー -->
-      </div>
+    <!-- 対象のカードにエントリー中でない場合 -->
+      <% if card[:can_entry] %>
+      <!-- 登録ユーザー数が3人以上の場合 -->
+        <div class="lunch_card">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <!-- スライドショー -->
+          <div id="slider_wrap">
+            <div id="slider">
+                <div id="slider_inner_<%= card_counter %>">
+                    <ul id="photo_list_<%= card_counter %>">
+                      <% card[:users].each do |user| %>
+                        <li>
+                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
+                        </li>
+                      <% end %>
+                    </ul>
+                </div><!-- end of #slider_inner --> 
+            </div><!-- end of #slider --> 
+          </div><!-- end of #slider_wrap --> 
+          <!-- スライドショー -->
+        </div>
+      <% else %>
+        <div class="lunch_card inactive">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% else %>
