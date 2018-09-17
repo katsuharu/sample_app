@@ -243,6 +243,9 @@ class UsersController < ApplicationController
           flash[:danger] = "エントリーできませんでした。"
         end
         redirect_to root_url
+      else
+        flash[:info] = "既にエントリー済みです。"
+        redirect_to root_url
       end
     else
       # 明日の日付でユーザーがエントリーしていない場合
@@ -254,6 +257,9 @@ class UsersController < ApplicationController
         else
           flash[:danger] = "エントリーできませんでした。"
         end
+        redirect_to root_url
+      else
+        flash[:info] = "既にエントリー済みです。"
         redirect_to root_url
       end
     end
