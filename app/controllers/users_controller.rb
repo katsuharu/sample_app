@@ -264,14 +264,20 @@ class UsersController < ApplicationController
     @time_now = DateTime.now
     # 12:30以前の場合
     if @time_now.strftime('%H:%M:%S') < "12:30:00"
-      # 本日のランチモデルを取得
-      lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).
-        where.not(category_id: nil).where(canceled_at: nil).find_by(pair_id: nil)
-      # 本日付のランチモデルが存在する場合
-      if lunch.present?
-        if lunch.update_attribute(:canceled_at, DateTime.now)
-          flash[:success] = "キャンセルいたしました。"
-          redirect_to(root_url)
+      # マッチング済みの場合
+      if matched?
+        flash[:info] = "既にマッチング済みのためキャンセルできません。"
+        redirect_to(root_url)
+      else
+        # 本日のランチモデルを取得
+        lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).
+          where.not(category_id: nil).where(canceled_at: nil).find_by(pair_id: nil)
+        # 本日付のランチモデルが存在する場合
+        if lunch.present?
+          if lunch.update_attribute(:canceled_at, DateTime.now)
+            flash[:success] = "キャンセルいたしました。"
+            redirect_to(root_url)
+          end
         end
       end
     else
