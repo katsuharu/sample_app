@@ -682,22 +682,21 @@ img.tweet_form_img {
 }
 
 /*  カテゴリーセレクトの矢印マーク */
-.select-group:after
-{
-    position: absolute;
-    top: 0;
-    right: 8px;
-    bottom: 0;
+.select-group:after {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  bottom: 0;
 
-    width: 0;
-    height: 0;
-    margin: auto;
+  width: 0;
+  height: 0;
+  margin: auto;
 
-    content: '';
+  content: '';
 
-    border-top: 4px solid #999;
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
+  border-top: 4px solid #999;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
 }
 
 /* カテゴリーセレクトのクリック可能範囲を拡大 */
@@ -970,15 +969,15 @@ input {
 }
 
 .select-content {
-    border-radius: .25em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    background: #fff;
-    font-family: inherit;
-    color: inherit;
-    overflow: auto;
-    max-width: 18rem;
-    max-height: 18rem;
-    -webkit-overflow-scrolling: touch;
+  border-radius: .25em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  font-family: inherit;
+  color: inherit;
+  overflow: auto;
+  max-width: 18rem;
+  max-height: 18rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .field_with_errors {
@@ -1102,16 +1101,16 @@ input {
 
 /* ログイン前ページ */
 h1.bf-title {
-    font-family: $main-font;
-    font-size: 4.4em;
-    letter-spacing: 0.1em;
-    margin: 30px auto;
+  font-family: $main-font;
+  font-size: 4.4em;
+  letter-spacing: 0.1em;
+  margin: 30px auto;
 }
 
 h2.bf-sub-title {
-    font-size: 1.8em;
-    text-align: center;
-    margin: 30px auto;
+  font-size: 1.8em;
+  text-align: center;
+  margin: 30px auto;
 }
 
 .bf-img {
