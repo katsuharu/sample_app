@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function() {
   // 入力したパスワードと確認パスワードが一致しないときにsubmitを無効化する
-  $(document).on('click', '#submitBtn', function() {
+  $('#submitBtn').on('click',function(){
+  // $(document).on('click', '#submitBtn', function() {
     if ($('#user_password').val() != $('#user_password_confirmation').val()) {
       alert('パスワードと確認用パスワードが一致しません。')
       return false        
@@ -8,7 +9,8 @@ $(document).on('turbolinks:load', function() {
   })
 
   // 確認画面で登録ボタン押下時に処理中であることを表示
-  $(document).on('click', '#register_user', function() {
+  $('#register_user').on('click',function(){
+  // $(document).on('click', '#register_user', function() {
     $('body').attr('id', 'progressing');
     // $('body').prepend('<img alt="LF" src="/assets/loading.gif" id="loading_img">')
     $('body').prepend('<img src="/loading_img/loading.gif" alt="Loading Image" id="loading_img">')
