@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
       @cards = [{category_id: 43,
                 category_name: 'オールジャンル',
-                users: User.where(id: Lunch.get_entry_user_ids(128)), # オールジャンルにエントリー中のUserモデルの配列
+                users: User.where(id: Lunch.get_entry_user_ids(43)), # オールジャンルにエントリー中のUserモデルの配列
                 can_entry: true
                 }]
       # 投稿フォームのカテゴリーセレクト用のハッシュを定義
