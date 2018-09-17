@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}) do |f| %>
+    <%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}, url: { controller: 'users', action: 'create'}) do |f| %>
         <div class="prof-attr">
           <label class="prof-label">
             <span class="label label-danger">必須</span>

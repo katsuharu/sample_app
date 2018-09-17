@@ -5,8 +5,7 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-
-  <%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}) do |f| %>
+  <%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}, url: { controller: 'users', action: 'update'}) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <div class="form-group">
@@ -106,10 +105,11 @@
       </div>
         <%= f.hidden_field :profile_img_data_uri %>    
     </div>
-   
+    
     <div class="form-actions btn-center">
+      <%= hidden_field_tag :id, @user.id %>
       <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn confirm_btn btn_vertical" %>
-      <%= link_to '戻る', current_user, class: "square_btn confirm_btn btn_vertical"%>
+      <%= link_to '戻る', users_profile_path, class: "square_btn confirm_btn btn_vertical"%>
     </div>
 
   <% end %>

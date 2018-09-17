@@ -3,8 +3,8 @@ require 'action_view/helpers'
 include ActionView::Helpers::DateHelper
 
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update, :entry, :cancel, :check]
-  before_action :correct_user, only: [:show, :edit, :update, :entry, :cancel]
+  before_action :logged_in_user, only: [:profile, :edit, :update, :entry, :cancel, :check]
+  before_action :correct_user, only: [:entry, :cancel]
   # before_action :admin_user,     only: :destroy
   before_action :hobby_registered, only: [:index, :show, :edit, :update, :entry, :check]
 
@@ -131,8 +131,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
+  def profile
+    @user = current_user
   end
 
   def new
@@ -185,32 +185,37 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     # 戻るボタンが押された場合
     if params[:back]
-      redirect_to edit_use_path
+      # プロフィール画面にリダイレクト
+      redirect_to users_profile_path
     # 写真を選択した状態で「変更を保存」を押した場合
     elsif user_params[:profile_img]
       if @user.update_attributes(user_params)
         flash[:success] = "ユーザー情報を更新しました。"
-        redirect_to user_path
+        # プロフィール画面にリダイレクト
+        redirect_to users_profile_path
       else
         flash[:info] = "プロフィールを更新しませんでした。"
-        redirect_to edit_user_path
+        # プロフィール編集画面にリダイレクト
+        redirect_to users_edit_path
       end
     # 写真を選択せず「変更を保存」を押した場合
     else
       #写真以外のカラムを更新
       if User.find(@user.id).update_attributes(name: user_params[:name], email: user_params[:email], password: user_params[:password],password_confirmation: user_params[:password_confirmation] , department_name: user_params[:department_name], slack_id: user_params[:slack_id], self_intro: user_params[:self_intro])
         flash[:success] = "ユーザー情報を更新しました。"
-        redirect_to user_path 
+        # プロフィール画面にリダイレクト
+        redirect_to users_profile_path
       else
         flash[:info] = "プロフィールを更新しませんでした。"
-        redirect_to edit_user_path
+        # プロフィール編集画面にリダイレクト
+        redirect_to users_edit_path
       end
     end
   end
