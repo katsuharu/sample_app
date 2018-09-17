@@ -362,4 +362,9 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user.admin?
     end
 
+    def matched?
+      # ログインユーザーがマッチング済みの場合にtrueを返す
+      Lunch.where.not(pair_id: nil).where(user_id: current_user.id).where(lunch_date: Date.today).present?
+    end
+
 end
