@@ -1017,9 +1017,9 @@ input.square_btn.confirm_btn {
 
 /* --- cropit-icon ---- */
 .controls-wrapper {
-    margin-top: 20px;
-    text-align: center;
-    position: relative;
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
 }
 
 .rotation-btns {
@@ -1064,14 +1064,14 @@ input.square_btn.confirm_btn {
 }
 
 .slider-wrapper .cropit-image-zoom-input.custom {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 5px;
-    background: #eee;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #eee;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
 }
 
 input.cropit-image-zoom-input.custom {
@@ -1123,11 +1123,11 @@ h2.bf-sub-title {
 }
 
 .bf-btn {
-    margin: 20px auto;
+  margin: 20px auto;
 }
 
 .bf-btn a.btn.btn-lg.btn-primary {
-    width: 350px;
+  width: 350px;
 }
 
 
@@ -1349,15 +1349,15 @@ a.square_btn.bf-top {
     width: 24px;
 }
 .trim-cnt #rectangle {
-    z-index: 2;
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    background: transparent;
-    border: 2px dotted #f2b4b3;
+  z-index: 2;
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border: 2px dotted #f2b4b3;
 }
 
 #crop_area_box {
@@ -1548,12 +1548,12 @@ li.hobby_selected {
 
 /* Thread */
 .t_threads.col-sm-3 {
-    background-color:  gainsboro;
+  background-color:  gainsboro;
 }
 
 textarea#t_thread_content {
-    width: 80%;
-    margin: 0 35px;
+  width: 80%;
+  margin: 0 35px;
 }
 
 /* thread基tweetモーダル */
