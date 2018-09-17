@@ -174,7 +174,8 @@ class UsersController < ApplicationController
       elsif @user.save
         @user.send_activation_email
         flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
-        redirect_to root_url
+        # 仮登録完了/メール認証ページにリダイレクト
+        redirect_to account_activation_path
         return
       else
         render 'new'
