@@ -9,6 +9,9 @@ class StaticPagesController < ApplicationController
     redirect_to root_url
   end
 
+  def maintenance
+  end
+
   private
 
     def contact_params
