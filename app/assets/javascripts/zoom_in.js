@@ -2,22 +2,22 @@ $(document).on('turbolinks:load', function() {
   'use strict'
   var ALREADY = false
 
-  // 検索窓で表示したカテゴリーをクリックして趣味候補欄に追加
-  $(document).on("click", 'ul#search_result.category_search li', function(){
-    var clicked_category = $(this).text()
-    $('.my_hobbies input').each(function() {
-      if($(this).val() == clicked_category) {
-        ALREADY = true
-        return false
-      }
-    })
+  // // 検索窓で表示したカテゴリーをクリックして趣味候補欄に追加
+  // $(document).on("click", 'ul#search_result.category_search li', function(){
+  //   var clicked_category = $(this).text()
+  //   $('.my_hobbies input').each(function() {
+  //     if($(this).val() == clicked_category) {
+  //       ALREADY = true
+  //       return false
+  //     }
+  //   })
 
-    if(!ALREADY) {
-      $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
-      $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + clicked_category + '" readonly id="selected_category">')
-    }
-    ALREADY = false
-  })
+  //   if(!ALREADY) {
+  //     $('#hobby_delete').append('<label for="user_hobby[hobby_name][]">削除</label>')
+  //     $('#my_hobby').append('<input type="text" name="user_hobby[hobby_name][]" value="' + clicked_category + '" readonly id="selected_category">')
+  //   }
+  //   ALREADY = false
+  // })
 
   /* 第1層のカテゴリーを選択した時に、その下層のカテゴリーを表示する */
   // クリックした第1層のカテゴリのdata-first属性の値を取得する
@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', function() {
     // 選択したカテゴリーの要素にクラスセレクタを追加
     $this.addClass('lunch_selected')
     // 登録趣味一覧の趣味の数分繰り返す
-    $('.my_hobbies input').each(function() {
+    $('input[name="user_hobby[][hobby_name]"]').each(function(){
       // 選択した要素が選択一覧に既に存在する場合
       if($(this).val() == $this.text()) {
         // ALREADYフラグをtrueにセット
@@ -85,7 +85,7 @@ $(document).on('turbolinks:load', function() {
       // 登録趣味一覧にカテゴリを追加
       $('#my_hobby').append('<input type="text" name="user_hobby[][hobby_name]" data-second="' + data_second + '" value="' + $this.text()+ '" readonly id="selected_category">')
       // hobby_idをhidden typeで追加
-      $('#my_hobby').append('<input type="hidden" name="user_hobby[][hobby_id]" value="' + data_second + '">')
+      $('#my_hobby').append('<input type="hidden" name="user_hobby[][hobby_id]" data-second="' + data_second + '" value="' + data_second + '">')
     }
     ALREADY = false
   })
@@ -192,36 +192,35 @@ $(document).on('turbolinks:load', function() {
   //   }
   // }
   
-  //趣味登録ページで、my hobbyから趣味を削除するかどうかをcheckboxの値で判断
-  $(document).on('click', '#hobby_delete label', function() {
-    var index = $('#hobby_delete label').index(this)
-    // 選択した第二カテゴリーの要素のdata-second属性の値を取得
-    var data_second = $('#my_hobby input:eq(' + index+ ')').data('second')
-    // 削除したinput要素のvalueと同じ値を持つカテゴリーのclass'lunch_selected'を削除
-    $('[data-second="' + data_second + '"]').removeClass('lunch_selected')
-    // カテゴリーlabeを削除
-    $('#my_hobby input:eq(' + index+ ')').remove()
-    // 削除ラベルを削除
-    $('#hobby_delete label:eq(' + index+ ')').remove()
-  })
+  // //趣味登録ページで、my hobbyから趣味を削除するかどうかをcheckboxの値で判断
+  // $(document).on('click', '#hobby_delete label', function() {
+  //   var index = $('#hobby_delete label').index(this)
+  //   // 選択した第二カテゴリーの要素のdata-second属性の値を取得
+  //   var data_second = $('#my_hobby input:eq(' + index+ ')').data('second')
+  //   // 削除したinput要素のvalueと同じ値を持つカテゴリーのclass'lunch_selected'を削除
+  //   $('[data-second="' + data_second + '"]').removeClass('lunch_selected')
+  //   // カテゴリーlabeを削除
+  //   $('#my_hobby input:eq(' + index+ ')').remove()
+  //   // 削除ラベルを削除
+  //   $('#hobby_delete label:eq(' + index+ ')').remove()
+  // })
 
   // 趣味登録ボタン押下時
-  $(document).on('click', '#hobby_register', function() {
+  $('#hobby_register').on('click',function(){
     // 趣味が一つも選択されていない場合
-    if ($("input[name='user_hobby[][hobby_name]']").val() == undefined) {
-        // アラートを出力
-        alert('趣味を一つ以上選択してください')
-        // submit処理を中止
-        return false
-      }
-  })
-
-  //趣味編集ページで、my hobbyから趣味を削除するかどうかをcheckboxの値で判断
-  $(document).on('click', '#my_hobby_del', function() {
-    if($('input:checkbox[name="user_hobbies[id][]"]:checked').length) {
-    }else {
-      alert('一つ以上チェックしてください')
+    if ($("input[name='user_hobby[][hobby_name]']").length == 0) {
+      alert('趣味を一つ以上選択してください')
+      // submit処理を中止
       return false
     }
   })
+
+  // //趣味編集ページで、my hobbyから趣味を削除するかどうかをcheckboxの値で判断
+  // $(document).on('click', '#my_hobby_del', function() {
+  //   if($('input:checkbox[name="user_hobbies[id][]"]:checked').length) {
+  //   }else {
+  //     alert('一つ以上チェックしてください')
+  //     return false
+  //   }
+  // })
 })

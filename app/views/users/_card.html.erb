@@ -1,34 +1,10 @@
 <% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
 <!-- 12:30以前の場合 -->
-  <!-- 未エントリーの場合  -->
+  <!-- 未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
-    <!-- リンク先をentry APIにセット -->
-    <a href="/entry?category_id=<%= card[:category_id] %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
-      <div class="lunch_card_category"><%= card[:category_name] %></div>
-      <!-- スライドショー -->
-      <div id="slider_wrap">
-        <div id="slider">
-            <div id="slider_inner_<%= card_counter %>">
-                <ul id="photo_list_<%= card_counter %>">
-                  <% card[:users].each do |user| %>
-                    <li>
-                      <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                    </li>
-                  <% end %>
-                </ul>
-            </div><!-- end of #slider_inner --> 
-        </div><!-- end of #slider --> 
-      </div><!-- end of #slider_wrap --> 
-      <!-- スライドショー -->
-      <!-- エントリーボタン -->
-      <div class="entry_button">エントリーする</div>
-    </a>
-  <!-- エントリー中の場合、リンク先をcancel APIにセット -->
-  <% else %>
-    <!-- 対象のランチカードにエントリー中の場合 -->
-    <% if @my_lunch.category_id == card[:category_id] %>
-      <!-- 左上に表示してカードの色を有効色に変更 -->
-      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
+    <!-- 登録ユーザー数が3人以上の場合 -->
+    <% if card[:can_entry] %>
+      <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
         <div class="lunch_card_category"><%= card[:category_name] %></div>
         <!-- スライドショー -->
         <div id="slider_wrap">
@@ -45,61 +21,85 @@
           </div><!-- end of #slider --> 
         </div><!-- end of #slider_wrap --> 
         <!-- スライドショー -->
-        <!-- キャンセルボタン -->
-        <div class="entry_button">キャンセルする</div>
+        <!-- エントリーボタン -->
+        <div class="entry_button">エントリーする</div>
       </a>
     <% else %>
-      <div class="lunch_card">
+    <!-- inactiveクラスを追加してグレーアウト -->
+      <div class="lunch_card inactive" style="text-decoration: none;">
         <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <!-- スライドショー -->
-        <div id="slider_wrap">
-          <div id="slider">
-              <div id="slider_inner_<%= card_counter %>">
-                  <ul id="photo_list_<%= card_counter %>">
-                    <% card[:users].each do |user| %>
-                      <li>
-                        <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </div><!-- end of #slider_inner --> 
-          </div><!-- end of #slider --> 
-        </div><!-- end of #slider_wrap --> 
-        <!-- スライドショー -->
+        <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
       </div>
+    <% end %>
+  <!-- エントリー中の場合、リンク先をcancel APIにセット -->
+  <% else %>
+    <!-- 対象のランチカードにエントリー中の場合、左上に表示してカードの色を有効色に変更 -->
+    <% if @my_lunch.category_id == card[:category_id] %>
+      <!-- 登録ユーザー数が3人以上の場合 -->
+      <% if card[:can_entry] %>
+        <a href="/users/cancel?id=<%= current_user.id %>" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <!-- スライドショー -->
+          <div id="slider_wrap">
+            <div id="slider">
+                <div id="slider_inner_<%= card_counter %>">
+                    <ul id="photo_list_<%= card_counter %>">
+                      <% card[:users].each do |user| %>
+                        <li>
+                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
+                        </li>
+                      <% end %>
+                    </ul>
+                </div><!-- end of #slider_inner --> 
+            </div><!-- end of #slider --> 
+          </div><!-- end of #slider_wrap --> 
+          <!-- スライドショー -->
+          <!-- キャンセルボタン -->
+          <div class="entry_button">キャンセルする</div>
+        </a>
+      <% else %>
+        <div class="lunch_card my_entry_card inactive" style="text-decoration: none;">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>          
+      <% end %>
+    <% else %>
+    <!-- 対象のカードにエントリー中でない場合 -->
+      <% if card[:can_entry] %>
+      <!-- 登録ユーザー数が3人以上の場合 -->
+        <div class="lunch_card">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <!-- スライドショー -->
+          <div id="slider_wrap">
+            <div id="slider">
+                <div id="slider_inner_<%= card_counter %>">
+                    <ul id="photo_list_<%= card_counter %>">
+                      <% card[:users].each do |user| %>
+                        <li>
+                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
+                        </li>
+                      <% end %>
+                    </ul>
+                </div><!-- end of #slider_inner --> 
+            </div><!-- end of #slider --> 
+          </div><!-- end of #slider_wrap --> 
+          <!-- スライドショー -->
+        </div>
+      <% else %>
+        <div class="lunch_card inactive">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% else %>
 <!-- 12:30以降の場合 -->
-  <!-- 明日のランチに未エントリーの場合  -->
+  <!-- 明日のランチに未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
-    <!-- リンク先をentry APIにセット -->
-    <a href="/entry?category_id=<%= card[:category_id] %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
-      <div class="lunch_card_category"><%= card[:category_name] %></div>
-      <!-- スライドショー -->
-      <div id="slider_wrap">
-        <div id="slider">
-            <div id="slider_inner_<%= card_counter %>">
-                <ul id="photo_list_<%= card_counter %>">
-                  <% card[:users].each do |user| %>
-                    <li>
-                      <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                    </li>
-                  <% end %>
-                </ul>
-            </div><!-- end of #slider_inner --> 
-        </div><!-- end of #slider --> 
-      </div><!-- end of #slider_wrap --> 
-      <!-- スライドショー -->
-      <!-- エントリーボタン -->
-      <div class="entry_button">エントリーする</div>
-    </a>
-  <!-- 明日のランチにエントリー済みの場合 -->
-  <% else %>
-    <!-- 対象のランチカードにエントリー中の場合 -->
-    <% if @my_lunch.category_id == card[:category_id] %>
-      <!-- 左上に表示してカードの色を有効色に変更 -->
-      <a href="/users/cancel" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
+    <% if card[:can_entry] %>
+    <!-- 登録ユーザー数が3人以上の場合 -->
+      <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
         <div class="lunch_card_category"><%= card[:category_name] %></div>
         <!-- スライドショー -->
         <div id="slider_wrap">
@@ -116,32 +116,76 @@
           </div><!-- end of #slider --> 
         </div><!-- end of #slider_wrap --> 
         <!-- スライドショー -->
-        <!-- キャンセルボタン -->
-        <div class="entry_button">キャンセルする</div>
+        <!-- エントリーボタン -->
+        <div class="entry_button">エントリーする</div>
       </a>
     <% else %>
-      <div class="lunch_card">
+      <div class="lunch_card inactive" style="text-decoration: none;">
         <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <!-- スライドショー -->
-        <div id="slider_wrap">
-          <div id="slider">
-              <div id="slider_inner_<%= card_counter %>">
-                  <ul id="photo_list_<%= card_counter %>">
-                    <% card[:users].each do |user| %>
-                      <li>
-                        <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </div><!-- end of #slider_inner --> 
-          </div><!-- end of #slider --> 
-        </div><!-- end of #slider_wrap --> 
-        <!-- スライドショー -->
-        <!-- 未エントリーの場合 -->
-        <% if !entried? %>
-          <div class="entry_button">エントリーする</div>
-        <% end %>
+        <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
       </div>
+    <% end %>
+  <!-- 明日のランチにエントリー済みの場合 -->
+  <% else %>
+    <!-- 対象のランチカードにエントリー中の場合、左上に表示してカードの色を有効色に変更 -->
+    <% if @my_lunch.category_id == card[:category_id] %>
+      <% if card[:can_entry] %>
+        <a href="/users/cancel?id=<%= current_user.id %>" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <!-- スライドショー -->
+          <div id="slider_wrap">
+            <div id="slider">
+                <div id="slider_inner_<%= card_counter %>">
+                    <ul id="photo_list_<%= card_counter %>">
+                      <% card[:users].each do |user| %>
+                        <li>
+                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
+                        </li>
+                      <% end %>
+                    </ul>
+                </div><!-- end of #slider_inner --> 
+            </div><!-- end of #slider --> 
+          </div><!-- end of #slider_wrap --> 
+          <!-- スライドショー -->
+          <!-- キャンセルボタン -->
+          <div class="entry_button">キャンセルする</div>
+        </a>
+      <% else %>
+        <div class="lunch_card my_entry_card inactive" style="text-decoration: none;">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>
+      <% end %>
+    <% else %>
+      <% if card[:can_entry] %>
+        <div class="lunch_card">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <!-- スライドショー -->
+          <div id="slider_wrap">
+            <div id="slider">
+                <div id="slider_inner_<%= card_counter %>">
+                    <ul id="photo_list_<%= card_counter %>">
+                      <% card[:users].each do |user| %>
+                        <li>
+                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
+                        </li>
+                      <% end %>
+                    </ul>
+                </div><!-- end of #slider_inner --> 
+            </div><!-- end of #slider --> 
+          </div><!-- end of #slider_wrap --> 
+          <!-- スライドショー -->
+          <!-- 未エントリーの場合 -->
+          <% if !entried? %>
+            <div class="entry_button">エントリーする</div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="lunch_card inactive">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

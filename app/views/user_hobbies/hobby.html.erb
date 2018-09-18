@@ -1,15 +1,18 @@
 <% if @hobbies.present? %>
 <!-- カテゴリーを登録済みの場合 -->
   <% provide(:title, "カテゴリーを編集") %>
-  <h1 class="basic-heading">カテゴリーを編集</h1>
+  <h1 class="login-title">Lunch Friends</h1>
+  <h2 class="basic-heading center">カテゴリーを編集</h2>
 <% else %>
 <!-- カテゴリー未登録の場合 -->
   <% provide(:title, "カテゴリーを登録") %>
-  <h1 class="basic-heading">カテゴリーを登録</h1>
+  <h1 class="login-title">Lunch Friends</h1>
+  <h2 class="basic-heading center">カテゴリーを登録</h2>
 <% end %>
 
 <p>下記のボタンから、興味のあるカテゴリーを選択してください。</p>
-<p>※選択したボタンをもう一度クリックすると削除できます。</p>
+<p class="category_asterisk">※選択したボタンをもう一度クリックすると削除できます。<br>※最低一つ以上のカテゴリーを登録してください。(複数選択可)
+</p>
 <!-- 第1カテゴリ一覧 -->
 <div class="first_categories">
   <% @first_categories.each do |first| %>
@@ -30,9 +33,10 @@
   <div class="hobby_list">
     <div id="my_hobby" class="my_hobbies">
       <% @my_hobbies.each do |my_hobby| %>
-        <input type="text" name="user_hobby[][hobby_name]" data-second="<%= my_hobby.hobby_id %>" value="<%= my_hobby.hobby_name.gsub(" ", "") %>" readonly="" id="selected_category">
+        <!-- hobby_nameをvalueとしたinputタグ -->
+        <input type="text" name="user_hobby[][hobby_name]" data-second="<%= my_hobby.hobby_id %>" readonly id="selected_category" value="<%= my_hobby.hobby_name %>">
         <!-- hobby_idをhiddenでセット -->
-        <input type="hidden" name="user_hobby[][hobby_id]" value="<%= my_hobby.hobby_id %>">
+        <input type="hidden" name="user_hobby[][hobby_id]" data-second="<%= my_hobby.hobby_id %>" value="<%= my_hobby.hobby_id %>">
       <% end %>
     </div>
   </div>

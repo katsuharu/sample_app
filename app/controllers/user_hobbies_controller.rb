@@ -1,5 +1,5 @@
 class UserHobbiesController < ApplicationController
-  before_action :logged_in_user, only: [:hobby, :hobby_save, :edit, :del_hobby]
+  before_action :logged_in_user, only: [:hobby, :edit]
 
   def hobby
     @hobby = UserHobby.new
@@ -53,7 +53,7 @@ class UserHobbiesController < ApplicationController
         end
       end
       flash[:success] = "趣味を登録いたしました。"
-      redirect_to hobby_path
+      redirect_to root_url
     rescue
       p e
     end

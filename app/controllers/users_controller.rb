@@ -3,10 +3,10 @@ require 'action_view/helpers'
 include ActionView::Helpers::DateHelper
 
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :entry, :cancel, :check]
-  before_action :correct_user, only: [:show, :edit, :update, :entry, :check]
-  before_action :admin_user,     only: :destroy
-  before_action :hobby_registered, only: [:index, :show, :edit, :update, :destroy, :entry, :check]
+  before_action :logged_in_user, only: [:profile, :edit, :update, :entry, :cancel, :check]
+  before_action :correct_user, only: [:entry, :cancel]
+  # before_action :admin_user,     only: :destroy
+  before_action :hobby_registered, only: [:index, :show, :edit, :update, :entry, :check]
 
   def index
     # ログイン済みの場合
@@ -29,79 +29,100 @@ class UsersController < ApplicationController
         @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.tomorrow).where.not(category_id: nil).find_by(canceled_at: nil)
       end
       # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
-      @cards = [{category_id: 128,
+      @cards = [{category_id: 43,
                 category_name: 'オールジャンル',
-                users: User.where(id: Lunch.get_entry_user_ids(128)) # オールジャンルにエントリー中のUserモデルの配列
+                users: User.where(id: Lunch.get_entry_user_ids(43)), # オールジャンルにエントリー中のUserモデルの配列
+                can_entry: true
                 }]
       # 投稿フォームのカテゴリーセレクト用のハッシュを定義
-      @tw_selects = {"オールジャンル" => 128}
+      @tw_selects = {"オールジャンル" => 43}
       # ログインユーザーが登録したカテゴリーの名前の配列を取得
       user_cards = UserHobby.where(user_id: current_user.id).pluck(:hobby_name)
       # 登録したカテゴリーの数分繰り返す
       user_cards.each do |u_card|
-        # 自分が登録したカテゴリーのなかで登録ユーザー数が3人以上のhobby_idのhobby_nameを配列インスタンス変数に追加する
-        if UserHobby.where(hobby_name: u_card).count > 2
-          category = Category.find_by(name: u_card)
-          # カテゴリーが存在する場合
-          if category.present?
-            # カテゴリーidを取得
-            category_id = category.id
-            # このカテゴリーにエントリー中の場合
-            if @my_lunch.present? && category_id == @my_lunch.category_id
+        category = Category.find_by(name: u_card)
+        # カテゴリーが存在する場合
+        if category.present?
+          # カテゴリーidを取得
+          category_id = category.id
+          # このカテゴリーにエントリー中の場合
+          if @my_lunch.present? && category_id == @my_lunch.category_id
+            # 自分が登録したカテゴリーのなかで登録ユーザー数が3人以上場合
+            if UserHobby.where(hobby_name: u_card).count > 2
               # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
               @cards.unshift(
               {category_id: category_id, # カテゴリーID
               category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
-              users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
+              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              can_entry: true
+              })
+            else
+              # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
+              @cards.unshift(
+              {category_id: category_id, # カテゴリーID
+              category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
+              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              can_entry: false
+              })
+            end
+          else
+            if UserHobby.where(hobby_name: u_card).count > 2
+              # 配列の末尾にハッシュを追加
+              @cards.push(
+              {category_id: category_id, # カテゴリーID
+              category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
+              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              can_entry: true
               })
             else
               # 配列の末尾にハッシュを追加
               @cards.push(
               {category_id: category_id, # カテゴリーID
               category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
-              users: User.where(id: Lunch.get_entry_user_ids(category_id)) # 各カテゴリーにエントリー中のUserモデルの配列
+              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              can_entry: false
               })
             end
-            # カテゴリーハッシュに追加
-            @tw_selects[u_card] = category_id
           end
+          # カテゴリーハッシュに追加
+          @tw_selects[u_card] = category_id
         end
       end
 
       @user = current_user
       # @user.update_attribute(:logined_at, DateTime.now)
 
-      # Timelineに投稿された場合
-      if params[:id].present?
-        @new_tweets = []
-        tweets = Tweet.where('id > ?', params[:id])
-        tweets.each do |tweet|
-          # 時刻の表示を整形
-          # モデルの作成から1日以上経過している場合
-          if Time.now - tweet.created_at >= 86400
-            post_at = tweet.created_at.strftime("%Y年 %m月 %d日")
-          else
-            post_at = time_ago_in_words(tweet.created_at) + "前"
-          end
+      # # Timelineに投稿された場合
+      # if params[:id].present?
+      #   @new_tweets = []
+      #   tweets = Tweet.where('id > ?', params[:id])
+      #   tweets.each do |tweet|
+      #     # 時刻の表示を整形
+      #     # モデルの作成から1日以上経過している場合
+      #     if Time.now - tweet.created_at >= 86400
+      #       post_at = tweet.created_at.strftime("%Y年 %m月 %d日")
+      #     else
+      #       post_at = time_ago_in_words(tweet.created_at) + "前"
+      #     end
 
-          # カテゴリー名を取得
-          category_name = Category.find_by(id: tweet.category_id).name if tweet.category_id.present?
-          # 返信数を取得
-          thread_count = TThread.where(tweet_id: tweet.id).count
+      #     # カテゴリー名を取得
+      #     category_name = Category.find_by(id: tweet.category_id).name if tweet.category_id.present?
+      #     # 返信数を取得
+      #     thread_count = TThread.where(tweet_id: tweet.id).count
 
-          @new_tweets.push({ tweet: tweet, # Tweetモデル
-                          img_url: tweet.user.profile_img.url, # 投稿者のimg_URL
-                          user_name: tweet.user.name, # 投稿者名
-                          post_at: post_at, # 投稿時刻(表示用に整形済)
-                          category_name: category_name, # カテゴリー名
-                          thread_count: thread_count, # 返信数
-                        })
-        end
-        respond_to do |format| 
-          format.html # html形式でアクセスがあった場合は特に何もなし
-          format.json { @new_tweets }
-        end
-      end
+      #     @new_tweets.push({ tweet: tweet, # Tweetモデル
+      #                     img_url: tweet.user.profile_img.url, # 投稿者のimg_URL
+      #                     user_name: tweet.user.name, # 投稿者名
+      #                     post_at: post_at, # 投稿時刻(表示用に整形済)
+      #                     category_name: category_name, # カテゴリー名
+      #                     thread_count: thread_count, # 返信数
+      #                   })
+      #   end
+      #   respond_to do |format| 
+      #     format.html # html形式でアクセスがあった場合は特に何もなし
+      #     format.json { @new_tweets }
+      #   end
+      # end
 
     # 未ログインの場合
     else
@@ -110,8 +131,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
+  def profile
+    @user = current_user
   end
 
   def new
@@ -153,7 +174,8 @@ class UsersController < ApplicationController
       elsif @user.save
         @user.send_activation_email
         flash[:info] = "アカウントを有効化するために送られてきたメールを確認してください。"
-        redirect_to root_url
+        # 仮登録完了/メール認証ページにリダイレクト
+        redirect_to account_activation_path
         return
       else
         render 'new'
@@ -163,41 +185,46 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     # 戻るボタンが押された場合
     if params[:back]
-      redirect_to edit_use_path
+      # プロフィール画面にリダイレクト
+      redirect_to users_profile_path
     # 写真を選択した状態で「変更を保存」を押した場合
     elsif user_params[:profile_img]
       if @user.update_attributes(user_params)
         flash[:success] = "ユーザー情報を更新しました。"
-        redirect_to user_path
+        # プロフィール画面にリダイレクト
+        redirect_to users_profile_path
       else
         flash[:info] = "プロフィールを更新しませんでした。"
-        redirect_to edit_user_path
+        # プロフィール編集画面にリダイレクト
+        redirect_to users_edit_path
       end
     # 写真を選択せず「変更を保存」を押した場合
     else
       #写真以外のカラムを更新
       if User.find(@user.id).update_attributes(name: user_params[:name], email: user_params[:email], password: user_params[:password],password_confirmation: user_params[:password_confirmation] , department_name: user_params[:department_name], slack_id: user_params[:slack_id], self_intro: user_params[:self_intro])
         flash[:success] = "ユーザー情報を更新しました。"
-        redirect_to user_path 
+        # プロフィール画面にリダイレクト
+        redirect_to users_profile_path
       else
         flash[:info] = "プロフィールを更新しませんでした。"
-        redirect_to edit_user_path
+        # プロフィール編集画面にリダイレクト
+        redirect_to users_edit_path
       end
     end
   end
 
-  def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "ユーザーを削除しました"
-    redirect_to users_url
-  end
+  # def destroy
+  #   User.find(params[:id]).destroy
+  #   flash[:success] = "ユーザーを削除しました"
+  #   redirect_to users_url
+  # end
 
   def entry
     # エントリー確認画面でユーザープロフィールを表示するためにインスタンス変数に代入
@@ -216,6 +243,9 @@ class UsersController < ApplicationController
           flash[:danger] = "エントリーできませんでした。"
         end
         redirect_to root_url
+      else
+        flash[:info] = "既にエントリー済みです。"
+        redirect_to root_url
       end
     else
       # 明日の日付でユーザーがエントリーしていない場合
@@ -228,6 +258,9 @@ class UsersController < ApplicationController
           flash[:danger] = "エントリーできませんでした。"
         end
         redirect_to root_url
+      else
+        flash[:info] = "既にエントリー済みです。"
+        redirect_to root_url
       end
     end
   end
@@ -237,13 +270,22 @@ class UsersController < ApplicationController
     @time_now = DateTime.now
     # 12:30以前の場合
     if @time_now.strftime('%H:%M:%S') < "12:30:00"
-      # 本日のランチモデルを取得
-      lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).
-        where.not(category_id: nil).where(canceled_at: nil).find_by(pair_id: nil)
-      # 本日付のランチモデルが存在する場合
-      if lunch.present?
-        if lunch.update_attribute(:canceled_at, DateTime.now)
-          flash[:success] = "キャンセルいたしました。"
+      # マッチング済みの場合
+      if matched?
+        flash[:info] = "既にマッチング済みのためキャンセルできません。"
+        redirect_to(root_url)
+      else
+        # 本日のランチモデルを取得
+        lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).
+          where.not(category_id: nil).where(canceled_at: nil).find_by(pair_id: nil)
+        # 本日付のランチモデルが存在する場合
+        if lunch.present?
+          if lunch.update_attribute(:canceled_at, DateTime.now)
+            flash[:success] = "キャンセルいたしました。"
+            redirect_to(root_url)
+          end
+        else
+          flash[:info] = "未エントリーのためキャンセルできません。"
           redirect_to(root_url)
         end
       end
@@ -257,6 +299,9 @@ class UsersController < ApplicationController
           flash[:success] = "キャンセルいたしました。"
           redirect_to(root_url)
         end
+      else
+        flash[:info] = "未エントリーのためキャンセルできません。"
+        redirect_to(root_url)
       end
     end
   end
@@ -327,6 +372,11 @@ class UsersController < ApplicationController
     # 管理者かどうか確認
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def matched?
+      # ログインユーザーがマッチング済みの場合にtrueを返す
+      Lunch.where.not(pair_id: nil).where(user_id: current_user.id).where(lunch_date: Date.today).present?
     end
 
 end

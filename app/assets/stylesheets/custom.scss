@@ -61,7 +61,7 @@ textarea {
 }
 
 input {
-  border: 2px solid #696969;
+  /*border: 2px solid #696969;*/
 }
 
 select {
@@ -72,7 +72,6 @@ select {
 ::-ms-expand {    /* select要素のデザインを無効にする（IE用） */
   display: none;
 }
-
 
 .navbar {
   margin-bottom: 0;
@@ -203,26 +202,23 @@ p.entry_now {
   font-size: 14px;
   font-weight: 450;
   text-decoration:  underline;
+  text-align: center;
 }
 
 /* マッチング相手を確認するリンクをブロックして中央よせ */
-a.pair_check_link {
+.pair_check_link {
   display:  block;
   text-align:  center;
 }
 
-
-/* また明日エントリーをお待ちしております。 */
-p.lunch_time_end {
-  margin-left: 135px;
+/*  */
+.matching_status {
+  color: #67c5ff;
+  font-size: 1.3em;
 }
 
 .matching_time_show {
   margin-left: 218px;
-}
-/* エントリー数が少なくて行われませんでした。 */
-.lack_of_members {
-  margin-left: 153px;
 }
 
 .lunch_card {
@@ -234,6 +230,17 @@ p.lunch_time_end {
   margin-bottom: 10px;
   background-color: #FF9E66;
   position: relative;
+}
+
+.inactive {
+  background-color: #9e9e9e;
+}
+
+.cannot_entry_instruction {
+  margin:  0 20px;
+  font-weight: 500;
+  color:  white;
+  font-size:  12px;
 }
 
 /* エントリー中のランチカードのデザイン */
@@ -255,19 +262,6 @@ p.lunch_time_end {
   color: #ffffff;
   margin-top:14px;
   margin-left:14px;
-}
-
-p.lunch_state {
-  font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
-  font-size: 12px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: 2.6px;
-  text-align: left;
-  color: #ffffff;
-  margin: 0 14px  9.8px 14px;
 }
 
 img.lunch_card_img {
@@ -320,8 +314,16 @@ img.lunch_card_img {
   line-height: 21px;
 }
 
-.instruction_flex {
-  display: flex;
+@media (min-width: 768px) {
+  .instruction_flex {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .img_none {
+    text-align: center;
+  }
 }
 
 /* Timeline */
@@ -347,7 +349,7 @@ textarea#tweet_content, textarea#chat_text {
 }
 
 img.tweet_form_img {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .timeline_user_img {
@@ -476,25 +478,15 @@ img.tweet_form_img {
 
   .today_date {
     height: 26px;
-    font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
     margin-bottom: 27px;
     color: #3b6793;
     letter-spacing: 4.4px;
     font-size: 18px;
-    display: flex;
-    align-items: center;
   }
 
   .today_date:before, .today_date:after {
-    content: "";
     width: 18%;
     height: 2px;
-    background: #3b6793;
-    display: block;
   }
   .today_date:before {
     margin-right: 13px;
@@ -525,19 +517,6 @@ img.tweet_form_img {
     color: #ffffff;
     margin-top:20px;
     margin-left:20px;
-  }
-
-  p.lunch_state {
-    font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
-    font-size: 12px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: 2.6px;
-    text-align: left;
-    color: #ffffff;
-    margin: 0 14px  9.8px 14px;
   }
 
   img.lunch_card_img {
@@ -652,18 +631,10 @@ img.tweet_form_img {
   p.entry_now {
     margin-left: 296px;
   }
-
-  /* また明日エントリーをお待ちしております。 */
-  p.lunch_time_end {
-    margin-left: 221px;
-  }
+  
   /* 12:30に相手が決まります */
   .matching_time_show {
     margin-left: 276px;
-  }
-  /* エントリー数が少なくて行われませんでした。 */
-  .lack_of_members {
-    margin-left: 243px;
   }
 
   .today_date {
@@ -702,10 +673,17 @@ img.tweet_form_img {
 @media (max-width: 767px) {
   #slider_wrap {
     padding: 0;
+    /*width: 100%;*/
   }
 
   #slider > div {
     padding: 0;
+  }
+
+  /* エントリー状態 */
+  .today_date {
+    letter-spacing: 3px;
+    font-size: 12px;
   }
 }
 
@@ -722,22 +700,21 @@ img.tweet_form_img {
 }
 
 /*  カテゴリーセレクトの矢印マーク */
-.select-group:after
-{
-    position: absolute;
-    top: 0;
-    right: 8px;
-    bottom: 0;
+.select-group:after {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  bottom: 0;
 
-    width: 0;
-    height: 0;
-    margin: auto;
+  width: 0;
+  height: 0;
+  margin: auto;
 
-    content: '';
+  content: '';
 
-    border-top: 4px solid #999;
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
+  border-top: 4px solid #999;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
 }
 
 /* カテゴリーセレクトのクリック可能範囲を拡大 */
@@ -812,8 +789,8 @@ h1.eigo-title {
   letter-spacing: 0.1em;
 }
 
-h1.basic-heading {
-  font-size: 2.8em;
+.basic-heading {
+  font-size: 2em;
   margin-bottom: 45px;
 }
 
@@ -829,7 +806,7 @@ p {
 }
 
 @media (max-width: 767px) {
-  h1.basic-heading {
+  .basic-heading {
     font-size: 1.8em;
   }
 
@@ -1010,15 +987,15 @@ input {
 }
 
 .select-content {
-    border-radius: .25em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    background: #fff;
-    font-family: inherit;
-    color: inherit;
-    overflow: auto;
-    max-width: 18rem;
-    max-height: 18rem;
-    -webkit-overflow-scrolling: touch;
+  border-radius: .25em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  font-family: inherit;
+  color: inherit;
+  overflow: auto;
+  max-width: 18rem;
+  max-height: 18rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .field_with_errors {
@@ -1058,9 +1035,9 @@ input.square_btn.confirm_btn {
 
 /* --- cropit-icon ---- */
 .controls-wrapper {
-    margin-top: 20px;
-    text-align: center;
-    position: relative;
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
 }
 
 .rotation-btns {
@@ -1105,14 +1082,14 @@ input.square_btn.confirm_btn {
 }
 
 .slider-wrapper .cropit-image-zoom-input.custom {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 5px;
-    background: #eee;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #eee;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
 }
 
 input.cropit-image-zoom-input.custom {
@@ -1142,16 +1119,16 @@ input {
 
 /* ログイン前ページ */
 h1.bf-title {
-    font-family: $main-font;
-    font-size: 4.4em;
-    letter-spacing: 0.1em;
-    margin: 30px auto;
+  font-family: $main-font;
+  font-size: 4.4em;
+  letter-spacing: 0.1em;
+  margin: 30px auto;
 }
 
 h2.bf-sub-title {
-    font-size: 1.8em;
-    text-align: center;
-    margin: 30px auto;
+  font-size: 1.8em;
+  text-align: center;
+  margin: 30px auto;
 }
 
 .bf-img {
@@ -1164,29 +1141,30 @@ h2.bf-sub-title {
 }
 
 .bf-btn {
-    margin: 20px auto;
+  margin: 20px auto;
 }
 
 .bf-btn a.btn.btn-lg.btn-primary {
-    width: 350px;
+  width: 350px;
 }
 
 
 /* ログインページ */
-h1.login-title {
+.login-title {
   font-family: $main-font;
   font-size: 4.4em;
-  margin: 60px auto;
+  margin: 50px auto;
+  letter-spacing: 0.1em;
 }
 
 .login-row {
-    max-width: 700px;
-    margin: 30px auto;
+  max-width: 700px;
+  margin: 30px auto;
 }
 
-h2.login-sub-title {
-    font-size: 1.8em;
-    margin: 40px auto;
+.login-sub-title {
+  font-size: 1.8em;
+  margin: 40px auto;
 }
 
 .login-row .form-control {
@@ -1226,142 +1204,24 @@ a.square_btn.bf-top {
   }
 }
 
-
-/* エントリー中ユーザ一覧 */
-
-.entry-user .user-info img {
-  width: 180px;
-  height: 180px;
+/* 仮登録完了/メール認証ページ */
+.account_activation_sentence {
+  padding-top: 55px;
+  font-size: 18px;
 }
 
-.entry-user .user-info .col-xs-10 {
-  padding-left: 55px;
+.account_activation_asterisk {
+  font-size: 14px;
 }
 
-.entry-user .entry-photo {
-  flex: 2;
-  min-height: 150px;
-  background-position: center;
-  background-size: cover;
-}
-
-.entry-user .entry-text {
-  flex: 3;
-  margin: 10px;
-}
-
-.entry-user h2 {
-  margin-bottom: 60px;
-  font-size: 1.6em;
-  text-align: left;
-  margin: 15px 0;
-}
-
-.entry-user .entry-state h3 {
-    color: #ff8c00;
-    font-size: 2.5em;
-    padding-left: 90px;
-    margin: 25px auto;
-}
-
-.entry-state.entried h3 {
-    text-align:  center;
-    padding: 0;
-}
-
-
-.entry-user .entry-cnt {
-    margin-bottom: 25px;
-}
-
-.category-center {
-  text-align: center;
-  margin: 30px auto;
-}
-
-.category-select {
-  padding-left: 5em;
-  font-weight: 500;
-  font-size: 1.2em;
-  display: inline;
-}
-
-
-.checkbox-center {
-    text-align: center;
-}
-
-
-@media (max-width: 767px) {
-  .user-info .col-sm-4 {
-      text-align:  center;
-  }
-
-  .category-center {
-    text-align: left;
-    margin: 30px auto;
-  }
-}
-
-@media (max-width: 384px) {
-  .entry-user .entry-photo {
-    flex: 1;
-  }
+.account_activation_btn {
+  margin-top: 50px;
 }
 
 /* プロフィールページ */
 .col-lg-12 img {
   width:200px;
   height:200px;
-}
-
-/* ランチカード */
-
-/* エントリー完了画面 */
-.comp-entry {
-  text-align: center;
-}
-
-.comp-entry h1 {
-  font-size: 2.3em;
-  font-family: $main-font;
-}
-
-.comp-entry h2 {
-  font-size: 2.3em;
-}
-
-.comp-entry img {
-  margin: 20px auto;
-  width: 200px;
-  height: 200px;
-}
-
-.cate_selected {
-  font-size: 16px;
-  margin-left:  50px;
-  margin-top:  20px;
-  font-weight:  700;
-}
-
-.member_data {
-  font-weight:  500;
-  font-size:  14px;
-  margin-top:  20px;
-  margin-left:  50px;
-}
-
-.member_slack {
-  font-size: 12px;
-  font-weight:  500;
-  margin-left:  50px;
-  margin-top:  20px;
-}
-
-@media (max-width: 767px) {
-  #slider_wrap {
-    width: 100%;
-  }
 }
 
 /* プロフィール確認ページ */
@@ -1409,14 +1269,34 @@ a.square_btn.bf-top {
 }
 
 
-/* プロフィール編集ページ */
-.form-actions .square_btn.confirm_btn.edit_btn {
-  width: 8em;
-  margin: 30px 60px;
+/* 二つのボタンが並んだ時のデザイン */
+.btn_vertical {
+  margin: 20px 0; 
 }
 
 
 /* マッチング相手確認ページ */
+.cate_selected {
+  font-size: 16px;
+  margin-left:  50px;
+  margin-top:  20px;
+  font-weight:  700;
+}
+
+.member_data {
+  font-weight:  500;
+  font-size:  14px;
+  margin-top:  20px;
+  margin-left:  50px;
+}
+
+.member_slack {
+  font-size: 12px;
+  font-weight:  500;
+  margin-left:  50px;
+  margin-top:  20px;
+}
+
 .check_content_title {
   font-weight:  700;
   font-size:  18px;
@@ -1459,8 +1339,11 @@ a.square_btn.bf-top {
   }
 }
 
-
 @media (max-width: 767px) {
+  .cate_selected, .member_data, .member_slack {
+    margin-left:  0;
+  }
+
   .pair-info {
       text-align:  center;
   }
@@ -1474,6 +1357,10 @@ a.square_btn.bf-top {
           color: orange;
           font-size: 1.4em;
       }
+  }
+
+  .pair_chats {
+    margin-bottom: 3em;
   }
 }
 
@@ -1494,18 +1381,16 @@ a.square_btn.bf-top {
     width: 24px;
 }
 .trim-cnt #rectangle {
-    z-index: 2;
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    background: transparent;
-    border: 2px dotted #f2b4b3;
+  z-index: 2;
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border: 2px dotted #f2b4b3;
 }
-
-
 
 #crop_area_box {
   display: block;
@@ -1590,8 +1475,10 @@ ul {
   display:flex;
 }
 
-.second_categories {
-  display:flex;
+@media (min-width: 768px) {
+  .second_categories {
+    display:flex;
+  }
 }
 
 .third_categories {
@@ -1656,29 +1543,8 @@ ul {
   }
 }
 
-.hobby_list {
-  display: flex;
-}
-
-#my_hobby {
-  flex: 1;
-  width: 150px;
-  height: 150px;
-}
-
-#hobby_delete {
-  flex: 4;
-  width: 50px;
-  height: 50px;
-}
-
-.hobby_list {
-  width: 700px;
-  height: 300px;
-}
-
 input.hb-add {
-    margin: 0;
+  margin: 0;
 }
 
 #my_hobby input[type="text"] {
@@ -1702,6 +1568,10 @@ li.hobby_selected {
   display:flex;
 }
 
+.category_asterisk {
+  font-size: 12px;
+}
+
 /* others */
 .label-danger {
   background-color: #FFA900;
@@ -1714,12 +1584,12 @@ li.hobby_selected {
 
 /* Thread */
 .t_threads.col-sm-3 {
-    background-color:  gainsboro;
+  background-color:  gainsboro;
 }
 
 textarea#t_thread_content {
-    width: 80%;
-    margin: 0 35px;
+  width: 80%;
+  margin: 0 35px;
 }
 
 /* thread基tweetモーダル */

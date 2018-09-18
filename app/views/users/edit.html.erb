@@ -1,12 +1,11 @@
 <% provide(:title, "プロフィール編集") %>
 <% provide(:button_text, '変更を保存') %>
-
-<h1 class="basic-heading">プロフィール編集</h1>
+<h1 class="login-title">Lunch Friends</h1>
+<h2 class="basic-heading center">プロフィール編集</h2>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-
-  <%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}) do |f| %>
+  <%= form_for(@user, html: {id: :user_form,class: 'form-horizontal'}, url: { controller: 'users', action: 'update'}) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <div class="form-group">
@@ -21,6 +20,7 @@
     <div class="form-group">
       <%= f.label :email, class: 'col-sm-4' do %>
         メール / Mail
+        <p class="help-block">※@kcgrp.jpのメールアドレスのみ登録可能です</p>
       <% end %>
       <div class="col-sm-8">
         <%= f.email_field :email, class: 'form-control' %>
@@ -31,6 +31,7 @@
       <%= f.label :password, class: 'col-sm-4' do %>
         <span class="label label-danger">必須</span>
         パスワード / Password
+        <p class="help-block">パスワードは6文字以上で設定してください</p>
       <% end %>
       <div class="col-sm-8">
         <%= f.password_field :password, class: 'form-control', required: true, minlength: 6 %>
@@ -81,7 +82,9 @@
           プロフィール画像（本人写真）
           / profile picture
         <% end %>
-        <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください</p>
+        <p class="help-block">※待ち合わせの際に顔が分かるように、ご本人様のお写真をご使用ください
+        <br>※200*200以上の大きさの、拡張子がjpg, jpeg, gif, pngのファイルのみアップロードできます。
+        </p>
       </div>
       <div class="col-sm-7">
         <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input'%>
@@ -102,10 +105,11 @@
       </div>
         <%= f.hidden_field :profile_img_data_uri %>    
     </div>
-   
+    
     <div class="form-actions btn-center">
-      <%= link_to '戻る', current_user, class: "square_btn confirm_btn edit_btn"%>
-      <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn confirm_btn edit_btn" %>
+      <%= hidden_field_tag :id, @user.id %>
+      <%= f.submit yield(:button_text), id: "submitBtn", class: "square_btn confirm_btn btn_vertical" %>
+      <%= link_to '戻る', users_profile_path, class: "square_btn confirm_btn btn_vertical"%>
     </div>
 
   <% end %>

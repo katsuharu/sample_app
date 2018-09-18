@@ -12,7 +12,7 @@
               <% if matched? %>
                 <li><%= link_to "マッチング相手確認", check_path %></li>
               <% end %>
-              <li><%= link_to "プロフィール", current_user %></li>
+              <li><%= link_to "プロフィール", users_profile_path %></li>
               <li><%= link_to "趣味を編集", hobby_path %></li>
               <li><%= link_to "お問い合わせ", contact_path %></li>
               <li class="divider"></li>
@@ -30,11 +30,19 @@
     <div class="lunch_kun">
       <%= image_tag("lunch_smile/asset-7-3-x.png", alt: "Lunch Smile", class: "Asset-73x") %>
     </div>
-    <!-- マッチング済みの場合にマッチング相手確認ページリンクを表示 -->
-    <% if matched? %>
-      <div class="pair_check">
-        <%= link_to "マッチング相手を確認する", check_path, class: "pair_check_link" %>
-      </div>
+    <% if @time_now.strftime('%H:%M:%S') >= "12:30:00" %>
+    <!-- 12:30以降の場合 -->
+      <% if matched? %>
+        <!-- マッチング済みの場合にマッチング相手確認ページリンクを表示 -->
+        <div class="pair_check">
+          <%= link_to "マッチング相手を確認する", check_path, class: "square_btn" %>
+        </div>
+      <% elsif today_entried? %>
+      <!-- エントリー済みの場合 -->
+        <div class="btn-center">
+          <p class="matching_status">本日はマッチングされませんでした</p>
+        </div>
+      <% end %>
     <% end %>
     <!-- 日付とエントリー状態を表示 -->
     <%= render 'shared/entry_state' %>
@@ -59,8 +67,8 @@
           <br><span class="instruction_aserisk"> ※同カテゴリーに参加者が2人のみの場合2人でマッチングします。</span>
         </p>
       </div>
-      <div class="instruction_img">
-        <img src="clock.png" alt="時計" id="clock_img">
+      <div class="instruction_img img_none">
+        <%= image_tag("clock.png", alt: "時計", id: "clock_img") %> 
       </div>
     </div>
     <br>
