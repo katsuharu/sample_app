@@ -15,7 +15,7 @@
     <%= f.label :email, class: 'col-sm-4' do %>
       <span class="label label-danger">必須</span>
       メール / Mail
-      <p class="help-block">※@kcgrp.jpのメールアドレスのみ登録可能です</p>
+      <p class="help-block">※@kcgrp.jp、<br>@n-currency.com、<br>@picappinc.jp<br>のメールアドレスのみ登録可能です</p>
     <% end %>
     <div class="col-sm-8">
       <%= f.email_field :email, :placeholder => "example@kcgrp.jp", class: 'form-control', required: true, maxlength: 255, pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
