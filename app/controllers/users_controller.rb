@@ -28,12 +28,20 @@ class UsersController < ApplicationController
         # 明日の日付のlunchモデルを取得
         @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.tomorrow).where.not(category_id: nil).find_by(canceled_at: nil)
       end
-      # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
+
+      #######
+      # # ランチカードの配列。初期値としてオールジャンルカテゴリーを代入
+      # @cards = [{category_id: 43,
+      #           category_name: 'オールジャンル',
+      #           users: User.where(id: Lunch.get_entry_user_ids(43)), # オールジャンルにエントリー中のUserモデルの配列
+      #           can_entry: true
+      #           }]
       @cards = [{category_id: 43,
                 category_name: 'オールジャンル',
-                users: User.where(id: Lunch.get_entry_user_ids(43)), # オールジャンルにエントリー中のUserモデルの配列
+                is_others: Lunch.is_others(current_user.id, 43), # 他のユーザーが参加していればtrue、そうでなければfalse
                 can_entry: true
                 }]
+      ######
       # 投稿フォームのカテゴリーセレクト用のハッシュを定義
       @tw_selects = {"オールジャンル" => 43}
       # ログインユーザーが登録したカテゴリーの名前の配列を取得
@@ -49,19 +57,28 @@ class UsersController < ApplicationController
           if @my_lunch.present? && category_id == @my_lunch.category_id
             # 自分が登録したカテゴリーのなかで登録ユーザー数が3人以上場合
             if UserHobby.where(hobby_name: u_card).count > 2
+              ###########
               # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
+              # @cards.unshift(
+              # {category_id: category_id, # カテゴリーID
+              # category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
+              # users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              # can_entry: true
+              # })
               @cards.unshift(
               {category_id: category_id, # カテゴリーID
               category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
-              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              is_others: Lunch.is_others(current_user.id, category_id),
               can_entry: true
               })
+              ######
             else
               # ランチカードで一番最初に表示されるように配列の先頭にハッシュを追加
               @cards.unshift(
               {category_id: category_id, # カテゴリーID
               category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
-              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              # users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              is_others: Lunch.is_others(current_user.id, category_id),
               can_entry: false
               })
             end
@@ -71,7 +88,8 @@ class UsersController < ApplicationController
               @cards.push(
               {category_id: category_id, # カテゴリーID
               category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
-              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              # users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              is_others: Lunch.is_others(current_user.id, category_id),
               can_entry: true
               })
             else
@@ -79,7 +97,8 @@ class UsersController < ApplicationController
               @cards.push(
               {category_id: category_id, # カテゴリーID
               category_name: u_card, # 3名以上のユーザーが登録したカテゴリーのカテゴリ名
-              users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              # users: User.where(id: Lunch.get_entry_user_ids(category_id)), # 各カテゴリーにエントリー中のUserモデルの配列
+              is_others: Lunch.is_others(current_user.id, category_id),
               can_entry: false
               })
             end
