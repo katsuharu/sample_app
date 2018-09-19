@@ -6,21 +6,10 @@
     <% if card[:can_entry] %>
       <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
         <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <!-- スライドショー -->
-        <div id="slider_wrap">
-          <div id="slider">
-              <div id="slider_inner_<%= card_counter %>">
-                  <ul id="photo_list_<%= card_counter %>">
-                    <% card[:users].each do |user| %>
-                      <li>
-                        <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </div><!-- end of #slider_inner --> 
-          </div><!-- end of #slider --> 
-        </div><!-- end of #slider_wrap --> 
-        <!-- スライドショー -->
+        <% if card[:is_others] %>
+        <!-- 他のユーザーがエントリー中の場合 -->
+          <p class="others_entry">他の人がエントリー中！</p>
+        <% end %>
         <!-- エントリーボタン -->
         <div class="entry_button">エントリーする</div>
       </a>
@@ -39,21 +28,10 @@
       <% if card[:can_entry] %>
         <a href="/users/cancel?id=<%= current_user.id %>" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
           <div class="lunch_card_category"><%= card[:category_name] %></div>
-          <!-- スライドショー -->
-          <div id="slider_wrap">
-            <div id="slider">
-                <div id="slider_inner_<%= card_counter %>">
-                    <ul id="photo_list_<%= card_counter %>">
-                      <% card[:users].each do |user| %>
-                        <li>
-                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                        </li>
-                      <% end %>
-                    </ul>
-                </div><!-- end of #slider_inner --> 
-            </div><!-- end of #slider --> 
-          </div><!-- end of #slider_wrap --> 
-          <!-- スライドショー -->
+          <% if card[:is_others] %>
+          <!-- 他のユーザーがエントリー中の場合 -->
+            <p class="others_entry">他の人がエントリー中！</p>
+          <% end %>
           <!-- キャンセルボタン -->
           <div class="entry_button">キャンセルする</div>
         </a>
@@ -69,21 +47,10 @@
       <!-- 登録ユーザー数が3人以上の場合 -->
         <div class="lunch_card">
           <div class="lunch_card_category"><%= card[:category_name] %></div>
-          <!-- スライドショー -->
-          <div id="slider_wrap">
-            <div id="slider">
-                <div id="slider_inner_<%= card_counter %>">
-                    <ul id="photo_list_<%= card_counter %>">
-                      <% card[:users].each do |user| %>
-                        <li>
-                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                        </li>
-                      <% end %>
-                    </ul>
-                </div><!-- end of #slider_inner --> 
-            </div><!-- end of #slider --> 
-          </div><!-- end of #slider_wrap --> 
-          <!-- スライドショー -->
+          <% if card[:is_others] %>
+          <!-- 他のユーザーがエントリー中の場合 -->
+            <p class="others_entry">他の人がエントリー中！</p>
+          <% end %>
         </div>
       <% else %>
         <div class="lunch_card inactive">
@@ -101,21 +68,10 @@
     <!-- 登録ユーザー数が3人以上の場合 -->
       <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
         <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <!-- スライドショー -->
-        <div id="slider_wrap">
-          <div id="slider">
-              <div id="slider_inner_<%= card_counter %>">
-                  <ul id="photo_list_<%= card_counter %>">
-                    <% card[:users].each do |user| %>
-                      <li>
-                        <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </div><!-- end of #slider_inner --> 
-          </div><!-- end of #slider --> 
-        </div><!-- end of #slider_wrap --> 
-        <!-- スライドショー -->
+        <% if card[:is_others] %>
+        <!-- 他のユーザーがエントリー中の場合 -->
+          <p class="others_entry">他の人がエントリー中！</p>
+        <% end %>
         <!-- エントリーボタン -->
         <div class="entry_button">エントリーする</div>
       </a>
@@ -132,21 +88,10 @@
       <% if card[:can_entry] %>
         <a href="/users/cancel?id=<%= current_user.id %>" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
           <div class="lunch_card_category"><%= card[:category_name] %></div>
-          <!-- スライドショー -->
-          <div id="slider_wrap">
-            <div id="slider">
-                <div id="slider_inner_<%= card_counter %>">
-                    <ul id="photo_list_<%= card_counter %>">
-                      <% card[:users].each do |user| %>
-                        <li>
-                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                        </li>
-                      <% end %>
-                    </ul>
-                </div><!-- end of #slider_inner --> 
-            </div><!-- end of #slider --> 
-          </div><!-- end of #slider_wrap --> 
-          <!-- スライドショー -->
+          <% if card[:is_others] %>
+          <!-- 他のユーザーがエントリー中の場合 -->
+            <p class="others_entry">他の人がエントリー中！</p>
+          <% end %>
           <!-- キャンセルボタン -->
           <div class="entry_button">キャンセルする</div>
         </a>
@@ -160,21 +105,10 @@
       <% if card[:can_entry] %>
         <div class="lunch_card">
           <div class="lunch_card_category"><%= card[:category_name] %></div>
-          <!-- スライドショー -->
-          <div id="slider_wrap">
-            <div id="slider">
-                <div id="slider_inner_<%= card_counter %>">
-                    <ul id="photo_list_<%= card_counter %>">
-                      <% card[:users].each do |user| %>
-                        <li>
-                          <%= image_tag user.profile_img.url, class: "lunch_card_img", :size => '30x30' if user.profile_img? %>
-                        </li>
-                      <% end %>
-                    </ul>
-                </div><!-- end of #slider_inner --> 
-            </div><!-- end of #slider --> 
-          </div><!-- end of #slider_wrap --> 
-          <!-- スライドショー -->
+          <% if card[:is_others] %>
+          <!-- 他のユーザーがエントリー中の場合 -->
+            <p class="others_entry">他の人がエントリー中！</p>
+          <% end %>
           <!-- 未エントリーの場合 -->
           <% if !entried? %>
             <div class="entry_button">エントリーする</div>

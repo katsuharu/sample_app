@@ -250,7 +250,6 @@ p.entry_now {
 
 .lunch_card_category {
   width: 140px;
-  height: 42px;
   font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
   font-size: 18px;
   font-style: normal;
@@ -267,6 +266,14 @@ p.entry_now {
 img.lunch_card_img {
   width:  42px;
   height:  42px;
+}
+
+.others_entry {
+  margin: 0 25px;
+  color: white;
+  font-size:  14px;
+  margin-top:  25px;
+  border-bottom:  solid;
 }
 
 /* エントリーボタン */
@@ -506,7 +513,6 @@ img.tweet_form_img {
 
   .lunch_card_category {
     width: 140px;
-    height: 42px;
     font-family: rounded-x-mplus-1m, Rounded Mplus 1c;
     font-size: 18px;
     font-style: normal;
