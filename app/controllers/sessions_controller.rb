@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email:params[:session][:email].downcase)
+    # 有効なユーザでパスワードが正しい場合
     if user && user.authenticate(params[:session][:password])
   		if user.activated?
         log_in user
