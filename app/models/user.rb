@@ -16,12 +16,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },format: { with: VALID_EMAIL_REGEX },uniqueness:{case_sensitive: false}
   validates :password, presence: true, length: { minimum: 6 }
   validates :self_intro, length: { maximum: 25 }
-
-
-  with_options on: :create do |create|
-      create.validates :department_name, presence: true
-    # create.validates :profile_img,  presence: true
-  end
+  validates :department_name, presence: true
 
   with_options on: :fb_login do |fb_login|
     fb_login.validates :password, presence: false
