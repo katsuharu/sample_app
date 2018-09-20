@@ -209,33 +209,14 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    # 戻るボタンが押された場合
-    if params[:back]
+    if @user.update_attributes(user_params)
+      flash[:success] = "プロフィールを更新しました。"
       # プロフィール画面にリダイレクト
       redirect_to users_profile_path
-    # 写真を選択した状態で「変更を保存」を押した場合
-    elsif user_params[:profile_img]
-      if @user.update_attributes(user_params)
-        flash[:success] = "ユーザー情報を更新しました。"
-        # プロフィール画面にリダイレクト
-        redirect_to users_profile_path
-      else
-        flash[:info] = "プロフィールを更新しませんでした。"
-        # プロフィール編集画面にリダイレクト
-        redirect_to users_edit_path
-      end
-    # 写真を選択せず「変更を保存」を押した場合
+    # 更新に失敗した場合
     else
-      #写真以外のカラムを更新
-      if User.find(@user.id).update_attributes(name: user_params[:name], email: user_params[:email], password: user_params[:password],password_confirmation: user_params[:password_confirmation] , department_name: user_params[:department_name], slack_id: user_params[:slack_id], self_intro: user_params[:self_intro])
-        flash[:success] = "ユーザー情報を更新しました。"
-        # プロフィール画面にリダイレクト
-        redirect_to users_profile_path
-      else
-        flash[:info] = "プロフィールを更新しませんでした。"
-        # プロフィール編集画面にリダイレクト
-        redirect_to users_edit_path
-      end
+      # プロフィール更新画面にリダイレクト
+      render 'edit'
     end
   end
 
