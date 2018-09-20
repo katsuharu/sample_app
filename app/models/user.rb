@@ -10,11 +10,12 @@ class User < ApplicationRecord
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   VALID_EMAIL_REGEX =   /\A[\w+\-.]+@(kcgrp.jp|n-currency.com|picappinc.jp)/
   has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
   mount_uploader :profile_img, PictureUploader
   
   validates :name, presence: true, length: { maximum:50 }
   validates :email, presence: true, length: { maximum: 255 },format: { with: VALID_EMAIL_REGEX },uniqueness:{case_sensitive: false}
-  validates :password, presence: true, length: { minimum: 6 }
   validates :self_intro, length: { maximum: 25 }
   validates :department_name, presence: true
 
