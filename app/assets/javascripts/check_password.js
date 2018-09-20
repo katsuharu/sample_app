@@ -13,6 +13,12 @@ $(document).on('turbolinks:load', function() {
     $('body').prepend('<img src="/loading_img/loading.gif" alt="Loading Image" id="loading_img">')
   })
 
+  // プロフィール画像を未登録の状態でランチカードをクリックしたとき
+  $('.ban_entry').on('click',function(){
+    alert('プロフィール写真を登録しないとエントリーできません。')
+    return false
+  })
+
   // Infinite Scroll
   $(".timeline-shows").infinitescroll({
     loading: {
