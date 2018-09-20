@@ -75,7 +75,6 @@
   <div class="form-inputs" id="image-cropper">
     <div class="col-sm-5">
       <%= f.label :profile_img do %>
-        <span class="label label-danger">必須</span>
         プロフィール画像（本人写真）
         / profile picture
       <% end %>
@@ -85,7 +84,7 @@
       </p>
     </div>
     <div class="col-sm-7">
-      <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input', required: true %>
+      <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png', class: 'cropit-image-input' %>
       <div class="cropit-preview">
       </div>
       <div class="controls-wrapper">
