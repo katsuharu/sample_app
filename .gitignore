@@ -83,3 +83,5 @@ node_modules/
 /public/uploads
 # docker
 /mysql/*
+/Dockerfile
+/docker-compose.yml
