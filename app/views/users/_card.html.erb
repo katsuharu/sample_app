@@ -2,9 +2,14 @@
 <!-- 12:30以前の場合 -->
   <!-- 未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
-    <!-- 登録ユーザー数が3人以上の場合 -->
     <% if card[:can_entry] %>
-      <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
+    <!-- 登録ユーザー数が3人以上の場合 -->
+      <% if current_user.profile_img.blank? %>
+      <!-- プロフィール画像が未登録の場合 -->
+        <a href="#!" class="lunch_card ban_entry" style="text-decoration: none;">
+      <% else %>
+        <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
+      <% end %>
         <div class="lunch_card_category"><%= card[:category_name] %></div>
         <% if card[:is_others] %>
         <!-- 他のユーザーがエントリー中の場合 -->
@@ -14,7 +19,7 @@
         <div class="entry_button">エントリーする</div>
       </a>
     <% else %>
-    <!-- inactiveクラスを追加してグレーアウト -->
+    <!-- 3人未満の場合、inactiveクラスを追加してグレーアウト -->
       <div class="lunch_card inactive" style="text-decoration: none;">
         <div class="lunch_card_category"><%= card[:category_name] %></div>
         <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
@@ -66,7 +71,12 @@
   <% if @my_lunch.nil? %>
     <% if card[:can_entry] %>
     <!-- 登録ユーザー数が3人以上の場合 -->
-      <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
+      <% if current_user.profile_img.blank? %>
+      <!-- プロフィール画像が未登録の場合 -->
+        <a href="#!" class="lunch_card ban_entry" style="text-decoration: none;">
+      <% else %>
+        <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
+      <% end %>
         <div class="lunch_card_category"><%= card[:category_name] %></div>
         <% if card[:is_others] %>
         <!-- 他のユーザーがエントリー中の場合 -->
