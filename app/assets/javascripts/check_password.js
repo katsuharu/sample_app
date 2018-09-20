@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
   $('#submitBtn').on('click',function(){
     if ($('#user_password').val() != $('#user_password_confirmation').val()) {
       alert('パスワードと確認用パスワードが一致しません。')
-      return false        
+      return false
     }
   })
 
