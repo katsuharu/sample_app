@@ -78,7 +78,7 @@ node_modules/
 /lib/.DS_Store
 /public/uploads/.DS_Store
 /public/uploads/user/.DS_Store
-/Gemfile.lock
+# /Gemfile.lock
 # アップロードされたテスト画像を無視する
 /public/uploads
 # docker
