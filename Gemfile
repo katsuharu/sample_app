@@ -39,7 +39,7 @@ gem 'mini_magick',             '4.7.0'
 gem 'rails_cropit'
 
 gem 'rails-i18n'
-
+gem 'google-analytics-rails'
 
 gem "omniauth", '~>1.6'
 gem "omniauth-facebook", '~> 4.0'
