@@ -1,3 +1,4 @@
+require 'csv'
 class DailyLunchesController < ApplicationController
   before_action :admin_user
 
