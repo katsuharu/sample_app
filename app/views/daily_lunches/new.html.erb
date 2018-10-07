@@ -1,5 +1,5 @@
 <h1>テーマ登録</h1>
 <%= form_tag({:action=>"create"}, {:multipart => true} ) do %>
-   <%= file_field :daily_lunches, :csv_file %>
+   <%= file_field :daily_lunches, :csv_file, accept: 'text/csv', required: true %>
    <%= submit_tag  "登録", class: "square_btn"  %>
 <% end %>
