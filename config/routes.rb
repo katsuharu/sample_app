@@ -45,6 +45,15 @@ Rails.application.routes.draw do
   post  'chats/create'
   post  'chats/btn_create'
   # match '/auth/:provider/callback', to: 'users#create', via: [:get, :post]
+
+  # 管理者用ページ
+  scope :admins do
+    get 'daily_lunches/index'
+    get 'daily_lunches/new'
+    get 'daily_lunches/edit'
+    post 'daily_lunches/create'
+    post 'daily_lunches/update'
+  end
   
   # resources :users
   resources :account_activations, only: [:edit]
