@@ -1,0 +1,2 @@
+class DailyLunch < ApplicationRecord
+end
