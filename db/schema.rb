@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906020148) do
+ActiveRecord::Schema.define(version: 20181001130502) do
 
   create_table "authorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "provider"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20180906020148) do
     t.integer  "hobby_added"
     t.datetime "deleted_at",                                     comment: "削除日時"
     t.integer  "lock_version",      default: 0,     null: false, comment: "ロックバージョン"
+    t.boolean  "admin",             default: false, null: false, comment: "管理者"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
