@@ -369,10 +369,10 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    # 管理者かどうか確認
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+    # # 管理者かどうか確認
+    # def admin_user
+    #   redirect_to(root_url) unless current_user.present? && current_user.admin?
+    # end
 
     def matched?
       # ログインユーザーがマッチング済みの場合にtrueを返す
