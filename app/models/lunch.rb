@@ -18,7 +18,7 @@ class Lunch < ApplicationRecord
       Lunch.where(lunch_date: Date.today).where(category_id: category_id).where(canceled_at: nil).where.not(user_id: current_user_id).present?
     else
       # 明日の日付の自分以外のユーザーがエントリーしている対象のカテゴリーのLunchモデルが存在する場合にtrue、そうでない場合にfalseを返す
-      Lunch.where(lunch_date: Date.today).where(category_id: category_id).where(canceled_at: nil).where.not(user_id: current_user_id).present?
+      Lunch.where(lunch_date: Date.tomorrow).where(category_id: category_id).where(canceled_at: nil).where.not(user_id: current_user_id).present?
     end
   end
 
