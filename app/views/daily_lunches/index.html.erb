@@ -1,22 +1,24 @@
 <h1>Daily Lunch</h1>
 
-<table border="1">
-  <tr>
-    <th>ランチテーマ</th>
-    <th>ランチ日付</th>
-    <th>カテゴリー</th>
-    <th>登録日時</th>
-  </tr>
+<div class="daily_lunch">
+  <table border="">
+    <tr>
+      <th>ランチテーマ</th>
+      <th>ランチ日付</th>
+      <th>カテゴリー</th>
+      <th>登録日時</th>
+    </tr>
 
-  <% @daily_lunches.each do |daily_lunch| %>
-  <tr class=>
-    <td><%= daily_lunch.name %></td>
-    <td><%= daily_lunch.date %></td>
-    <td><%= Category.find(daily_lunch.category_id).name %></td>
-    <td><%= daily_lunch.created_at %></td>
-  </tr>
-  <% end %>
-</table>
+    <% @daily_lunches.each do |daily_lunch| %>
+    <tr class=>
+      <td><%= daily_lunch.name %></td>
+      <td><%= daily_lunch.date %></td>
+      <td><%= Category.find(daily_lunch.category_id).name %></td>
+      <td><%= daily_lunch.created_at %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
 
 <% if @daily_lunches.present? %>
   <%= link_to 'テーマ編集', daily_lunches_edit_path, class: "square_btn confirm_btn btn_vertical" %>
