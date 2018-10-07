@@ -1,4 +1,8 @@
 class DailyLunch < ApplicationRecord
+  validates :name, presence: true
+  validates :date, presence: true
+  validates :category_id, presence: true
+
   # 12:30以前の場合は本日の日付の、以降の場合は明日の日付のDailyLunchを取得する関数
   def self.get_card
     # 12:30以前の場合
