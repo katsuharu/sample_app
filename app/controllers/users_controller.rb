@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       daily_lunches = DailyLunch.get_card
       daily_lunches.each do |daily_lunch|
         @cards.push({category_id: daily_lunch.category_id,
-          category_name: Category.find(daily_lunch.category_id).name,
+          category_name: daily_lunch.name,
           is_others: Lunch.is_others(current_user.id, daily_lunch.category_id), # 他ユーザーが参加していればtrue
           can_entry: true
         })
