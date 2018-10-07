@@ -111,6 +111,10 @@ class User < ApplicationRecord
     @user.save(context: :fb_login)
   end
 
+  def admin?
+    self.admin
+  end
+
   private
 
     # メールアドレスをすべて小文字にする
