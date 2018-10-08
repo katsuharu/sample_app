@@ -129,7 +129,7 @@ class UsersController < ApplicationController
   def entry
     # エントリー確認画面でユーザープロフィールを表示するためにインスタンス変数に代入
     @user = current_user
-    # アクセス時時刻を取得する
+    # アクセス時刻を取得する
     @time_now = DateTime.now
     # 12:30以前の場合
     if @time_now.strftime('%H:%M:%S') < "12:30:00"
