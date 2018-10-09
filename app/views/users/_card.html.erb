@@ -2,87 +2,134 @@
 <!-- 12:30以前の場合 -->
   <!-- 未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
-    <% if current_user.profile_img.blank? %>
-    <!-- プロフィール画像が未登録の場合 -->
-      <a href="#!" class="lunch_card ban_entry" style="text-decoration: none;">
+    <% if card[:can_entry] %>
+    <!-- 登録ユーザー数が3人以上の場合 -->
+      <% if current_user.profile_img.blank? %>
+      <!-- プロフィール画像が未登録の場合 -->
+        <a href="#!" class="lunch_card ban_entry" style="text-decoration: none;">
+      <% else %>
+        <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
+      <% end %>
+        <div class="lunch_card_category"><%= card[:category_name] %></div>
+        <% if card[:is_others] %>
+        <!-- 他のユーザーがエントリー中の場合 -->
+          <p class="others_entry">他の人がエントリー中！</p>
+        <% end %>
+        <!-- エントリーボタン -->
+        <div class="entry_button">エントリーする</div>
+      </a>
     <% else %>
-      <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
+    <!-- 3人未満の場合、inactiveクラスを追加してグレーアウト -->
+      <div class="lunch_card inactive" style="text-decoration: none;">
+        <div class="lunch_card_category"><%= card[:category_name] %></div>
+        <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+      </div>
     <% end %>
-    <div class="lunch_card_category"><%= card[:category_name] %></div>
-    <% if card[:is_others] %>
-    <!-- 他のユーザーがエントリー中の場合 -->
-      <p class="others_entry">他の人がエントリー中！</p>
-    <% end %>
-    <!-- エントリーボタン -->
-    <div class="entry_button">エントリーする</div>
-  </a>
   <!-- エントリー中の場合、リンク先をcancel APIにセット -->
   <% else %>
     <!-- 対象のランチカードにエントリー中の場合、左上に表示してカードの色を有効色に変更 -->
     <% if @my_lunch.category_id == card[:category_id] %>
-      <a href="/users/cancel?id=<%= current_user.id %>" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
-        <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <% if card[:is_others] %>
-        <!-- 他のユーザーがエントリー中の場合 -->
-          <p class="others_entry">他の人がエントリー中！</p>
-        <% end %>
-        <!-- キャンセルボタン -->
-        <div class="entry_button">キャンセルする</div>
-      </a>
+      <!-- 登録ユーザー数が3人以上の場合 -->
+      <% if card[:can_entry] %>
+        <a href="/users/cancel?id=<%= current_user.id %>" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <% if card[:is_others] %>
+          <!-- 他のユーザーがエントリー中の場合 -->
+            <p class="others_entry">他の人がエントリー中！</p>
+          <% end %>
+          <!-- キャンセルボタン -->
+          <div class="entry_button">キャンセルする</div>
+        </a>
+      <% else %>
+        <div class="lunch_card my_entry_card inactive" style="text-decoration: none;">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>          
+      <% end %>
     <% else %>
     <!-- 対象のカードにエントリー中でない場合 -->
-      <div class="lunch_card">
-        <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <% if card[:is_others] %>
-        <!-- 他のユーザーがエントリー中の場合 -->
-          <p class="others_entry">他の人がエントリー中！</p>
-        <% end %>
-      </div>
+      <% if card[:can_entry] %>
+      <!-- 登録ユーザー数が3人以上の場合 -->
+        <div class="lunch_card">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <% if card[:is_others] %>
+          <!-- 他のユーザーがエントリー中の場合 -->
+            <p class="others_entry">他の人がエントリー中！</p>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="lunch_card inactive">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% else %>
 <!-- 12:30以降の場合 -->
   <!-- 明日のランチに未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
-    <% if current_user.profile_img.blank? %>
-    <!-- プロフィール画像が未登録の場合 -->
-      <a href="#!" class="lunch_card ban_entry" style="text-decoration: none;">
-    <% else %>
-      <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
-    <% end %>
-      <div class="lunch_card_category"><%= card[:category_name] %></div>
-      <% if card[:is_others] %>
-      <!-- 他のユーザーがエントリー中の場合 -->
-        <p class="others_entry">他の人がエントリー中！</p>
+    <% if card[:can_entry] %>
+    <!-- 登録ユーザー数が3人以上の場合 -->
+      <% if current_user.profile_img.blank? %>
+      <!-- プロフィール画像が未登録の場合 -->
+        <a href="#!" class="lunch_card ban_entry" style="text-decoration: none;">
+      <% else %>
+        <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
       <% end %>
-      <!-- エントリーボタン -->
-      <div class="entry_button">エントリーする</div>
-    </a>
+        <div class="lunch_card_category"><%= card[:category_name] %></div>
+        <% if card[:is_others] %>
+        <!-- 他のユーザーがエントリー中の場合 -->
+          <p class="others_entry">他の人がエントリー中！</p>
+        <% end %>
+        <!-- エントリーボタン -->
+        <div class="entry_button">エントリーする</div>
+      </a>
+    <% else %>
+      <div class="lunch_card inactive" style="text-decoration: none;">
+        <div class="lunch_card_category"><%= card[:category_name] %></div>
+        <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+      </div>
+    <% end %>
   <!-- 明日のランチにエントリー済みの場合 -->
   <% else %>
     <!-- 対象のランチカードにエントリー中の場合、左上に表示してカードの色を有効色に変更 -->
     <% if @my_lunch.category_id == card[:category_id] %>
-      <a href="/users/cancel?id=<%= current_user.id %>" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
-        <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <% if card[:is_others] %>
-        <!-- 他のユーザーがエントリー中の場合 -->
-          <p class="others_entry">他の人がエントリー中！</p>
-        <% end %>
-        <!-- キャンセルボタン -->
-        <div class="entry_button">キャンセルする</div>
-      </a>
+      <% if card[:can_entry] %>
+        <a href="/users/cancel?id=<%= current_user.id %>" data-confirm="エントリーをキャンセルしてもよろしいでしょうか？" class="lunch_card my_entry_card" style="text-decoration: none;">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <% if card[:is_others] %>
+          <!-- 他のユーザーがエントリー中の場合 -->
+            <p class="others_entry">他の人がエントリー中！</p>
+          <% end %>
+          <!-- キャンセルボタン -->
+          <div class="entry_button">キャンセルする</div>
+        </a>
+      <% else %>
+        <div class="lunch_card my_entry_card inactive" style="text-decoration: none;">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>
+      <% end %>
     <% else %>
-      <div class="lunch_card">
-        <div class="lunch_card_category"><%= card[:category_name] %></div>
-        <% if card[:is_others] %>
-        <!-- 他のユーザーがエントリー中の場合 -->
-          <p class="others_entry">他の人がエントリー中！</p>
-        <% end %>
-        <!-- 未エントリーの場合 -->
-        <% if !entried? %>
-          <div class="entry_button">エントリーする</div>
-        <% end %>
-      </div>
+      <% if card[:can_entry] %>
+        <div class="lunch_card">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <% if card[:is_others] %>
+          <!-- 他のユーザーがエントリー中の場合 -->
+            <p class="others_entry">他の人がエントリー中！</p>
+          <% end %>
+          <!-- 未エントリーの場合 -->
+          <% if !entried? %>
+            <div class="entry_button">エントリーする</div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="lunch_card inactive">
+          <div class="lunch_card_category"><%= card[:category_name] %></div>
+          <div class="cannot_entry_instruction">このカテゴリーに登録ユーザーが3人以上いないため、現在エントリーできません。</div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
