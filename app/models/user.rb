@@ -8,7 +8,8 @@ class User < ApplicationRecord
   before_create :create_activation_digest
   after_validation :set_profile_img_from_data_uri
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  VALID_EMAIL_REGEX =   /\A[\w+\-.]+@(kcgrp.jp|n-currency.com|picappinc.jp)/
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@(kcgrp.jp|n-currency.com|picappinc.jp|futurecomics.com|kcint.co.jp|dmm-futureworks.com|tis-s.co.jp|gotbb.co.jp|outvision.co.jp|planets.art|auto.dmm.com|digitalcommerce.co.jp|fcons.jp|futurecomics.com|hobibox.jp|lai-xiang.com|wfn-gp.com|dmm.com|mail.dmm.com|dmm.co.jp)/
+
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
