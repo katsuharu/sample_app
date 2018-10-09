@@ -146,10 +146,6 @@ select {
   .lunchfriends {
     text-align:  center;
   }
-
-  .lunch_kun {
-    text-align:  center;
-  }
 }
 
 .Asset-73x {
@@ -157,6 +153,11 @@ select {
   object-fit: contain;
   /* margin-left: 218px; */
   padding-top: 19px;
+}
+
+/* ランチ君ロゴ位置 */
+.lunch_kun {
+  text-align: center;
 }
 
 .today_date {
@@ -460,13 +461,12 @@ img.tweet_form_img {
 
   /* LunchFriendsのロゴマーク */
   .lunchfriends {
-    margin-left: 168px;
+    text-align: center;
   }
 
   .Asset-73x {
     width: 112px;
     object-fit: contain;
-    margin-left: 218px;
     padding-top: 19px;
   }
 
@@ -619,13 +619,12 @@ img.tweet_form_img {
 @media (min-width: 1300px) {
   /* LunchFriendsのロゴマーク */
   .lunchfriends {
-    margin-left: 239px;
+    text-align: center;
   }
 
   .Asset-73x {
     width: 142px;
     object-fit: contain;
-    margin-left: 276px;
     padding-top: 24px;
   }
 
