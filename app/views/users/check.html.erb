@@ -6,7 +6,9 @@
 <h1 class="eigo-title">You got new Lunch Friends !!</h1>
 <div class="entry_top">
   <div class="index_left">
-    <h3 class="check_content_title"><%= @matching_date %>のマッチング相手を確認</h3>
+    <h3 class="check_content_title">「<%= @lunch_theme %>」</h3>
+    <p class="matching_chat_asterisk"><%= @matching_date %>のマッチング相手を確認</p>
+
     <% @pairs.each.with_index(1) do |pair, index| %>
       <div class="user-cnt col-lg-12">
         <h2 class="matching_member">マッチングしたランチフレンズ.<%= index %></h2>    

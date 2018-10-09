@@ -221,7 +221,8 @@ class UsersController < ApplicationController
       user_ids = Lunch.where(pair_id: @pair_id).where(lunch_date: Date.today).where.not(sent_at: nil).where.not(user_id: current_user.id).pluck(:user_id)
       # マッチング相手のUserモデルの配列を取得
       @pairs = User.where(id: user_ids)
-
+      # テーマランチ名を取得
+      @lunch_theme = DailyLunch.find(@matched_lunch.category_id).name
       # formで必要なインスタンス変数を定義
       @chat = Chat.new
       # 本日のマッチングメンバーのチャットを取得
