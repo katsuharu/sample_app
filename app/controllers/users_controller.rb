@@ -20,8 +20,8 @@ class UsersController < ApplicationController
       @today = Date.today
       # アクセス時時刻を取得する
       @time_now = DateTime.now
-      # 12:30以前の場合
-      if @time_now.strftime('%H:%M:%S') < "12:30:00"
+      # 11:30以前の場合
+      if @time_now.strftime('%H:%M:%S') < "11:30:00"
         # 本日のlunchモデルを取得
         @my_lunch = Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil)
       else
@@ -131,8 +131,8 @@ class UsersController < ApplicationController
     @user = current_user
     # アクセス時刻を取得する
     @time_now = DateTime.now
-    # 12:30以前の場合
-    if @time_now.strftime('%H:%M:%S') < "12:30:00"
+    # 11:30以前の場合
+    if @time_now.strftime('%H:%M:%S') < "11:30:00"
       # 今日の日付でユーザーがエントリー状態でない場合
       if Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil).nil?
         # viewからカテゴリーIDが取得できている場合
@@ -168,8 +168,8 @@ class UsersController < ApplicationController
   def cancel
     # アクセス時時刻を取得する
     @time_now = DateTime.now
-    # 12:30以前の場合
-    if @time_now.strftime('%H:%M:%S') < "12:30:00"
+    # 11:30以前の場合
+    if @time_now.strftime('%H:%M:%S') < "11:30:00"
       # マッチング済みの場合
       if matched?
         flash[:info] = "既にマッチング済みのためキャンセルできません。"

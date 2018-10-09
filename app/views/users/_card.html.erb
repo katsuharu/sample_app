@@ -1,5 +1,5 @@
-<% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
-<!-- 12:30以前の場合 -->
+<% if @time_now.strftime('%H:%M:%S') < "11:30:00" %>
+<!-- 11:30以前の場合 -->
   <!-- 未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
     <% if current_user.profile_img.blank? %>
@@ -41,7 +41,7 @@
     <% end %>
   <% end %>
 <% else %>
-<!-- 12:30以降の場合 -->
+<!-- 11:30以降の場合 -->
   <!-- 明日のランチに未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
     <% if current_user.profile_img.blank? %>

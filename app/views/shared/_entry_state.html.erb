@@ -1,12 +1,12 @@
 <% wd = ["日", "月", "火", "水", "木", "金", "土"] %>
 
-<!-- 12:30以前の場合 -->
-<% if @time_now.strftime('%H:%M:%S') < "12:30:00" %>
+<!-- 11:30以前の場合 -->
+<% if @time_now.strftime('%H:%M:%S') < "11:30:00" %>
   <!-- エントリー済みの場合 -->
   <% if entried? %>
     <div class="today_date">
       <%= @today.month %>/<%= @today.day %>(<%= wd[@today.wday] %>)
-      12:30にマッチング相手を確認
+      11:30にマッチング相手を確認
     </div>
   <!-- 未エントリーの場合 -->
   <% else %>
@@ -15,7 +15,7 @@
       今日のランチにエントリー
     </div>
   <% end %>
-<!-- 12:30以降の場合 -->
+<!-- 11:30以降の場合 -->
 <% else %>
   <div class="today_date">
     <%= Date.tomorrow.month %>/<%= Date.tomorrow.day %>(<%= wd[Date.tomorrow.wday] %>)

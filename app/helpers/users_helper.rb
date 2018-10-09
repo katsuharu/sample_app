@@ -1,10 +1,10 @@
 module UsersHelper extend ActiveSupport::Concern
   def entried?
-    # 12:30以前の場合
-    if DateTime.now.strftime('%H:%M:%S') < "12:30:00"
+    # 11:30以前の場合
+    if DateTime.now.strftime('%H:%M:%S') < "11:30:00"
       # 本日のランチにエントリ中の場合にtrueを返す
       Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).where(canceled_at: nil).present?
-    # 12:30以降の場合
+    # 11:30以降の場合
     else
       # 明日の日付のランチにエントリ中の場合にtrueを返す
       Lunch.where(user_id: current_user.id).where(lunch_date: Date.tomorrow).where.not(category_id: nil).where(canceled_at: nil).present?
