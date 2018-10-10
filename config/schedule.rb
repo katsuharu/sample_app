@@ -6,8 +6,8 @@ set :output, 'log/crontab.log'
 ## 環境ごとに切り合わけ
 set :environment, ENV['RAILS_ENV'] 
 
-# 平日の11時30分にスケジューリング
-every :weekday, at: '11:30 pm' do
+# 平日の午前11時30分にスケジューリング
+every :weekday, at: '11:30 am' do
   rake 'matching:matching'
 end
 
