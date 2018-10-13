@@ -2,20 +2,39 @@
 <!-- 11:30以前の場合 -->
   <!-- 未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
-    <% if current_user.profile_img.blank? %>
-    <!-- プロフィール画像が未登録の場合 -->
-      <a href="#!" class="lunch_card ban_entry" style="text-decoration: none;">
-    <% else %>
-      <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
-    <% end %>
-    <div class="lunch_card_category"><%= card[:category_name] %></div>
-    <% if card[:is_others] %>
-    <!-- 他のユーザーがエントリー中の場合 -->
-      <p class="others_entry">他の人がエントリー中！</p>
-    <% end %>
-    <!-- エントリーボタン -->
-    <div class="entry_button">エントリーする</div>
-  </a>
+    <div class="lunch_card">
+      <div class="lunch_card_category"><%= card[:category_name] %></div>
+      <% if card[:is_others] %>
+      <!-- 他のユーザーがエントリー中の場合 -->
+        <p class="others_entry">他の人がエントリー中！</p>
+      <% end %>
+      <!-- エントリーボタン -->
+      <!-- モーダルウィンドウを呼び出すボタン -->
+      <button type="button" class="entry_button" data-toggle="modal" data-target="#myModal">エントリーする</button>
+      <!-- モーダルウィンドウの中身 -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">ランチにエントリーする</h4>
+            </div>
+            <div class="modal-body">
+              <%= form_tag("/entry", method: "post") do %>
+                <%= label_tag :friends_num, '一緒に参加する友達の人数' %>
+                <%= select_tag(:friends_num, options_for_select([['0人',0], ['1人', 1]]), {class: "select-menu"}) %>
+                <%= hidden_field_tag :category_id, card[:category_id] %>
+                <%= submit_tag  "エントリー", class: "square_btn"  %>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+             </div>
+          </div>
+        </div>
+      </div>
+      <!-- エントリーボタン -->
+    </div>
   <!-- エントリー中の場合、リンク先をcancel APIにセット -->
   <% else %>
     <!-- 対象のランチカードにエントリー中の場合、左上に表示してカードの色を有効色に変更 -->
@@ -44,20 +63,40 @@
 <!-- 11:30以降の場合 -->
   <!-- 明日のランチに未エントリーの場合、リンク先をentry APIにセット  -->
   <% if @my_lunch.nil? %>
-    <% if current_user.profile_img.blank? %>
-    <!-- プロフィール画像が未登録の場合 -->
-      <a href="#!" class="lunch_card ban_entry" style="text-decoration: none;">
-    <% else %>
-      <a href="/entry?category_id=<%= card[:category_id] %>&id=<%= current_user.id %>" data-confirm="エントリーしますか？" class="lunch_card" style="text-decoration: none;">
-    <% end %>
+    <div class="lunch_card">
       <div class="lunch_card_category"><%= card[:category_name] %></div>
       <% if card[:is_others] %>
       <!-- 他のユーザーがエントリー中の場合 -->
         <p class="others_entry">他の人がエントリー中！</p>
       <% end %>
       <!-- エントリーボタン -->
-      <div class="entry_button">エントリーする</div>
-    </a>
+      <!-- モーダルウィンドウを呼び出すボタン -->
+      <button type="button" class="entry_button" data-toggle="modal" data-target="#myModal">エントリーする</button>
+      <!-- モーダルウィンドウの中身 -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">ランチにエントリーする</h4>
+            </div>
+            <div class="modal-body">
+              <%= form_tag("/entry", method: "post") do %>
+                <div class="center">
+                  <%= label_tag :friends_num, '一緒に参加する友達の人数' %>
+                  <%= select_tag(:friends_num, options_for_select([['0人',0], ['1人', 1]]), {class: "select-menu"}) %>
+                </div>
+                <%= hidden_field_tag :category_id, card[:category_id] %>
+                <div class="modal-btn-center">
+                  <%= submit_tag  "エントリー", class: "square_btn"  %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- エントリーボタン -->
+    </div>
   <!-- 明日のランチにエントリー済みの場合 -->
   <% else %>
     <!-- 対象のランチカードにエントリー中の場合、左上に表示してカードの色を有効色に変更 -->
