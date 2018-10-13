@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181007014211) do
+ActiveRecord::Schema.define(version: 20181013075130) do
 
   create_table "authorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "provider"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20181007014211) do
     t.datetime "canceled_at"
     t.integer  "lock_version", default: 0, null: false, comment: "ロックバージョン"
     t.datetime "sent_at",                               comment: "送信日時"
+    t.integer  "friends_num",  default: 0, null: false, comment: "一緒に参加する友達人数"
   end
 
   create_table "second_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
