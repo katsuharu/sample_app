@@ -137,7 +137,7 @@ class UsersController < ApplicationController
       if Lunch.where(user_id: current_user.id).where(lunch_date: Date.today).where.not(category_id: nil).find_by(canceled_at: nil).nil?
         # viewからカテゴリーIDが取得できている場合
         if category_id = params[:category_id]
-          Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.today)
+          Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.today, friends_num: params[:friends_num])
           flash[:success] = "エントリーしました。"
         else
           flash[:danger] = "エントリーできませんでした。"
@@ -152,7 +152,7 @@ class UsersController < ApplicationController
       if Lunch.where(user_id: current_user.id).where(lunch_date: Date.tomorrow).where.not(category_id: nil).find_by(canceled_at: nil).nil?
         # viewからカテゴリーIDが取得できている場合
         if category_id = params[:category_id]
-          Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.tomorrow)
+          Lunch.create(user_id: current_user.id, category_id: category_id, lunch_date: Date.tomorrow, friends_num: params[:friends_num])
           flash[:success] = "エントリーしました。"
         else
           flash[:danger] = "エントリーできませんでした。"
