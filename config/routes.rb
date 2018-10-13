@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get    '/signup',  to: 'users#new'
   patch '/edit_confirm', to: 'users#edit_confirm'
   post   '/confirm', to: 'users#confirm'
-  get   'entry',        to: 'users#entry'
+  post   'entry',        to: 'users#entry'
   get 'users/profile', to: 'users#profile'
   get 'users/edit', to: 'users#edit'
   post 'users/edit', to: 'users#edit'

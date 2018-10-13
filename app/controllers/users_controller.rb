@@ -4,7 +4,7 @@ include ActionView::Helpers::DateHelper
 
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:profile, :edit, :update, :entry, :cancel, :check]
-  before_action :correct_user, only: [:entry, :cancel]
+  before_action :correct_user, only: [:cancel]
   # before_action :admin_user,     only: :destroy
   before_action :hobby_registered, only: [:index, :show, :edit, :update, :entry, :check]
 
