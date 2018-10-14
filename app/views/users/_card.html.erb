@@ -21,15 +21,16 @@
             </div>
             <div class="modal-body">
               <%= form_tag("/entry", method: "post") do %>
-                <%= label_tag :friends_num, '一緒に参加する友達の人数' %>
-                <%= select_tag(:friends_num, options_for_select([['0人',0], ['1人', 1]]), {class: "select-menu"}) %>
+                <div class="center">
+                  <%= label_tag :friends_num, '一緒に参加する友達の人数' %>
+                  <%= select_tag(:friends_num, options_for_select([['0人',0], ['1人', 1]]), {class: "select-menu"}) %>
+                </div>
                 <%= hidden_field_tag :category_id, card[:category_id] %>
-                <%= submit_tag  "エントリー", class: "square_btn"  %>
+                <div class="modal-btn-center">
+                  <%= submit_tag  "エントリー", class: "square_btn"  %>
+                </div>
               <% end %>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
-             </div>
           </div>
         </div>
       </div>
