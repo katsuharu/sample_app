@@ -23,6 +23,9 @@
               <p class="member_slack"><%= pair.try :slack_id %>
                 <br>※右のチャットでどうしても連絡がとれない時のみ使ってください
               </p>
+              <% if @matched_lunch.friends_num == 1 %>
+                <h4 class="member_data">この人は友達と一緒の参加です</h4>
+              <% end %>
             </div>
           </div>
       </div>
