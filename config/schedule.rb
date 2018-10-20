@@ -18,6 +18,8 @@ end
 
 every 1.minutes do
   rake 'chat_notification_mail:chat_notification_mail'
+  # 実験用にお知らせメール送信タスクを追加
+  rake 'lunch_theme_notification:lunch_theme_notification'
 end
 
 # 平日の10時30にバッチが起動していることをログに出力する
