@@ -36,9 +36,10 @@ class UserMailer < ApplicationMailer
 
   # ランチテーマのお知らせを一斉送信するメソッド
   # param Array email_lists メールアドレスの配列
-  def lunch_theme_notification(email_lists, category_name)
+  def lunch_theme_notification(email_lists, category_name, theme_name)
     if email_lists.present?
       @category_name = category_name
+      @theme_name = theme_name
       mail(bcc: email_lists, subject: "【LunchFriends】本日あなたの登録している「#{@category_name}」のカテゴリーのランチが開催されます！")
     end
   end

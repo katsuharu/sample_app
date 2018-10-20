@@ -27,9 +27,12 @@ class DailyLunch < ApplicationRecord
     end
   end
 
-  # ランチテーマの通知用メールを送信
-  def self.notify_lunch_theme(email_lists, category_name)
+  # ランチテーマの通知用メールを送信するメソッド
+  # param Array email_lists 宛先メールアドレスの配列
+  # param String category_name テーマランチのカテゴリ名
+  # param String theme_name テーマランチ名
+  def self.notify_lunch_theme(email_lists, category_name, theme_name)
     # メール一斉位送信
-    UserMailer.lunch_theme_notification(email_lists, category_name).deliver_now!
+    UserMailer.lunch_theme_notification(email_lists, category_name, theme_name).deliver_now!
   end
 end

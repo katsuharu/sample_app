@@ -5,6 +5,9 @@ namespace :lunch_theme_notification do
     
     # 本日のランチテーマのカテゴリIDを取得
     if daily_lunch = DailyLunch.find_by(date: Date.today)
+      # ランチテーマ名を取得
+      theme_name = daily_lunch.name
+      # カテゴリIDを取得
       category_id = daily_lunch.category_id
       # カテゴリ名を取得
       category_name = Category.find(category_id).name
@@ -13,7 +16,7 @@ namespace :lunch_theme_notification do
       email_lists = User.where(id: user_ids).pluck(:email)
       while email_lists.present?
         # メールの配列から先頭100件を取り出しランチテーマの通知をBCCで一斉送信
-        DailyLunch.notify_lunch_theme(email_lists.slice!(0..99), category_name)
+        DailyLunch.notify_lunch_theme(email_lists.slice!(0..99), category_name, theme_name)
       end
       p Time.now.to_s + 'lunch_theme_notification end'
     else
