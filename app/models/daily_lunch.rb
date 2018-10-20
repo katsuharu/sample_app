@@ -26,4 +26,10 @@ class DailyLunch < ApplicationRecord
       daily_lunches = DailyLunch.where("date > ?", Date.today).where(deleted_at: nil)
     end
   end
+
+  # ランチテーマの通知用メールを送信
+  def self.notify_lunch_theme(email_lists, category_name)
+    # メール一斉位送信
+    UserMailer.lunch_theme_notification(email_lists, category_name).deliver_now!
+  end
 end

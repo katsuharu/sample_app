@@ -38,4 +38,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.chat_notification(user)
   end
 
+  def lunch_theme_notification
+    category_name = "落語"
+    email_lists = User.where(id: [1, 2, 3]).pluck(:email)
+    UserMailer.lunch_theme_notification(email_lists, category_name)
+  end
+
 end
