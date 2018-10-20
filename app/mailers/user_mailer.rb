@@ -39,7 +39,7 @@ class UserMailer < ApplicationMailer
   def lunch_theme_notification(email_lists, category_name)
     if email_lists.present?
       @category_name = category_name
-      mail(bcc: email_lists, subject: "【LunchFriends】本日あなたの登録している「[#{@category_name}]」のカテゴリーのランチが開催されます！")
+      mail(bcc: email_lists, subject: "【LunchFriends】本日あなたの登録している「#{@category_name}」のカテゴリーのランチが開催されます！")
     end
   end
 
